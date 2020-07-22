@@ -28,7 +28,7 @@ module.exports = context => ({
         sidebarDepth: 2,
         lastUpdated: '上次更新',
         docsRepo: 'hydro-dev/hydro-dev.github.io',
-        docsBranch: 'master',
+        docsBranch: 'docs',
         editLinks: true,
         editLinkText: '文档有锅？点我修复',
         displayAllHeaders: true,
