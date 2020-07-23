@@ -42,6 +42,7 @@ module.exports = context => ({
                         '/guide/about-hydro',
                         '/guide/',
                         '/guide/judge',
+                        '/guide/cli',
                     ],
                 }
             ]
