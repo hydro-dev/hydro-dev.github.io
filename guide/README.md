@@ -19,16 +19,27 @@ Hydro 依赖于 MongoDB 与 NodeJS>=10.10，您应该先安装它们。
 :::
 
 Hydro 会自行初始化并监听 8888 端口（可使用 `--port=1234` 指定其他端口）。请用浏览器访问并进行相应配置。  
-数据库配置完成后，会自动创建 Root 用户。（账号 `Root` ，密码 `rootroot`），请及时修改。  
+
+数据库配置完成后使用hydrocli创建用户： 
+
+```sh
+# 使用HydroCli创建用户时，可不指定uid，若指定请使用负数值，否则可能会影响用户正常注册。
+# 此方法返回一个数字，即为所创建用户的uid。
+hydrooj cli user create admin@hydro.local root rootroot # email username password uid
+# -1即为拥有所有权限
+hydrooj cli user setPriv [uid] -1 # uid PRIV
+```
 
 之后的进阶配置可在 管理 面板进行。
 
 ## 启动参数
 
-- `--port=8888` 指定启动端口
-- `--debug` 启用开发模式
-- `--ui=/path/to/ui` 使用指定文件夹下的UI （用于开发）
-- `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）
+- `--port=8888` 指定启动端口  
+- `--debug` 启用开发模式  
+- `--ignorelock` 忽略lockfile（不建议）  
+- `--ui=/path/to/ui` 使用指定文件夹下的UI  
+- `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）  
+- `--public=/path/to/public` 使用指定文件夹的public目录  
 
 ## 附加组件
 

@@ -43,6 +43,7 @@ module.exports = context => ({
                         '/guide/',
                         '/guide/judge',
                         '/guide/cli',
+                        '/guide/PERM_PRIV'
                     ],
                 }
             ]
