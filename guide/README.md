@@ -60,14 +60,17 @@ hydrooj addon add @hydrooj/geoip
 
 Hydro官方目前提供了以下附加组件：
 
-| ID                     | 描述                           | 大小  |
-| ---------------------- | ------------------------------ | ----- |
-| @hydrooj/ui-default    | Hydro的默认用户界面            | ~10MB |
-| @hydrooj/geoip         | GeoIP 支持，用于显示用户登录地 | ~60MB |
-| @hydrooj/migrate-vijos | 从vijos4的自动升级工具         | <1MB  |
-| @hydrooj/hydrojudge    | 评测组件                       | ~2MB  |
+| ID                         | 描述                           |
+| -------------------------- | ------------------------------ |
+| @hydrooj/ui-default        | Hydro的默认用户界面            |
+| @hydrooj/geoip             | GeoIP 支持，用于显示用户登录地 |
+| @hydrooj/login-with-github | 允许用户使用Github登录         |
+| @hydrooj/login-with-google | 允许用户使用Google登录         |
+| @hydrooj/migrate-vijos     | 从vijos4的自动升级工具         |
+| @hydrooj/hydrojudge        | 评测组件                       |
 
 :::tip
+大部分附加组件的配置都可以在 控制面板>系统设置 中找到。
 评测组件需要额外配置。
 详见 [配置评测机](judge.html)
 :::

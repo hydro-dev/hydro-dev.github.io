@@ -30,4 +30,11 @@ hydrooj addon add @hydrooj/hydrojudge
 
 ## 作为独立进程安装
 
-在 Hydro 中创建一个有 PRIV_JUDGE 权限的账户。（参见 [HydroCli](./cli)）
+在 Hydro 中创建一个有 PRIV_JUDGE 权限的账户。  
+
+```sh
+hydrooj cli user create -2 judge@hydro.local judge 123456 # uid mail username password
+hydrooj cli user setJudge -2
+```
+
+剩余部分参照 [HydroJudge说明](//github.com/hydro-dev/HydroJudge)
