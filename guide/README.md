@@ -41,6 +41,14 @@ hydrooj cli user setPriv [uid] -1 # uid PRIV
 - `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）  
 - `--public=/path/to/public` 使用指定文件夹的public目录  
 
+## 升级Hydro
+
+```sh
+yarn global upgrade-interactive --latest
+```
+
+选中需要升级的组件即可。
+
 ## 附加组件
 
 :::warning
@@ -64,8 +72,11 @@ Hydro官方目前提供了以下附加组件：
 | -------------------------- | ------------------------------ |
 | @hydrooj/ui-default        | Hydro的默认用户界面            |
 | @hydrooj/geoip             | GeoIP 支持，用于显示用户登录地 |
+| @hydrooj/fps-importer      | 支持导入fps格式的题目          |
 | @hydrooj/login-with-github | 允许用户使用Github登录         |
 | @hydrooj/login-with-google | 允许用户使用Google登录         |
+| @hydrooj/login-with-osu    | 允许用户使用Osu登录            |
+| @hydrooj/login-with-qq     | 允许用户使用QQ登录             |
 | @hydrooj/migrate-vijos     | 从vijos4的自动升级工具         |
 | @hydrooj/hydrojudge        | 评测组件                       |
 
@@ -93,7 +104,7 @@ pm2 save # 保存
 
 ## OAuth
 
-Hydro 支持使用 Github 和 Google 登录。申请相应 API Key 填入系统设置。  
+Hydro 支持使用 Github 和 Google 等第三方登录。申请相应 API Key 填入系统设置。  
 
 :::tip
 由于众所周知的原因，需要设置 proxy 设置项。
