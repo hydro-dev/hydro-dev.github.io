@@ -70,6 +70,7 @@ Hydro官方目前提供了以下附加组件：
 
 | ID                         | 描述                           |
 | -------------------------- | ------------------------------ |
+| @hydrooj/better-search     | 使用 jieba 优化题目搜索        |
 | @hydrooj/ui-default        | Hydro的默认用户界面            |
 | @hydrooj/geoip             | GeoIP 支持，用于显示用户登录地 |
 | @hydrooj/fps-importer      | 支持导入fps格式的题目          |

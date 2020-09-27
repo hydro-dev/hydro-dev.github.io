@@ -41,6 +41,7 @@ module.exports = context => ({
                     children: [
                         '/guide/about-hydro',
                         '/guide/',
+                        '/guide/enhance',
                         '/guide/judge',
                         '/guide/cli',
                         '/guide/PERM_PRIV'
