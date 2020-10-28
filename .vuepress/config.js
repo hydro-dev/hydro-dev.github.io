@@ -44,7 +44,8 @@ module.exports = context => ({
                         '/guide/enhance',
                         '/guide/judge',
                         '/guide/cli',
-                        '/guide/PERM_PRIV'
+                        '/guide/PERM_PRIV',
+                        '/guide/testdata'
                     ],
                 }
             ]
