@@ -45,7 +45,13 @@ module.exports = context => ({
                         '/guide/judge',
                         '/guide/cli',
                         '/guide/PERM_PRIV',
-                        '/guide/testdata'
+                        '/guide/testdata',
+                        '/guide/backup',
+                        '/guide/cdn',
+                        '/guide/contest',
+                        '/guide/user-import',
+                        '/guide/frontend-modify',
+                        '/guide/compiler-options'
                     ],
                 }
             ]
