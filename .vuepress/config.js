@@ -5,6 +5,8 @@ module.exports = context => ({
     head: [
         ['link', { rel: 'icon', href: `/hydro.png` }],
         ['meta', { name: 'theme-color', content: '#ffeded' }],
+        ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-CX4XJ0H0TE' }],
+        ['script', {}, "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CX4XJ0H0TE');"]
     ],
     plugins: [
         ['@vuepress/back-to-top'],
