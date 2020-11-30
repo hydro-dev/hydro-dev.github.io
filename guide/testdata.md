@@ -87,6 +87,7 @@ subtasks:
   - score: 70
     time: 0.5s
     memory: 32m
+    if: [0] # 可选，传入数组，表示仅在subtask0通过时此subtask才计分
     cases:
       - input: c.in
         output: c.out
