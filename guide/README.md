@@ -4,7 +4,7 @@
 
 :::tip
 此脚本仅安装Hydro核心，评测组件和依赖，不会创建管理员用户。请手动 [创建用户](#创建用户)。
-:::tip
+:::
 
 ```sh
 curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-1604.sh | bash # ubuntu 16.04
