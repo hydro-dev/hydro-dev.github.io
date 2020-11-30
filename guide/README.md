@@ -1,6 +1,20 @@
 # 部署
 
-## 安装
+## 使用安装脚本（根据系统版本选择，使用root用户执行）
+
+:::tip
+此脚本仅安装Hydro核心，评测组件和依赖，不会创建管理员用户。请手动 [创建用户](#创建用户)。
+:::tip
+
+```sh
+curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-1604.sh | bash # ubuntu 16.04
+curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-1804.sh | bash # ubuntu 18.04
+curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-2004.sh | bash # ubuntu 20.04
+# 下方脚本未测试有效性，请尽量避免使用
+curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/centos-7.sh | bash # centos 7
+```
+
+## 手动安装
 
 Hydro 依赖于 MongoDB 与 NodeJS>=10.10，您应该先安装它们。 
 
@@ -19,6 +33,8 @@ Hydro 依赖于 MongoDB 与 NodeJS>=10.10，您应该先安装它们。
 :::
 
 Hydro 会自行初始化并监听 8888 端口（可使用 `--port=1234` 指定其他端口）。请用浏览器访问并进行相应配置。  
+
+## 创建用户
 
 数据库配置完成后使用hydrocli创建用户： 
 
