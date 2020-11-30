@@ -3,7 +3,9 @@
 ## 使用安装脚本（根据系统版本选择，使用root用户执行）
 
 :::tip
-此脚本仅安装Hydro核心，评测组件和依赖，不会创建管理员用户。请手动 [创建用户](#创建用户)。
+此脚本仅安装Hydro核心，评测组件和依赖，不会安装编译器，不会创建管理员用户。请手动 [创建用户](#创建用户)。  
+为尽可能避免错误，请在执行脚本前完成相关编译器的安装。（`apt-get install g++ python python3 fp-compiler ...`)。  
+在对编译器进行 重新安装/升级 等操作后，需要重启沙箱来使更改生效。
 :::
 
 ```sh
@@ -13,6 +15,13 @@ curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-2004
 # 下方脚本未测试有效性，请尽量避免使用
 curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/centos-7.sh | bash # centos 7
 ```
+
+若使用安装脚本，数据目录在 `/data/db` 下，使用 `pm2` 管理进程。
+
+- 重启： `pm2 restart hydrooj`
+- 重启数据库：`pm2 restart mongodb`
+- 重启沙箱：`pm2 restart sandbox`
+- 设置开机自启：`pm2 save && pm2 startup`
 
 ## 手动安装
 
@@ -63,12 +72,12 @@ hydrooj cli user setPriv [uid] -1 # uid PRIV
 yarn global upgrade-interactive --latest
 ```
 
-选中需要升级的组件即可。
+使用空格键选中需要升级的组件，回车键确认，之后重启Hydro服务即可。
 
 ## 附加组件
 
 :::warning
-附加组件对站点所有内容具有完全的访问权限。请不要安装来历不明的组件。  
+附加组件对站点所有内容具有完全的访问权限。请不要安装启用来历不明的组件。  
 :::
 
 #### 安装附加组件：
@@ -96,6 +105,7 @@ Hydro官方目前提供了以下附加组件：
 | @hydrooj/login-with-qq     | 允许用户使用QQ登录             |
 | @hydrooj/migrate-vijos     | 从vijos4的自动升级工具         |
 | @hydrooj/hydrojudge        | 评测组件                       |
+| @hydrooj/import-qduoj      | 导入qduoj导出的文件            |
 
 :::tip
 大部分附加组件的配置都可以在 控制面板>系统设置 中找到。
