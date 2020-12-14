@@ -4,8 +4,8 @@
 
 以QQ邮箱为例：找到 设置->账户，开启 `pop3/smtp` 服务
 
-![img](https://img.masnn.io:38443/images/2020/09/27/image.png)
-![img](https://img.masnn.io:38443/images/2020/09/27/imagecc5ff47b38c45417.png)
+![img](https://img.undefined.moe:38443/images/2020/09/27/image.png)
+![img](https://img.undefined.moe:38443/images/2020/09/27/imagecc5ff47b38c45417.png)
 
 SMTP_USER: 12345678@qq.com 
 SMTP_PASS: 提供的SMTP密码  

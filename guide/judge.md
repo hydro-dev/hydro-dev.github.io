@@ -1,5 +1,9 @@
 # 评测机配置
 
+:::tip
+如果您使用一键安装脚本，则此部分已经自动配置完成。
+:::
+
 在配置评测机之前，请确认您的站点已经可以访问并正常登录/注册。
 
 前往 [criyle/go-judge](https://github.com/criyle/go-judge/actions) 下载 executorserver。

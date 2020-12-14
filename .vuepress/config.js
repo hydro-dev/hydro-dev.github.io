@@ -56,6 +56,17 @@ module.exports = context => ({
                         '/guide/compiler-options'
                     ],
                 }
+            ],
+            'plugins': [
+                {
+                    title: '插件',
+                    collapsable: false,
+                    children: [
+                        '/plugins/',
+                        '/plugins/javascript',
+                        '/plugins/typescript'
+                    ],
+                }
             ]
         },
     },
