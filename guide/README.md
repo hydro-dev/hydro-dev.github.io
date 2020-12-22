@@ -32,6 +32,7 @@ Hydro 依赖于 MongoDB 与 NodeJS>=10.10，您应该先安装它们。
 :::
 
 - 下载安装 MongoDB：[https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)  
+- 下载安装 MinIO：[https://min.io](https://min.io)  
 - 使用 nvm 安装 NodeJS：[Linux](https://nvm.sh/) [Windows](https://github.com/coreybutler/nvm-windows)  
 - 安装 yarn: `npm install yarn -g`  
 - 使用 yarn 安装 Hydro：`yarn global add hydrooj @hydrooj/ui-default`  
@@ -42,6 +43,11 @@ Hydro 依赖于 MongoDB 与 NodeJS>=10.10，您应该先安装它们。
 :::
 
 Hydro 会自行初始化并监听 8888 端口（可使用 `--port=1234` 指定其他端口）。请用浏览器访问并进行相应配置。  
+
+:::tip
+为保证服务正常，请在 Hydro 启动完成后，前往 控制面板>系统设置 填写 minio 相关信息。
+如果您不知道如何填写，请将endPoint设置为 `http://localhost:9000/` accessKey与secretKey与启动MinIO时的key对应，其他项默认即可。
+:::
 
 ## 创建用户
 
