@@ -16,7 +16,7 @@ curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-2004
 curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/centos-7.sh | bash # centos 7
 ```
 
-若使用安装脚本，数据目录在 `/data/db` 下，使用 `pm2` 管理进程。
+若使用安装脚本，数据目录在 `/data/db` 与 `/data/file` 下，使用 `pm2` 管理进程。
 
 - 重启： `pm2 restart hydrooj`
 - 重启数据库：`pm2 restart mongodb`
@@ -25,7 +25,7 @@ curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/centos-7.sh
 
 ## 手动安装
 
-Hydro 依赖于 MongoDB 与 NodeJS>=10.10，您应该先安装它们。 
+Hydro 依赖于 MongoDB, MinIO, NodeJS>=10.10，您应该先安装它们。 
 
 :::tip
 不建议在 Windows 下安装 Hydro。
