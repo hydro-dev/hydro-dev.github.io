@@ -24,10 +24,10 @@ module.exports = context => ({
         logo: '/favicon.ico',
         nav: [
             { text: '主页', link: '/' },
-            { text: '指南', link: '/guide/' },
+            { text: '指南', link: '/about/' },
             { text: 'GitHub', link: 'https://github.com/hydro-dev/Hydro' }
         ],
-        sidebarDepth: 2,
+        sidebarDepth: 1,
         lastUpdated: '上次更新',
         docsRepo: 'hydro-dev/hydro-dev.github.io',
         docsBranch: 'docs',
@@ -36,12 +36,20 @@ module.exports = context => ({
         displayAllHeaders: true,
         smoothScroll: true,
         sidebar: {
-            '/guide/': [
+            '/about/': [
                 {
-                    title: '指南',
+                    title: '简介',
                     collapsable: false,
                     children: [
-                        '/guide/about-hydro',
+                        '/about/'
+                    ],
+                }
+            ],
+            '/guide/': [
+                {
+                    title: '快速部署指南',
+                    collapsable: false,
+                    children: [
                         '/guide/',
                         '/guide/enhance',
                         '/guide/judge',
@@ -57,9 +65,9 @@ module.exports = context => ({
                     ],
                 }
             ],
-            'plugins': [
+            '/plugins/': [
                 {
-                    title: '插件',
+                    title: '插件开发',
                     collapsable: false,
                     children: [
                         '/plugins/',
