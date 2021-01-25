@@ -61,7 +61,6 @@ module.exports = context => ({
                         '/install/plugins',
                         '/install/enhance',
                         '/install/cli',
-                        '/install/PERM_PRIV',
                         '/install/backup',
                         '/install/user-import',
                         '/install/compiler-options'
