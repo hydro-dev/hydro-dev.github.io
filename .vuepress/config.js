@@ -23,12 +23,11 @@ module.exports = context => ({
     themeConfig: {
         logo: '/favicon.ico',
         nav: [
-            { text: '主页', link: '/' },
             { text: '关于', link: '/about/' },
             { text: '部署', link: '/install/' },
             { text: '文档', link: '/docs/' },
             { text: '开发', link: '/dev/' },
-            { text: '插件', link: '/plugins-dev/' },
+            { text: '插件', link: '/plugins/' },
             { text: 'GitHub', link: 'https://github.com/hydro-dev/Hydro' }
         ],
         sidebarDepth: 2,
@@ -58,7 +57,6 @@ module.exports = context => ({
                         '/install/',
                         '/install/common',
                         '/install/init',
-                        '/install/plugins',
                         '/install/enhance',
                         '/install/cli',
                         '/install/backup',
