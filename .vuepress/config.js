@@ -27,7 +27,7 @@ module.exports = context => ({
             { text: '指南', link: '/about/' },
             { text: 'GitHub', link: 'https://github.com/hydro-dev/Hydro' }
         ],
-        sidebarDepth: 1,
+        sidebarDepth: 3,
         lastUpdated: '上次更新',
         docsRepo: 'hydro-dev/hydro-dev.github.io',
         docsBranch: 'docs',
