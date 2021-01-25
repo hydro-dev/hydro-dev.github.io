@@ -1,0 +1,74 @@
+# 常规部署
+
+:::tip
+不建议在 Windows 下安装 Hydro。
+:::
+
+这里将为您展示如何手动部署Hydro。
+
+## MongoDB
+
+Hydro需要MongoDB提供数据库服务。
+
+您需要在开始下面的步骤之前在某一位置安装MongoDB。
+
+[MongoDB官网下载链接](https://www.mongodb.com/try/download/community)
+
+## S3
+
+Hydro使用S3来存储文件。
+
+如果您采用其他方式来提供S3服务（如腾讯云COS、阿里云OSS、Amazon S3、wasabi等），请跳过此步。
+
+这里推荐使用MinIO在本机上为Hydro提供S3服务。
+
+[MinIO官网链接](https://min.io)
+
+## NodeJS
+
+Hydro基于NodeJS编写。
+
+这里建议使用nvm安装NodeJS。
+
+[Linux](https://nvm.sh/) [Windows](https://github.com/coreybutler/nvm-windows)
+
+## Hydro
+
+在进行此步前，您应该确保已经完成上述步骤，然后可以运行下面的指令安装Hydro。
+
+```sh
+npm install yarn -g
+yarn global add hydrooj @hydrooj/ui-default
+```
+
+## 运行Hydro
+
+您可以使用下面的指令运行Hydro，Hydro将会自行初始化并监听8888端口。
+
+```sh
+hydrooj
+```
+
+:::tip
+单个Hydro实例需要约100MB的运行内存。（取决于安装的模块数量与大小）  
+:::
+
+您也可以同时使用下面的附加参数。
+
+- `--port=8888` 指定启动端口  
+- `--debug` 启用开发模式  
+- `--ignorelock` 忽略lockfile（不建议）  
+- `--ui=/path/to/ui` 使用指定文件夹下的UI  
+- `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）  
+- `--public=/path/to/public` 使用指定文件夹的public目录  
+
+## 使用 pm2 守护程序
+
+```sh
+yarn global add pm2 # 安装pm2
+pm2 startup # 开机自启
+pm2 start hydrooj # 启动 Hydro
+pm2 save # 保存:::tip
+```
+
+完成后可以前往[初始化](/install/init/)。

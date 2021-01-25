@@ -2,7 +2,7 @@
 home: true
 heroImage: /favicon.png
 heroText: Hydro
-tagline: 新一代高效强大的在线测评系统
+tagline: 高性能在线测评系统
 actionText: 快速上手 →
 actionLink: /about/
 features:

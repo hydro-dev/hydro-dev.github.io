@@ -24,10 +24,14 @@ module.exports = context => ({
         logo: '/favicon.ico',
         nav: [
             { text: '主页', link: '/' },
-            { text: '指南', link: '/about/' },
+            { text: '关于', link: '/about/' },
+            { text: '部署', link: '/install/' },
+            { text: '文档', link: '/docs/' },
+            { text: '开发', link: '/dev/' },
+            { text: '插件', link: '/plugins-dev/' },
             { text: 'GitHub', link: 'https://github.com/hydro-dev/Hydro' }
         ],
-        sidebarDepth: 3,
+        sidebarDepth: 2,
         lastUpdated: '上次更新',
         docsRepo: 'hydro-dev/hydro-dev.github.io',
         docsBranch: 'docs',
@@ -38,36 +42,58 @@ module.exports = context => ({
         sidebar: {
             '/about/': [
                 {
-                    title: '简介',
+                    title: '开始',
                     collapsable: false,
                     children: [
-                        '/about/'
+                        '/about/',
+                        '/about/start'
                     ],
                 }
             ],
-            '/guide/': [
+            '/install/': [
                 {
-                    title: '快速部署指南',
+                    title: '部署',
                     collapsable: false,
                     children: [
-                        '/guide/',
-                        '/guide/enhance',
-                        '/guide/judge',
-                        '/guide/cli',
-                        '/guide/PERM_PRIV',
-                        '/guide/testdata',
-                        '/guide/backup',
-                        '/guide/cdn',
-                        '/guide/contest',
-                        '/guide/user-import',
-                        '/guide/frontend-modify',
-                        '/guide/compiler-options'
+                        '/install/',
+                        '/install/common',
+                        '/install/init',
+                        '/install/plugins',
+                        '/install/enhance',
+                        '/install/cli',
+                        '/install/PERM_PRIV',
+                        '/install/backup',
+                        '/install/user-import',
+                        '/install/compiler-options'
+                    ],
+                }
+            ],
+            '/docs/': [
+                {
+                    title: '文档',
+                    collapsable: false,
+                    children: [
+                        '/docs/',
+                        '/docs/testdata',
+                        '/docs/contest'
+                    ],
+                }
+            ],
+            '/dev/': [
+                {
+                    title: '开发',
+                    collapsable: false,
+                    children: [
+                        '/dev/',
+                        '/dev/PERM_PRIV',
+                        '/dev/cdn',
+                        '/dev/frontend-modify'
                     ],
                 }
             ],
             '/plugins/': [
                 {
-                    title: '插件开发',
+                    title: '插件',
                     collapsable: false,
                     children: [
                         '/plugins/',
