@@ -59,9 +59,10 @@ module.exports = context => ({
                         '/install/init',
                         '/install/enhance',
                         '/install/cli',
-                        '/install/backup',
                         '/install/user-import',
-                        '/install/compiler-options'
+                        '/install/compiler-options',
+                        '/install/backup',
+                        '/install/cdn'
                     ],
                 }
             ],
@@ -83,7 +84,6 @@ module.exports = context => ({
                     children: [
                         '/dev/',
                         '/dev/PERM_PRIV',
-                        '/dev/cdn',
                         '/dev/frontend-modify'
                     ],
                 }

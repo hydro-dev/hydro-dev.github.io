@@ -50,17 +50,17 @@ hydrooj
 ```
 
 :::tip
-单个Hydro实例需要约100MB的运行内存。（取决于安装的模块数量与大小）  
+单个Hydro实例需要约100MB的运行内存。（取决于安装的模块数量与大小）
 :::
 
 您也可以同时使用下面的附加参数。
 
-- `--port=8888` 指定启动端口  
-- `--debug` 启用开发模式  
-- `--ignorelock` 忽略lockfile（不建议）  
-- `--ui=/path/to/ui` 使用指定文件夹下的UI  
-- `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）  
-- `--public=/path/to/public` 使用指定文件夹的public目录  
+- `--port=8888` 指定启动端口
+- `--debug` 启用开发模式
+- `--ignorelock` 忽略lockfile（不建议）
+- `--ui=/path/to/ui` 使用指定文件夹下的UI
+- `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）
+- `--public=/path/to/public` 使用指定文件夹的public目录
 
 ## 使用 pm2 守护程序
 
@@ -68,7 +68,7 @@ hydrooj
 yarn global add pm2 # 安装pm2
 pm2 startup # 开机自启
 pm2 start hydrooj # 启动 Hydro
-pm2 save # 保存:::tip
+pm2 save # 保存
 ```
 
 完成后可以前往[初始化](/install/init/)。
