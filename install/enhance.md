@@ -7,11 +7,11 @@
 ![img](https://img.undefined.moe:38443/images/2020/09/27/image.png)
 ![img](https://img.undefined.moe:38443/images/2020/09/27/imagecc5ff47b38c45417.png)
 
-SMTP_USER: 12345678@qq.com
-SMTP_PASS: 提供的SMTP密码
-SMTP_HOST: smtp.mail.qq.com
-SMTP_PORT: 465/587 （请参照邮件服务商说明）
-SMTP_SECURE: 是否使用加密TLS连接（请参照邮件服务商说明）
+SMTP_USER: 12345678@qq.com  
+SMTP_PASS: 提供的SMTP密码  
+SMTP_HOST: smtp.mail.qq.com  
+SMTP_PORT: 465/587 （请参照邮件服务商说明）  
+SMTP_SECURE: 是否使用加密TLS连接（请参照邮件服务商说明）  
 SMTP_FROM: 发送签名（提示：若不清楚请填写邮件地址，填错可能会导致邮件无法发送）
 
 ## c/c++ 彩色编译错误信息
@@ -38,13 +38,19 @@ c:
 ### 远程S3
 
 :::tip
-这里以腾讯云COS为例，其他同理。
+这里以腾讯云COS为例，其他与之类似。
 :::
 
-您需要在您的服务提供商处确认您的服务支持S3，然后您需要查找您的服务提供商的帮助文档中是否有说明S3使用方法问文档。
+您需要进入您的COS存储桶设置页，并记录存储桶名称（下图为`kysic-oj-1258722770`）和所属地域（下图为`ap-guangzhou`）。
 
-比如腾讯云COS的文档。
+![img](https://img-kysic-1258722770.file.myqcloud.com/f48d555379e48c400d68e4dcf2e4964a/734373bb6bf8b.png)
 
-![img](https://s3.undefined.moe/images/2021/01/26/1111cc9d503f5506615.png)
+然后回到Hydro设置页。
 
-根据文档的说明填写配置即可。
+![img](https://img-kysic-1258722770.file.myqcloud.com/c482632b11639a890831f8c67f37dd9d/10b2bc5a51c0c.png)
+
+Storage engine endPoint: http://cos.<存储桶地域>.myqcloud.com （或是https）  
+Storage engine accessKey: 您的腾讯云API密钥的SecretId  
+Storage engine secret: 您的腾讯云API密钥的SecretKey  
+Storage engine bucket: <存储桶名称>  
+Storage engine region: Auto

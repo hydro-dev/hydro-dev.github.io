@@ -10,15 +10,13 @@
 
 Hydro需要MongoDB提供数据库服务。
 
-您需要在开始下面的步骤之前在某一位置安装MongoDB。
-
 [MongoDB官网下载链接](https://www.mongodb.com/try/download/community)
 
 ## S3
 
-Hydro使用S3来存储文件。
-
-如果您采用其他方式来提供S3服务（如腾讯云COS、阿里云OSS、Amazon S3、wasabi等），请跳过此步。
+:::tip
+如果您希望采用其他方式来提供S3服务（如腾讯云COS、阿里云OSS、Amazon S3、wasabi等），请跳过此步。
+:::
 
 这里推荐使用MinIO在本机上为Hydro提供S3服务。
 
@@ -26,11 +24,15 @@ Hydro使用S3来存储文件。
 
 ## NodeJS
 
-Hydro基于NodeJS编写。
-
-这里建议使用nvm安装NodeJS。
+建议使用nvm安装NodeJS。
 
 [Linux](https://nvm.sh/) [Windows](https://github.com/coreybutler/nvm-windows)
+
+您也需要安装yarn。
+
+```sh
+npm install -g yarn
+```
 
 ## Hydro
 
