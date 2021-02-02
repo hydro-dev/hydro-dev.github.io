@@ -13,7 +13,7 @@ Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数
 ## S3
 
 :::tip
-如果您希望采用其他方式来提供S3服务（如腾讯云COS、阿里云OSS、Amazon S3、wasabi等），请跳过此步。
+如果您希望采用其他方式来提供S3服务（如 腾讯云COS、阿里云OSS、Amazon S3、wasabi 等），请跳过此步。
 :::
 
 这里推荐使用 [MinIO](https://min.io) 在本机上为 Hydro 提供 S3 服务。
@@ -32,7 +32,7 @@ npm install -g yarn
 
 ## Hydro
 
-在进行此步前，您应该确保已经完成上述步骤，然后可以运行下面的指令安装Hydro。
+在进行此步前，您应该确保已经完成上述步骤，然后可以运行下面的指令安装 Hydro。
 
 ```sh
 npm install yarn -g
@@ -41,14 +41,14 @@ yarn global add hydrooj @hydrooj/ui-default
 
 ## 运行Hydro
 
-您可以使用下面的指令运行Hydro，Hydro将会自行初始化并监听8888端口。
+您可以使用下面的指令运行 Hydro，Hydro 将会自行初始化并监听 8888 端口。
 
 ```sh
 hydrooj
 ```
 
 :::tip
-单个Hydro实例需要约100MB的运行内存。（取决于安装的模块数量与大小）
+单个 Hydro 实例需要约 100MB 的运行内存。（取决于安装的模块数量与大小）
 :::
 
 您也可以同时使用下面的附加参数。
@@ -56,9 +56,9 @@ hydrooj
 - `--port=8888` 指定启动端口
 - `--debug` 启用开发模式
 - `--ignorelock` 忽略lockfile（不建议）
-- `--ui=/path/to/ui` 使用指定文件夹下的UI
+- `--ui=/path/to/ui` 使用指定文件夹下的 UI
 - `--template=/path/to/template` 使用指定文件夹下的页面模板（不进行缓存）
-- `--public=/path/to/public` 使用指定文件夹的public目录
+- `--public=/path/to/public` 使用指定文件夹的 public 目录
 
 ## 使用 pm2 守护程序
 

@@ -2,11 +2,11 @@
 
 ## MongoDB、S3、NodeJS
 
-请参考[常规部署](/common.html)完成 MongoDB、S3、NodeJS 的部署。
+请参考 [常规部署](/common.html) 完成 MongoDB、S3、NodeJS 的部署。
 
 ## 部署本地仓库
 
-克隆[Hydro](https://github.com/hydro-dev/Hydro)和[ui-default](https://github.com/hydro-dev/ui-default)到本地。  
+克隆 [Hydro](https://github.com/hydro-dev/Hydro) 和 [ui-default](https://github.com/hydro-dev/ui-default) 到本地。  
 然后分别进入两个仓库，执行初始化
 
 ```sh

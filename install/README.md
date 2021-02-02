@@ -19,7 +19,7 @@ curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/centos-7.sh
 
 如果您需要更改数据目录等设置，可以将自动安装脚本下载到本地并编辑后再运行。
 
-默认的数据目录在 `/data/db` 与 `/data/file` 下，Hydro将会监听8888端口，将会使用pm2管理进程。
+默认的数据目录在 `/data/db` 与 `/data/file` 下，Hydro将会监听 8888 端口，将会使用 pm2 管理进程。
 
 ## 使用 pm2 守护程序
 

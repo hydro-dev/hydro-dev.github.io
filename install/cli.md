@@ -13,4 +13,4 @@ hydrooj cli user create [mail] [uname] [password] [uid] (regip)
 hydrooj cli user setPriv [uid] -1
 ```
 
-这里的权限可参照[此处](/dev/PERM_PRIV.html)设置。
+这里的权限可参照 [此处](/dev/PERM_PRIV.html) 设置。

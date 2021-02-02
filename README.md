@@ -18,7 +18,7 @@ footer: AGPL3.0 Licensed | Copyright © 2020-present Undefined
 [Hydro UI 传送门](https://github.com/hydro-dev/ui-default)
 
 如果您认为本项目有价值，欢迎 star 。  
-相关文档若说明的不够详细，请提交 Pull Request或联系开发组说明。  
+相关文档若说明的不够详细，请提交 Pull Request 或联系开发组说明。  
 bug和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) 提出。
 
 [在 Gitpod 打开开发环境](https://gitpod.io/#https://github.com/hydro-dev/Hydro)
