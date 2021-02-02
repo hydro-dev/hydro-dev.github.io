@@ -2,7 +2,7 @@
 
 ## SMTP
 
-以QQ邮箱为例：找到 设置->账户，开启 `pop3/smtp` 服务
+以 QQ邮箱 为例：找到 设置->账户，开启 `pop3/smtp` 服务
 
 ![img](https://img.undefined.moe:38443/images/2020/09/27/image.png)
 ![img](https://img.undefined.moe:38443/images/2020/09/27/imagecc5ff47b38c45417.png)
@@ -33,19 +33,19 @@ c:
 
 ### 本地MinIO
 
-您只需要将MinIO的endpoint、accessKey、secretKey填入即可，剩余部分在大部分情况下均可保留默认值。
+您只需要将 MinIO 的 endpoint、accessKey、secretKey 填入即可，剩余部分在大部分情况下均可保留默认值。
 
 ### 远程S3
 
 :::tip
-这里以腾讯云COS为例，其他与之类似。
+这里以腾讯云 COS 为例，其他与之类似。
 :::
 
-您需要进入您的COS存储桶设置页，并记录存储桶名称（下图为`kysic-oj-1258722770`）和所属地域（下图为`ap-guangzhou`）。
+您需要进入您的 COS 存储桶设置页，并记录存储桶名称（下图为 `kysic-oj-1258722770`）和所属地域（下图为 `ap-guangzhou`）。
 
 ![img](https://img-kysic-1258722770.file.myqcloud.com/f48d555379e48c400d68e4dcf2e4964a/734373bb6bf8b.png)
 
-然后回到Hydro设置页。
+然后回到 Hydro 设置页。
 
 ![img](https://img-kysic-1258722770.file.myqcloud.com/c482632b11639a890831f8c67f37dd9d/10b2bc5a51c0c.png)
 

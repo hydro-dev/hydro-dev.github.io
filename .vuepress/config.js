@@ -83,7 +83,10 @@ module.exports = context => ({
                     collapsable: false,
                     children: [
                         '/dev/',
-                        '/dev/PERM_PRIV'
+                        '/dev/PERM_PRIV',
+                        '/dev/javascript',
+                        '/dev/typescript'
+
                     ],
                 }
             ],
@@ -92,9 +95,7 @@ module.exports = context => ({
                     title: '插件',
                     collapsable: false,
                     children: [
-                        '/plugins/',
-                        '/plugins/javascript',
-                        '/plugins/typescript'
+                        '/plugins/'
                     ],
                 }
             ]

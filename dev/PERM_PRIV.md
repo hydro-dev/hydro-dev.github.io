@@ -1,7 +1,7 @@
 # 权限节点
 
 Hydro的权限使用位运算处理。  
-例：若某用户具有PRIV_EDIT_SYSTEM与PRIV_SET_PERM权限，应设置为 (1<<0)|(1<<1) （即3）
+例：若某用户具有 `PRIV_EDIT_SYSTEM` 与 `PRIV_SET_PERM` 权限，应设置为 (1<<0)|(1<<1) （即 3）
 
 ```js
 export const PRIV = {

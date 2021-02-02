@@ -4,13 +4,11 @@
 不建议在 Windows 下安装 Hydro。
 :::
 
-这里将为您展示如何手动部署Hydro。
+这里将为您展示如何手动部署 Hydro。
 
 ## MongoDB
 
-Hydro需要MongoDB提供数据库服务。
-
-[MongoDB官网下载链接](https://www.mongodb.com/try/download/community)
+Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。
 
 ## S3
 
@@ -18,17 +16,15 @@ Hydro需要MongoDB提供数据库服务。
 如果您希望采用其他方式来提供S3服务（如腾讯云COS、阿里云OSS、Amazon S3、wasabi等），请跳过此步。
 :::
 
-这里推荐使用MinIO在本机上为Hydro提供S3服务。
-
-[MinIO官网链接](https://min.io)
+这里推荐使用 [MinIO](https://min.io) 在本机上为 Hydro 提供 S3 服务。
 
 ## NodeJS
 
-建议使用nvm安装NodeJS。
+建议使用 nvm 安装 NodeJS。
 
 [Linux](https://nvm.sh/) [Windows](https://github.com/coreybutler/nvm-windows)
 
-您也需要安装yarn。
+您也需要安装 yarn。
 
 ```sh
 npm install -g yarn
@@ -73,4 +69,6 @@ pm2 start hydrooj # 启动 Hydro
 pm2 save # 保存
 ```
 
-完成后可以前往[初始化](/install/init/)。
+更多 pm2 操作可参考[此处](/install/#使用-pm2-守护程序)
+
+完成后可以前往[初始化](/install/init)。

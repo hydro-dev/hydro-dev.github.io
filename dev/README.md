@@ -2,7 +2,7 @@
 
 ## MongoDB、S3、NodeJS
 
-请参考[常规部署](/common)完成MongoDB、S3、NodeJS的部署。
+请参考[常规部署](/common.html)完成 MongoDB、S3、NodeJS 的部署。
 
 ## 部署本地仓库
 
@@ -16,13 +16,13 @@ yarn build
 
 ## 启动
 
-进入Hydro的本地仓库文件夹。
+进入 Hydro 的本地仓库文件夹。
 
 ```sh
-yarn debug --ui=/<ui-default本地仓库路径>
+yarn debug --ui=/path/to/ui-default
 ```
 
-[更多启动参数](/install/common#运行hydro)
+[更多启动参数](/install/common.html#运行hydro)
 
 这样你就可以访问到您的测试环境了。
 
@@ -33,8 +33,8 @@ yarn debug --ui=/<ui-default本地仓库路径>
 ## 开发
 
 在本地仓库中修改代码时，可以在仓库根目录后台运行 `yarn build:watch`。  
-这会实时编译您修改的文件，想比于 `yarn build` 可以节省更多时间。  
+这会实时编译您修改的文件，相比于 `yarn build` 可以节省更多时间。  
 
 :::tip
-该操作较消耗服务器资源，建议使用pm2管理该指令，并在开发过程中保持开启，开发过程外保持关闭。
+推荐在本地另开命令行运行上面的指令，这样你可以实时获取一些调试信息。
 :::

@@ -1,6 +1,6 @@
 # 插件
 
-Hydro支持使用插件扩展自身所支持的功能。
+Hydro 支持使用插件扩展自身所支持的功能。
 
 :::warning
 插件对站点的所有内容具有完全的访问权限，请不要启用来历不明的插件。
@@ -8,7 +8,7 @@ Hydro支持使用插件扩展自身所支持的功能。
 
 ## 附加组件列表
 
-Hydro官方目前提供了以下附加组件：
+Hydro 官方目前提供了以下附加组件：
 
 | ID                         | 描述                           |
 | -------------------------- | ------------------------------ |
@@ -62,7 +62,7 @@ hydrooj addon remove @hydrooj/geoip
 | Linux 4.4+ | executorserver-amd64 |
 | MacOS ?+   | executorserver-macos |
 
-Executorserver需要在后台**以root权限**运行并监听 `127.0.0.1:5050` 。
+Executorserver 需要在后台**以root权限**运行并监听 `127.0.0.1:5050` 。
 可使用 pm2 进行管理。
 
 ### 作为附加组件安装
@@ -89,4 +89,4 @@ hydrooj cli user create -2 judge@hydro.local judge 123456 # uid mail username pa
 hydrooj cli user setJudge -2
 ```
 
-剩余部分参照 [HydroJudge说明](//github.com/hydro-dev/HydroJudge)。
+剩余部分参照 [HydroJudge说明](https://github.com/hydro-dev/HydroJudge)。
