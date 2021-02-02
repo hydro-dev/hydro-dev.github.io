@@ -83,8 +83,7 @@ module.exports = context => ({
                     collapsable: false,
                     children: [
                         '/dev/',
-                        '/dev/PERM_PRIV',
-                        '/dev/frontend-modify'
+                        '/dev/PERM_PRIV'
                     ],
                 }
             ],

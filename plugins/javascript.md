@@ -1,6 +1,6 @@
 # 使用 JavaScript 编写插件
 
-前置条件：NodeJS>10.10
+前置条件：NodeJS>10.10  
 此教程将以编写剪贴板插件为例进行说明。
 
 ## Step1 初始化项目
@@ -168,8 +168,8 @@ global.Hydro.handler.pastebin = apply;
 
 ## Step5 template
 
-模板采用 nunjucks 语法。放置于 templates/ 文件夹下。
-会在请求结束是根据 `response.template` 的值选择并使用 `response.body` 的值进行渲染，并存入 `response.body` 中。
+模板采用 nunjucks 语法。放置于 templates/ 文件夹下。  
+会在请求结束是根据 `response.template` 的值选择并使用 `response.body` 的值进行渲染，并存入 `response.body` 中。  
 若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 
 ## Step6 Locale
