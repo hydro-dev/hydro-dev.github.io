@@ -37,6 +37,9 @@ type: default
 time: 1s
 memory: 128m
 
+# 输入输出文件名，需要标准IO则填null
+filename: null
+
 # 此部分设置当题目类型为default时生效
 # 比较器类型，支持的值有 default, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib
 checker_type: default

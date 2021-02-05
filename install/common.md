@@ -39,7 +39,7 @@ npm install yarn -g
 yarn global add hydrooj @hydrooj/ui-default
 ```
 
-## 运行Hydro
+## 运行 Hydro
 
 您可以使用下面的指令运行 Hydro，Hydro 将会自行初始化并监听 8888 端口。
 

@@ -13,16 +13,16 @@ Hydro 官方目前提供了以下附加组件：
 | ID                         | 描述                           |
 | -------------------------- | ------------------------------ |
 | @hydrooj/better-search     | 使用 jieba 优化题目搜索        |
-| @hydrooj/ui-default        | Hydro的默认用户界面            |
+| @hydrooj/ui-default        | Hydro 的默认用户界面            |
 | @hydrooj/geoip             | GeoIP 支持，用于显示用户登录地 |
-| @hydrooj/fps-importer      | 支持导入fps格式的题目          |
-| @hydrooj/login-with-github | 允许用户使用Github登录         |
-| @hydrooj/login-with-google | 允许用户使用Google登录         |
-| @hydrooj/login-with-osu    | 允许用户使用Osu登录            |
-| @hydrooj/login-with-qq     | 允许用户使用QQ登录             |
-| @hydrooj/migrate-vijos     | 从vijos4的自动升级工具         |
+| @hydrooj/fps-importer      | 支持导入 fps 格式的题目          |
+| @hydrooj/login-with-github | 允许用户使用 Github 登录         |
+| @hydrooj/login-with-google | 允许用户使用 Google 登录         |
+| @hydrooj/login-with-osu    | 允许用户使用 Osu 登录            |
+| @hydrooj/login-with-qq     | 允许用户使用 QQ 登录             |
+| @hydrooj/migrate-vijos     | 从 vijos4 的自动升级工具         |
 | @hydrooj/hydrojudge        | 评测组件                       |
-| @hydrooj/import-qduoj      | 导入qduoj导出的文件            |
+| @hydrooj/import-qduoj      | 导入 qduoj 导出的文件            |
 
 大部分插件的配置均可在安装后于 控制面板>系统设置 中找到。
 

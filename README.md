@@ -17,9 +17,9 @@ footer: AGPL3.0 Licensed | Copyright © 2020-present Undefined
 
 [Hydro UI 传送门](https://github.com/hydro-dev/ui-default)
 
-如果您认为本项目有价值，欢迎 star 。  
+如果您认为本项目有价值，欢迎 star。  
 相关文档若说明的不够详细，请提交 Pull Request 或联系开发组说明。  
-bug和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) 提出。
+bug 和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) 提出。
 
 [在 Gitpod 打开开发环境](https://gitpod.io/#https://github.com/hydro-dev/Hydro)
 
@@ -34,4 +34,4 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 
 非营利性组织可直接使用 Hydro。  
 营利性组织（培训机构等）需要根据规模支付相应授权费。详细信息请通过上方方式与开发者联系。  
-对于小规模个人/学校用户，可提供免费评测服务（您无需本地安装评测机），详情请 [联系我们](#联系我们)
+对于小规模个人/学校用户，可提供免费评测服务（您无需本地安装评测机），详情请 [联系我们](#联系我们)。
