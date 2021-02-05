@@ -1,11 +1,11 @@
-# 使用 TypeScript 编写组件
+# 使用 TypeScript 编写插件
 
 前置条件：NodeJS>10.10  
-此教程将以编写剪贴板插件为例进行说明。  
+此教程将以编写剪贴板插件为例进行说明。
 
 ## Step1 初始化项目
 
-在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。  
+在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。
 
 ```sh
 /workspace/hydro-plugin $ yarn init
@@ -23,12 +23,12 @@ success Saved package.json
 
 ## Step2 准备编写组件
 
-分析：剪贴板组件需要以下功能：  
+分析：剪贴板组件需要以下功能：
 
-- 与数据库交互来存储/检索相应文档。  
-- 提供 /paste/create 路由以创建新文档。  
-- 提供 /paste/show/:ID 来查看已创建的文档。  
-- 根据用户ID进行鉴权，允许将文档设置为私密以防止他人查看。  
+- 与数据库交互来存储/检索相应文档。
+- 提供 /paste/create 路由以创建新文档。
+- 提供 /paste/show/:ID 来查看已创建的文档。
+- 根据用户ID进行鉴权，允许将文档设置为私密以防止他人查看。
 
 Hydro的推荐架构如下：
 
@@ -66,7 +66,7 @@ Hydro的推荐架构如下：
 
 ## Step3 model.js
 
-提示：若不便于使用 import 引入 Hydro 的文件，可以从 global.Hydro 中取出需要的模块。  
+提示：若不便于使用 import 引入 Hydro 的文件，可以从 global.Hydro 中取出需要的模块。
 
 ```ts
 import 'hydrooj';
@@ -111,32 +111,32 @@ global.Hydro.model.pastebin = { add, get };
 ## Step4 handler.js
 
 在路由中定义所有的函数应均为异步函数，支持的函数有：prepare, get, post, post[Operation], cleanup  
-具体流程如下：  
+具体流程如下：
 
 ```
 先执行 prepare(args) （如果存在）
-args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参数，  
-再执行 prepare(args) （如果存在）  
+args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参数，
+再执行 prepare(args) （如果存在）
 检查请求类型：
 
-为 GET ？  
-  -> 执行 get(args)  
-为 POST ?  
-  -> 执行 post(args)  
-  -> 含有 operation 字段？  
-       -> 执行 post[Operation]  
+为 GET ？
+  -> 执行 get(args)
+为 POST ?
+  -> 执行 post(args)
+  -> 含有 operation 字段？
+       -> 执行 post[Operation]
 ```
 
-执行 cleanup()  
+执行 cleanup()
 
-如果在 this.response.template 指定模板则渲染，否则直接返回 this.response.body 中的内容。  
+如果在 this.response.template 指定模板则渲染，否则直接返回 this.response.body 中的内容。
 
-* 在表单提交时的 operation 字段使用下划线，函数名使用驼峰命名。  
+* 在表单提交时的 operation 字段使用下划线，函数名使用驼峰命名。
 
 如 `<input type="hidden" name="operation" value="confirm_delete">` 对应 `postConfirmDelete` 函数。
 
-应当提供 `apply` 函数，并与定义的 Handler 一同挂载到 `global.Hydro.handler[模块名]` 位置。  
-`apply` 函数将在初始化阶段被调用。  
+应当提供 `apply` 函数，并与定义的 Handler 一同挂载到 `global.Hydro.handler[模块名]` 位置。
+`apply` 函数将在初始化阶段被调用。
 
 ```ts
 import { Route, Handler } from 'hydrooj/dist/service/server';
@@ -203,8 +203,8 @@ global.Hydro.handler.pastebin = apply;
 
 模板采用 nunjucks 语法。放置于 templates/ 文件夹下。  
 会在请求结束是根据 `response.template` 的值选择并使用 `response.body` 的值进行渲染，并存入 `response.body` 中。  
-若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。  
+若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 
 ## Step6 Locale
 
-用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。  
+用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。

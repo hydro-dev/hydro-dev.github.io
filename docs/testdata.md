@@ -1,7 +1,7 @@
 # 测试数据格式
 
 :::tip
-Vijos格式的测试数据在Hydro仍然可用，但不再推荐使用。
+Vijos 格式的测试数据在 Hydro 仍然可用，但不再推荐使用。
 :::
 
 ## 自动模式
@@ -36,6 +36,9 @@ type: default
 # 全局时空限制（此处的限制优先级低于测试点的限制）不填则使用默认值
 time: 1s
 memory: 128m
+
+# 输入输出文件名，需要标准IO则填null
+filename: null
 
 # 此部分设置当题目类型为default时生效
 # 比较器类型，支持的值有 default, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib

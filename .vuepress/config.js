@@ -23,8 +23,11 @@ module.exports = context => ({
     themeConfig: {
         logo: '/favicon.ico',
         nav: [
-            { text: '主页', link: '/' },
-            { text: '指南', link: '/guide/' },
+            { text: '关于', link: '/about/' },
+            { text: '部署', link: '/install/' },
+            { text: '文档', link: '/docs/' },
+            { text: '开发', link: '/dev/' },
+            { text: '插件', link: '/plugins/' },
             { text: 'GitHub', link: 'https://github.com/hydro-dev/Hydro' }
         ],
         sidebarDepth: 2,
@@ -36,35 +39,63 @@ module.exports = context => ({
         displayAllHeaders: true,
         smoothScroll: true,
         sidebar: {
-            '/guide/': [
+            '/about/': [
                 {
-                    title: '指南',
+                    title: '开始',
                     collapsable: false,
                     children: [
-                        '/guide/about-hydro',
-                        '/guide/',
-                        '/guide/enhance',
-                        '/guide/judge',
-                        '/guide/cli',
-                        '/guide/PERM_PRIV',
-                        '/guide/testdata',
-                        '/guide/backup',
-                        '/guide/cdn',
-                        '/guide/contest',
-                        '/guide/user-import',
-                        '/guide/frontend-modify',
-                        '/guide/compiler-options'
+                        '/about/',
+                        '/about/start'
                     ],
                 }
             ],
-            'plugins': [
+            '/install/': [
+                {
+                    title: '部署',
+                    collapsable: false,
+                    children: [
+                        '/install/',
+                        '/install/common',
+                        '/install/init',
+                        '/install/enhance',
+                        '/install/cli',
+                        '/install/user-import',
+                        '/install/compiler-options',
+                        '/install/backup',
+                        '/install/cdn'
+                    ],
+                }
+            ],
+            '/docs/': [
+                {
+                    title: '文档',
+                    collapsable: false,
+                    children: [
+                        '/docs/',
+                        '/docs/testdata',
+                        '/docs/contest'
+                    ],
+                }
+            ],
+            '/dev/': [
+                {
+                    title: '开发',
+                    collapsable: false,
+                    children: [
+                        '/dev/',
+                        '/dev/PERM_PRIV',
+                        '/dev/javascript',
+                        '/dev/typescript'
+
+                    ],
+                }
+            ],
+            '/plugins/': [
                 {
                     title: '插件',
                     collapsable: false,
                     children: [
-                        '/plugins/',
-                        '/plugins/javascript',
-                        '/plugins/typescript'
+                        '/plugins/'
                     ],
                 }
             ]
