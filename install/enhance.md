@@ -7,12 +7,12 @@
 ![img](https://img-kysic-1258722770.file.myqcloud.com/e49581ec5a3ed05d06cf406c081cf661/3042294c80fda.png)
 ![img](https://img-kysic-1258722770.file.myqcloud.com/388b385fe648bf77935f8a4a086e976a/a2b2802a9802f.png)
 
-SMTP_USER: 12345678@qq.com  
-SMTP_PASS: 提供的 SMTP 密码  
-SMTP_HOST: smtp.mail.qq.com  
-SMTP_PORT: 465/587 （请参照邮件服务商说明）  
-SMTP_SECURE: 是否使用加密 TLS 连接（请参照邮件服务商说明）  
-SMTP_FROM: 发送签名（提示：若不清楚请填写邮件地址，填错可能会导致邮件无法发送）
+- SMTP_USER: 12345678@qq.com  
+- SMTP_PASS: 提供的 SMTP 密码  
+- SMTP_HOST: smtp.mail.qq.com  
+- SMTP_PORT: 465/587 （请参照邮件服务商说明）  
+- SMTP_SECURE: 是否使用加密 TLS 连接（请参照邮件服务商说明）  
+- SMTP_FROM: 发送签名（提示：若不清楚请填写邮件地址，填错可能会导致邮件无法发送）
 
 ## c/c++ 彩色编译错误信息
 
@@ -49,8 +49,8 @@ c:
 
 ![img](https://img-kysic-1258722770.file.myqcloud.com/c482632b11639a890831f8c67f37dd9d/10b2bc5a51c0c.png)
 
-Storage engine endPoint: http://cos.<存储桶地域>.myqcloud.com （或是 https）  
-Storage engine accessKey: 您的腾讯云 API 密钥的 SecretId  
-Storage engine secret: 您的腾讯云 API 密钥的 SecretKey  
-Storage engine bucket: <存储桶名称>  
-Storage engine region: Auto
+- Storage engine endPoint: http://cos.<存储桶地域>.myqcloud.com （或是 https）  
+- Storage engine accessKey: 您的腾讯云 API 密钥的 SecretId  
+- Storage engine secret: 您的腾讯云 API 密钥的 SecretKey  
+- Storage engine bucket: <存储桶名称>  
+- Storage engine region: Auto
