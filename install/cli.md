@@ -13,4 +13,8 @@ hydrooj cli user create [mail] [uname] [password] [uid] (regip)
 hydrooj cli user setPriv [uid] -1
 ```
 
+:::tip
+使用 cli 创建完用户后您可以直接登录 Hydro。
+:::
+
 这里的权限可参照 [此处](/dev/PERM_PRIV.html) 设置。
