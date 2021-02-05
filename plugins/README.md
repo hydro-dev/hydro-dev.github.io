@@ -62,7 +62,7 @@ hydrooj addon remove @hydrooj/geoip
 | Linux 4.4+ | executorserver-amd64 |
 | MacOS ?+   | executorserver-macos |
 
-Executorserver 需要在后台**以root权限**运行并监听 `127.0.0.1:5050` 。
+Executorserver 需要在后台**以 root 权限**运行并监听 `127.0.0.1:5050` 。
 可使用 pm2 进行管理。
 
 ### 作为附加组件安装
@@ -89,4 +89,4 @@ hydrooj cli user create -2 judge@hydro.local judge 123456 # uid mail username pa
 hydrooj cli user setJudge -2
 ```
 
-剩余部分参照 [HydroJudge说明](https://github.com/hydro-dev/HydroJudge)。
+剩余部分参照 [HydroJudge 说明](https://github.com/hydro-dev/HydroJudge)。
