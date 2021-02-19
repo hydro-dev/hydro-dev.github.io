@@ -1,5 +1,9 @@
 # 进阶配置
 
+## 更新系统
+
+Hydro 系统会不定期发布更新。您可以使用 `yarn global upgrade-interactive --latest` 来检测并进行更新。
+
 ## SMTP
 
 以 QQ邮箱 为例：找到 设置->账户，开启 `pop3/smtp` 服务
