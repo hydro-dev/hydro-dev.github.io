@@ -1,12 +1,5 @@
 # 初始化
 
-## 反向代理
-
-您可以直接让 Hydro 监听 80 端口，但是我们仍推荐您使用反向代理。  
-具体配置可参考 [此处](https://github.com/hydro-dev/Hydro/tree/master/examples)。
-
----
-
 :::tip
 如果您在前面使用自动安装脚本部署了 Hydro，则您可以跳过下面的初始化部分。
 :::

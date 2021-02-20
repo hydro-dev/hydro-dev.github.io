@@ -10,7 +10,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 ```
 :::
 
-:::warn
+:::warning
 CentOS的内核版本过于老旧，可能会导致沙箱安全性问题。
 :::
 
