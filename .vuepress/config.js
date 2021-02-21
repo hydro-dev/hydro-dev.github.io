@@ -95,7 +95,8 @@ module.exports = context => ({
                     title: '插件',
                     collapsable: false,
                     children: [
-                        '/plugins/'
+                        '/plugins/',
+                        '/plugins/hydrojudge'
                     ],
                 }
             ]
