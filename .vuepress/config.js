@@ -86,7 +86,6 @@ module.exports = context => ({
                         '/dev/PERM_PRIV',
                         '/dev/javascript',
                         '/dev/typescript'
-
                     ],
                 }
             ],

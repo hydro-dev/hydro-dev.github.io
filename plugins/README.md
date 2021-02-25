@@ -30,7 +30,7 @@ Hydro 官方目前提供了以下附加组件：
 
 先全局安装所需模块，再向 hydrooj 注册即可。例：安装 @hydrooj/geoip
 
-```
+```sh
 yarn global add @hydrooj/geoip
 hydrooj addon add @hydrooj/geoip
 ```

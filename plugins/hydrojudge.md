@@ -41,8 +41,35 @@ hydrooj addon add @hydrooj/hydrojudge
 在 Hydro 中创建一个有 PRIV_JUDGE 权限的账户。
 
 ```sh
-hydrooj cli user create -2 judge@hydro.local judge 123456 # uid mail username password
+hydrooj cli user create judge@hydro.local judge abc123  -2 # mail username password uid
 hydrooj cli user setJudge -2
 ```
 
-剩余部分参照 [HydroJudge 说明](https://github.com/hydro-dev/HydroJudge)。
+然后运行下面的脚本。
+
+```sh
+yarn global add @hydrooj/hydrojudge
+```
+
+创建目录 `~/.config/hydro`，在该目录下创建文件 `judge.yaml`，配置文件格式如下：
+
+```yaml
+hosts:
+  localhost:
+    type: hydro
+    server_url: http://localhost:8888/ # Hydro 运行的网址
+    uname: judge # 评测账号用户名
+    password: abc123 # 评测账号密码
+    detail: true # default to true
+testcases_max: 100 # 单题最多测试点数量
+total_time_limit: 120 # 单题最大总测试时长
+parallelism: 2 # 单评测机评测进程数量
+```
+
+在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到与 hosts 同级处。
+
+设置完之后，使用下面的指令即可开始运行（可以使用 pm2 管理）：
+
+```sh
+hydrojudge
+```
