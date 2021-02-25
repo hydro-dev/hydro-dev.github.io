@@ -38,14 +38,11 @@ hydrooj addon add @hydrooj/hydrojudge
 
 ## 作为独立进程安装
 
-在 Hydro 中创建一个有 PRIV_JUDGE 权限的账户。
+首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/install/cli.html#创建评测账号)（在部署网页端的服务器上进行）。
 
-```sh
-hydrooj cli user create judge@hydro.local judge abc123  -2 # mail username password uid
-hydrooj cli user setJudge -2
-```
+然后在运行评测机的服务器上执行下面的操作。
 
-然后运行下面的脚本。
+安装 hydrojudge 插件。
 
 ```sh
 yarn global add @hydrooj/hydrojudge
@@ -60,13 +57,15 @@ hosts:
     server_url: http://localhost:8888/ # Hydro 运行的网址
     uname: judge # 评测账号用户名
     password: abc123 # 评测账号密码
-    detail: true # default to true
+    detail: true # 默认为 true
+# 以下为可选配置
 testcases_max: 100 # 单题最多测试点数量
 total_time_limit: 120 # 单题最大总测试时长
 parallelism: 2 # 单评测机评测进程数量
+# 更多可选配置均可添加在此处，格式与前面的三排类似
 ```
 
-在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到与 hosts 同级处。
+在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到可选配置处。
 
 设置完之后，使用下面的指令即可开始运行（可以使用 pm2 管理）：
 
