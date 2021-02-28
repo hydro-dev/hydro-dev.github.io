@@ -1,7 +1,8 @@
 # hydrojudge
 
 :::tip
-如果您使用一键安装脚本，评测机已经以附加组件的形式安装，可以跳过此步。
+如果您使用一键安装脚本，评测机已经以附加组件的形式安装，可以跳过此步。  
+如果您是 vj4 用户，请参照 [作为独立进程安装](/plugins/hydrojudge.html#作为独立进程安装) 一节配置（设置处需设成 `type: vj4`）。
 :::
 
 ## 准备
@@ -53,7 +54,7 @@ yarn global add @hydrooj/hydrojudge
 ```yaml
 hosts:
   localhost:
-    type: hydro
+    type: hydro # vj4 用户请在此处填写 vj4
     server_url: http://localhost:8888/ # Hydro 运行的网址
     uname: judge # 评测账号用户名
     password: abc123 # 评测账号密码
