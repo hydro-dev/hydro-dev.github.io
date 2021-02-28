@@ -31,8 +31,14 @@
   - Default display language: 网站默认语言。  
 - Session 设置： 关于 Session 到期时间等内容的配置，一般不需要更改。
 
----
+## 评测机
+
+:::tip
+如果您使用了自动安装脚本，则评测机已被自动安装。
+:::
 
 关于评测机的部署请参照 [hydrojudge 说明](/plugins/hydrojudge.html)。
+
+---
 
 到这里时 Hydro 的初始化已经结束，您已经可以在 Hydro 上进行大部分常规操作了。接下来您可以选择性阅读余下的部分，已完成剩下的非必要配置。
