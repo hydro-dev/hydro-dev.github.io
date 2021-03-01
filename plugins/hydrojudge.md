@@ -72,3 +72,5 @@ parallelism: 2 # 单评测机评测进程数量
 ```sh
 hydrojudge
 ```
+
+HydroJudge 会发布不定期更新。您可以使用 `yarn global upgrade-interactive --latest` 来检测并进行更新。
