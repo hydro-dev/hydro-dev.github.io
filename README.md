@@ -36,4 +36,4 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 营利性组织（培训机构等）需要根据规模支付相应授权费。详细信息请通过上方方式与开发者联系。  
 对于小规模个人/学校用户，可提供免费评测服务（您无需本地安装评测机），详情请 [联系我们](#联系我们)。
 
-**本项目除 `ui-default` 插件的其他任何部分与 [vj4](https://github.com/vijos/vj4) 都没有直接关系。**
+**Hydro 除 `ui-default` 插件以外的其他任何部分与 [vj4](https://github.com/vijos/vj4) 都没有直接关系。**
