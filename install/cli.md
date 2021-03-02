@@ -28,6 +28,14 @@ hydrooj cli user setPriv [uid] -1
 
 更多的权限可参照 [此处](/dev/PERM_PRIV.html) 设置。
 
+## 更改用户密码
+
+更改 uid 为 `[uid]` 的用户的密码为 `[password]`。
+
+```sh
+hydrooj cli user setPassword [uid] [password]
+```
+
 ## 创建评测账号
 
 先是创建一个账号。这里令评测账号的邮箱为 `judge@hydro.local`，用户名为 `judge`，密码为 `abc123`，uid 为 `-2`。可以根据个人需要调整。
