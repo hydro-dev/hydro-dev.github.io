@@ -60,7 +60,6 @@ module.exports = context => ({
                         '/install/enhance',
                         '/install/cli',
                         '/install/user-import',
-                        '/install/compiler-options',
                         '/install/backup',
                         '/install/cdn'
                     ],

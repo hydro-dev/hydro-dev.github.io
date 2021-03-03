@@ -63,3 +63,14 @@ c:
 
 在前面我们指定让 Hydro 直接监听固定端口，但是当您的服务器上需要同时运行多个 Web 服务时可能会发生端口冲突。  
 此时可以使用 Nginx 等反向代理软件反向代理 Hydro 到 80，443 等常用端口，关于反向代理软件的具体使用方法请自行百度，具体配置文件可参考 [此处](https://github.com/hydro-dev/Hydro/tree/master/examples)。
+
+## 修改编译选项/添加新语言支持
+
+首先需要修改编译指令配置文件。
+
+对于内置评测机，在 控制面板>系统设置 中修改 judge.langs 配置项即可。  
+对于独立评测机，修改 `~/.config/hydro/langs.yaml` 文件即可。  
+格式按照 [此处](https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41) 写就可以了。
+
+如果您添加了新的语言，您还需要前往 控制面板>系统设置 中修改 Language Highlight ID 与 Monaco language modes。  
+分别表示选择对应的语言后的高亮设置和 Monaco 编辑器设置。
