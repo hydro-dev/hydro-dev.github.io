@@ -17,8 +17,8 @@
 
 以全站管理员身份登陆后，您需要进入 控制面板>系统设置 以进行一些配置，我们已经对一些必须要进行配置的内容做上了记号。
 
-- setting_file： S3 配置，可参考 [S3 配置方法](/install/enhance/s3)。（必须要配置）  
-- SMTP 设置： 邮件发送配置，可参考 [SMTP](控制面板>系统设置)。  
+- setting_file： S3 配置，可参考 [S3 配置方法](/install/enhance.html#s3)。（必须要配置）  
+- SMTP 设置： 邮件发送配置，可参考 [SMTP](/install/enhance.html#smtp)。  
 - 服务器设置：  
   - Server Name: 您的 OJ 的名称。  
   - Server Workers Number: Hydro 前端的进程数。推荐设置为 CPU 核心数或是核心数 -1。

@@ -58,6 +58,8 @@ c:
 - Storage engine secret: 您的腾讯云 API 密钥的 SecretKey  
 - Storage engine bucket: <存储桶名称>  
 - Storage engine region: Auto
+- EndPoint for user: 给用户使用的 EndPoint，若填 `/fs/` 则表示由服务器转发
+- EndPoint for judge: 给 judge 使用的 EndPoint，若填 `/fs/` 则表示由服务器转发
 
 ## 反向代理
 
