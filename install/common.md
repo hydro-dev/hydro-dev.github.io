@@ -6,6 +6,10 @@
 
 这里将为您展示如何手动部署 Hydro。
 
+:::tip
+在下面的手动部署过程中，若您遇到了一些困难，也许可以考虑参考 [自动安装脚本](https://github.com/hydro-dev/Hydro/tree/master/install) 的部分脚本。
+:::
+
 ## MongoDB
 
 Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。

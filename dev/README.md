@@ -2,7 +2,7 @@
 
 ## MongoDB、S3、NodeJS
 
-请参考 [常规部署](/common.html) 完成 MongoDB、S3、NodeJS 的部署。
+请参考 [常规部署](/install/common.html) 完成 MongoDB、S3、NodeJS 的部署。
 
 ## 部署本地仓库
 
