@@ -11,14 +11,15 @@ cli 可以帮助用户在控制台下快捷地进行一些操作。
 ## 创建用户
 
 ```sh
-hydrooj cli user create [mail] [username] [password] (uid) (regip) (priv)
+hydrooj cli user create [mail] [username] [password] 
+# 该用户的邮箱、用户名和密码
 ```
-
-其中 `(uid)` 、 `(regip)` 和 `(priv)` 三项为可选。
 
 :::tip
 不推荐使用负数 uid，未来可能会用作其他用途。
 :::
+
+若一切正常，运行该指令后您会从命令行窗口中看到该用户的 uid。
 
 使用 cli 创建完用户后您可以直接以此账号登录 Hydro。
 

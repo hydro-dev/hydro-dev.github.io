@@ -24,8 +24,6 @@ yarn debug --ui=/path/to/ui-default
 
 [更多启动参数](/install/common.html#运行hydro)
 
-这样你就可以访问到您的测试环境了。
-
 ## 更新
 
 需要更新的时候进入对应仓库文件夹执行 `git pull` 即可。
