@@ -2,6 +2,7 @@
 
 :::tip
 自动安装脚本将会在您的机器上安装 MongoDB、MinIO、NodeJS。如果您的机器上已经安装过上述软件，无法保证脚本一定能成功运行。此时建议采用 [常规安装](/install/common.html)。  
+**建议您在不保证自己可以手动安装成功的情况下采用自动脚本安装。**  
 若您希望在另外位置运行 MongoDB、S3 服务，您也应该使用 [常规安装](/install/common.html)。  
 部分情况下脚本安装后可能会出现 `node: command not found` 的问题，可通过向 `~/.bashrc` 文件末尾添加以下内容并重启bash来解决：
 ```sh
