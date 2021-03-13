@@ -15,10 +15,6 @@ hydrooj cli user create [mail] [username] [password]
 # 该用户的邮箱、用户名和密码
 ```
 
-:::tip
-不推荐使用负数 uid，未来可能会用作其他用途。
-:::
-
 若一切正常，运行该指令后您会从命令行窗口中看到该用户的 uid。
 
 使用 cli 创建完用户后您可以直接以此账号登录 Hydro。
@@ -75,8 +71,8 @@ hydrooj cli user setJudge [uid]
 hydrooj cli blacklist add <ip> # 将 <ip> 拉入黑名单一年
 hydrooj cli blacklist get <ip> # 获取黑名单中有关 <ip> 的信息
 hydrooj cli blacklist del <ip> # 将 <ip> 移出黑名单
-hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
-# 创建邮箱为 <mail>，用户名为 <uname>，密码为 <password>，ID 为 [uid]，注册 ip 为 [regip]，权限为 [priv] 的用户
+hydrooj cli user create [mail] [username] [password]
+# 创建邮箱为 <mail>，用户名为 <username>，密码为 <password>
 hydrooj cli user getPrefixList <domainId> <prefix> [limit] 
 # 查询在 ID 为 <domianId> 的域中，用户名前缀为 <prefix> 的用户列表，最多 [limit] 个用户。
 hydrooj cli user setPriv <uid> <priv> # 将 ID 为 <uid> 的用户的权限设为 <priv>
