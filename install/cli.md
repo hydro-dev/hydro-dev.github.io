@@ -71,8 +71,8 @@ hydrooj cli user setJudge [uid]
 hydrooj cli blacklist add <ip> # 将 <ip> 拉入黑名单一年
 hydrooj cli blacklist get <ip> # 获取黑名单中有关 <ip> 的信息
 hydrooj cli blacklist del <ip> # 将 <ip> 移出黑名单
-hydrooj cli user create [mail] [username] [password]
-# 创建邮箱为 <mail>，用户名为 <username>，密码为 <password>
+hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
+# 创建邮箱为 <mail>，用户名为 <uname>，密码为 <password>，ID 为 [uid]，注册 ip 为 [regip]，权限为 [priv] 的用户
 hydrooj cli user getPrefixList <domainId> <prefix> [limit] 
 # 查询在 ID 为 <domianId> 的域中，用户名前缀为 <prefix> 的用户列表，最多 [limit] 个用户。
 hydrooj cli user setPriv <uid> <priv> # 将 ID 为 <uid> 的用户的权限设为 <priv>
