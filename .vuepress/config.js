@@ -95,8 +95,8 @@ module.exports = context => ({
                     collapsable: false,
                     children: [
                         '/plugins/',
-                        '/plugins/hydrojudge',
-                        '/plugins/migrate-vijos'
+                        '/plugins/migrate-vijos',
+                        '/plugins/hydrojudge'
                     ],
                 }
             ]
