@@ -55,6 +55,7 @@ module.exports = context => ({
                     collapsable: false,
                     children: [
                         '/install/',
+                        '/install/auto',
                         '/install/common',
                         '/install/init',
                         '/install/enhance',

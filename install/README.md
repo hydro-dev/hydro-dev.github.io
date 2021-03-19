@@ -1,39 +1,31 @@
-# 自动安装
+# 选择部署方案
+
+这里提供了几套方案帮助您建立自己的 OJ，请选择适合您的方案并继续。  
+搭建过程中如果遇到问题可 [联系我们](/#联系我们) 提问。
+
+## 使用域功能搭建
 
 :::tip
-自动安装脚本将会在您的机器上安装 MongoDB、MinIO、NodeJS。如果您的机器上已经安装过上述软件，无法保证脚本一定能成功运行。此时建议采用 [常规安装](/install/common.html)。  
-**建议您在不保证自己可以手动安装成功的情况下采用自动脚本安装。**  
-若您希望在另外位置运行 MongoDB、S3 服务，您也应该使用 [常规安装](/install/common.html)。  
-部分情况下脚本安装后可能会出现 `node: command not found` 的问题，可通过向 `~/.bashrc` 文件末尾添加以下内容并重启bash来解决：
-```sh
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-```
+不用担心，Hydro 出色的域功能可以保证您的 OJ 的最终效果几本不亚于使用服务器搭建的效果。
 :::
 
-:::warning
-CentOS的内核版本过于老旧，可能会导致沙箱安全性问题。
+您可以使用 Hydro 的域功能来建立您的 OJ。
+
+您需要找到一个以 Hydro 搭建的 OJ 并在这个 OJ 上创建一个域。
+
+:::tip
+这里推荐您在 [Hydro Online Judge](https://hydro.org.cn/) 上建立您的 OJ。这是 Hydro 官方的中心题库，全站系统更新频繁，任何问题在短时间内基本都能解决，且网站服务器水平相当优异。
 :::
 
-## 运行脚本
+创建域后，您可以在“管理域”一栏中更改角色与权限组等内容，即可达到与使用服务器搭建类似的效果。
 
-请选择适合您的服务器系统的自动安装脚本。**您不应该在中途关闭脚本或是多次运行脚本**，这可能会带来不可预料的后果。
+## 使用服务器搭建
 
-```sh
-curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-1604.sh | bash # ubuntu 16.04
-curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-1804.sh | bash # ubuntu 18.04
-curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-2004.sh | bash # ubuntu 20.04
-```
+首先您需要准备一台 Linux 服务器并熟悉基本的 Linux 操作。  
 
-如果您需要更改数据目录等设置，可以将自动安装脚本下载到本地并编辑后再运行。
+可以选择 [使用自动安装脚本部署](/install/auto.html) 或 [手动部署](/install/common.html)。如果您打算进一步开发，您还可以选择 [部署开发环境](/dev/)。
 
-默认的数据目录在 `/data/db` 与 `/data/file` 下，Hydro将会监听 8888 端口，将会使用 pm2 管理进程。
+## 让我们搭建
 
-## 使用 pm2 守护程序
-
-- 重启Hydro： `pm2 restart hydrooj`
-- 重启数据库：`pm2 restart mongodb`
-- 重启沙箱：`pm2 restart sandbox`
-- 设置开机自启：`pm2 save && pm2 startup`
-
-完成后请前往 [初始化](/install/init.html)。
+如果您对上面的几套方案都不是很满意，您可以 [联系我们](/#联系我们) 并提出您的具体需求。  
+我们可以根据您的需求，收费地帮您建立出符合您需求的 OJ 并进行持续的维护。

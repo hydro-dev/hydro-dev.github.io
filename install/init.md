@@ -26,7 +26,7 @@
   - Server Host: 网站带端口的域名。
   - Server BaseURL: 网站完整的 URL，需要以 `/` 结尾。  
   - CDN Prefix: CDN 的目录路径，可以为 `//aaa.com/xxx`、`/xxx/`、`https://xxx/` 甚至 `./xxx/`，需要以 `/` 结尾。具体配置可参考 [使用内容分发网络](/install/cdn.html)。
-  - Server Post: 您的网站在服务器内部的端口。
+  - Server Port: 您的网站在服务器内部的端口。
   - IP Header: 如果您的网站使用了反向代理且需要跟踪用户登录 IP，则需要设置为 `x-forwarded-for`。不建议在不使用反向代理的情况下配置，否则可能会出现用户伪造 IP 的情况。
   - Default display language: 网站默认语言。  
 - Session 设置： 关于 Session 到期时间等内容的配置，一般不需要更改。
@@ -41,4 +41,4 @@
 
 ---
 
-到这里时 Hydro 的初始化已经结束，您已经可以在 Hydro 上进行大部分常规操作了。接下来您可以选择性阅读余下的部分，已完成剩下的非必要配置。
+到这里时 Hydro 的初始化已经结束，您已经可以在 Hydro 上进行大部分常规操作了。接下来您可以选择性阅读余下的部分，并完成剩下的非必要配置。
