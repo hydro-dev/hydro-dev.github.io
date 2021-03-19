@@ -35,10 +35,15 @@ yarn global add @hydrooj/geoip
 hydrooj addon add @hydrooj/geoip
 ```
 
+## 更新
+
+```sh
+yarn global upgrade-interactive --latest
+```
+
 ## 卸载
 
 ```sh
 yarn global remove @hydrooj/geoip
 hydrooj addon remove @hydrooj/geoip
 ```
-

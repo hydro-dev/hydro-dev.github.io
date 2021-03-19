@@ -31,3 +31,5 @@ export const PRIV = {
     PRIV_DEFAULT: 0,
 };
 ```
+
+可以看 [代码](https://github.com/hydro-dev/Hydro/blob/aa096322c3676e5e858e3a5021313a3d3afdf794/packages/hydrooj/src/model/builtin.ts#L216) 中关于此部分的内容。

@@ -1,7 +1,8 @@
 # 常规部署
 
-:::tip
-不建议在 Windows 下安装 Hydro。
+:::warning
+不建议在 Windows 下安装 Hydro。  
+CentOS 的内核版本过于老旧，可能会导致沙箱安全性问题。  
 :::
 
 这里将为您展示如何手动部署 Hydro。
