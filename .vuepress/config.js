@@ -77,17 +77,14 @@ module.exports = context => ({
                     title: '用户文档',
                     collapsable: false,
                     children: [
-                        '/docs/',
-                        '/docs/testdata',
-                        '/docs/contest',
-                        '/docs/domain',
-                        '/docs/difficulty'
+                        '/docs/'
                     ],
                 },
                 {
                     title: '站点管理员文档',
                     collapsable: false,
                     children: [
+                        '/docs/admin',
                         '/docs/system-settings',
                         '/docs/user-import',
                         '/docs/cdn',
@@ -96,9 +93,17 @@ module.exports = context => ({
                 {
                     title: '域管理员文档',
                     collapsable: false,
-                    children: []
+                    children: [
+                        '/docs/domain',
+                        '/docs/problem',
+                        '/docs/training',
+                        '/docs/homework',
+                        '/docs/discuss',
+                        '/docs/contest',
+                        '/docs/dashboard'
+                    ]
                 },
-                
+
             ],
             '/dev/': [
                 {
