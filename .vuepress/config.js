@@ -9,8 +9,11 @@ module.exports = context => ({
         ['script', {}, "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CX4XJ0H0TE');"]
     ],
     plugins: [
-        ['@vuepress/back-to-top'],
-        ['@vuepress/active-header-links'],
+        '@vuepress/back-to-top',
+        '@vuepress/active-header-links',
+        'vuepress-plugin-nprogress',
+        'vuepress-plugin-smooth-scroll',
+        'vuepress-plugin-zooming',
         ['@vuepress/register-components', {
             components: [
                 {
@@ -18,6 +21,11 @@ module.exports = context => ({
                     path: path.resolve(__dirname, 'components', 'Terminal.vue')
                 }
             ]
+        }],
+        ['vuepress-plugin-clean-urls', {
+            normalSuffix: '',
+            indexSuffix: '/',
+            notFoundPath: '/404',
         }],
     ],
     themeConfig: {
@@ -60,22 +68,37 @@ module.exports = context => ({
                         '/install/init',
                         '/install/enhance',
                         '/install/cli',
-                        '/install/user-import',
-                        '/install/backup',
-                        '/install/cdn'
+                        '/install/backup'
                     ],
                 }
             ],
             '/docs/': [
                 {
-                    title: '文档',
+                    title: '用户文档',
                     collapsable: false,
                     children: [
                         '/docs/',
                         '/docs/testdata',
-                        '/docs/contest'
+                        '/docs/contest',
+                        '/docs/domain',
+                        '/docs/difficulty'
                     ],
-                }
+                },
+                {
+                    title: '站点管理员文档',
+                    collapsable: false,
+                    children: [
+                        '/docs/system-settings',
+                        '/docs/user-import',
+                        '/docs/cdn',
+                    ]
+                },
+                {
+                    title: '域管理员文档',
+                    collapsable: false,
+                    children: []
+                },
+                
             ],
             '/dev/': [
                 {
