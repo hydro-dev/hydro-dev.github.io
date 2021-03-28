@@ -14,19 +14,24 @@ yarn
 yarn build
 ```
 
+:::tip
+为了提升 ui-default 模块的运行效率，可以将 `yarn build` 更换为 `yarn build:production`。
+:::
+
 ## 启动
 
 进入 Hydro 的本地仓库文件夹。
 
 ```sh
-yarn debug --ui=/path/to/ui-default
+yarn start --ui=/path/to/ui-default # 以常规模式启动
+yarn debug --ui=/path/to/ui-default # 以调试模式启动
 ```
 
 [更多启动参数](/install/common.html#运行hydro)
 
 ## 更新
 
-需要更新的时候进入对应仓库文件夹执行 `git pull` 即可。
+需要更新的时候进入对应仓库文件夹执行 `git pull`，然后重新 `yarn` 、 `yarn build` 即可。
 
 ## 开发
 
