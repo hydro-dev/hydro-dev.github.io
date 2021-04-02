@@ -22,11 +22,6 @@ module.exports = context => ({
                 }
             ]
         }],
-        ['vuepress-plugin-clean-urls', {
-            normalSuffix: '',
-            indexSuffix: '/',
-            notFoundPath: '/404',
-        }],
     ],
     themeConfig: {
         logo: '/favicon.ico',
