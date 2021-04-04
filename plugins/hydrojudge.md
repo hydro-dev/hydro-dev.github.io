@@ -96,7 +96,7 @@ hydrooj addon remove @hydrooj/hydrojudge
 
 ### 作为独立进程
 
-如果有需要修改单题测试点数量上限等内容，可以在 `~/.config/hydro/judge.yaml` 的尾部追加下面的内容。
+如果有需要修改单题测试点数量上限等设置，可以在 `~/.config/hydro/judge.yaml` 中添加如下内容。
 
 ```yaml
 testcases_max: 100 # 单题最多测试点数量
@@ -112,10 +112,10 @@ parallelism: 2 # 单评测机评测进程数量
 
 对于内置评测机（作为附加组件安装的评测机），在 控制面板>系统设置 中修改 judge.langs 配置项即可。  
 对于独立评测机（作为独立进程安装的评测机），修改 `~/.config/hydro/langs.yaml` 文件即可。  
-格式按照 [此处](https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41) 写就可以了。
+按照 [此处](https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41) 格式即可。
 
 如果您添加了新的语言，您还需要前往 控制面板>系统设置 中修改 Language Highlight ID 与 Monaco language modes。  
-分别表示选择对应的语言后的高亮设置和 Monaco 编辑器设置。
+分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。
 
 ## 测试数据格式
 

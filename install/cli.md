@@ -27,9 +27,7 @@ hydrooj cli user create hydro@hydro.local Hydro hydrohydro
 ## 设置全站管理员
 
 ```sh
-# 二选一即可
 hydrooj cli user setSuperAdmin <uid>
-hydrooj cli user setPriv <uid> -1
 
 # 如设置 uid 为 1 的用户为管理员：
 hydrooj cli user setSuperAdmin 1
@@ -60,9 +58,7 @@ hydrooj cli user setPassword 1 hydrohydro
 hydrooj cli user create <mail> <username> <password>
 ```
 
-您需要留意运行此指令返回的数字，表示该用户的 `uid`，需要填入下面的指令中。
-
-然后给予该账号评测权限。
+您需要留意运行此指令返回的数字，表示该用户的 `uid`，需要填入下面的指令中，然后给予该账号评测权限。
 
 ```sh
 hydrooj cli user setJudge <uid>
@@ -70,7 +66,7 @@ hydrooj cli user setJudge <uid>
 
 完成后将配置的用户名及密码写入评测机配置文件，评测机即可连接到网页端。
 
-## 命令大全
+## 命令列表
 
 :::tip
 我们已将在一般情况下会用到的指令列在了上方。如果您没有特殊的需要，请阅读上方的部分。
@@ -78,8 +74,8 @@ hydrooj cli user setJudge <uid>
 
 所有于 [此文件夹](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) 下的，参数全为 `number` 或是 `string` 的函数均可用 cli 调用。
 
-这里并没有列出所有可以运行的指令，因为其中很多指令我们更推荐于 Web 运行。下面列出了可以在控制台中较好地运行的指令。
-
+这里并没有列出所有可以运行的指令，因为其中很多功能我们更推荐通过 Web 访问。  
+`<arg>` 为必选参数，`[arg]` 为可选参数。
 
 ```sh
 hydrooj cli blacklist add <ip> # 将 <ip> 拉入黑名单一年
@@ -95,4 +91,5 @@ hydrooj cli user setEmail <uid> <mail> # 将 ID 为 <uid> 的用户的邮箱设�
 hydrooj cli user setSuperAdmin <uid> # 将 ID 为 <uid> 的用户设为全站管理员。
 hydrooj cli user setJudge <uid> # 将 ID 为 <uid> 的用户设为管理帐号
 hydrooj cli user ban <uid> # 取消 ID 为 <uid> 的用户的全部权限
+hydrooj cli system set <key> <value> # 修改系统设置 <key> 值为 <value>
 ```

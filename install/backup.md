@@ -8,4 +8,4 @@
 
 ## 恢复备份
 使用 MongoDB 自带的 [mongorestore](https://docs.mongodb.com/database-tools/mongorestore/) 导入备份的数据库文件，并还原 `/data/file` 目录文件。  
-如果只是想不同机器之间迁移部署，只需要在停止 Hydro 和 MongoDB MinIO 服务后将相关文件夹（通常为 `/data/db` 与 `/data/file`）复制即可。
+如果只是想不同机器之间迁移部署，只需要在**停止 Hydro 和 MongoDB MinIO 服务后**将相关文件夹（通常为 `/data/db` 与 `/data/file`）复制即可。
