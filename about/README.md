@@ -54,3 +54,7 @@
 ![img](https://img-kysic-1258722770.file.myqcloud.com/e2f843260324924ccf35f48579bcf7c6/c9929a5c07519.png)
 ![img](https://img-kysic-1258722770.file.myqcloud.com/5731d0c9b0872f3514467cb9bd9af3dd/c41e401d395dc.png)
 ![img](https://img-kysic-1258722770.file.myqcloud.com/16da058b22dacc9cb173f43001d59ac6/754b27554352c.png)
+
+## 现在开始
+
+点击 [部署](/install/) ，开始部署您的 OJ 吧！

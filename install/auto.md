@@ -17,7 +17,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 我们推荐在 Ubuntu 上安装 Hydro，所以这里只提供了 Ubuntu 版本的自动安装脚本。
 :::
 
-:::warn
+:::warning
 Hydro 不推荐您使用宝塔面板。这可能导致自动安装脚本无法正常使用。请尽可能使用纯净的系统并保证：
 - 8888 9000 27017 端口空闲  
 - /data/file /data/db 目录为空

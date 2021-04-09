@@ -1,6 +1,7 @@
 const path = require('path');
+const { config } = require("vuepress-theme-hope");
 
-module.exports = context => ({
+module.exports = context => config({
     title: 'Hydro',
     head: [
         ['link', { rel: 'icon', href: `/hydro.png` }],
@@ -47,8 +48,7 @@ module.exports = context => ({
                     title: '开始',
                     collapsable: false,
                     children: [
-                        '/about/',
-                        '/about/start'
+                        '/about/'
                     ],
                 }
             ],

@@ -10,7 +10,8 @@
     "vuepress": "^1.5.2",
     "vuepress-plugin-nprogress": "^1.1.8",
     "vuepress-plugin-smooth-scroll": "^0.0.10",
-    "vuepress-plugin-zooming": "^1.1.8"
+    "vuepress-plugin-zooming": "^1.1.8",
+    "vuepress-theme-hope": "^1.14.3"
   },
   "scripts": {
     "dev": "vuepress dev .",

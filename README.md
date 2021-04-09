@@ -3,16 +3,22 @@ home: true
 heroImage: /favicon.png
 heroText: Hydro
 tagline: 高性能在线测评系统
-actionText: 快速上手 →
-actionLink: /about/
+action:
+  - text: 介绍 💡
+    link: /about/
+    type: primary
+  - text: 部署指南
+    link: /install/
 features:
 - title: 安全
   details: 使用 cgroup 隔离用户程序
+- title: 便捷
+  details: 支持使用脚本一键搭建
 - title: 强大
   details: 提供了比赛 训练 讨论 题解 作业等功能，并可通过安装附加组件进行扩展
 - title: 快速
-  details: 使用 NodeJS 编写，并进行了沙箱复用。
-footer: AGPL3.0 Licensed | Copyright © 2020-present Undefined
+  details: 沙箱复用，延迟计算，提高运行效率
+footer: AGPL3.0 Licensed | Copyright © 2021-present Undefined
 ---
 
 [Hydro UI 传送门](https://github.com/hydro-dev/ui-default)
