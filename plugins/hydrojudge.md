@@ -36,7 +36,7 @@ hydrooj addon add @hydrooj/hydrojudge
 
 ### 作为独立进程
 
-首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/install/cli.html#创建评测账号)（在部署网页端的服务器上进行）  
+首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/install/cli/#创建评测账号)（在部署网页端的服务器上进行）  
 （vj4 用户需参照 [vj4 的方法](https://github.com/vijos/vj4#judging) 创建账户）。
 
 然后在运行评测机的服务器上执行下面的操作。
@@ -120,4 +120,4 @@ parallelism: 2 # 单评测机评测进程数量
 
 ## 测试数据格式
 
-参照 [测试数据格式](/docs/testdata.html) 配置。
+参照 [测试数据格式](/docs/problem/#测试数据格式) 配置。

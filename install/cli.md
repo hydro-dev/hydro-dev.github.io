@@ -39,7 +39,7 @@ hydrooj cli user setSuperAdmin 1
 hydrooj cli user setPriv <uid> <priv>
 ```
 
-关于参数 `[priv]` ，可阅读 [此文](/dev/PERM_PRIV.html)。
+关于参数 `[priv]` ，可阅读 [此文](/dev/PERM_PRIV/)。
 
 ## 更改用户密码
 

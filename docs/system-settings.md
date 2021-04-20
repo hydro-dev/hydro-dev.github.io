@@ -57,7 +57,7 @@ c:
 
 ![img](https://img-kysic-1258722770.file.myqcloud.com/c482632b11639a890831f8c67f37dd9d/10b2bc5a51c0c.png)
 
-- Storage engine endPoint: http://cos.<存储桶地域>.myqcloud.com （或是 https）  
+- Storage engine endPoint: `http://cos.<存储桶地域>.myqcloud.com` （或是 https）  
 - Storage engine accessKey: 您的腾讯云 API 密钥的 SecretId  
 - Storage engine secret: 您的腾讯云 API 密钥的 SecretKey  
 - Storage engine bucket: <存储桶名称>  

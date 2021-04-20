@@ -78,6 +78,6 @@ pm2 start hydrooj # 启动 Hydro
 pm2 save # 保存
 ```
 
-更多 pm2 操作可参考[此处](/install/#使用-pm2-守护程序)
+更多 pm2 操作可参考[此处](/install/auto/#使用-pm2-守护程序)
 
-完成后可以前往[初始化](/install/init)。
+完成后可以前往[初始化](/install/init/)。

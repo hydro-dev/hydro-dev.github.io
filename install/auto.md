@@ -5,10 +5,12 @@
 **建议您在不保证自己可以手动安装成功的情况下采用自动脚本安装。**  
 若您希望在另外位置运行 MongoDB、S3 服务，您也应该使用 [常规安装](/install/common.html)。  
 部分情况下脚本安装后可能会出现 `node: command not found` 的问题，可通过向 `~/.bashrc` 文件末尾添加以下内容并重启bash来解决：
+
 ```sh
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 ```
+
 :::
 
 ## 运行脚本
@@ -19,9 +21,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 :::warning
 Hydro 不推荐您使用宝塔面板。这可能导致自动安装脚本无法正常使用。请尽可能使用纯净的系统并保证：
+
 - 8888 9000 27017 端口空闲  
 - /data/file /data/db 目录为空
 - 没有使用除 nvm 之外的工具安装过 NodeJS，没有安装过 MongoDB
+
 :::
 
 请选择适合您的服务器系统的自动安装脚本安装。**注意您不应该在中途关闭脚本或是多次运行脚本**，这可能会带来不可预料的后果。

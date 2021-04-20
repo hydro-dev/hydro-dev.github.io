@@ -120,7 +120,8 @@ module.exports = context => config({
                         '/plugins/',
                         '/plugins/fps-importer',
                         '/plugins/hydrojudge',
-                        '/plugins/migrate-vijos'
+                        '/plugins/migrate-vijos',
+                        '/plugins/recaptcha'
                     ],
                 }
             ]
