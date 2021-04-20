@@ -40,13 +40,7 @@ Hydro 提供了多种方式创建题目。
 
 ### 从 FPS 文件导入
 
-您可以上传：
-
-- fps 格式的 xml 文件
-- zip 文件，其中包含了一个或多个 fps 格式的 xml 文件
-
-由于防止解析 fps 文件消耗大量内存，将拒绝导入超过 64MiB 的文件。  
-您可以拆分该文件或手动上传测试数据。
+见插件 [fps-importer](/plugins/fps-importer/)。
 
 ### 从 QDUOJ 导入
 

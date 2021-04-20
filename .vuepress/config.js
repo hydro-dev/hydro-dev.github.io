@@ -118,8 +118,9 @@ module.exports = context => config({
                     collapsable: false,
                     children: [
                         '/plugins/',
-                        '/plugins/migrate-vijos',
-                        '/plugins/hydrojudge'
+                        '/plugins/fps-importer',
+                        '/plugins/hydrojudge',
+                        '/plugins/migrate-vijos'
                     ],
                 }
             ]

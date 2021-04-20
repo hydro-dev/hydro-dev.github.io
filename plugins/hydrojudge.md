@@ -104,6 +104,7 @@ total_time_limit: 120 # 单题最大总测试时长
 parallelism: 2 # 单评测机评测进程数量
 # 更多可选配置均可添加在此处，格式与前面的三排类似
 ```
+
 在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到可选配置处。
 
 ## 修改编译选项/添加新语言支持
