@@ -40,7 +40,7 @@
 |        交互题         |        +        |      ?      |    +     |     -      |    -     |
 |       题目导入        | fps/syzoj/qduoj |     fps     |  syzoj   |    fps     |    -     |
 |       后端语言        |     NodeJS      |     PHP     |  NodeJS  |   Python   |  Python  |
-|       前端框架        |      React      |  BootStrap  |    ?     |    Vue     |  React   |
+|       前端框架        |      React      |  BootStrap  |    Semantic UI     |    Vue     |  React   |
 
 [^1]: S3 指所有兼容 Amazon S3 协议的服务，包括腾讯COS，阿里OSS 等。  
 [^2]: 切换比赛模式仅能通过修改设置全局更改。  
