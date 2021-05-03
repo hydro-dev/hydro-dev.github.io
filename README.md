@@ -50,7 +50,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - 包括但不限于使用 http 协议与 Hydro 进行交互的组件；
 
 若您需要对这些模块闭源处理，请考虑联系我们以购买商业许可。  
-鉴于 Mirai 处的 不和谐事件 对此项目做如下声明：
+鉴于 Mirai 处的 [不和谐事件](https://github.com/mamoe/mirai/issues/850) 对此项目做如下声明：
 
 - 项目开源不代表开发者有义务为您提供服务。
 - 在提问前请先阅读《提问的智慧》。

@@ -18,7 +18,11 @@ Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数
 ## S3
 
 :::tip
-如果您希望采用其他方式来提供S3服务（如 腾讯云COS、阿里云OSS、Amazon S3、wasabi 等），请跳过此步。
+如果您希望采用其他方式来提供S3服务（如 腾讯云COS、Amazon S3、wasabi 等），请跳过此步。
+:::
+
+:::warning
+由于阿里云OSS 仅支持 Virtual hosted style，目前无法使用阿里云OSS 为 Hydro 提供存储服务。
 :::
 
 这里推荐使用 [MinIO](https://min.io) 在本机上为 Hydro 提供 S3 服务。
