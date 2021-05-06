@@ -171,7 +171,7 @@ global.Hydro.handler.pastebin = apply;
 ## Step5 template
 
 模板采用 nunjucks 语法。放置于 templates/ 文件夹下。  
-会在请求结束是根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
+会在请求结束时根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
 若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 
 ## Step6 locale
