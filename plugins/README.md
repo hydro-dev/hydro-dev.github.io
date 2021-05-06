@@ -12,17 +12,25 @@ Hydro 官方目前提供了以下附加组件：
 
 | ID                         | 描述                           |
 | -------------------------- | ------------------------------ |
-| @hydrooj/fps-importer      | 支持导入 fps 格式的题目          |
-| @hydrooj/geoip             | GeoIP 支持，用于显示用户登录地   |
+| @hydrooj/fps-importer      | 支持导入 fps 格式的题目        |
+| @hydrooj/geoip             | GeoIP 支持，用于显示用户登录地 |
 | @hydrooj/hydrojudge        | 评测组件                       |
-| @hydrooj/import-qduoj      | 导入 qduoj 导出的文件           |
-| @hydrooj/login-with-github | 允许用户使用 GitHub 登录        |
-| @hydrooj/login-with-google | 允许用户使用 Google 登录        |
-| @hydrooj/login-with-osu    | 允许用户使用 osu! 登录          |
-| @hydrooj/login-with-qq     | 允许用户使用 QQ 登录            |
-| @hydrooj/migrate-vijos     | 从 vijos4 的自动升级工具        |
-| @hydrooj/recaptcha         | 注册时调用 reCAPTCHA 验证码     |
-| @hydrooj/ui-default        | Hydro 的默认用户界面            |
+| @hydrooj/import-qduoj      | 导入 qduoj 导出的文件          |
+| @hydrooj/login-with-github | 允许用户使用 GitHub 登录       |
+| @hydrooj/login-with-google | 允许用户使用 Google 登录       |
+| @hydrooj/login-with-osu    | 允许用户使用 osu! 登录         |
+| @hydrooj/login-with-qq     | 允许用户使用 QQ 登录           |
+| @hydrooj/migrate-vijos     | 从 vijos4 的自动升级工具       |
+| @hydrooj/recaptcha         | 注册时调用 reCAPTCHA 验证码    |
+| @hydrooj/ui-default        | Hydro 的默认用户界面           |
+| @hydrooj/onlyoffice        | 显示doc/docx格式题目           |
+| @hydrooj/sonic             | 使用sonic增强题目搜索功能      |
+
+以下插件由社区提供：
+
+| ID                                         | 作者      | 描述                      |
+| ------------------------------------------ | --------- | ------------------------- |
+| [hydro.pdf](//github.com/Ri-moe/hydro.pdf) | wuxianucw | 使用pdf.js在题面中插入PDF |
 
 大部分插件的配置均可在安装后于 控制面板>系统设置 中找到。
 
