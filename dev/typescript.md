@@ -40,6 +40,8 @@ Hydro的推荐架构如下：
 - template/: 页面模板
 - setting.yaml: 模块所用到的设置，格式在下方说明
 
+但注意上述结构并非全部必要，可以只创建插件需要使用的结构。
+
 ## Step3 tsconfig.json
 
 ```json
@@ -125,9 +127,9 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
   -> 执行 post(args)
   -> 含有 operation 字段？
        -> 执行 post[Operation]
-```
 
 执行 cleanup()
+```
 
 如果在 this.response.template 指定模板则渲染，否则直接返回 this.response.body 中的内容。
 
@@ -181,14 +183,14 @@ class PasteShowHandler extends Handler {
     }
 
     @param('id', Types.String)
-    async postDelete(domainId: string, id: string){
+    async postDelete(domainId: string, id: string) {
         // 当提交表单并存在 operation 值为 delete 时执行。
         // 本例中未实现删除功能，仅作为说明。
     }
 }
 
 // Hydro会在服务初始化完成后调用该函数。
-export async function apply(){
+export async function apply() {
     // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
     // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
     // 提示：路由匹配基于 path-to-regexp
@@ -202,9 +204,9 @@ global.Hydro.handler.pastebin = apply;
 ## Step5 template
 
 模板采用 nunjucks 语法。放置于 templates/ 文件夹下。  
-会在请求结束是根据 `response.template` 的值选择并使用 `response.body` 的值进行渲染，并存入 `response.body` 中。  
+会在请求结束时根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
 若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 
-## Step6 Locale
+## Step6 locale
 
 用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。
