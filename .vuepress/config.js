@@ -63,42 +63,33 @@ module.exports = context => config({
                         '/install/init',
                         '/install/enhance',
                         '/install/cli',
-                        '/install/backup'
                     ],
                 }
             ],
             '/docs/': [
                 {
-                    title: '用户文档',
+                    title: '文档',
                     collapsable: false,
                     children: [
-                        '/docs/'
+                        '/docs/',
                     ],
-                },
-                {
-                    title: '站点管理员文档',
-                    collapsable: false,
-                    children: [
-                        '/docs/admin',
-                        '/docs/system-settings',
-                        '/docs/user-import',
-                        '/docs/cdn',
-                    ]
                 },
                 {
                     title: '域管理员文档',
                     collapsable: false,
                     children: [
-                        '/docs/domain',
-                        '/docs/problem',
+                        '/docs/domain-admin',
                         '/docs/training',
-                        '/docs/homework',
-                        '/docs/discuss',
-                        '/docs/contest',
-                        '/docs/dashboard'
                     ]
                 },
-
+                {
+                    title: '站点管理员文档',
+                    collapsable: false,
+                    children: [
+                        '/docs/system',
+                        '/docs/system-settings',
+                    ]
+                },
             ],
             '/dev/': [
                 {

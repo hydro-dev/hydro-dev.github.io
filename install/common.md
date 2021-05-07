@@ -7,10 +7,6 @@ CentOS 的内核版本过于老旧，可能会导致沙箱安全性问题。
 
 这里将为您展示如何手动部署 Hydro。
 
-:::tip
-在下面的手动部署过程中，若您遇到了一些困难，也许可以考虑参考 [自动安装脚本](https://github.com/hydro-dev/Hydro/tree/master/install) 的部分脚本。
-:::
-
 ## MongoDB
 
 Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。
@@ -25,7 +21,7 @@ Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数
 由于阿里云OSS 仅支持 Virtual hosted style，目前无法使用阿里云OSS 为 Hydro 提供存储服务。
 :::
 
-这里推荐使用 [MinIO](https://min.io) 在本机上为 Hydro 提供 S3 服务。
+推荐使用 [MinIO](https://min.io) 在本机上为 Hydro 提供 S3 服务。
 
 ## NodeJS
 
@@ -59,10 +55,6 @@ yarn global add hydrooj @hydrooj/ui-default
 ```sh
 hydrooj
 ```
-
-:::tip
-单个 Hydro 实例需要约 100MB 的运行内存。（取决于安装的模块数量与大小）
-:::
 
 您也可以同时使用下面的附加参数。
 
