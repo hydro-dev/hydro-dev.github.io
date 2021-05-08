@@ -27,8 +27,6 @@ module.exports = context => config({
     themeConfig: {
         logo: '/favicon.ico',
         nav: [
-            { text: '关于', link: '/about/' },
-            { text: '部署', link: '/install/' },
             { text: '文档', link: '/docs/' },
             { text: '开发', link: '/dev/' },
             { text: '插件', link: '/plugins/' },
@@ -36,6 +34,17 @@ module.exports = context => config({
         ],
         sidebarDepth: 2,
         lastUpdated: '上次更新',
+        hostname: 'hydro.js.org',
+        repo: 'hydro-dev/Hydro',
+        pageInfo: false,
+        copyright: false,
+        mdEnhance: {
+            align: true,
+            sup: true,
+            sub: true,
+            footnote: true,
+            tex: true,
+        },
         docsRepo: 'hydro-dev/hydro-dev.github.io',
         docsBranch: 'docs',
         editLinks: true,
@@ -43,51 +52,48 @@ module.exports = context => config({
         displayAllHeaders: true,
         smoothScroll: true,
         sidebar: {
-            '/about/': [
+            '/docs/': [
                 {
-                    title: '开始',
+                    title: '总览',
                     collapsable: false,
                     children: [
-                        '/about/'
+                        '/docs/'
                     ],
-                }
-            ],
-            '/install/': [
+                },
                 {
                     title: '部署',
                     collapsable: false,
                     children: [
-                        '/install/',
-                        '/install/auto',
-                        '/install/common',
-                        '/install/init',
-                        '/install/enhance',
-                        '/install/cli',
+                        '/docs/install/',
+                        '/docs/install/auto',
+                        '/docs/install/common',
+                        '/docs/install/init',
+                        '/docs/install/enhance',
+                        '/docs/install/cli',
                     ],
-                }
-            ],
-            '/docs/': [
+                },
                 {
-                    title: '文档',
+                    title: '用户文档',
                     collapsable: false,
                     children: [
-                        '/docs/',
+                        '/docs/user/',
                     ],
                 },
                 {
                     title: '域管理员文档',
                     collapsable: false,
                     children: [
-                        '/docs/domain-admin',
-                        '/docs/training',
+                        '/docs/domain/',
+                        '/docs/domain/training',
                     ]
                 },
                 {
                     title: '站点管理员文档',
                     collapsable: false,
                     children: [
-                        '/docs/system',
-                        '/docs/system-settings',
+                        '/docs/system/',
+                        '/docs/system/settings',
+                        '/docs/system/enhance',
                     ]
                 },
             ],
