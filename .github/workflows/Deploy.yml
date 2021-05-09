@@ -26,6 +26,13 @@ jobs:
       run: yarn install
     - name: Build
       run: yarn build && echo "hydro.js.org" >./.vuepress/dist/CNAME
+    - name: Build docs
+      run: |
+        git clone https://github.com/hydro-dev/Hydro.git
+        cd Hydro
+        yarn
+        yarn typedoc
+        cp -r Hydro/docs ./.vuepress/dist/api
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:

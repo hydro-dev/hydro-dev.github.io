@@ -51,4 +51,4 @@ curl -sSL https://cdn.jsdelivr.net/gh/hydro-dev/Hydro@master/install/ubuntu-2004
 至此，如果一切正常，您应当可以正常访问 http://服务器ip:8888/ 。  
 这时请重启 bash 来完成后面的操作。  
 
-完成后请前往 [初始化](/install/init.html)。
+完成后请前往 [初始化](/docs/install/init.html)。
