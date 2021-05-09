@@ -33,7 +33,7 @@ jobs:
         yarn
         yarn build
         yarn typedoc
-        cp -r Hydro/docs ./.vuepress/dist/api
+        cp -r docs ../.vuepress/dist/api
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
