@@ -31,6 +31,7 @@ jobs:
         git clone https://github.com/hydro-dev/Hydro.git
         cd Hydro
         yarn
+        yarn build
         yarn typedoc
         cp -r Hydro/docs ./.vuepress/dist/api
     - name: Deploy
