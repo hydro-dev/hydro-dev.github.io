@@ -34,7 +34,7 @@ module.exports = context => config({
         ],
         sidebarDepth: 2,
         lastUpdated: '上次更新',
-        hostname: 'hydro.js.org',
+        hostname: 'https://hydro.js.org',
         repo: 'hydro-dev/Hydro',
         pageInfo: false,
         copyright: false,

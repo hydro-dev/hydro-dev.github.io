@@ -5,10 +5,10 @@ heroText: Hydro
 tagline: 高性能在线测评系统
 action:
   - text: 介绍 💡
-    link: /about/
+    link: /docs/
     type: primary
   - text: 部署指南
-    link: /install/
+    link: /docs/install/
 features:
 - title: 安全
   details: 使用 cgroup 隔离用户程序
