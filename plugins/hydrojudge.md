@@ -121,3 +121,11 @@ parallelism: 2 # 单评测机评测进程数量
 ## 测试数据格式
 
 参照 [测试数据格式](/docs/problem/#测试数据格式) 配置。
+
+## 调整沙箱空间大小
+
+:::warning
+如果不调整沙箱的空间大小，当您的评测使用文件 IO 且输入输出文件较大时可能会引发错误。
+:::
+
+将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载下来并放置在与 sandbox 相同的目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。

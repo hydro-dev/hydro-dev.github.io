@@ -23,13 +23,13 @@ Hydro 官方目前提供了以下附加组件：
 | @hydrooj/migrate-vijos     | 从 vijos4 的自动升级工具       |
 | @hydrooj/recaptcha         | 注册时调用 reCAPTCHA 验证码    |
 | @hydrooj/ui-default        | Hydro 的默认用户界面           |
-| @hydrooj/onlyoffice        | 显示doc/docx格式题目           |
-| @hydrooj/sonic             | 使用sonic增强题目搜索功能      |
+| @hydrooj/onlyoffice        | 显示 doc/docx 格式题目         |
+| @hydrooj/sonic             | 使用 sonic 增强题目搜索功能    |
 
 以下插件由社区提供：
 
-| ID                                                 | 作者      | 描述                        |
-| -------------------------------------------------- | --------- | -------------------------- |
+| ID                                                 | 作者      | 描述                         |
+| -------------------------------------------------- | --------- | ---------------------------- |
 | [hydro-pdf-preview](//github.com/Ri-moe/hydro-pdf) | wuxianucw | 使用 PDF.js 在题面中插入 PDF |
 
 大部分插件的配置均可在安装后于 控制面板>系统设置 中找到。
@@ -42,6 +42,8 @@ Hydro 官方目前提供了以下附加组件：
 yarn global add @hydrooj/geoip
 hydrooj addon add @hydrooj/geoip
 ```
+
+**安装完插件后需要重启 hydrooj 以使插件生效。**
 
 ## 更新
 
