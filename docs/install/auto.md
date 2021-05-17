@@ -24,7 +24,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 :::warning
 Hydro 不推荐您使用宝塔面板。这可能导致自动安装脚本无法正常使用。请尽可能使用纯净的系统并保证：
 
-- 8888 9000 27017 端口空闲  
+- 8888 9000 27017 5050 端口空闲  
 - /data/file /data/db 目录为空
 - 没有使用除 nvm 之外的工具安装过 NodeJS，没有安装过 MongoDB
 
