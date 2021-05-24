@@ -65,12 +65,20 @@ module.exports = context => config({
                     collapsable: false,
                     children: [
                         '/docs/install/',
-                        '/docs/install/auto',
-                        '/docs/install/common',
-                        '/docs/install/init',
                         '/docs/install/enhance',
                         '/docs/install/cli',
+                        '/docs/install/port-forwarding',
+                        '/docs/install/multi-judge',
                     ],
+                },
+                {
+                    title: '题目',
+                    collapsable: false,
+                    children: [
+                        '/docs/problem/',
+                        '/docs/problem/testdata',
+                        '/docs/problem/import',
+                    ]
                 },
                 {
                     title: '用户文档',

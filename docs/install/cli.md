@@ -8,9 +8,13 @@
 
 cli 可以帮助用户在控制台下快捷地进行一些操作。
 
-下面给出了一些常用的例子。本文的末尾给出了 [命令大全](/install/cli.html #命令大全)。
+下面给出了一些常用的例子。
 
 ## 创建用户
+
+:::tip
+很少使用。建议通过 控制面板>导入用户 功能代替
+:::
 
 ```sh
 hydrooj cli user create <mail> <username> <password>
@@ -20,17 +24,15 @@ hydrooj cli user create <mail> <username> <password>
 hydrooj cli user create hydro@hydro.local Hydro hydrohydro
 ```
 
-若一切正常，运行该指令后您会从命令行窗口中看到该用户的 uid。
-
-使用 cli 创建完用户后您可以直接以此账号登录 Hydro。
+若一切正常，运行该指令后您会从命令行窗口中看到该用户 uid。
 
 ## 设置全站管理员
 
 ```sh
 hydrooj cli user setSuperAdmin <uid>
 
-# 如设置 uid 为 1 的用户为管理员：
-hydrooj cli user setSuperAdmin 1
+# 如设置 uid 为 2 的用户为管理员：
+hydrooj cli user setSuperAdmin 2
 ```
 
 ## 设置用户权限
@@ -39,7 +41,7 @@ hydrooj cli user setSuperAdmin 1
 hydrooj cli user setPriv <uid> <priv>
 ```
 
-关于参数 `[priv]` ，可阅读 [此文](/dev/PERM_PRIV/)。
+关于参数 `[priv]` ，可阅读 [此处](/dev/PERM_PRIV/)。
 
 ## 更改用户密码
 
@@ -68,19 +70,16 @@ hydrooj cli user setJudge <uid>
 
 ## 命令列表
 
-:::tip
-我们已将在一般情况下会用到的指令列在了上方。如果您没有特殊的需要，请阅读上方的部分。
-:::
-
-所有于 [此文件夹](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) 下的，参数全为 `number` 或是 `string` 的函数均可用 cli 调用。
+所有于 [此文件夹](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) 下的函数均可用 cli 调用。
 
 这里并没有列出所有可以运行的指令，因为其中很多功能我们更推荐通过 Web 访问。  
 `<arg>` 为必选参数，`[arg]` 为可选参数。
 
 ```sh
-hydrooj cli blacklist add <ip> # 将 <ip> 拉入黑名单一年
-hydrooj cli blacklist get <ip> # 获取黑名单中有关 <ip> 的信息
-hydrooj cli blacklist del <ip> # 将 <ip> 移出黑名单
+# key 格式为 ip:xxx.xxx.xxx.xxx （封禁ip访问） 或是 mail:xxx.com （禁止xxx.com的邮箱注册）
+hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （默认一年，若duration=0则永久封禁）
+hydrooj cli blacklist get <key> # 获取黑名单中有关 <key> 的信息
+hydrooj cli blacklist del <key> # 将 <key> 移出黑名单
 hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
 # 创建邮箱为 <mail>，用户名为 <uname>，密码为 <password>，ID 为 [uid]，注册 ip 为 [regip]，权限为 [priv] 的用户
 hydrooj cli user getPrefixList <domainId> <prefix> [limit] 
@@ -90,6 +89,5 @@ hydrooj cli user setPassword <uid> <password> # 将 ID 为 <uid> 的用户的密
 hydrooj cli user setEmail <uid> <mail> # 将 ID 为 <uid> 的用户的邮箱设置为 <mail>
 hydrooj cli user setSuperAdmin <uid> # 将 ID 为 <uid> 的用户设为全站管理员。
 hydrooj cli user setJudge <uid> # 将 ID 为 <uid> 的用户设为管理帐号
-hydrooj cli user ban <uid> # 取消 ID 为 <uid> 的用户的全部权限
 hydrooj cli system set <key> <value> # 修改系统设置 <key> 值为 <value>
 ```
