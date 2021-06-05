@@ -57,7 +57,7 @@ module.exports = context => config({
                     title: '总览',
                     collapsable: false,
                     children: [
-                        '/docs/'
+                        '/docs/',
                     ],
                 },
                 {
@@ -102,6 +102,7 @@ module.exports = context => config({
                         '/docs/system/',
                         '/docs/system/settings',
                         '/docs/system/enhance',
+                        '/docs/system/FAQ',
                     ]
                 },
             ],
