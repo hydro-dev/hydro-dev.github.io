@@ -14,7 +14,7 @@
 
 此处对比了 Hydro 与其他主流 OJ 系统的功能。（只进行在不修改源代码情况下的对比）  
 
-```
+```plain
 +：支持
 =：部分支持
 ?: 未知
@@ -49,11 +49,10 @@
 
 ## 截图
 
-![img](https://img-kysic-1258722770.file.myqcloud.com/d809e8940ed760213db53d4ab018ab78/cac1fb769c20c.png)
-![img](https://img-kysic-1258722770.file.myqcloud.com/16da058b22dacc9cb173f43001d59ac6/754b27554352c.png)
+![img](https://img-kysic-1258722770.file.myqcloud.com/8250a08a7c62f8e11404a79614fc0c27/3c07f1f66ce12.png)
+![img](https://img-kysic-1258722770.file.myqcloud.com/0efcbc286dc3a0dabd57526f2b449bc2/07c266a66ae2a.png)
 ![img](https://img-kysic-1258722770.file.myqcloud.com/e2f843260324924ccf35f48579bcf7c6/c9929a5c07519.png)
-![img](https://img-kysic-1258722770.file.myqcloud.com/5731d0c9b0872f3514467cb9bd9af3dd/c41e401d395dc.png)
-![img](https://img-kysic-1258722770.file.myqcloud.com/16da058b22dacc9cb173f43001d59ac6/754b27554352c.png)
+![img](https://img-kysic-1258722770.file.myqcloud.com/ae53edcb75d6694bfb08229963f3ed21/4fe030b07bee3.png)
 
 ## 现在开始
 

@@ -29,8 +29,7 @@ module.exports = context => config({
         nav: [
             { text: '文档', link: '/docs/' },
             { text: '开发', link: '/dev/' },
-            { text: '插件', link: '/plugins/' },
-            { text: 'GitHub', link: 'https://github.com/hydro-dev/Hydro' }
+            { text: '插件', link: '/plugins/' }
         ],
         sidebarDepth: 2,
         lastUpdated: '上次更新',
