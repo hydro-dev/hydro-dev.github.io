@@ -72,12 +72,11 @@ hydrooj cli user setJudge <uid>
 
 所有于 [此文件夹](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) 下的函数均可用 cli 调用。
 
-这里并没有列出所有可以运行的指令，因为其中很多功能我们更推荐通过 Web 访问。  
-`<arg>` 为必选参数，`[arg]` 为可选参数。
+这里并没有列出所有可以运行的指令，因为其中很多功能我们更推荐通过 Web 访问。
 
 ```sh
-# key 格式为 ip:xxx.xxx.xxx.xxx （封禁ip访问） 或是 mail:xxx.com （禁止xxx.com的邮箱注册）
-hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （默认一年，若duration=0则永久封禁）
+# key 格式为 ip:xxx.xxx.xxx.xxx （封禁 IP 访问） 或是 mail:xxx.com （禁止 xxx.com 的邮箱注册）
+hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （默认一年，若 duration=0 则永久封禁）
 hydrooj cli blacklist get <key> # 获取黑名单中有关 <key> 的信息
 hydrooj cli blacklist del <key> # 将 <key> 移出黑名单
 hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
