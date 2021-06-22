@@ -127,7 +127,8 @@ module.exports = context => config({
                         '/plugins/hydrojudge',
                         '/plugins/migrate-vijos',
                         '/plugins/recaptcha',
-                        '/plugins/sonic'
+                        '/plugins/sonic',
+                        '/plugins/vjudge'
                     ],
                 }
             ]
