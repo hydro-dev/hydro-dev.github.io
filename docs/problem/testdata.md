@@ -98,6 +98,13 @@ subtasks:
         output: c.out
       - input: d.in
         output: d.out
+
+# 提交语言限制
+# 列举出所有本题允许使用的语言对应的代码（需要和评测机 lang.yaml 内的语言代码相同）
+langs:
+  - c
+  - cc
+  - pas
 ```
 
-[Special Judge样例数据包下载](https://undefined.moe/hydro/testdata_spj_example.zip)
+[Special Judge 样例数据包下载](https://undefined.moe/hydro/testdata_spj_example.zip)
