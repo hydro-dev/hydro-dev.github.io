@@ -6,6 +6,8 @@
 
 ## SMTP
 
+以 QQ 邮箱为例。
+
 - SMTP_USER: 12345678@qq.com  
 - SMTP_PASS: 提供的 SMTP 密码  
 - SMTP_HOST: smtp.mail.qq.com  
@@ -26,6 +28,8 @@ c:
 ```
 
 ## File
+
+以腾讯云COS 为例。
 
 - Storage engine endPoint: `http://cos.<存储桶地域>.myqcloud.com` （或是 https）  
 - Storage engine accessKey: 您的腾讯云 API 密钥的 SecretId  
