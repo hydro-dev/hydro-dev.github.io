@@ -25,6 +25,7 @@ Hydro 官方目前提供了以下附加组件：
 | @hydrooj/ui-default        | Hydro 的默认用户界面           |
 | @hydrooj/onlyoffice        | 显示 doc/docx 格式题目         |
 | @hydrooj/sonic             | 使用 sonic 增强题目搜索功能    |
+| @hydrooj/vjudge            | Codeforces! SPOJ!              |
 
 以下插件由社区提供：
 

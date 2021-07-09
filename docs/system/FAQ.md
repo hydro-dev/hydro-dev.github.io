@@ -10,6 +10,7 @@ pm2 restart hydrooj
 
 数据库存储于 `/data/db`  
 测试数据等文件存储于 `/data/file`
+配置文件位于 `/root/.config/hydro` 和 `/root/.hydro`
 
 ## 如何关闭用户注册？
 
