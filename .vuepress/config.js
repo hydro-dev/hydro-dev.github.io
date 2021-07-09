@@ -31,7 +31,9 @@ module.exports = context => config({
             { text: '开发', link: '/dev/' },
             { text: '插件', link: '/plugins/' }
         ],
-        pwa: false,
+        pwa: {
+            cacheHTML: false,
+        },
         sidebarDepth: 2,
         lastUpdated: '上次更新',
         hostname: 'https://hydro.js.org',
