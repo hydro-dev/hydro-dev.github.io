@@ -77,6 +77,7 @@ module.exports = context => config({
                         '/docs/problem/',
                         '/docs/problem/testdata',
                         '/docs/problem/import',
+                        '/docs/problem/subjective',
                     ]
                 },
                 {
