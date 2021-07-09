@@ -1,0 +1,2082 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
+  <id>https://hydro.js.org/</id>
+  <title>Hydro</title>
+  <updated>2021-07-09T14:58:01.047Z</updated>
+  <generator>@mr-hope/vuepress-plugin-feed</generator>
+  <link rel="self" href="https://hydro.js.org/atom.xml"/>
+  <link rel="alternate" href="https://hydro.js.org/"/>
+  <entry>
+    <title type="html">Home</title>
+    <id>https://hydro.js.org/</id>
+    <link href="https://hydro.js.org/"/>
+    <updated>2021-06-05T07:21:16.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="https://img.shields.io/github/license/hydro-dev/Hydro" alt="LICENSE">
+<img src="https://img.shields.io/github/workflow/status/hydro-dev/hydro/CI" alt="GitHub Workflow Status">
+<img src="https://img.shields.io/npm/dm/hydrooj" alt="hydrooj">
+<img src="https://img.shields.io/npm/v/hydrooj?label=hydrooj" alt="npm">
+<img src="https://img.shields.io/node/v/hydrooj" alt="node-current">
+<img src="https://img.shields.io/github/contributors/hydro-dev/Hydro" alt="GitHub contributors">
+<img src="https://img.shields.io/github/commit-activity/y/hydro-dev/Hydro" alt="GitHub commit activity"></p>
+<p>Hydro 是一个高效的信息学在线测评系统。特点：易于部署（且提供安装脚本），轻量，功能强大且易于扩展。</p>
+<p><a href="https://github.com/hydro-dev/Hydro" target="_blank" rel="noopener noreferrer">Github 仓库</a></p>
+<p>欢迎 star 本项目，这是对开发者的鼓励。<br>
+项目的开发与维护需要资金，欢迎进行捐助。<br>
+Hydro 提供收费的功能定制服务，如您需要可与我们联系。<br>
+相关文档若说明的不够详细，请提交 Pull Request 或联系开发组说明。<br>
+Bug 和功能建议请在 <a href="https://github.com/hydro-dev/Hydro/issues" target="_blank" rel="noopener noreferrer">Issues</a> 提出。</p>
+<p><a href="https://gitpod.io/#https://github.com/hydro-dev/Hydro" target="_blank" rel="noopener noreferrer">在 Gitpod 打开已配置完成的测试环境</a></p>
+<p><a href="https://hydro.org.cn/" target="_blank" rel="noopener noreferrer">Hydro Online Judge</a></p>
+<h2 id="联系我们"> 联系我们</h2>
+<p>QQ <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=3402182471&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer">3402182471</a><br>
+Hydro 开发群：709572015<br>
+Hydro 用户群：1085853538<br>
+Telegram <a href="https://t.me/webpack_exports_undefined" target="_blank" rel="noopener noreferrer">@webpack_exports_undefined</a></p>
+<h2 id="开源许可"> 开源许可</h2>
+<p>本项目基于 AGPL v3 开源。<br>
+在您部署 Hydro 时，需要保留底部的 <code>Powered by Hydro</code> 字样，其中的 <code>Hydro</code> 字样需指向 <code>hydro.js.org/本仓库/fork</code> 之一的链接。<br>
+若您对源码做出修改，同样需要以 AGPL v3 开源，您可以以 <code>Powered by Hydro, Modified by xxx</code> 格式在页脚注明。<br>
+此限制对以下模块仍然有效：</p>
+<ul>
+<li>Hydro 插件；</li>
+<li>包括但不限于使用 http 协议与 Hydro 进行交互的组件；</li>
+</ul>
+<p>若您需要对这些模块闭源处理，请考虑联系我们以购买许可。<br>
+鉴于 Mirai 处的 <a href="https://github.com/mamoe/mirai/issues/850" target="_blank" rel="noopener noreferrer">不和谐事件</a> 对此项目做如下声明：</p>
+<ul>
+<li>项目开源不代表开发者有义务为您提供服务。</li>
+<li>在提问前请先阅读《提问的智慧》。</li>
+<li>若有必要，开发者有权对您停止任何技术支持。</li>
+<li>开发组会 <strong>尽可能</strong> 保证用户可以进行平滑升级，但无法保证不在新版本引入影响使用的漏洞，且内部实现可能会在不发布任何通知的情况下进行重命名/修改/删除。</li>
+</ul>
+<p>如果您对以上条目感到不适，建议您停止使用本项目。</p>
+<h2 id="鸣谢"> 鸣谢</h2>
+<p>排名不分先后，按照链接字典序。</p>
+<ul>
+<li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a> 为 Hydro 提供了代码托管与自动构建。</li>
+<li><a href="https://github.com/criyle" target="_blank" rel="noopener noreferrer">criyle</a> 提供评测沙箱实现。</li>
+<li><a href="https://github.com/vijos/vj4" target="_blank" rel="noopener noreferrer">Vijos</a> 为 Hydro 提供了UI框架。</li>
+</ul>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2020-07-22T10:21:41.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">权限节点</title>
+    <id>https://hydro.js.org/dev/PERM_PRIV/</id>
+    <link href="https://hydro.js.org/dev/PERM_PRIV/"/>
+    <updated>2021-04-20T05:18:27.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="权限节点"> 权限节点</h1>
+<p>Hydro 的权限使用位运算处理。<br>
+例：若某用户具有 <code>PRIV_EDIT_SYSTEM</code> 与 <code>PRIV_SET_PERM</code> 权限，应设置为 <code>(1&lt;&lt;0)|(1&lt;&lt;1)</code> （即 3）</p>
+<div><pre><code><span>export</span> <span>const</span> <span>PRIV</span> <span>=</span> <span>{</span>
+    <span>PRIV_NONE</span><span>:</span> <span>0</span><span>,</span>
+    <span>PRIV_EDIT_SYSTEM</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>0</span><span>,</span> <span>// renamed from PRIV_SET_PRIV</span>
+    <span>PRIV_SET_PERM</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>1</span><span>,</span>
+    <span>PRIV_USER_PROFILE</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>2</span><span>,</span>
+    <span>PRIV_REGISTER_USER</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>3</span><span>,</span>
+    <span>PRIV_READ_PROBLEM_DATA</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>4</span><span>,</span>
+    <span>PRIV_READ_PRETEST_DATA</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>5</span><span>,</span> <span>// deprecated</span>
+    <span>PRIV_READ_PRETEST_DATA_SELF</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>6</span><span>,</span> <span>// deprecated</span>
+    <span>PRIV_READ_RECORD_CODE</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>7</span><span>,</span>
+    <span>PRIV_VIEW_HIDDEN_RECORD</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>8</span><span>,</span>
+    <span>PRIV_JUDGE</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>9</span><span>,</span> <span>// (renamed)</span>
+    <span>PRIV_CREATE_DOMAIN</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>10</span><span>,</span>
+    <span>PRIV_VIEW_ALL_DOMAIN</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>11</span><span>,</span>
+    <span>PRIV_MANAGE_ALL_DOMAIN</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>12</span><span>,</span>
+    <span>PRIV_REJUDGE</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>13</span><span>,</span>
+    <span>PRIV_VIEW_USER_SECRET</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>14</span><span>,</span>
+    <span>PRIV_VIEW_JUDGE_STATISTICS</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>15</span><span>,</span>
+    <span>PRIV_CREATE_FILE</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>16</span><span>,</span>
+    <span>PRIV_UNLIMITED_QUOTA</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>17</span><span>,</span>
+    <span>PRIV_DELETE_FILE</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>18</span><span>,</span>
+    <span>PRIV_DELETE_FILE_SELF</span><span>:</span> <span>1</span> <span>&lt;&lt;</span> <span>19</span><span>,</span>
+    <span>PRIV_ALL</span><span>:</span> <span>-</span><span>1</span><span>,</span>
+
+    <span>PRIV_DEFAULT</span><span>:</span> <span>0</span><span>,</span>
+<span>}</span><span>;</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><p>可以看 <a href="https://github.com/hydro-dev/Hydro/blob/aa096322c3676e5e858e3a5021313a3d3afdf794/packages/hydrooj/src/model/builtin.ts#L216" target="_blank" rel="noopener noreferrer">代码</a> 中关于此部分的内容。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-01-25T18:27:09.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">开发环境部署</title>
+    <id>https://hydro.js.org/dev/</id>
+    <link href="https://hydro.js.org/dev/"/>
+    <updated>2021-04-09T05:16:24.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="开发环境部署"> 开发环境部署</h1>
+<h2 id="mongodb、s3、nodejs"> MongoDB、S3、NodeJS</h2>
+<p>请参考 <a href="/install/common.html">常规部署</a> 完成 MongoDB、S3、NodeJS 的安装。</p>
+<h2 id="部署本地仓库"> 部署本地仓库</h2>
+<p>克隆 Hydro 至本地并初始化。</p>
+<div><pre><code><span>yarn</span> <span># 安装依赖</span>
+<span>yarn</span> build <span># 编译核心文件</span>
+<span>yarn</span> build:ui <span># 编译用户界面</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br></div></div><h2 id="启动"> 启动</h2>
+<div><p>Note</p>
+<p>若启用某些插件但没有正确配置可能导致部分功能工作异常。<br>
+在您不了解某个插件的用法时，建议不要启用该插件。</p>
+</div>
+<div><pre><code>npx hydrooj <span># 以常规模式启动，使用 hydrooj addon 启用的插件列表</span>
+<span># 可使用 yarn global add npx 安装 npx 工具。</span>
+<span>yarn</span> start <span># 以常规模式启动，加载所有插件</span>
+<span>yarn</span> debug <span># 以调试模式启动，加载所有插件</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p><a href="/install/common.html#运行hydro">更多启动参数</a></p>
+<h2 id="更新"> 更新</h2>
+<p>需要更新的时候进入对应仓库文件夹执行 <code>git pull</code>，然后重新 <code>yarn &amp;&amp; yarn build &amp;&amp; yarn build:ui</code> 即可。</p>
+<h2 id="开发"> 开发</h2>
+<p>在本地仓库中修改代码时，可以在仓库根目录运行 <code>yarn build:watch</code>。<br>
+这会实时编译您修改的文件，相比于 <code>yarn build</code> 可以节省更多时间。</p>
+<h2 id="修改-ui"> 修改 UI</h2>
+<p>您可以使用 <code>yarn build:ui:dev</code> 来实时转译 UI 代码。这会监听本地的 8000 端口。<br>
+同时，请在 2333 端口启动一个 Hydro 实例（<code>yarn debug --port=2333</code>）。<br>
+至此，您将可以从 8000 端口访问 Hydro， 并实时应用 UI 的修改。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-01-25T18:27:09.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">使用 JavaScript 编写插件</title>
+    <id>https://hydro.js.org/dev/javascript/</id>
+    <link href="https://hydro.js.org/dev/javascript/"/>
+    <updated>2021-05-06T00:59:32.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="使用-javascript-编写插件"> 使用 JavaScript 编写插件</h1>
+<p>前置条件：NodeJS&gt;10.10<br>
+此教程将以编写剪贴板插件为例进行说明。</p>
+<h2 id="step1-初始化项目"> Step1 初始化项目</h2>
+<p>在一个空文件夹中运行 <code>yarn init</code> 并按照提示填写相关信息。</p>
+<div><pre><code>/workspace/hydro-plugin $ <span>yarn</span> init
+<span>yarn</span> init v1.22.4
+question name <span>(</span>hydro-plugin<span>)</span>: @hydrooj/pastebin
+question version <span>(</span><span>1.0</span>.0<span>)</span>: <span>0.0</span>.1
+question description: HydroOJ的剪贴板组件
+question entry point <span>(</span>index.js<span>)</span>: package.json
+question repository url: https://github.com/hydro-dev/pastebin.git
+question author: undefined <span>&lt;</span>i@undefined.moe<span>></span>
+question license <span>(</span>MIT<span>)</span>: MIT
+question private:
+success Saved package.json
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><h2 id="step2-准备编写组件"> Step2 准备编写组件</h2>
+<p>分析：剪贴板组件需要以下功能：</p>
+<ul>
+<li>与数据库交互来存储/检索相应文档。</li>
+<li>提供 /paste/create 路由以创建新文档。</li>
+<li>提供 /paste/show/:ID 来查看已创建的文档。</li>
+<li>根据用户ID进行鉴权，允许将文档设置为私密以防止他人查看。</li>
+</ul>
+<p>Hydro的推荐架构如下：</p>
+<ul>
+<li>handler.js: 用于处理路由</li>
+<li>model.js: 数据库模型</li>
+<li>lib.js: 不依赖于数据库等的库（如md5函数）</li>
+<li>script.js: 可能会被用户多次使用到的脚本（如重新计算rp）</li>
+<li>locale/: 翻译文件</li>
+<li>template/: 页面模板</li>
+<li>setting.yaml: 模块所用到的设置，格式在下方说明</li>
+</ul>
+<p>但注意上述结构并非全部必要，可以只创建插件需要使用的结构。</p>
+<h2 id="step3-model-js"> Step3 model.js</h2>
+<p>提示：由于模块中不便于使用 require() 引入 Hydro 的文件，可以从 global.Hydro 中取出需要的模块。</p>
+<div><pre><code><span>const</span> <span>{</span> db <span>}</span> <span>=</span> global<span>.</span>Hydro<span>.</span>service<span>;</span> <span>// 数据库连接</span>
+<span>const</span> coll <span>=</span> db<span>.</span><span>collection</span><span>(</span><span>'paste'</span><span>)</span><span>;</span>
+
+<span>/**
+ * 添加一个文档
+ * @param {number} userId
+ * @param {string} content
+ * @param {boolean} isPrivate
+ * @return {Promise&lt;string>}
+ */</span>
+<span>async</span> <span>function</span> <span>add</span><span>(</span><span>userId<span>,</span> content<span>,</span> isPrivate</span><span>)</span> <span>{</span>
+    <span>const</span> pasteId <span>=</span> String<span>.</span><span>random</span><span>(</span><span>16</span><span>)</span><span>;</span> <span>// Hydro提供了此方法，创建一个长度为16的随机字符串</span>
+    <span>// 使用 mongodb 为数据库驱动，相关操作参照其文档</span>
+    <span>const</span> result <span>=</span> <span>await</span> coll<span>.</span><span>insertOne</span><span>(</span><span>{</span>
+        _id<span>:</span> pasteId<span>,</span>
+        owner<span>:</span> userId<span>,</span>
+        content<span>,</span>
+        isPrivate<span>,</span>
+    <span>}</span><span>)</span><span>;</span>
+    <span>return</span> result<span>.</span>insertedId<span>;</span> <span>// 返回插入的文档ID</span>
+<span>}</span>
+
+<span>/**
+ * 查询一个文档
+ * @param {string} pasteId
+ * @return {Promise&lt;any>}
+ */</span>
+<span>async</span> <span>function</span> <span>get</span><span>(</span><span>pasteId</span><span>)</span> <span>{</span>
+    <span>return</span> <span>await</span> coll<span>.</span><span>findOne</span><span>(</span><span>{</span> _id<span>:</span> pasteId <span>}</span><span>)</span><span>;</span>
+<span>}</span>
+
+<span>// 暴露这些接口</span>
+global<span>.</span>Hydro<span>.</span>model<span>.</span>pastebin <span>=</span> <span>{</span> add<span>,</span> <span>get</span> <span>}</span><span>;</span>
+
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br></div></div><h2 id="step4-handler-js"> Step4 handler.js</h2>
+<p>在路由中定义所有的函数应均为异步函数，支持的函数有：prepare, get, post, post[Operation], cleanup
+具体流程如下：</p>
+<div><pre><code>先执行 prepare(args) （如果存在）
+args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参数，
+再执行 prepare(args) （如果存在）
+检查请求类型：
+
+为 GET ？
+  -&gt; 执行 get(args)
+为 POST ?
+  -&gt; 执行 post(args)
+  -&gt; 含有 operation 字段？
+       -&gt; 执行 post[Operation]
+
+执行 cleanup()
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></div></div><p>如果在 this.response.template 指定模板则渲染，否则直接返回 this.response.body 中的内容。</p>
+<ul>
+<li>在表单提交时的 operation 字段使用下划线，函数名使用驼峰命名。</li>
+</ul>
+<p>如 <code>&lt;input type=&quot;hidden&quot; name=&quot;operation&quot; value=&quot;confirm_delete&quot;&gt;</code> 对应 <code>postConfirmDelete</code> 函数。</p>
+<p>应当提供 <code>apply</code> 函数，并与定义的 Handler 一同挂载到 <code>global.Hydro.handler[模块名]</code> 位置。
+<code>apply</code> 函数将在初始化阶段被调用。</p>
+<div><pre><code><span>const</span> <span>{</span> Route<span>,</span> Handler <span>}</span> <span>=</span> global<span>.</span>Hydro<span>.</span>service<span>.</span>server<span>;</span> <span>// 注册路由所用工具</span>
+<span>const</span> <span>{</span> <span>PRIV</span> <span>}</span> <span>=</span> global<span>.</span>Hydro<span>.</span>model<span>.</span>builtin<span>;</span> <span>// 内置 Privilege 权限节点</span>
+<span>const</span> pastebin <span>=</span> global<span>.</span>Hydro<span>.</span>model<span>.</span>pastebin<span>;</span> <span>// 刚刚编写的pastebin模型</span>
+<span>const</span> <span>{</span> checkContent <span>}</span> <span>=</span> global<span>.</span>Hydro<span>.</span>lib<span>.</span>validator<span>;</span> <span>// 用于检查用户输入是否合法</span>
+<span>const</span> <span>{</span> NotFoundError <span>}</span> <span>=</span> global<span>.</span>Hydro<span>.</span>error<span>;</span>
+
+<span>// 创建新路由</span>
+<span>class</span> <span>PasteCreateHandler</span> <span>extends</span> <span>Handler</span> <span>{</span>
+    <span>// Get请求时触发该函数</span>
+    <span>async</span> <span>get</span><span>(</span><span>)</span> <span>{</span>
+        <span>// 检查用户是否登录，此处为多余（因为底部注册路由时已声明所需权限）</span>
+        <span>// 此方法适用于权限的动态检查</span>
+        <span>// this.checkPriv(PRIV.PRIV_USER_PROFILE);</span>
+        <span>this</span><span>.</span>response<span>.</span>template <span>=</span> <span>'paste_create.html'</span><span>;</span> <span>// 返回此页面</span>
+    <span>}</span>
+
+    <span>async</span> <span>post</span><span>(</span><span><span>{</span> content<span>,</span> <span>private</span> <span>=</span> <span>false</span> <span>}</span></span><span>)</span> <span>{</span> <span>// 从用户提交的表单中取出content和private字段</span>
+        <span>checkContent</span><span>(</span>content<span>)</span><span>;</span> <span>// 检查输入</span>
+        <span>// 在HTML表单提交的多选框中，选中值为 'on'，未选中则为空，需要进行转换</span>
+        <span>await</span> pastebin<span>.</span><span>add</span><span>(</span><span>this</span><span>.</span>user<span>.</span>_id<span>,</span> content<span>,</span> <span>!</span><span>!</span><span>private</span><span>)</span><span>;</span>
+        <span>// 将用户重定向到创建完成的url</span>
+        <span>this</span><span>.</span>response<span>.</span>redirect <span>=</span> <span>this</span><span>.</span><span>url</span><span>(</span><span>'paste_show'</span><span>,</span> <span>{</span> id<span>:</span> pasteid <span>}</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+<span>class</span> <span>PasteShowHandler</span> <span>extends</span> <span>Handler</span> <span>{</span>
+    <span>async</span> <span>get</span><span>(</span><span>{</span> id <span>}</span><span>)</span> <span>{</span>
+        <span>const</span> doc <span>=</span> <span>await</span> pastebin<span>.</span><span>get</span><span>(</span>id<span>)</span><span>;</span>
+        <span>if</span> <span>(</span><span>!</span>doc<span>)</span> <span>throw</span> <span>new</span> <span>NotFoundError</span><span>(</span>id<span>)</span><span>;</span>
+        <span>if</span> <span>(</span>doc<span>.</span>isPrivate<span>)</span> <span>{</span>
+            <span>if</span> <span>(</span><span>this</span><span>.</span>user<span>.</span>_id <span>!==</span> doc<span>.</span>owner<span>)</span> <span>throw</span> <span>new</span> <span>PermissionError</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
+        <span>this</span><span>.</span>response<span>.</span>body <span>=</span> <span>{</span> doc <span>}</span><span>;</span>
+        <span>this</span><span>.</span>response<span>.</span>template <span>=</span> <span>'paste_show.html'</span><span>;</span>
+    <span>}</span>
+
+    <span>async</span> <span>postDelete</span><span>(</span><span><span>{</span> id <span>}</span></span><span>)</span> <span>{</span>
+        <span>// 当提交表单并存在 operation 值为 delete 时执行。</span>
+        <span>// 本例中未实现删除功能，仅作为说明。</span>
+    <span>}</span>
+<span>}</span>
+
+<span>// Hydro会在服务初始化完成后调用该函数。</span>
+<span>async</span> <span>function</span> <span>apply</span><span>(</span><span>)</span> <span>{</span>
+    <span>// 注册一个名为 paste_create 的路由，匹配 '/paste/create'，</span>
+    <span>// 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限</span>
+    <span>// 提示：路由匹配基于 path-to-regexp</span>
+    <span>Route</span><span>(</span><span>'paste_create'</span><span>,</span> <span>'/paste/create'</span><span>,</span> PasteCreateHandler<span>,</span> <span>PRIV</span><span>.</span><span>PRIV_USER_PROFILE</span><span>)</span><span>;</span>
+    <span>Route</span><span>(</span><span>'paste_show'</span><span>,</span> <span>'/paste/show/:id'</span><span>,</span> PasteShowHandler<span>)</span><span>;</span>
+<span>}</span>
+
+global<span>.</span>Hydro<span>.</span>handler<span>.</span>pastebin <span>=</span> apply<span>;</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br></div></div><h2 id="step5-template"> Step5 template</h2>
+<p>模板采用 nunjucks 语法。放置于 templates/ 文件夹下。<br>
+会在请求结束时根据 <code>response.template</code> 的值选择模板，并使用 <code>response.body</code> 的值进行渲染，存入 <code>response.body</code> 中。<br>
+若 <code>response.template</code> 为空或 <code>request.headers['accept'] == 'application/json'</code>，则跳过渲染步骤。</p>
+<h2 id="step6-locale"> Step6 locale</h2>
+<p>用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-02-02T07:43:29.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">使用 TypeScript 编写插件</title>
+    <id>https://hydro.js.org/dev/typescript/</id>
+    <link href="https://hydro.js.org/dev/typescript/"/>
+    <updated>2021-05-06T00:59:14.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="使用-typescript-编写插件"> 使用 TypeScript 编写插件</h1>
+<p>前置条件：NodeJS&gt;10.10<br>
+此教程将以编写剪贴板插件为例进行说明。</p>
+<h2 id="step1-初始化项目"> Step1 初始化项目</h2>
+<p>在一个空文件夹中运行 <code>yarn init</code> 并按照提示填写相关信息。</p>
+<div><pre><code>/workspace/hydro-plugin $ <span>yarn</span> init
+<span>yarn</span> init v1.22.4
+question name <span>(</span>hydro-plugin<span>)</span>: @hydrooj/pastebin
+question version <span>(</span><span>1.0</span>.0<span>)</span>: <span>0.0</span>.1
+question description: HydroOJ的剪贴板组件
+question entry point <span>(</span>index.js<span>)</span>: package.json
+question repository url: https://github.com/hydro-dev/pastebin.git
+question author: undefined <span>&lt;</span>i@undefined.moe<span>></span>
+question license <span>(</span>MIT<span>)</span>: MIT
+question private:
+success Saved package.json
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><h2 id="step2-准备编写组件"> Step2 准备编写组件</h2>
+<p>分析：剪贴板组件需要以下功能：</p>
+<ul>
+<li>与数据库交互来存储/检索相应文档。</li>
+<li>提供 /paste/create 路由以创建新文档。</li>
+<li>提供 /paste/show/:ID 来查看已创建的文档。</li>
+<li>根据用户ID进行鉴权，允许将文档设置为私密以防止他人查看。</li>
+</ul>
+<p>Hydro的推荐架构如下：</p>
+<ul>
+<li>handler.ts: 用于处理路由</li>
+<li>model.ts: 数据库模型</li>
+<li>lib.ts: 不依赖于数据库等的库（如md5函数）</li>
+<li>script.ts: 可能会被用户多次使用到的脚本（如重新计算rp）</li>
+<li>locale/: 翻译文件</li>
+<li>template/: 页面模板</li>
+<li>setting.yaml: 模块所用到的设置，格式在下方说明</li>
+</ul>
+<p>但注意上述结构并非全部必要，可以只创建插件需要使用的结构。</p>
+<h2 id="step3-tsconfig-json"> Step3 tsconfig.json</h2>
+<div><pre><code><span>{</span>
+    <span>"compilerOptions"</span><span>:</span> <span>{</span>
+        <span>"target"</span><span>:</span> <span>"es2019"</span><span>,</span>
+        <span>"module"</span><span>:</span> <span>"commonjs"</span><span>,</span>
+        <span>"esModuleInterop"</span><span>:</span> <span>true</span><span>,</span>
+        <span>"moduleResolution"</span><span>:</span> <span>"node"</span><span>,</span>
+        <span>"declaration"</span><span>:</span> <span>true</span><span>,</span>
+        <span>"sourceMap"</span><span>:</span> <span>true</span><span>,</span>
+        <span>"composite"</span><span>:</span> <span>true</span><span>,</span>
+        <span>"strictBindCallApply"</span><span>:</span> <span>true</span><span>,</span>
+        <span>"experimentalDecorators"</span><span>:</span> <span>true</span><span>,</span>
+        <span>"outDir"</span><span>:</span> <span>"."</span><span>,</span>
+        <span>"rootDir"</span><span>:</span> <span>"."</span>
+    <span>}</span><span>,</span>
+    <span>"include"</span><span>:</span> <span>[</span>
+        <span>"*.ts"</span>
+    <span>]</span><span>,</span>
+    <span>"exclude"</span><span>:</span> <span>[</span><span>]</span>
+<span>}</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br></div></div><h2 id="step3-model-js"> Step3 model.js</h2>
+<p>提示：若不便于使用 import 引入 Hydro 的文件，可以从 global.Hydro 中取出需要的模块。</p>
+<div><pre><code><span>import</span> <span>'hydrooj'</span><span>;</span>
+<span>import</span> <span>*</span> <span>as</span> db <span>from</span> <span>'hydrooj/dist/service/db'</span><span>;</span> <span>// const db = global.Hydro.service.db;</span>
+
+<span>const</span> coll <span>=</span> db<span>.</span><span>collection</span><span>(</span><span>'paste'</span><span>)</span><span>;</span>
+
+<span>interface</span> <span>Paste</span> <span>{</span>
+    _id<span>:</span> <span>string</span><span>,</span>
+    owner<span>:</span> <span>number</span><span>,</span>
+    content<span>:</span> <span>string</span><span>,</span>
+    isPrivate<span>:</span> <span>boolean</span><span>,</span>
+<span>}</span>
+
+<span>declare</span> <span>module</span> <span>'hydrooj'</span> <span>{</span>
+    <span>interface</span> <span>Collections</span> <span>{</span>
+        paste<span>:</span> Paste<span>,</span>
+    <span>}</span>
+<span>}</span>
+
+<span>export</span> <span>async</span> <span>function</span> <span>add</span><span>(</span><span>userId<span>:</span> <span>number</span><span>,</span> content<span>:</span> <span>string</span><span>,</span> isPrivate<span>:</span> <span>boolean</span></span><span>)</span><span>:</span> <span>Promise</span><span>&lt;</span><span>string</span><span>></span> <span>{</span>
+    <span>const</span> pasteId <span>=</span> String<span>.</span><span>random</span><span>(</span><span>16</span><span>)</span><span>;</span> <span>// Hydro提供了此方法，创建一个长度为16的随机字符串</span>
+    <span>// 使用 mongodb 为数据库驱动，相关操作参照其文档</span>
+    <span>const</span> result <span>=</span> <span>await</span> coll<span>.</span><span>insertOne</span><span>(</span><span>{</span>
+        _id<span>:</span> pasteId<span>,</span>
+        owner<span>:</span> userId<span>,</span>
+        content<span>,</span>
+        isPrivate<span>,</span>
+    <span>}</span><span>)</span><span>;</span>
+    <span>return</span> result<span>.</span>insertedId<span>;</span> <span>// 返回插入的文档ID</span>
+<span>}</span>
+
+<span>export</span> <span>async</span> <span>function</span> <span>get</span><span>(</span><span>pasteId<span>:</span> <span>string</span></span><span>)</span><span>:</span> <span>Promise</span><span>&lt;</span>Paste<span>></span> <span>{</span>
+    <span>return</span> <span>await</span> coll<span>.</span><span>findOne</span><span>(</span><span>{</span> _id<span>:</span> pasteId <span>}</span><span>)</span><span>;</span>
+<span>}</span>
+
+<span>// 暴露这些接口</span>
+global<span>.</span>Hydro<span>.</span>model<span>.</span>pastebin <span>=</span> <span>{</span> add<span>,</span> <span>get</span> <span>}</span><span>;</span>
+
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br></div></div><h2 id="step4-handler-js"> Step4 handler.js</h2>
+<p>在路由中定义所有的函数应均为异步函数，支持的函数有：prepare, get, post, post[Operation], cleanup<br>
+具体流程如下：</p>
+<div><pre><code>先执行 prepare(args) （如果存在）
+args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参数，
+再执行 prepare(args) （如果存在）
+检查请求类型：
+
+为 GET ？
+  -&gt; 执行 get(args)
+为 POST ?
+  -&gt; 执行 post(args)
+  -&gt; 含有 operation 字段？
+       -&gt; 执行 post[Operation]
+
+执行 cleanup()
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></div></div><p>如果在 this.response.template 指定模板则渲染，否则直接返回 this.response.body 中的内容。</p>
+<ul>
+<li>在表单提交时的 operation 字段使用下划线，函数名使用驼峰命名。</li>
+</ul>
+<p>如 <code>&lt;input type=&quot;hidden&quot; name=&quot;operation&quot; value=&quot;confirm_delete&quot;&gt;</code> 对应 <code>postConfirmDelete</code> 函数。</p>
+<p>应当提供 <code>apply</code> 函数，并与定义的 Handler 一同挂载到 <code>global.Hydro.handler[模块名]</code> 位置。
+<code>apply</code> 函数将在初始化阶段被调用。</p>
+<div><pre><code><span>import</span> <span>{</span> Route<span>,</span> Handler <span>}</span> <span>from</span> <span>'hydrooj/dist/service/server'</span><span>;</span>
+<span>import</span> <span>{</span> <span>PRIV</span> <span>}</span> <span>from</span> <span>'hydrooj/dist/model/builtin'</span><span>;</span> <span>// 内置 Privilege 权限节点</span>
+<span>import</span> <span>{</span> isContent <span>}</span> <span>from</span> <span>'hydrooj/dist/lib/validator'</span><span>;</span> <span>// 用于检查用户输入是否合法</span>
+<span>import</span> <span>{</span> NotFoundError <span>}</span> <span>from</span> <span>'hydrooj/dist/error'</span><span>;</span>
+<span>import</span> <span>*</span> <span>as</span> pastebin <span>from</span> <span>'./pastebin'</span><span>;</span> <span>// 刚刚编写的pastebin模型</span>
+
+<span>// 创建新路由</span>
+<span>class</span> <span>PasteCreateHandler</span> <span>extends</span> <span>Handler</span> <span>{</span>
+    <span>// Get请求时触发该函数</span>
+    <span>async</span> <span>get</span><span>(</span><span>)</span> <span>{</span>
+        <span>// 检查用户是否登录，此处为多余（因为底部注册路由时已声明所需权限）</span>
+        <span>// 此方法适用于权限的动态检查</span>
+        <span>// this.checkPriv(PRIV.PRIV_USER_PROFILE);</span>
+        <span>this</span><span>.</span>response<span>.</span>template <span>=</span> <span>'paste_create.html'</span><span>;</span> <span>// 返回此页面</span>
+    <span>}</span>
+
+    <span>// 使用 isContent 检查输入</span>
+    @<span>param</span><span>(</span><span>'content'</span><span>,</span> Types<span>.</span>String<span>,</span> isContent<span>)</span>
+    @<span>param</span><span>(</span><span>'private'</span><span>,</span> Types<span>.</span>Boolean<span>)</span>
+    <span>// 从用户提交的表单中取出content和private字段</span>
+    <span>// domainId 为固定传入参数</span>
+    <span>async</span> <span>post</span><span>(</span><span>domainId<span>:</span> <span>string</span><span>,</span> content<span>:</span> <span>string</span><span>,</span> <span>private</span> <span>=</span> <span>false</span></span><span>)</span> <span>{</span>
+        <span>// 在HTML表单提交的多选框中，选中值为 'on'，未选中则为空，需要进行转换</span>
+        <span>await</span> pastebin<span>.</span><span>add</span><span>(</span><span>this</span><span>.</span>user<span>.</span>_id<span>,</span> content<span>,</span> <span>!</span><span>!</span><span>private</span><span>)</span><span>;</span>
+        <span>// 将用户重定向到创建完成的url</span>
+        <span>this</span><span>.</span>response<span>.</span>redirect <span>=</span> <span>this</span><span>.</span><span>url</span><span>(</span><span>'paste_show'</span><span>,</span> <span>{</span> id<span>:</span> pasteid <span>}</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+<span>class</span> <span>PasteShowHandler</span> <span>extends</span> <span>Handler</span> <span>{</span>
+    @<span>param</span><span>(</span><span>'id'</span><span>,</span> Types<span>.</span>String<span>)</span>
+    <span>async</span> <span>get</span><span>(</span>domainId<span>:</span> <span>string</span><span>,</span> id<span>:</span> <span>string</span><span>)</span> <span>{</span>
+        <span>const</span> doc <span>=</span> <span>await</span> pastebin<span>.</span><span>get</span><span>(</span>id<span>)</span><span>;</span>
+        <span>if</span> <span>(</span><span>!</span>doc<span>)</span> <span>throw</span> <span>new</span> <span>NotFoundError</span><span>(</span>id<span>)</span><span>;</span>
+        <span>if</span> <span>(</span>doc<span>.</span>isPrivate <span>&amp;&amp;</span> <span>this</span><span>.</span>user<span>.</span>_id <span>!==</span> doc<span>.</span>owner<span>)</span> <span>{</span>
+            <span>throw</span> <span>new</span> <span>PermissionError</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
+        <span>this</span><span>.</span>response<span>.</span>body <span>=</span> <span>{</span> doc <span>}</span><span>;</span>
+        <span>this</span><span>.</span>response<span>.</span>template <span>=</span> <span>'paste_show.html'</span><span>;</span>
+    <span>}</span>
+
+    @<span>param</span><span>(</span><span>'id'</span><span>,</span> Types<span>.</span>String<span>)</span>
+    <span>async</span> <span>postDelete</span><span>(</span><span>domainId<span>:</span> <span>string</span><span>,</span> id<span>:</span> <span>string</span></span><span>)</span> <span>{</span>
+        <span>// 当提交表单并存在 operation 值为 delete 时执行。</span>
+        <span>// 本例中未实现删除功能，仅作为说明。</span>
+    <span>}</span>
+<span>}</span>
+
+<span>// Hydro会在服务初始化完成后调用该函数。</span>
+<span>export</span> <span>async</span> <span>function</span> <span>apply</span><span>(</span><span>)</span> <span>{</span>
+    <span>// 注册一个名为 paste_create 的路由，匹配 '/paste/create'，</span>
+    <span>// 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限</span>
+    <span>// 提示：路由匹配基于 path-to-regexp</span>
+    <span>Route</span><span>(</span><span>'paste_create'</span><span>,</span> <span>'/paste/create'</span><span>,</span> PasteCreateHandler<span>,</span> <span>PRIV</span><span>.</span><span>PRIV_USER_PROFILE</span><span>)</span><span>;</span>
+    <span>Route</span><span>(</span><span>'paste_show'</span><span>,</span> <span>'/paste/show/:id'</span><span>,</span> PasteShowHandler<span>)</span><span>;</span>
+<span>}</span>
+
+global<span>.</span>Hydro<span>.</span>handler<span>.</span>pastebin <span>=</span> apply<span>;</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br></div></div><h2 id="step5-template"> Step5 template</h2>
+<p>模板采用 nunjucks 语法。放置于 templates/ 文件夹下。<br>
+会在请求结束时根据 <code>response.template</code> 的值选择模板，并使用 <code>response.body</code> 的值进行渲染，存入 <code>response.body</code> 中。<br>
+若 <code>response.template</code> 为空或 <code>request.headers['accept'] == 'application/json'</code>，则跳过渲染步骤。</p>
+<h2 id="step6-locale"> Step6 locale</h2>
+<p>用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-02-02T07:43:29.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">介绍</title>
+    <id>https://hydro.js.org/docs/</id>
+    <link href="https://hydro.js.org/docs/"/>
+    <updated>2021-06-16T15:49:39.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="介绍"> 介绍</h1>
+<p>为什么使用 Hydro？</p>
+<ul>
+<li>
+<p>安全：使用 cgroup 进行隔离，杜绝卡评测；</p>
+</li>
+<li>
+<p>高效：Hydro 使用了沙箱复用技术，拥有极高的评测效率；</p>
+</li>
+<li>
+<p>扩展：Hydro 支持安装额外模块进行扩展；</p>
+</li>
+<li>
+<p>强大：配合 Judge 模块（或 HydroJudge 独立评测机），可支持 spj，交互题，提交答案题，文件IO 等多种特性；</p>
+</li>
+<li>
+<p>自定：所有权限节点均可自由设置；</p>
+</li>
+<li>
+<p>易上手：无需改动源代码，系统设置中预留了大量可自行修改的内容；管理逻辑简洁；</p>
+</li>
+<li>
+<p>社区：Hydro 正在持续维护中；</p>
+</li>
+<li>
+<p>如果您正在使用 HustOJ，可以导出题目为 FPS 文件后使用 <a href="/plugins/fps-importer">fps-importer 插件</a> 直接导入 Hydro。</p>
+</li>
+<li>
+<p>如果您正在使用 QDUOJ， 可以导出题目为 QDUOJ-zip 格式后使用 import-qduoj 插件直接导入 Hydro。</p>
+</li>
+<li>
+<p>如果您正在使用 Vijos， 可以直接使用 <a href="/plugins/migrate-vijos">migrate-vijos</a> 插件导入所有数据至 Hydro。</p>
+</li>
+<li>
+<p>如果您正在使用 SYZOJ 或是 SYZOJ-NG，可以使用内置的 <a href="/docs/problem/import">Import From SYZOJ 功能</a> 将题目导入 Hydro。</p>
+</li>
+</ul>
+<h2 id="功能对比"> 功能对比</h2>
+<p>此处对比了 Hydro 与其他主流 OJ 系统的功能。（只进行在不修改源代码情况下的对比）</p>
+<div><pre><code>+：支持
+=：部分支持
+?: 未知
+-：不支持
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><table>
+<thead>
+<tr>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">Hydro</th>
+<th style="text-align:center">HustOJ</th>
+<th style="text-align:center">SYZOJ</th>
+<th style="text-align:center">QDUOJ</th>
+<th style="text-align:center">Vijos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">安装</td>
+<td style="text-align:center">一键脚本</td>
+<td style="text-align:center">一键脚本</td>
+<td style="text-align:center">手动搭建</td>
+<td style="text-align:center">docker</td>
+<td style="text-align:center">docker</td>
+</tr>
+<tr>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">MongoDB</td>
+<td style="text-align:center">MySQL</td>
+<td style="text-align:center">MariaDB</td>
+<td style="text-align:center">Postgres</td>
+<td style="text-align:center">MongoDB</td>
+</tr>
+<tr>
+<td style="text-align:center">测试数据存储</td>
+<td style="text-align:center">本地/S3 <sup></sup></td>
+<td style="text-align:center">本地</td>
+<td style="text-align:center">本地</td>
+<td style="text-align:center">本地</td>
+<td style="text-align:center">数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">多评测机</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">=</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">测试数据同步</td>
+<td style="text-align:center">按需抓取</td>
+<td style="text-align:center">全量同步</td>
+<td style="text-align:center">全量同步</td>
+<td style="text-align:center">全量同步</td>
+<td style="text-align:center">按需抓取</td>
+</tr>
+<tr>
+<td style="text-align:center">比赛</td>
+<td style="text-align:center">ACM/OI/IOI</td>
+<td style="text-align:center">ACM/OI <sup></sup></td>
+<td style="text-align:center">ACM/IOI</td>
+<td style="text-align:center">ACM/OI/IOI</td>
+<td style="text-align:center">ACM/OI</td>
+</tr>
+<tr>
+<td style="text-align:center">作业功能</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">修改编译命令/添加语言</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">权限系统 <sup></sup></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+ <sup></sup></td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">训练计划(题单)</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">- <sup></sup></td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">团队</td>
+<td style="text-align:center">+ <sup></sup></td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">Hack</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">SpecialJudge</td>
+<td style="text-align:center">+ <sup></sup></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Subtask</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">交互题</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">题目导入</td>
+<td style="text-align:center">fps/syzoj/qduoj/hydro</td>
+<td style="text-align:center">fps</td>
+<td style="text-align:center">syzoj</td>
+<td style="text-align:center">fps</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">后端语言</td>
+<td style="text-align:center">NodeJS</td>
+<td style="text-align:center">PHP</td>
+<td style="text-align:center">NodeJS</td>
+<td style="text-align:center">Python</td>
+<td style="text-align:center">Python</td>
+</tr>
+<tr>
+<td style="text-align:center">前端框架</td>
+<td style="text-align:center">React</td>
+<td style="text-align:center">BootStrap</td>
+<td style="text-align:center">Semantic UI</td>
+<td style="text-align:center">Vue</td>
+<td style="text-align:center">React</td>
+</tr>
+</tbody>
+</table>
+<h2 id="截图"> 截图</h2>
+<p><img src="https://img-kysic-1258722770.file.myqcloud.com/8250a08a7c62f8e11404a79614fc0c27/3c07f1f66ce12.png" alt="img">
+<img src="https://img-kysic-1258722770.file.myqcloud.com/0efcbc286dc3a0dabd57526f2b449bc2/07c266a66ae2a.png" alt="img">
+<img src="https://img-kysic-1258722770.file.myqcloud.com/e2f843260324924ccf35f48579bcf7c6/c9929a5c07519.png" alt="img">
+<img src="https://img-kysic-1258722770.file.myqcloud.com/ae53edcb75d6694bfb08229963f3ed21/4fe030b07bee3.png" alt="img"></p>
+<h2 id="现在开始"> 现在开始</h2>
+<p>点击 <a href="/docs/install/">部署</a> ，开始部署您的 OJ 吧！</p>
+<hr>
+<section>
+<ol>
+<li id="fn1"><p>S3 指所有兼容 Amazon S3 协议的服务，包括腾讯COS，阿里OSS 等。 </p>
+</li>
+<li id="fn2"><p>切换比赛模式仅能通过修改设置全局更改。 </p>
+</li>
+<li id="fn3"><p>此处的权限系统指 除用户/管理员二元化权限之外的 的更细粒度的权限划分。 </p>
+</li>
+<li id="fn4"><p>HustOJ的权限管理需要手动操作数据库。 </p>
+</li>
+<li id="fn5"><p>部分第三方修改版提供了该功能，但未开源。 </p>
+</li>
+<li id="fn6"><p>通过域功能，允许用户创建域并在域内拥有管理员权限。域之间仅共享账号数据。 </p>
+</li>
+<li id="fn7"><p>支持所有主流 SPJ 格式。 </p>
+</li>
+</ol>
+</section>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-01-25T18:27:09.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">域管理员文档</title>
+    <id>https://hydro.js.org/docs/domain/</id>
+    <link href="https://hydro.js.org/docs/domain/"/>
+    <updated>2021-07-05T08:38:35.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="域管理员文档"> 域管理员文档</h1>
+<h2 id="简介"> 简介</h2>
+<p>域，可以理解为 OJ 中的 OJ。<br>
+用户有权限为自己创建多个域。（取决于用户组设定，需要 PRIV_CREATE_DOMAIN 权限）。
+同一 Hydro 实例上的多个域间完全独立，仅用户信息相通（您在一个 Hydro 实例上注册账户后，在该实例的所有域中均有效）。</p>
+<h2 id="创建域"> 创建域</h2>
+<p>登录账号后，在“我的”选项卡中找到“我的域”，并点击“创建域”，填入以下信息：</p>
+<ul>
+<li>ID： 每个域有一个唯一的 ID，将会在域 URL 中体现。<strong>创建后无法修改。</strong></li>
+<li>名称： 域的名字，创建后可以更改。</li>
+<li>公告： 域主页上显示的公告，创建后可以更改。</li>
+<li>avatar： 域头像，与用户头像同理，可以使用 <code>gravatar:email</code> 或 <code>qq:id</code> 或 <code>github:name</code> 的格式添加。将会在“我的域”界面内显示。</li>
+</ul>
+<p>创建域后，您将在此域中拥有管理员权限，可以在域内进行添加题目/创建比赛等操作。</p>
+<h2 id="访问控制"> 访问控制</h2>
+<p><strong>未登录用户将默认使用 <code>guest</code> 权限，登录用户将默认使用 <code>default</code> 权限。</strong>（所以将登陆用户设为 <code>default</code> 权限后并不会显示在“管理用户”页内）<br>
+所以将一个用户的权限设为 <code>default</code> 和将用户移出该域是等价的。</p>
+<h2 id="创建比赛"> 创建比赛</h2>
+<p>若您想要创建比赛，您可以在“比赛”选项卡中点击“创建一个比赛”按钮，并填写：</p>
+<ul>
+<li>规则；</li>
+<li>标题；</li>
+<li>开始日期，时间；</li>
+<li>持续时间；</li>
+<li>题目： 此比赛包含的题目的 <strong>ID</strong>，若有多个则用逗号分隔；</li>
+<li>内容： 该比赛的详细介绍；</li>
+<li>是否 Rated： 该比赛是否会改变参加选手的 RP。</li>
+</ul>
+<p>设置完后可点击“创建”按钮创建比赛。</p>
+<h2 id="创建作业"> 创建作业</h2>
+<p>若您想要创建作业，您可以在“作业”选项卡中点击“创建作业”按钮，并填写：</p>
+<ul>
+<li>标题；</li>
+<li>开始日期、时间；</li>
+<li>结束日期、时间；</li>
+<li>最长延期；</li>
+<li>延期递交扣分规则；</li>
+<li>题目：此作业包含的题目的 <strong>ID</strong>，若有多个则用逗号分隔；</li>
+<li>内容：该作业的详细介绍。</li>
+</ul>
+<p>之后点击“创建”按钮进行创建。</p>
+<h2 id="初始化讨论节点"> 初始化讨论节点</h2>
+<p>您可以在“管理域”选项卡中点击“初始化讨论节点”按钮初始化讨论节点。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">训练</title>
+    <id>https://hydro.js.org/docs/domain/training/</id>
+    <link href="https://hydro.js.org/docs/domain/training/"/>
+    <updated>2021-05-08T17:02:49.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="训练"> 训练</h2>
+<p>训练是一组题目的合集，可以帮助其他用户有系统有方向地规划刷题路线。</p>
+<h2 id="创建训练"> 创建训练</h2>
+<p>若您想要创建训练，您可以在“训练” 项卡中点击“新建训练计划”，填写以下信息：</p>
+<ul>
+<li>标题：该训练的标题；</li>
+<li>简介：该训练的简介，会与标题同时显示在列表页面中；</li>
+<li>说明：该训练的详细信息；</li>
+<li>计划：该训练的具体题目及计划信息，其格式如下：</li>
+</ul>
+<div><pre><code>[
+  {章节详细信息},
+  {章节详细信息},
+  ...
+  {章节详细信息}
+]
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><p>其中，“章节详细信息”的包含以下部分：</p>
+<ul>
+<li><code>_id</code>：章节数字编号；</li>
+<li><code>title</code>：章节标题；</li>
+<li><code>requireNids</code>：训练此章节之前需要完成的章节数字编号，若无要求则留空，若有多个则使用逗号分隔；</li>
+<li><code>pids</code>：此章节中包含的题目的 <strong>ID</strong>，若有多个则使用逗号分隔。</li>
+</ul>
+<p><strong>举例</strong>：若要在训练中创建三个章节，章节中分别有 <strong>ID</strong> 为 1，2，3 的题目。其中章节一、二无前置条件，章节三需要同时完成章节一、二后才能进行，则格式如下：</p>
+<div><pre><code><span>[</span>
+  <span>{</span>
+    <span>"_id"</span><span>:</span> <span>1</span><span>,</span>
+    <span>"title"</span><span>:</span> <span>"入门"</span><span>,</span>
+    <span>"requireNids"</span><span>:</span> <span>[</span><span>]</span><span>,</span>
+    <span>"pids"</span><span>:</span> <span>[</span><span>1</span><span>]</span>
+  <span>}</span><span>,</span>
+  <span>{</span>
+    <span>"_id"</span><span>:</span> <span>2</span><span>,</span>
+    <span>"title"</span><span>:</span> <span>"精通"</span><span>,</span>
+    <span>"requireNids"</span><span>:</span> <span>[</span><span>]</span><span>,</span>
+    <span>"pids"</span><span>:</span> <span>[</span><span>2</span><span>]</span>
+  <span>}</span><span>,</span>
+  <span>{</span>
+    <span>"_id"</span><span>:</span> <span>3</span><span>,</span>
+    <span>"title"</span><span>:</span> <span>"大师"</span><span>,</span>
+    <span>"requireNids"</span><span>:</span> <span>[</span><span>1</span><span>,</span><span>2</span><span>]</span><span>,</span>
+    <span>"pids"</span><span>:</span> <span>[</span><span>3</span><span>]</span>
+  <span>}</span>
+<span>]</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div>]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">部署 Hydro</title>
+    <id>https://hydro.js.org/docs/install/</id>
+    <link href="https://hydro.js.org/docs/install/"/>
+    <updated>2021-07-08T12:52:05.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="部署-hydro"> 部署 Hydro</h1>
+<p>本页面将指导您部署 Hydro。 请根据您的实际情况选择。
+这里提供了几套方案帮助您建立自己的站点，请选择适合您的方案并继续。<br>
+搭建过程中如果遇到问题欢迎 <a href="/#联系我们">联系我们</a> 提问。</p>
+<h2 id="服务器选择"> 服务器选择</h2>
+<p>不同服务商提供的 CPU 主频不同，下方数据仅供参考。<br>
+最低服务器配置： CPU: 1核 内存: 1G 硬盘: 20G。（约可允许50人同时使用）<br>
+推荐服务器配置： CPU: 1核 内存: 2G 硬盘: 30G。（约可允许150人同时使用）<br>
+<strong>请尽量不要使用突发性能实例或共享型实例，这可能会导致评测时间计量不准确</strong></p>
+<h2 id="使用安装脚本搭建"> 使用安装脚本搭建</h2>
+<p><strong>运行前需要切换到 root 用户！ （ <code>sudo su</code> ）</strong>。</p>
+<p>目前支持以下操作系统：</p>
+<ul>
+<li>Ubuntu 16.04 LTS</li>
+<li>Ubuntu 18.04 LTS</li>
+<li>Ubuntu 20.04 LTS</li>
+<li>Arch Linux</li>
+</ul>
+<div><p>Tips</p>
+<p>若您已安装宝塔面板，请先卸载或将其切换至其他端口。
+<strong>不建议您在生产环境使用宝塔面板</strong><br>
+自动安装脚本将会在您的机器上安装 MongoDB、MinIO、NodeJS。如果您的机器上已经安装过上述软件，建议您重置该系统或是进行 <a href="/install/common.html">常规安装</a>。</p>
+</div>
+<div><pre><code><span>wget</span> https://s3.undefined.moe/public/install <span>&amp;&amp;</span> <span>chmod</span> +x <span>install</span> <span>&amp;&amp;</span> ./install
+</code></pre>
+<div><span>1</span><br></div></div><p>完成后请阅读下方  部分。</p>
+<h2 id="使用-docker"> 使用 docker</h2>
+<p>仅推荐熟悉 docker 及 docker-compose 的用户使用。
+参照 https://github.com/hydro-dev/Hydro/blob/master/install/docker/README.md</p>
+<h2 id="开发者模式"> 开发者模式</h2>
+<p><strong>安装依赖</strong></p>
+<div><p>Note</p>
+<p>CentOS 的内核版本过于老旧，可能会导致沙箱安全性问题。</p>
+</div>
+<ul>
+<li>MongoDB：Hydro 需要 <a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener noreferrer">MongoDB</a> 提供数据库服务。</li>
+<li>S3：可使用 <a href="https://min.io" target="_blank" rel="noopener noreferrer">MinIO</a> 提供 S3 服务。</li>
+<li>NodeJS：请安装 NodeJS &gt;=14 版本。（勿使用 apt 安装 nodejs） （推荐使用 <a href="https://nvm.sh/" target="_blank" rel="noopener noreferrer">nvm</a>）</li>
+<li>yarn：安装 yarn 前请先完成 NodeJS 安装。 <code>npm install -g yarn</code></li>
+</ul>
+<div><p>Tips</p>
+<p>腾讯COS、Amazon S3、wasabi 等也可提供 S3 服务。<br>
+暂不支持阿里OSS。</p>
+</div>
+<p><strong>安装Hydro</strong></p>
+<div><pre><code><span>yarn</span> global <span>add</span> npx <span># 安装 npx 工具</span>
+<span>git</span> clone https://github.com/hydro-dev/Hydro.git /root/Hydro --recursive <span># 下载至 /root/Hydro 文件夹</span>
+<span>cd</span> /root/Hydro <span># 进入工作目录</span>
+<span>yarn</span> <span>install</span> <span># 安装依赖包</span>
+<span>yarn</span> build <span># 编译后端</span>
+<span>yarn</span> build:ui:production <span># 编译前端</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><p><strong>开发者模式指南</strong></p>
+<p>支持如下启动参数：</p>
+<ul>
+<li><code>--port=8888</code> 指定启动端口</li>
+<li><code>--debug</code> 启用开发模式</li>
+<li><code>--ignorelock</code> 忽略lockfile（不建议）</li>
+</ul>
+<p>您可以在后台运行 <code>yarn build:watch</code>，这将对后端源码进行实时转译，可在反复修改时节省编译时间。<br>
+您可以在后台运行 <code>yarn build:ui:dev</code>，这将对前端源码进行实时转译，可在反复修改时节省编译时间。<br>
+您可以使用 <code>yarn debug --port=2333</code> 启动 Hydro，配合上述两个命令同时使用，您可以在 8000 端口访问到 Hydro 实例，且前端的任何更改将即时生效。（更改后端代码后仍需要重启 Hydro 才能生效）</p>
+<p>首次启动会要求您填写数据库连接信息。请根据您数据库的安装填写（若无密码则留空）<br>
+出现 <code>Storage init fail</code> 提示是正常现象。请按照下文说明创建管理员账户，在系统设置的 file 部分填写 S3 服务的连接信息后重启 Hydro 即可正常使用。</p>
+<h2 id="初始化"> 初始化</h2>
+<p>安装完成后请先重启 bash。（关闭终端重新打开或是重新连接ssh）<br>
+请尝试通过 <code>http://服务器ip:8888/</code> 访问 Hydro 并注册一个账号。<br>
+若您无法访问，请检查服务器防火墙/安全组是否放行了 8888 端口。</p>
+<p>注册账号后，请在右上角下拉菜单找到个人信息，记住页面所显示的 UID。<br>
+在终端以 root 用户运行以下命令将用户设置为管理员：</p>
+<CodeGroup>
+<CodeGroupItem title="常规部署" active>
+<div><pre><code>hydrooj cli user setSuperAdmin <span>UID</span>
+</code></pre>
+<div><span>1</span><br></div></div></CodeGroupItem>
+<CodeGroupItem title="开发者模式">
+<div><pre><code><span># 请在 Hydro 的安装文件夹内运行该命令</span>
+npx hydrooj cli user setSuperAdmin <span>UID</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br></div></div></CodeGroupItem>
+</CodeGroup>
+<p>之后刷新页面，您应当能在导航栏看到控制面板入口。<br>
+进入控制面板，右侧进入系统设置，填写如下内容：</p>
+<ul>
+<li>Server Name: 您的 OJ 的名称。</li>
+<li>Server BaseURL: 网站完整的 URL，需要以 <code>/</code> 结尾。（重要，务必正确填写）</li>
+<li>Server Port: Hydro 监听的端口。</li>
+<li>IP Header: 若使用反向代理（含 Cloudflare 等 CDN 服务），请设置为其 IP Header（通常为 <code>x-forwarded-for</code> 或 <code>x-real-ip</code>，小写）。在不使用反向代理的情况下请勿配置该项，否则用户将可以伪造 IP 。</li>
+<li>Default display language: 网站默认语言。</li>
+</ul>
+<div><p>Tips</p>
+<p>建议您完整浏览所有设置项并按需配置。（不知道是啥的别改，出问题了自行解决）</p>
+</div>
+<p>Hydro 系统会不定期发布更新。</p>
+<CodeGroup>
+<CodeGroupItem title="常规部署" active>
+<div><pre><code><span>yarn</span> global upgrade-interactive --latest
+</code></pre>
+<div><span>1</span><br></div></div></CodeGroupItem>
+<CodeGroupItem title="开发者模式">
+<div><pre><code><span># 请在 Hydro 的安装文件夹内运行该命令</span>
+<span>git</span> pull <span># 拉取更新</span>
+<span>yarn</span> build <span># 编译后端</span>
+<span>yarn</span> build:ui:production <span># 编译前端</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div></CodeGroupItem>
+</CodeGroup>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Hydro Cli</title>
+    <id>https://hydro.js.org/docs/install/cli/</id>
+    <link href="https://hydro.js.org/docs/install/cli/"/>
+    <updated>2021-07-08T12:52:05.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="hydro-cli"> Hydro Cli</h1>
+<div><p>Tips</p>
+<p>在使用 cli 之前，请完成数据库配置。<br>
+指令中使用 <code>&lt;&gt;</code> 括起来的参数必须给出，用 <code>[]</code> 括起来的参数可以给出，若不给出则按照默认设置。<br>
+<strong>用户请根据自己的情况替换掉用 <code>&lt;&gt;</code> 或是 <code>[]</code> 包括起来的部分（括号也应替换）</strong></p>
+</div>
+<p>cli 可以帮助用户在控制台下快捷地进行一些操作。</p>
+<p>下面给出了一些常用的例子。</p>
+<h2 id="创建用户"> 创建用户</h2>
+<div><p>Tips</p>
+<p>很少使用。建议通过 控制面板&gt;导入用户 功能代替</p>
+</div>
+<div><pre><code>hydrooj cli user create <span>&lt;</span>mail<span>></span> <span>&lt;</span>username<span>></span> <span>&lt;</span>password<span>></span>
+<span># 该用户的邮箱、用户名和密码</span>
+
+<span># 如创建邮箱为 hydro@hydro.local，用户名为 Hydro，密码为 hydrohydro 的用户：</span>
+hydrooj cli user create hydro@hydro.local Hydro hydrohydro
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>若一切正常，运行该指令后您会从命令行窗口中看到该用户 uid。</p>
+<h2 id="设置全站管理员"> 设置全站管理员</h2>
+<div><pre><code>hydrooj cli user setSuperAdmin <span>&lt;</span>uid<span>></span>
+
+<span># 如设置 uid 为 2 的用户为管理员：</span>
+hydrooj cli user setSuperAdmin <span>2</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><h2 id="设置用户权限"> 设置用户权限</h2>
+<div><pre><code>hydrooj cli user setPriv <span>&lt;</span>uid<span>></span> <span>&lt;</span>priv<span>></span>
+</code></pre>
+<div><span>1</span><br></div></div><p>关于参数 <code>[priv]</code> ，可阅读 <a href="/dev/PERM_PRIV/">此处</a>。</p>
+<h2 id="更改用户密码"> 更改用户密码</h2>
+<div><pre><code>hydrooj cli user setPassword <span>&lt;</span>uid<span>></span> <span>&lt;</span>password<span>></span>
+
+<span># 如将 uid 为 1 的用户的密码改为 hydrohydro：</span>
+hydrooj cli user setPassword <span>1</span> hydrohydro
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><h2 id="创建评测账号"> 创建评测账号</h2>
+<p>先创建一个账号。</p>
+<div><pre><code>hydrooj cli user create <span>&lt;</span>mail<span>></span> <span>&lt;</span>username<span>></span> <span>&lt;</span>password<span>></span>
+</code></pre>
+<div><span>1</span><br></div></div><p>您需要留意运行此指令返回的数字，表示该用户的 <code>uid</code>，需要填入下面的指令中，然后给予该账号评测权限。</p>
+<div><pre><code>hydrooj cli user setJudge <span>&lt;</span>uid<span>></span>
+</code></pre>
+<div><span>1</span><br></div></div><p>完成后将配置的用户名及密码写入评测机配置文件，评测机即可连接到网页端。</p>
+<h2 id="命令列表"> 命令列表</h2>
+<p>所有于 <a href="https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model" target="_blank" rel="noopener noreferrer">此文件夹</a> 下的函数均可用 cli 调用。</p>
+<p>这里并没有列出所有可以运行的指令，因为其中很多功能我们更推荐通过 Web 访问。</p>
+<div><pre><code><span># key 格式为 ip:xxx.xxx.xxx.xxx （封禁 IP 访问） 或是 mail:xxx.com （禁止 xxx.com 的邮箱注册）</span>
+hydrooj cli blacklist <span>add</span> <span>&lt;</span>key<span>></span> <span>[</span>duration<span>]</span> <span># 将 &lt;key> 拉入黑名单，时长为 [duration] （默认一年，若 duration=0 则永久封禁）</span>
+hydrooj cli blacklist get <span>&lt;</span>key<span>></span> <span># 获取黑名单中有关 &lt;key> 的信息</span>
+hydrooj cli blacklist del <span>&lt;</span>key<span>></span> <span># 将 &lt;key> 移出黑名单</span>
+hydrooj cli user create <span>&lt;</span>mail<span>></span> <span>&lt;</span>uname<span>></span> <span>&lt;</span>password<span>></span> <span>[</span>uid<span>]</span> <span>[</span>regip<span>]</span> <span>[</span>priv<span>]</span>
+<span># 创建邮箱为 &lt;mail>，用户名为 &lt;uname>，密码为 &lt;password>，ID 为 [uid]，注册 ip 为 [regip]，权限为 [priv] 的用户</span>
+hydrooj cli user setPriv <span>&lt;</span>uid<span>></span> <span>&lt;</span>priv<span>></span> <span># 将 ID 为 &lt;uid> 的用户的权限设为 &lt;priv></span>
+hydrooj cli user setPassword <span>&lt;</span>uid<span>></span> <span>&lt;</span>password<span>></span> <span># 将 ID 为 &lt;uid> 的用户的密码设置为 &lt;password></span>
+hydrooj cli user setEmail <span>&lt;</span>uid<span>></span> <span>&lt;</span>mail<span>></span> <span># 将 ID 为 &lt;uid> 的用户的邮箱设置为 &lt;mail></span>
+hydrooj cli user setSuperAdmin <span>&lt;</span>uid<span>></span> <span># 将 ID 为 &lt;uid> 的用户设为全站管理员</span>
+hydrooj cli system <span>set</span> <span>&lt;</span>key<span>></span> <span>&lt;</span>value<span>></span> <span># 修改系统设置 &lt;key> 值为 &lt;value></span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div>]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">进阶配置</title>
+    <id>https://hydro.js.org/docs/install/enhance/</id>
+    <link href="https://hydro.js.org/docs/install/enhance/"/>
+    <updated>2021-07-08T12:52:05.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="进阶配置"> 进阶配置</h1>
+<h2 id="反向代理"> 反向代理</h2>
+<div><p>Note</p>
+<p>若使用反向代理，请注意将 Hydro 设置的 X-Host header 配置正确（参照下方样例配置）。<br>
+X-Real-Host 配置错误会导致用户无法登录等问题。<br>
+X-Real-Ip 配置错误会导致无法记录用户IP。</p>
+</div>
+<p>在前面我们指定让 Hydro 直接监听固定端口，但是当您的服务器上需要同时运行多个 Web 服务时可能会发生端口冲突。<br>
+此时可以使用 Nginx, HaProxy, Caddy 等工具进行反向代理，<a href="https://github.com/hydro-dev/Hydro/tree/master/examples" target="_blank" rel="noopener noreferrer">此处</a> 提供了一些配置样例。</p>
+<p>Hydro 推荐您使用 <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>。以下为样例 Caddyfile。
+提示：如果您的服务器位于国内，则需要进行备案后才能使用 80 和 443 端口。</p>
+<div><pre><code>hydro.org.cn {
+  reverse_proxy http://localhost:8888 {
+    header_up x-real-ip {remote_host}
+    header_up x-real-host hydro.org.cn
+  }
+}
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><div><p>Note</p>
+<p>若您使用 Nginx，请注意配置 WebSocket 协议的反向代理。</p>
+</div>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">多评测机部署</title>
+    <id>https://hydro.js.org/docs/install/multi-judge/</id>
+    <link href="https://hydro.js.org/docs/install/multi-judge/"/>
+    <updated>2021-05-24T16:14:19.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="多评测机部署"> 多评测机部署</h1>
+<p>参照 <a href="/plugins/hydrojudge">HydroJudge插件指南</a></p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-24T16:14:19.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">端口映射</title>
+    <id>https://hydro.js.org/docs/install/port-forwarding/</id>
+    <link href="https://hydro.js.org/docs/install/port-forwarding/"/>
+    <updated>2021-06-10T04:47:19.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="端口映射"> 端口映射</h1>
+<div><p>Tips</p>
+<p>如果您希望让外网访问 Hydro，但是服务器没有外网ip，那么您可能需要这篇教程。<br>
+本文将引导您将内外的 Hydro 对外网开放。您可以选择以下方案中的一种。</p>
+</div>
+<h2 id="ngrok"> ngrok</h2>
+<p>ngrok 是一款操作简单的软件，可以把内网的web服务映射到外网。</p>
+<p>大部分的 ngrok 服务是免费的。例如：<a href="https://www.ngrok.cc/" target="_blank" rel="noopener noreferrer">ngrok.cc</a></p>
+<div><p>Tips</p>
+<p>ngrok 的缺点：</p>
+<ul>
+<li>速度比较慢</li>
+<li>数据并不保密，ngrok 服务提供者有能力监听 OJ 的通讯。</li>
+</ul>
+</div>
+<p>虽然有这几个缺点，ngrok 仍然不失为一个好的选择。具体的配置，请参见 <a href="https://www.ngrok.cc/" target="_blank" rel="noopener noreferrer">ngrok.cc</a> 网站。</p>
+<h2 id="ssh转发"> ssh转发</h2>
+<p>这个方案需要您有一台 VPS，且 VPS 需要拥有外网 IP。</p>
+<p>首先，您需要在本地机器通过 <code>ssh-keygen</code> 来生成一个您的密钥：</p>
+<div><pre><code>ssh-keygen -t rsa
+</code></pre>
+<div><span>1</span><br></div></div><p>一直按 <code>enter</code> 键，然后您将会在 <code>~/.ssh/id_rsa.pub</code> 取得您的公钥。<br>
+<img src="https://i.loli.net/2018/10/19/5bc992e392705.png" alt="生成公钥"></p>
+<p>然后登录您的VPS，把上面的公钥扔进<code>~/.ssh/authorized_keys</code>，如下图所示：<br>
+<img src="https://i.loli.net/2018/10/19/5bc992e3ad19b.png" alt="VPS"></p>
+<p>现在，您在本地机器上使用如下命令，应该可以免密码登录VPS：</p>
+<div><pre><code><span>ssh</span> <span>&lt;</span>VPS_user<span>></span>@<span>&lt;</span>VPS_ip<span>></span>  
+</code></pre>
+<div><span>1</span><br></div></div><p>如果不能登录，您可能对上面过程的理解存在偏差。<br>
+接下来，在本地机器上安装 autossh，它是稳定的 ssh 连接工具：</p>
+<div><pre><code><span>apt</span> <span>install</span> autossh
+</code></pre>
+<div><span>1</span><br></div></div><p>最后运行下面的指令，将本地的 80 端口映射到 VPS 的 80 端口：</p>
+<div><pre><code>autossh -M <span>5698</span> -NfR <span>&lt;</span>VPS的ip<span>></span>:80:<span>&lt;</span>本地机器的ip<span>></span>:80 <span>&lt;</span>VPS用户名<span>></span>@<span>&lt;</span>VPS的ip<span>></span>  
+
+<span># 例如：</span>
+<span># autossh -M 5698 -NfR 23.23.23.23:80:127.0.0.1:80 blue@23.23.23.23</span>
+<span># 5698 是监听端口，用于测试 ssh 连接是否稳定。如果您运行了多个 autossh，请保证它们的监听端口不同。</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>访问 VPS 的 IP，您应该可以看到 Hydro 了。<br>
+如果您有域名，请添加一条 A 记录，指向 VPS 的 IP，然后就能用域名访问了。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-24T16:14:19.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">新建题目和管理界面</title>
+    <id>https://hydro.js.org/docs/problem/</id>
+    <link href="https://hydro.js.org/docs/problem/"/>
+    <updated>2021-05-24T16:14:19.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="新建题目和管理界面"> 新建题目和管理界面</h2>
+<p>拥有 PERM_CREATE_PROBLEM 的用户均可以新建题目。<br>
+请点击题库页面右下角的 <code>创建题目</code> 按钮。</p>
+<div><p>Tips</p>
+<p>题目 ID 不能全为数字。若留空则使用自动分配的数字题号。</p>
+</div>
+<h3 id="编辑"> 编辑</h3>
+<p><strong>题面</strong></p>
+<p>题面使用 Markdown 语法，并进行了部分扩展。</p>
+<p>支持对样例数据分组显示：</p>
+<pre><code>```input1
+1 2
+```
+
+```output1
+3
+```</code></pre>
+<p>后接的数字为测试点编号，将自动合并，并左右分栏显示。</p>
+<p>支持从附加文件引用资源。（您可以先创建题目，上传相关文件后再编辑该题目）</p>
+<ul>
+<li>从附加文件引用一张图片： <code>![img](file://foo.jpg)</code></li>
+<li>从附加文件引用 pdf 作为题面：<code>@[pdf](file://foo.pdf)</code> （该功能在部分环境可能不正常。请考虑使用 hydro-pdf 插件。）</li>
+<li>从附加文件引用 word 文档作为题面： <code>@[doc](file://foo.docx)</code> （依赖 onlyoffice 插件）</li>
+<li>提及用户： <code>@[user](uid或用户名)</code></li>
+</ul>
+<p>支持合并表格：</p>
+<div><pre><code>|1|1|3|4|5|
+|-|-|-|-|-|
+|1|1|2|2|6|
+|1|1|2|2|7|
+|1|4|3|5|5|
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>将被渲染为：</p>
+<p><img src="https://s3.undefined.moe/images/2021/05/24/imagea57805ae1c1ea298.png" alt="img"></p>
+<p>（这在制作数据规模等限制的时候十分有用）</p>
+<p>支持内嵌 HTML：（用来对付部分markdown搞不定的东西）</p>
+<div><pre><code><span><span><span>&lt;</span>span</span> <span>bgcolor</span><span><span>=</span><span>"</span>red<span>"</span></span><span>></span></span>foo<span><span><span>&lt;/</span>span</span><span>></span></span>
+</code></pre>
+<div><span>1</span><br></div></div><p>理论上，题面是可以自由编写的，但还是有一些推荐的格式和规则：</p>
+<ol>
+<li>中文与英文、数字之间加一个空格隔开。</li>
+<li>输入输出样例视为代码块，使用Markdown的 <code>```</code> 语法。</li>
+<li>题面中最高级标题为二级标题。</li>
+<li>一切数字、数学符号、运算符、变量名、公式应当用 LaTeX 语法编写。行中公式用 <code>$ &lt;formula&gt; $</code>，独立公式用 <code>$$ &lt;formula&gt; $$</code>。</li>
+</ol>
+<blockquote>
+<p>上面的规则不必强行遵守。</p>
+</blockquote>
+<p><strong>标签</strong></p>
+<p>可点击右侧面板快速添加标签。用英文半角逗号分隔多个标签。理论上，标签是可以自由标定的，但还是有一些推荐的规则：</p>
+<ol>
+<li>标签的目的是标出题目类型，方便用户检索题目。一般来说，标签顺序基本为从小范围到大范围。</li>
+<li>最前面的几个标签是这题所需要的前置技能，这里假定 “二分查找” 之类过于基础的技能选手已经掌握。</li>
+<li>接下来是这道题的大方法，比如 “贪心”、“DP”、“乱搞”、“构造”、“分治”……</li>
+<li>接下来，如果这道题是不用脑子想就能做出的题，例如 NOIP 第一题难度，用一个标签注明 “水题”。</li>
+<li>最后，如果这题的来源比较重要，用一个标签注明。比如 “UOJ Round”、“NOI”、“WC”。</li>
+<li>前置技能中，“数学” 太过宽泛不能作为标签，但 “数论” 可以作为前置技能。</li>
+<li>如果有多个解法，每个解法的前置技能和大方法都不太一样，那么尽可能都标上去。</li>
+<li>“乱搞” 标签不宜滥用。</li>
+</ol>
+<h2 id="测试数据与附加文件"> 测试数据与附加文件</h2>
+<p>您可以在题目右侧“文件”面板上传测试数据或附加文件。（支持拖拽文件至相应位置进行上传）<br>
+测试数据配置详见 <a href="/docs/problem/testdata">此处</a> 。<br>
+推荐您在线编辑题目配置（点击 Create File，输入文件名 config.yaml），将提供配置有效性的检查。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-24T16:14:19.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">导入题目</title>
+    <id>https://hydro.js.org/docs/problem/import/</id>
+    <link href="https://hydro.js.org/docs/problem/import/"/>
+    <updated>2021-05-24T16:14:19.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="导入题目"> 导入题目</h2>
+<h3 id="从-hydro-导入"> 从 Hydro 导入</h3>
+<p>上传 Hydro 导出的题目压缩包即可。</p>
+<h3 id="从-syzoj-导入"> 从 SYZOJ 导入</h3>
+<p>在“导入自”一栏中填入要导入的题目的 URL（源站必须基于原版 SYZOJ/SYZOJ-ng 搭建），然后点击“导入”键即可。<br>
+题目除测试数据以外的部分会直接导入，测试数据将会异步导入（取决于网络状况，这可能需要一段时间，请耐心等待）。</p>
+<h3 id="从-fps-文件导入"> 从 FPS 文件导入</h3>
+<p>见插件 <a href="/plugins/fps-importer/">fps-importer</a>。</p>
+<h3 id="从-qduoj-导入"> 从 QDUOJ 导入</h3>
+<p>见插件 import-qduoj
+</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-24T16:14:19.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">客观题</title>
+    <id>https://hydro.js.org/docs/problem/subjective/</id>
+    <link href="https://hydro.js.org/docs/problem/subjective/"/>
+    <updated>2021-07-09T14:56:35.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="客观题"> 客观题</h2>
+<p>由于客观题的题面配置与测试数据配置均与其他题目不同，所以这里单独给出配置客观题的方法。</p>
+<h3 id="题面"> 题面</h3>
+<p>题面需要以 yaml 格式给出。</p>
+<div><pre><code><span># 第 0 道题目</span>
+<span>-</span> <span>desc</span><span>:</span> 这是一道普普通通的选择题
+  <span>choices</span><span>:</span> <span># 如果是选择题需要包含 choise 选项并列出题目的每一个选项的具体信息。</span>
+  <span>-</span> A. 1 + 1 = 1
+  <span>-</span> B. 1 + 1 = 2
+  <span>-</span> C. 1 + 1 = 3
+<span># 第 1 道题目</span>
+<span>-</span> <span>desc</span><span>:</span> 1 + 1 = <span>?</span>
+<span># 若不包含 choise 选项则该题为填空题</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div><p>上面这个例子对应的题面为：</p>
+<p><img src="https://img-kysic-1258722770.file.myqcloud.com/097144406a0f106c9751fa0b40461a84/4bca6e5b7b748.png" alt="img"></p>
+<h3 id="测试数据"> 测试数据</h3>
+<p>仅需要配置 config.yaml 即可，不需要上传其他文件。</p>
+<div><pre><code><span>type</span><span>:</span> subjective <span># 表明该题为客观题</span>
+<span>outputs</span><span>:</span> <span># 列举出每一题的正确选项与对应的得分</span>
+  <span>-</span> <span>[</span>B. 1 + 1 = 2<span>,</span> <span>50</span><span>]</span>
+  <span>-</span> <span>[</span><span>'2'</span><span>,</span> <span>50</span><span>]</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div>]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-07-09T14:56:35.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">测试数据格式</title>
+    <id>https://hydro.js.org/docs/problem/testdata/</id>
+    <link href="https://hydro.js.org/docs/problem/testdata/"/>
+    <updated>2021-07-04T12:00:32.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="测试数据格式"> 测试数据格式</h2>
+<h3 id="自动模式"> 自动模式</h3>
+<div><p>Tips</p>
+<p>您可以直接选择文件（支持多选）上传或将文件拖拽至相应位置上传。<br>
+若上传文件为 zip 格式，将会自动进行解压操作。</p>
+</div>
+<p>对于一般的题目，您只需提供 <code>.in</code> 和 <code>.out/.ans</code> 文件，以下是一个例子。</p>
+<div><pre><code>喵? tree
+<span>.</span>
+├── a1.in
+├── a1.out
+├── a2.in
+├── a2.out
+├── a3.in
+└── a3.out
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>测试数据将被自动识别，并使用 1s 256mb 的限制。</p>
+<h3 id="使用配置文件"> 使用配置文件</h3>
+<p>上传 <code>config.yaml</code> 文件即可，文件格式如下（下方所有样例均为可选项，若无说明则预填写的内容即为默认值）：</p>
+<div><pre><code><span># 题目类型，可以为 default(比对输出，含spj), submit_answer（提交答案）, interactive（交互题）</span>
+<span>type</span><span>:</span> default
+
+<span># 全局时空限制（此处的限制优先级低于测试点的限制）</span>
+<span>time</span><span>:</span> 1s
+<span>memory</span><span>:</span> 128m
+
+<span># 输入输出文件名（例：使用 foo.in 和 foo.out），若使用标准 IO 删除此配置项即可</span>
+<span>filename</span><span>:</span> foo
+
+<span># 此部分设置当题目类型为 default 时生效</span>
+<span># 比较器类型，支持的值有 default（直接比对，忽略行末空格和文件末换行）, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib</span>
+<span>checker_type</span><span>:</span> default
+<span># 比较器文件（当比较器类型不为 default 时填写）</span>
+<span># 文件路径（位于压缩包中的路径）</span>
+<span># 将通过扩展名识别语言，与编译命令处一致。在默认配置下，C++ 扩展名应为 .cc 而非 .cpp</span>
+<span>checker</span><span>:</span> chk.cc
+
+<span># 此部分设置当题目类型为interactive时生效</span>
+<span># 交互器路径（位于压缩包中的路径）</span>
+<span>interactor</span><span>:</span> interactor.cc
+
+<span># Extra files 额外文件</span>
+<span># These files will be copied to the working directory 这些文件将被复制到工作目录。</span>
+<span># 提示：您无需手动上传 testlib.h。</span>
+<span>user_extra_files</span><span>:</span>
+  <span>-</span> extra_input.txt
+<span>judge_extra_files</span><span>:</span>
+  <span>-</span> extra_file.txt
+
+<span># Test Cases 测试数据列表</span>
+<span># If neither CASES or SUBTASKS are set(or config.yaml doesn't exist), judge will try to locate them automaticly.</span>
+<span># 如果 CASES 和 SUBTASKS 都没有设置或 config.yaml 不存在， 系统会自动尝试识别数据点。</span>
+<span># We support these names for auto mode: 自动识别支持以下命名方式：</span>
+<span># 1. [name(optional)][number].(in/out/ans)         RegExp: /^([a-zA-Z]*)([0-9]+).in$/</span>
+<span>#   examples: </span>
+<span>#     - c1.in / c1.out</span>
+<span>#     - 1.in / 1.out</span>
+<span>#     - c1.in / c1.ans</span>
+<span># 2. input[number].txt / output[number].txt        RegExp: /^(input)([0-9]+).txt$/</span>
+<span>#   - example: input1.txt / input2.txt</span>
+<span>#</span>
+<span># The CASES option has higher priority than the SUBTASKS option!</span>
+<span># 在有 CASES 设置项时，不会读取 SUBTASKS 设置项！</span>
+<span>score</span><span>:</span> <span>50</span>     <span># 单个测试点分数</span>
+<span>time</span><span>:</span> 1s      <span># 时间限制</span>
+<span>memory</span><span>:</span> 256m  <span># 内存限制</span>
+<span>cases</span><span>:</span>
+  <span>-</span> <span>input</span><span>:</span> abc.in
+    <span>output</span><span>:</span> def.out
+  <span>-</span> <span>input</span><span>:</span> ghi.in
+    <span>output</span><span>:</span> jkl.out
+<span># 或使用Subtask项：</span>
+<span>subtasks</span><span>:</span>
+  <span>-</span> <span>score</span><span>:</span> <span>30</span>
+    <span>time</span><span>:</span> 1s
+    <span>memory</span><span>:</span> 64m
+    <span>cases</span><span>:</span>
+      <span>-</span> <span>input</span><span>:</span> a.in
+        <span>output</span><span>:</span> a.out
+      <span>-</span> <span>input</span><span>:</span> b.in
+        <span>output</span><span>:</span> b.out
+  <span>-</span> <span>score</span><span>:</span> <span>70</span>
+    <span>time</span><span>:</span> 0.5s
+    <span>memory</span><span>:</span> 32m
+    <span>if</span><span>:</span> <span>[</span><span>0</span><span>]</span> <span># 可选，传入数组，表示仅在subtask0通过时此subtask才计分</span>
+    <span>cases</span><span>:</span>
+      <span>-</span> <span>input</span><span>:</span> c.in
+        <span>output</span><span>:</span> c.out
+      <span>-</span> <span>input</span><span>:</span> d.in
+        <span>output</span><span>:</span> d.out
+
+<span># 提交语言限制</span>
+<span># 列举出所有本题允许使用的语言对应的代码（需要和评测机 lang.yaml 内的语言代码相同）</span>
+<span>langs</span><span>:</span>
+  <span>-</span> c
+  <span>-</span> cc
+  <span>-</span> pas
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br><span>65</span><br><span>66</span><br><span>67</span><br><span>68</span><br><span>69</span><br><span>70</span><br><span>71</span><br><span>72</span><br><span>73</span><br><span>74</span><br><span>75</span><br><span>76</span><br><span>77</span><br><span>78</span><br></div></div><p><a href="https://undefined.moe/hydro/testdata_spj_example.zip" target="_blank" rel="noopener noreferrer">Special Judge 样例数据包下载</a></p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-24T16:14:19.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">常见问题</title>
+    <id>https://hydro.js.org/docs/system/FAQ/</id>
+    <link href="https://hydro.js.org/docs/system/FAQ/"/>
+    <updated>2021-07-08T12:52:05.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="常见问题"> 常见问题</h1>
+<h2 id="如何重启-hydro？"> 如何重启 Hydro？</h2>
+<div><pre><code>pm2 restart hydrooj
+</code></pre>
+<div><span>1</span><br></div></div><h2 id="hydro-的文件存放在何处？"> Hydro 的文件存放在何处？</h2>
+<p>数据库存储于 <code>/data/db</code><br>
+测试数据等文件存储于 <code>/data/file</code>
+配置文件位于 <code>/root/.config/hydro</code> 和 <code>/root/.hydro</code></p>
+<h2 id="如何关闭用户注册？"> 如何关闭用户注册？</h2>
+<p>用户注册由 Guest 用户（uid为0）的 PRIV_REGISTER_USER 权限控制，使用 <code>hydrooj cli user setPriv 0 0</code> 关闭即可。</p>
+<h2 id="如何修改网站图标？"> 如何修改网站图标？</h2>
+<p>使用 <code>hydrooj addon create</code> 创建一个插件，这会自动创建 <code>/root/addon</code> 目录。<br>
+进入 <code>/root/addon/public</code> 目录，将您的站点图标放置于该文件夹下。<br>
+您需要将以下文件放在该目录中（适配不同浏览器）：</p>
+<ul>
+<li><code>favicon-16x16.png</code></li>
+<li><code>favicon-32x32.png</code></li>
+<li><code>favicon-96x96.png</code></li>
+<li><code>favicon.ico</code> (32x32)</li>
+<li><code>android-chrome-192x192.png</code></li>
+<li><code>apple-touch-icon-180x180.png</code></li>
+</ul>
+<p>分辨率应尽可能对应，但不强制要求。以上图片将在浏览器标签页图片上显示。<br>
+您还需要将以下文件放在该目录：</p>
+<ul>
+<li><code>nav_logo_dark.png</code></li>
+<li><code>nav_logo_dark_2x.png</code></li>
+</ul>
+<p>以上图片将在页面左上角 logo 显示。
+之后前往系统设置，找到 <code>nav_logo_dark</code> 和 <code>nav_logo_dark_2x</code> 设置项，分别改为 <code>/nav_logo_dark.png</code> 和 <code>/nav_logo_dark_2x.png</code> ，重启 Hydro 即可应用更改。</p>
+<h2 id="如何重置数据？"> 如何重置数据？</h2>
+<div><p>Note</p>
+<p>此操作会删除所有用户/题目/比赛等数据。请谨慎操作！</p>
+</div>
+<p>此工具仅对使用一键安装脚本的用户有效。</p>
+<p>运行 <a href="https://github.com/hydro-dev/Hydro/blob/master/install/reset.sh" target="_blank" rel="noopener noreferrer">此处</a> 脚本即可。</p>
+<h2 id="如何像-syzoj-一样在首页显示用户排名？"> 如何像 SYZOJ 一样在首页显示用户排名？</h2>
+<p>在系统设置中找到 <code>hydrooj</code> 分类中的首页设置，其格式如下：</p>
+<div><pre><code><span>contest</span><span>:</span> <span>5</span> <span># 显示最近五场比赛</span>
+<span>homework</span><span>:</span> <span>10</span> <span># 显示最近十个作业</span>
+<span>training</span><span>:</span> <span>10</span> <span># 显示最新的十个训练</span>
+<span>discussion</span><span>:</span> <span>20</span> <span># 显示最新的二十个讨论</span>
+<span>ranking</span><span>:</span> <span>50</span> <span># 显示排名前五十的用户</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>您可按需更改，显示顺序与配置中的排列顺序相同。</p>
+<h2 id="如何在背景中添加线条特效？"> 如何在背景中添加线条特效？</h2>
+<p>在系统设置中找到 <code>footer_extra_html</code> 项，加上如下内容：（写在一行内，不要多加换行）</p>
+<blockquote>
+<p>基于 https://github.com/hustcc/canvas-nest.js ，MIT</p>
+</blockquote>
+<div><pre><code><span><span><span>&lt;</span>script</span><span>></span></span><span><span><span>(</span><span>(</span><span>)</span><span>=></span><span>{</span><span>function</span> <span>e</span><span>(</span><span>e<span>,</span>n<span>,</span>t</span><span>)</span><span>{</span><span>return</span> e<span>.</span><span>getAttribute</span><span>(</span>n<span>)</span><span>||</span>t<span>}</span><span>function</span> <span>n</span><span>(</span><span>)</span><span>{</span>l<span>=</span>i<span>.</span>width<span>=</span>window<span>.</span>innerWidth<span>||</span>document<span>.</span>documentElement<span>.</span>clientWidth<span>||</span>document<span>.</span>body<span>.</span>clientWidth<span>,</span>u<span>=</span>i<span>.</span>height<span>=</span>window<span>.</span>innerHeight<span>||</span>document<span>.</span>documentElement<span>.</span>clientHeight<span>||</span>document<span>.</span>body<span>.</span>clientHeight<span>}</span><span>function</span> <span>c</span><span>(</span><span>)</span><span>{</span><span>var</span> t<span>,</span>o<span>,</span>i<span>,</span>a<span>,</span>m<span>;</span>r<span>.</span><span>clearRect</span><span>(</span><span>0</span><span>,</span><span>0</span><span>,</span>l<span>,</span>u<span>)</span><span>,</span>s<span>.</span><span>forEach</span><span>(</span><span>function</span><span>(</span><span>e<span>,</span>n</span><span>)</span><span>{</span><span>for</span><span>(</span>e<span>.</span>x<span>+=</span>e<span>.</span>xa<span>,</span>e<span>.</span>y<span>+=</span>e<span>.</span>ya<span>,</span>e<span>.</span>xa<span>*=</span>e<span>.</span>x<span>></span>l<span>||</span>e<span>.</span>x<span>&lt;</span><span>0</span><span>?</span><span>-</span><span>1</span><span>:</span><span>1</span><span>,</span>e<span>.</span>ya<span>*=</span>e<span>.</span>y<span>></span>u<span>||</span>e<span>.</span>y<span>&lt;</span><span>0</span><span>?</span><span>-</span><span>1</span><span>:</span><span>1</span><span>,</span>r<span>.</span><span>fillRect</span><span>(</span>e<span>.</span>x<span>-</span><span>.5</span><span>,</span>e<span>.</span>y<span>-</span><span>.5</span><span>,</span><span>1</span><span>,</span><span>1</span><span>)</span><span>,</span>o<span>=</span>n<span>+</span><span>1</span><span>;</span>o<span>&lt;</span>d<span>.</span>length<span>;</span>o<span>++</span><span>)</span><span>null</span><span>!==</span><span>(</span>t<span>=</span>d<span>[</span>o<span>]</span><span>)</span><span>.</span>x<span>&amp;&amp;</span><span>null</span><span>!==</span>t<span>.</span>y<span>&amp;&amp;</span><span>(</span>i<span>=</span>e<span>.</span>x<span>-</span>t<span>.</span>x<span>,</span>a<span>=</span>e<span>.</span>y<span>-</span>t<span>.</span>y<span>,</span><span>(</span>m<span>=</span>i<span>*</span>i<span>+</span>a<span>*</span>a<span>)</span><span>&lt;</span>t<span>.</span>max<span>&amp;&amp;</span><span>(</span>t<span>===</span>y<span>&amp;&amp;</span>m<span>>=</span>t<span>.</span>max<span>/</span><span>2</span><span>&amp;&amp;</span><span>(</span>e<span>.</span>x<span>-=</span><span>.03</span><span>*</span>i<span>,</span>e<span>.</span>y<span>-=</span><span>.03</span><span>*</span>a<span>)</span><span>,</span>m<span>=</span><span>(</span>t<span>.</span>max<span>-</span>m<span>)</span><span>/</span>t<span>.</span>max<span>,</span>r<span>.</span><span>beginPath</span><span>(</span><span>)</span><span>,</span>r<span>.</span>lineWidth<span>=</span>m<span>/</span><span>2</span><span>,</span>r<span>.</span>strokeStyle<span>=</span><span>"rgba("</span><span>+</span>x<span>.</span>c<span>+</span><span>","</span><span>+</span><span>(</span><span>.2</span><span>+</span>m<span>)</span><span>+</span><span>")"</span><span>,</span>r<span>.</span><span>moveTo</span><span>(</span>e<span>.</span>x<span>,</span>e<span>.</span>y<span>)</span><span>,</span>r<span>.</span><span>lineTo</span><span>(</span>t<span>.</span>x<span>,</span>t<span>.</span>y<span>)</span><span>,</span>r<span>.</span><span>stroke</span><span>(</span><span>)</span><span>)</span><span>)</span><span>}</span><span>)</span><span>,</span><span>w</span><span>(</span>c<span>)</span><span>}</span><span>var</span> l<span>,</span>u<span>,</span>d<span>,</span>t<span>,</span>o<span>,</span>i<span>=</span>document<span>.</span><span>createElement</span><span>(</span><span>"canvas"</span><span>)</span><span>,</span>x<span>=</span><span>(</span>t<span>=</span><span>(</span>o<span>=</span>document<span>.</span><span>getElementsByTagName</span><span>(</span><span>"script"</span><span>)</span><span>)</span><span>.</span>length<span>,</span>o<span>=</span>o<span>[</span>t<span>-</span><span>1</span><span>]</span><span>,</span><span>{</span>l<span>:</span>t<span>,</span>z<span>:</span><span>e</span><span>(</span>o<span>,</span><span>"zIndex"</span><span>,</span><span>-</span><span>1</span><span>)</span><span>,</span>o<span>:</span><span>e</span><span>(</span>o<span>,</span><span>"opacity"</span><span>,</span><span>.5</span><span>)</span><span>,</span>c<span>:</span><span>e</span><span>(</span>o<span>,</span><span>"color"</span><span>,</span><span>"0,0,0"</span><span>)</span><span>,</span>n<span>:</span><span>e</span><span>(</span>o<span>,</span><span>"count"</span><span>,</span><span>99</span><span>)</span><span>}</span><span>)</span><span>,</span>a<span>=</span><span>"c_n"</span><span>+</span>x<span>.</span>l<span>,</span>r<span>=</span>i<span>.</span><span>getContext</span><span>(</span><span>"2d"</span><span>)</span><span>,</span>w<span>=</span>window<span>.</span>requestAnimationFrame<span>||</span>window<span>.</span>webkitRequestAnimationFrame<span>||</span>window<span>.</span>mozRequestAnimationFrame<span>||</span>window<span>.</span>oRequestAnimationFrame<span>||</span>window<span>.</span>msRequestAnimationFrame<span>||</span><span>function</span><span>(</span><span>e</span><span>)</span><span>{</span>window<span>.</span><span>setTimeout</span><span>(</span>e<span>,</span><span>1e3</span><span>/</span><span>45</span><span>)</span><span>}</span><span>,</span>m<span>=</span>Math<span>.</span>random<span>,</span>y<span>=</span><span>{</span>x<span>:</span><span>null</span><span>,</span>y<span>:</span><span>null</span><span>,</span>max<span>:</span><span>2e4</span><span>}</span><span>;</span>i<span>.</span>id<span>=</span>a<span>,</span>i<span>.</span>style<span>.</span>cssText<span>=</span><span>"position:fixed;top:0;left:0;z-index:"</span><span>+</span>x<span>.</span>z<span>+</span><span>";opacity:"</span><span>+</span>x<span>.</span>o<span>,</span>document<span>.</span><span>getElementsByClassName</span><span>(</span><span>"main"</span><span>)</span><span>[</span><span>0</span><span>]</span><span>.</span><span>appendChild</span><span>(</span>i<span>)</span><span>,</span><span>n</span><span>(</span><span>)</span><span>,</span>window<span>.</span>onresize<span>=</span>n<span>,</span>window<span>.</span><span>onmousemove</span><span>=</span><span>function</span><span>(</span><span>e</span><span>)</span><span>{</span>e<span>=</span>e<span>||</span>window<span>.</span>event<span>,</span>y<span>.</span>x<span>=</span>e<span>.</span>clientX<span>,</span>y<span>.</span>y<span>=</span>e<span>.</span>clientY<span>}</span><span>,</span>window<span>.</span><span>onmouseout</span><span>=</span><span>function</span><span>(</span><span>)</span><span>{</span>y<span>.</span>x<span>=</span><span>null</span><span>,</span>y<span>.</span>y<span>=</span><span>null</span><span>}</span><span>;</span><span>for</span><span>(</span><span>var</span> s<span>=</span><span>[</span><span>]</span><span>,</span>h<span>=</span><span>0</span><span>;</span>x<span>.</span>n<span>></span>h<span>;</span>h<span>++</span><span>)</span><span>{</span><span>var</span> f<span>=</span><span>m</span><span>(</span><span>)</span><span>*</span>l<span>,</span>g<span>=</span><span>m</span><span>(</span><span>)</span><span>*</span>u<span>,</span>p<span>=</span><span>2</span><span>*</span><span>m</span><span>(</span><span>)</span><span>-</span><span>1</span><span>,</span>v<span>=</span><span>2</span><span>*</span><span>m</span><span>(</span><span>)</span><span>-</span><span>1</span><span>;</span>s<span>.</span><span>push</span><span>(</span><span>{</span>x<span>:</span>f<span>,</span>y<span>:</span>g<span>,</span>xa<span>:</span>p<span>,</span>ya<span>:</span>v<span>,</span>max<span>:</span><span>6e3</span><span>}</span><span>)</span><span>}</span>d<span>=</span>s<span>.</span><span>concat</span><span>(</span><span>[</span>y<span>]</span><span>)</span><span>,</span><span>setTimeout</span><span>(</span><span>function</span><span>(</span><span>)</span><span>{</span><span>c</span><span>(</span><span>)</span><span>}</span><span>,</span><span>100</span><span>)</span><span>}</span><span>)</span><span>(</span><span>)</span><span>;</span></span></span><span><span><span>&lt;/</span>script</span><span>></span></span>
+</code></pre>
+<div><span>1</span><br></div></div>]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-06-05T07:21:16.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">管理员指南</title>
+    <id>https://hydro.js.org/docs/system/</id>
+    <link href="https://hydro.js.org/docs/system/"/>
+    <updated>2021-05-08T17:02:49.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="管理员指南"> 管理员指南</h2>
+<h2 id="导入用户"> 导入用户</h2>
+<p>目前仅支持的 csv 格式导入, csv 文件既可以用文本编辑器创建，也可以用 Excel 等软件来辅助创建。</p>
+<p>每行三列或四列，分别为: 邮箱，用户名，密码，显示名。（显示名为可选）<br>
+请使用 UTF-8 编码，否则中文可能会乱码。</p>
+<div><pre><code>foo@undefined.moe,user1,password1
+bar@undefined.moe,user2,password2,temp
+test@undefined.moe,user3,passwd3
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>这将创建三个用户：</p>
+<ul>
+<li><code>user1</code> 密码为 <code>password1</code> , 邮箱 <code>foo@undefined.moe</code>；</li>
+<li><code>user2</code> 密码为 <code>password2</code> ，邮箱 <code>bar@undefined.moe</code>，显示名为 <code>temp</code>；</li>
+<li><code>user3</code> 密码为 <code>passwd3</code>，邮箱 <code>test@undefined.moe</code>；</li>
+</ul>
+<h2 id="使用内容分发网络-cdn"> 使用内容分发网络(CDN)</h2>
+<p>只需在控制面版中将 cdn_prefix 设置项修改为 CDN 域名即可。（如 <code>https://cdn.undefined.moe/</code> ）。</p>
+<div><p>Tips</p>
+<p>您可以使用 <code>https://cdn.jsdelivr.net/npm/@hydrooj/ui-default@[version]/public/</code> 作为CDN地址。<br>
+（请替换 <code>[version]</code> 为您本地安装的 <code>ui-default</code> 插件版本）</p>
+</div>
+<h2 id="数据备份和恢复"> 数据备份和恢复</h2>
+<h3 id="备份"> 备份</h3>
+<p>为了保证数据安全，请定期备份。<br>
+可使用 MongoDB 自带的 <a href="https://docs.mongodb.com/database-tools/mongodump/" target="_blank" rel="noopener noreferrer">mongodump</a> 进行数据库备份。并将 <code>/data/file</code> 文件夹备份即可。<br>
+对于数据库，请不要使用复制数据库数据文件的方法。请每次备份后检查生成的备份文件的大小和内容，确保备份成功。<br>
+请不要把备份数据和 Hydro 系统放在同一台机器上，这样数据丢失的风险仍然较高。</p>
+<h3 id="恢复备份"> 恢复备份</h3>
+<p>使用 MongoDB 自带的 <a href="https://docs.mongodb.com/database-tools/mongorestore/" target="_blank" rel="noopener noreferrer">mongorestore</a> 导入备份的数据库文件，并还原 <code>/data/file</code> 目录文件。<br>
+如果只是想不同机器之间迁移部署，只需要在<strong>停止 Hydro 和 MongoDB MinIO 服务后</strong>将相关文件夹（通常为 <code>/data/db</code> 与 <code>/data/file</code>）复制即可。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">高阶</title>
+    <id>https://hydro.js.org/docs/system/enhance/</id>
+    <link href="https://hydro.js.org/docs/system/enhance/"/>
+    <updated>2021-05-08T17:02:49.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="高阶"> 高阶</h1>
+<p>仅推荐有一定基础的用户阅读该部分内容。</p>
+<h2 id="测评精度"> 测评精度</h2>
+<p>The following issues can be considered to improve consistency in judging.</p>
+<p>Disable CPU frequency scaling and Intel “Turbo Boost” to prevent fluctuations in CPU power.</p>
+<p>Disable address-space randomization to make programs with memory addressing bugs give more reproducible results. To do that, you can add the following line to <code>/etc/sysctl.conf</code>:</p>
+<div><pre><code>kernel.randomize_va_space=0
+</code></pre>
+<div><span>1</span><br></div></div><p>Then run <code>sudo sysctl -p</code> to directly activate this setting.</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">系统设置</title>
+    <id>https://hydro.js.org/docs/system/settings/</id>
+    <link href="https://hydro.js.org/docs/system/settings/"/>
+    <updated>2021-07-05T08:38:35.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="系统设置"> 系统设置</h1>
+<h2 id="url-prefix-server-url"> url_prefix / server.url</h2>
+<p>系统的较多功能基于该配置项。请确保填写正确。应当为以 http/https 开头并以 / 结尾的可以访问到本实例的完整域名。</p>
+<h2 id="smtp"> SMTP</h2>
+<p>以 QQ 邮箱为例。</p>
+<ul>
+<li>SMTP_USER: 12345678@qq.com</li>
+<li>SMTP_PASS: 提供的 SMTP 密码</li>
+<li>SMTP_HOST: smtp.mail.qq.com</li>
+<li>SMTP_PORT: 465/587 （请参照邮件服务商说明）</li>
+<li>SMTP_SECURE: 是否使用加密 TLS 连接（请参照邮件服务商说明）</li>
+<li>SMTP_FROM: 发送签名（提示：若不清楚请填写邮件地址，填错可能会导致邮件无法发送）</li>
+</ul>
+<h2 id="c-c-彩色编译错误信息"> c/c++ 彩色编译错误信息</h2>
+<ol>
+<li>确认您安装了支持彩色输出的编译器；</li>
+<li>在系统设置中，将 c/c++ 编译命令后加上 <code>-fdiagnostics-color=always</code></li>
+</ol>
+<p>例：</p>
+<div><pre><code><span>c</span><span>:</span>
+  <span>compile</span><span>:</span> /usr/bin/gcc <span>-</span>O2 <span>-</span>Wall <span>-</span>std=c99 <span>-</span>o $<span>{</span>name<span>}</span> foo.c <span>-</span>lm <span>-</span>fdiagnostics<span>-</span>color=always
+</code></pre>
+<div><span>1</span><br><span>2</span><br></div></div><h2 id="file"> File</h2>
+<p>以腾讯云COS 为例。</p>
+<ul>
+<li>Storage engine endPoint: <code>http://cos.&lt;存储桶地域&gt;.myqcloud.com</code> （或是 https）</li>
+<li>Storage engine accessKey: 您的腾讯云 API 密钥的 SecretId</li>
+<li>Storage engine secret: 您的腾讯云 API 密钥的 SecretKey</li>
+<li>Storage engine bucket: &lt;存储桶名称&gt;</li>
+<li>Storage engine region: Auto</li>
+<li>EndPoint for user: 给用户使用的 EndPoint，若填 <code>/fs/</code> 则表示由服务器转发</li>
+<li>EndPoint for judge: 给 judge 使用的 EndPoint，若填 <code>/fs/</code> 则表示由服务器转发</li>
+</ul>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">用户文档</title>
+    <id>https://hydro.js.org/docs/user/</id>
+    <link href="https://hydro.js.org/docs/user/"/>
+    <updated>2021-05-08T17:02:49.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="用户文档"> 用户文档</h1>
+<h2 id="题目难度"> 题目难度</h2>
+<p>Hydro 中题目的难度，根据递交数、通过率以及每个递交的递交时间和评测结果，通过算法计算得出。</p>
+<ol>
+<li>一般地，难度的数值越大，该题目越难。</li>
+<li>新题目的难度可能不准确；在题目获得大量递交之后，难度才会变得较为准确。</li>
+<li>越早递交评测的用户代码的评测结果对题目难度影响越大。</li>
+<li>题目的难度由算法计算得出，有可能出现不准确的结果。</li>
+</ol>
+<h2 id="参与比赛"> 参与比赛</h2>
+<p>您可以在比赛的详细界面内点击“参与比赛”按钮进行参与。
+比赛过程中“成绩表”会根据比赛规则显示排名。
+在比赛截止之后，您仍然可以订正其中的题目，但“成绩表”将停止更新。</p>
+<h2 id="发布讨论"> 发布讨论</h2>
+<p>若您想发布一个讨论，<strong>请先进入一个讨论节点</strong>，之后点击“创建一个讨论”按钮并填写：</p>
+<ul>
+<li>标题；</li>
+<li>内容；</li>
+<li>是否高亮：若选择后，该贴的左边将有醒目的红色线条（需要“高亮讨论”权限）；</li>
+<li>Pin：该讨论是否置顶（需要“置顶讨论”权限）。</li>
+</ul>
+<p>之后点击“创建”按钮进行发布。</p>
+<h2 id="认领作业"> 认领作业</h2>
+<p>您可以在作业的详情页面中，点击“认领作业”。<br>
+在作业开始之前，您无法查看作业中的题目。<br>
+在作业持续时间内，您与他人的做题情况会被实时统计在“成绩表”内。<br>
+在作业进入延期阶段后，您仍然可以提交题目，但成绩表内的分数将根据延期扣分规则按百分比折算。<br>
+在作业截止之后，您仍然可以订正其中的题目，但“成绩表”将停止更新。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-08T17:02:49.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">插件</title>
+    <id>https://hydro.js.org/plugins/</id>
+    <link href="https://hydro.js.org/plugins/"/>
+    <updated>2021-07-08T12:52:05.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="插件"> 插件</h1>
+<p>Hydro 支持使用插件扩展自身所支持的功能。</p>
+<div><p>Note</p>
+<p>插件对站点的所有内容具有完全的访问权限，请不要启用来历不明的插件。</p>
+</div>
+<h2 id="附加组件列表"> 附加组件列表</h2>
+<p>Hydro 官方目前提供了以下附加组件：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@hydrooj/fps-importer</td>
+<td>支持导入 fps 格式的题目</td>
+</tr>
+<tr>
+<td>@hydrooj/geoip</td>
+<td>GeoIP 支持，用于显示用户登录地</td>
+</tr>
+<tr>
+<td>@hydrooj/hydrojudge</td>
+<td>评测组件</td>
+</tr>
+<tr>
+<td>@hydrooj/import-qduoj</td>
+<td>导入 qduoj 导出的文件</td>
+</tr>
+<tr>
+<td>@hydrooj/login-with-github</td>
+<td>允许用户使用 GitHub 登录</td>
+</tr>
+<tr>
+<td>@hydrooj/login-with-google</td>
+<td>允许用户使用 Google 登录</td>
+</tr>
+<tr>
+<td>@hydrooj/login-with-osu</td>
+<td>允许用户使用 osu! 登录</td>
+</tr>
+<tr>
+<td>@hydrooj/login-with-qq</td>
+<td>允许用户使用 QQ 登录</td>
+</tr>
+<tr>
+<td>@hydrooj/migrate-vijos</td>
+<td>从 vijos4 的自动升级工具</td>
+</tr>
+<tr>
+<td>@hydrooj/recaptcha</td>
+<td>注册时调用 reCAPTCHA 验证码</td>
+</tr>
+<tr>
+<td>@hydrooj/ui-default</td>
+<td>Hydro 的默认用户界面</td>
+</tr>
+<tr>
+<td>@hydrooj/onlyoffice</td>
+<td>显示 doc/docx 格式题目</td>
+</tr>
+<tr>
+<td>@hydrooj/sonic</td>
+<td>使用 sonic 增强题目搜索功能</td>
+</tr>
+<tr>
+<td>@hydrooj/vjudge</td>
+<td>Codeforces! SPOJ!</td>
+</tr>
+</tbody>
+</table>
+<p>以下插件由社区提供：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>作者</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="//github.com/Ri-moe/hydro-pdf">hydro-pdf-preview</a></td>
+<td>wuxianucw</td>
+<td>使用 PDF.js 在题面中插入 PDF</td>
+</tr>
+</tbody>
+</table>
+<p>大部分插件的配置均可在安装后于 控制面板&gt;系统设置 中找到。</p>
+<h2 id="安装"> 安装</h2>
+<p>先全局安装所需模块，再向 hydrooj 注册即可。例：安装 @hydrooj/geoip</p>
+<div><pre><code><span>yarn</span> global <span>add</span> @hydrooj/geoip
+hydrooj addon <span>add</span> @hydrooj/geoip
+</code></pre>
+<div><span>1</span><br><span>2</span><br></div></div><p><strong>安装完插件后需要重启 hydrooj 以使插件生效。</strong></p>
+<h2 id="更新"> 更新</h2>
+<div><pre><code><span>yarn</span> global upgrade-interactive --latest
+</code></pre>
+<div><span>1</span><br></div></div><h2 id="卸载"> 卸载</h2>
+<div><pre><code><span>yarn</span> global remove @hydrooj/geoip
+hydrooj addon remove @hydrooj/geoip
+</code></pre>
+<div><span>1</span><br><span>2</span><br></div></div>]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2020-07-22T10:21:41.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">fps-importer</title>
+    <id>https://hydro.js.org/plugins/fps-importer/</id>
+    <link href="https://hydro.js.org/plugins/fps-importer/"/>
+    <updated>2021-04-20T05:10:12.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="fps-importer"> fps-importer</h1>
+<p>在题库右侧“创建题目”一栏中选择“从 FPS 文件导入”。<br>
+在打开的窗口中，您可以上传：</p>
+<ul>
+<li>fps 格式的 xml 文件</li>
+<li>zip 文件，其中包含了一个或多个 fps 格式的 xml 文件</li>
+</ul>
+<p>由于防止解析 fps 文件消耗大量内存，将拒绝导入超过 64MiB 的文件。<br>
+若您的文件超过大小限制，可考虑现在本地拆分测试数据，在题目创建后再手动上传。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-04-20T05:10:12.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">hydrojudge</title>
+    <id>https://hydro.js.org/plugins/hydrojudge/</id>
+    <link href="https://hydro.js.org/plugins/hydrojudge/"/>
+    <updated>2021-07-04T12:53:20.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="hydrojudge"> hydrojudge</h1>
+<h2 id="准备"> 准备</h2>
+<p>在配置评测机之前，请确认您的站点已经可以访问并正常登录/注册。</p>
+<p>您应该预先下载您所要支持的语言的编译器，若您在配置完评测机后 升级/重新安装 了编译器，您需要重新启动评测机。</p>
+<p>前往 <a href="https://github.com/criyle/go-judge/releases" target="_blank" rel="noopener noreferrer">criyle/go-judge</a> 下载 executorserver。</p>
+<table>
+<thead>
+<tr>
+<th>系统版本</th>
+<th>文件名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 7+</td>
+<td>executorserver.exe</td>
+</tr>
+<tr>
+<td>Linux 4.4+</td>
+<td>executorserver-amd64</td>
+</tr>
+<tr>
+<td>MacOS ?+</td>
+<td>executorserver-macos</td>
+</tr>
+</tbody>
+</table>
+<p>Executorserver 需要在后台<strong>以 root 权限</strong>运行并监听 <code>127.0.0.1:5050</code> 。
+可使用 pm2 进行管理。</p>
+<div><p>Tips</p>
+<p>如果您是 vj4 用户，请使用“作为独立进程”配置（设置处需设成 <code>type: vj4</code>）。</p>
+</div>
+<h2 id="安装"> 安装</h2>
+<h3 id="作为附加组件"> 作为附加组件</h3>
+<p>安装 <code>@hydrooj/hydrojudge</code>。</p>
+<div><pre><code><span>yarn</span> global <span>add</span> @hydrooj/hydrojudge
+hydrooj addon <span>add</span> @hydrooj/hydrojudge
+</code></pre>
+<div><span>1</span><br><span>2</span><br></div></div><p>重启 Hydro 后 HydroJudge 即可正常运行。</p>
+<h3 id="作为独立进程"> 作为独立进程</h3>
+<p>首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 <a href="/install/cli/#创建评测账号">此处</a>（在部署网页端的服务器上进行）<br>
+（vj4 用户需参照 <a href="https://github.com/vijos/vj4#judging" target="_blank" rel="noopener noreferrer">vj4 的方法</a> 创建账户）。</p>
+<p>然后在运行评测机的服务器上执行下面的操作。</p>
+<p>安装 hydrojudge 插件。</p>
+<div><pre><code><span>yarn</span> global <span>add</span> @hydrooj/hydrojudge
+</code></pre>
+<div><span>1</span><br></div></div><p>创建目录 <code>~/.config/hydro</code>，在该目录下创建文件 <code>judge.yaml</code>，配置文件格式如下：</p>
+<div><pre><code><span>hosts</span><span>:</span>
+  <span>localhost</span><span>:</span>
+    <span>type</span><span>:</span> hydro <span># vj4 用户请在此处填写 vj4</span>
+    <span>server_url</span><span>:</span> http<span>:</span>//localhost<span>:</span>8888/ <span># Hydro 运行的网址</span>
+    <span>uname</span><span>:</span> judge <span># 评测账号用户名</span>
+    <span>password</span><span>:</span> abc123 <span># 评测账号密码</span>
+    <span>detail</span><span>:</span> <span>true</span> <span># 默认为 true</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><p>设置完之后，使用下面的指令即可开始运行（可以使用 pm2 管理）：</p>
+<div><pre><code>hydrojudge
+</code></pre>
+<div><span>1</span><br></div></div><h2 id="更新"> 更新</h2>
+<p>HydroJudge 会发布不定期更新。您可以使用 <code>yarn global upgrade-interactive --latest</code> 来检测并进行更新。</p>
+<h2 id="关闭"> 关闭</h2>
+<h3 id="作为附加组件-2"> 作为附加组件</h3>
+<p>在 系统设置&gt;hydrojudge 中有一栏 Disable builtin judge，将它勾上，然后重启 Hydro 即可。</p>
+<h3 id="作为独立进程-2"> 作为独立进程</h3>
+<p>根据开启的方法关闭即可。</p>
+<h2 id="卸载"> 卸载</h2>
+<p>关闭后运行下面指令即可。</p>
+<div><pre><code><span>yarn</span> global remove @hydrooj/hydrojudge
+hydrooj addon remove @hydrooj/hydrojudge
+</code></pre>
+<div><span>1</span><br><span>2</span><br></div></div><h2 id="评测设置"> 评测设置</h2>
+<h3 id="作为附加组件-3"> 作为附加组件</h3>
+<p>在 系统设置&gt;hydrojudge 修改对应的参数，然后重启 Hydro 即可。</p>
+<h3 id="作为独立进程-3"> 作为独立进程</h3>
+<p>如果有需要修改单题测试点数量上限等设置，可以在 <code>~/.config/hydro/judge.yaml</code> 中添加如下内容。</p>
+<div><pre><code><span>testcases_max</span><span>:</span> <span>100</span> <span># 单题最多测试点数量</span>
+<span>total_time_limit</span><span>:</span> <span>120</span> <span># 单题最大总测试时长</span>
+<span>parallelism</span><span>:</span> <span>2</span> <span># 单评测机评测进程数量</span>
+<span># 更多可选配置均可添加在此处，格式与前面的三排类似</span>
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>在 <a href="https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12" target="_blank" rel="noopener noreferrer">此处</a> 的设置均可添加到可选配置处。</p>
+<h2 id="修改编译选项-添加新语言支持"> 修改编译选项/添加新语言支持</h2>
+<p>首先需要修改编译指令配置文件。</p>
+<p>对于内置评测机（作为附加组件安装的评测机），在 控制面板&gt;系统设置 中修改 judge.langs 配置项即可。<br>
+对于独立评测机（作为独立进程安装的评测机），修改 <code>~/.config/hydro/langs.yaml</code> 文件即可。<br>
+按照 <a href="https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41" target="_blank" rel="noopener noreferrer">此处</a> 格式即可。</p>
+<p>如果您添加了新的语言，您还需要前往 控制面板&gt;系统设置 中修改 Language Highlight ID 与 Monaco language modes。<br>
+分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。</p>
+<h2 id="测试数据格式"> 测试数据格式</h2>
+<p>参照 <a href="/docs/problem/#测试数据格式">测试数据格式</a> 配置。</p>
+<h2 id="调整沙箱空间大小"> 调整沙箱空间大小</h2>
+<div><p>Note</p>
+<p>如果不调整沙箱的空间大小，当您的评测使用文件 IO 且输入输出文件较大时可能会引发错误。</p>
+</div>
+<p>将 <a href="https://github.com/criyle/go-judge/blob/master/mount.yaml" target="_blank" rel="noopener noreferrer">mount.yaml</a> 下载下来并放置在与 sandbox 相同的目录下。然后修改第 50 行和第 54 行的 <code>size</code> 和 <code>nr_inodes</code> 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。</p>
+<h2 id="开大程序运行栈空间"> 开大程序运行栈空间</h2>
+<p>在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。</p>
+<p>修改 pm2 中 sandbox 的启动参数为 <code>ulimit -s unlimited &amp;&amp; /path-to/sandbox</code> 即可。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-02-21T07:51:42.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">migrate-vijos</title>
+    <id>https://hydro.js.org/plugins/migrate-vijos/</id>
+    <link href="https://hydro.js.org/plugins/migrate-vijos/"/>
+    <updated>2021-03-19T05:09:19.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="migrate-vijos"> migrate-vijos</h1>
+<div><p>Note</p>
+<p>迁移会删除当前 Hydro 的所有数据（含用户账户信息）并移入 vj4 的数据。<br>
+请注意备份相关文件。</p>
+</div>
+<p>请先完成 Hydro 的部署并完成对文件服务的配置(setting_file)。<br>
+在迁移数据之前，请先停止正在运行的 vj4 服务，仅保留其数据库开启。<br>
+请注意 Hydro 所在的数据库不应和源 vj4 数据库相同。<br>
+若您使用 vj4-docker ，可更改 <code>docker-compose.yml</code> 将数据库映射至其他本机端口。</p>
+<p>安装插件后，您应当能够在 控制面板&gt;脚本管理 中找到名为 <code>migrateVijos</code> 的脚本。<br>
+其参数格式如下：</p>
+<div><pre><code><span>{</span><span>"host"</span><span>:</span><span>"localhost"</span><span>,</span><span>"port"</span><span>:</span><span>27017</span><span>,</span><span>"name"</span><span>:</span><span>"vj4"</span><span>,</span><span>"username"</span><span>:</span><span>""</span><span>,</span><span>"password"</span><span>:</span><span>""</span><span>}</span>
+</code></pre>
+<div><span>1</span><br></div></div><ul>
+<li>host: 数据库地址</li>
+<li>port: 数据库端口</li>
+<li>name: 数据库名</li>
+<li>username&amp;password: 账号密码，若无则填写空字符串</li>
+</ul>
+<div><p>Tips</p>
+<p>vj4-docker 中数据库名为 vj4，无账号密码。</p>
+</div>
+<p>当脚本运行完成后，请重启 Hydro 实例，会自动完成之后的升级操作。
+迁移后，请使用原 vj4 的管理员账号登录实例。</p>
+<div><p>Note</p>
+<p>若您的 vj4 是由 vj2 或 tyvj 升级而来，在迁移完成后请不要卸载该插件，否则可能导致部分用户无法登录。</p>
+</div>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-03-19T04:39:08.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">recaptcha</title>
+    <id>https://hydro.js.org/plugins/recaptcha/</id>
+    <link href="https://hydro.js.org/plugins/recaptcha/"/>
+    <updated>2021-04-20T05:10:12.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="recaptcha"> recaptcha</h1>
+<div><p>Tips</p>
+<p>我们采用 reCAPTCHA v3 来检验注册者是否是人类，在注册过程中没有看见传统验证码属正常现象。</p>
+</div>
+<p>前往 <a href="https://www.google.com/recaptcha/admin/create" target="_blank" rel="noopener noreferrer">https://www.google.com/recaptcha/admin/create</a> 创建 reCAPTCHA 密钥。<br>
+reCAPTCHA 类型请选择“reCAPTCHA 第 3 版”。</p>
+<p>创建成功后将客户端密钥和服务端密钥分别填入系统设置 recaptcha 栏下的 <code>key</code> 和 <code>secret</code> 中，重启 Hydro 后 reCAPTCHA 即可正常工作。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-04-20T05:10:12.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Sonic</title>
+    <id>https://hydro.js.org/plugins/sonic/</id>
+    <link href="https://hydro.js.org/plugins/sonic/"/>
+    <updated>2021-05-17T14:57:03.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="sonic"> Sonic</h1>
+<p>首先请安装 <a href="https://github.com/valeriansaliou/sonic" target="_blank" rel="noopener noreferrer">sonic-server</a>。</p>
+<p>Q: 怎么安装？<br>
+A: <code>cargo install sonic-server</code></p>
+<p>Q: cargo 是什么？<br>
+A: 自行搜索。</p>
+<p>Q: 问什么安装失败了？<br>
+A: 自行解决。</p>
+<p>Q: 安装之后做什么？<br>
+A: 启动，进入 Hydro 系统设置面板，配置 sonic 后端地址，重启 Hydro，在脚本管理中运行重建题目索引，参数留空即可。</p>
+<p>至此，搜索功能应当可以正常使用。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-05-17T14:57:03.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Vjudge</title>
+    <id>https://hydro.js.org/plugins/vjudge/</id>
+    <link href="https://hydro.js.org/plugins/vjudge/"/>
+    <updated>2021-06-22T04:33:25.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="vjudge"> Vjudge</h1>
+<h2 id="codeforces"> Codeforces</h2>
+<p>创建名为 codeforces 的域，进入数据库 db.domain.updateOne({_id:'codeforces'},{$set:{mount:'codeforces'}});
+在 codeforces 的域设置中，将 <code>allowedLangs</code> 如下配置：</p>
+<div><pre><code>codeforces,codeforces.43,codeforces.52,codeforces.42,codeforces.50,codeforces.54,codeforces.2,codeforces.59,codeforces.61,codeforces.65,codeforces.9,codeforces.28,codeforces.32,codeforces.12,codeforces.60,codeforces.36,codeforces.48,codeforces.19,codeforces.3,codeforces.4,codeforces.51,codeforces.13,codeforces.6,codeforces.7,codeforces.31,codeforces.40,codeforces.41,codeforces.67,codeforces.49,codeforces.20,codeforces.34,codeforces.55
+</code></pre>
+<div><span>1</span><br></div></div><p>在 vjudge 表中插入如下条目：</p>
+<div><pre><code><span>{</span>type<span>:</span><span>'codeforces'</span><span>,</span> handle<span>:</span><span>'&lt;codeforces login handle>'</span><span>,</span> password<span>:</span><span>'&lt;codeforces login password>'</span><span>}</span>
+</code></pre>
+<div><span>1</span><br></div></div><p>将如下配置添加至 langs 设置末尾：</p>
+<div><pre><code><span>codeforces</span><span>:</span>
+  <span>execute</span><span>:</span> none
+  <span>display</span><span>:</span> Codeforces
+  <span>domain</span><span>:</span>
+  <span>-</span> codeforces <span># Allow domain 'codeforces' to use these languages</span>
+<span>codeforces.43</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> GNU GCC C11 5.1.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.52</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> Clang++17 Diagnostics
+  <span>comment</span><span>:</span> //
+<span>codeforces.42</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> GNU G++11 5.1.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.50</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> GNU G++14 6.4.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.54</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> GNU G++17 7.3.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.2</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> Microsoft Visual C++ 2010
+  <span>comment</span><span>:</span> //
+<span>codeforces.59</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> Microsoft Visual C++ 2017
+  <span>comment</span><span>:</span> //
+<span>codeforces.61</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>c
+  <span>monaco</span><span>:</span> cpp
+  <span>display</span><span>:</span> GNU G++17 9.2.0 (64 bit<span>,</span> msys 2)
+  <span>comment</span><span>:</span> //
+<span>codeforces.65</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>cs
+  <span>monaco</span><span>:</span> csharp
+  <span>display</span><span>:</span> C<span># 8, .NET Core 3.1</span>
+  <span>comment</span><span>:</span> //
+<span>codeforces.9</span><span>:</span>
+  <span>highlight</span><span>:</span> cpp astyle<span>-</span>cs
+  <span>monaco</span><span>:</span> csharp
+  <span>display</span><span>:</span> C<span># Mono 6.8</span>
+  <span>comment</span><span>:</span> //
+<span>codeforces.28</span><span>:</span>
+  <span>highlight</span><span>:</span> d
+  <span>monaco</span><span>:</span> plain
+  <span>display</span><span>:</span> D DMD32 v2.091.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.32</span><span>:</span>
+  <span>highlight</span><span>:</span> go
+  <span>display</span><span>:</span> Go 1.15.6
+  <span>comment</span><span>:</span> //
+<span>codeforces.12</span><span>:</span>
+  <span>highlight</span><span>:</span> haskell
+  <span>display</span><span>:</span> Haskell GHC 8.10.1
+  <span>comment</span><span>:</span> <span>-</span><span>-</span>
+<span>codeforces.60</span><span>:</span>
+  <span>highlight</span><span>:</span> java astyle<span>-</span>java
+  <span>monaco</span><span>:</span> java
+  <span>display</span><span>:</span> Java 11.0.6
+  <span>comment</span><span>:</span> //
+<span>codeforces.36</span><span>:</span>
+  <span>highlight</span><span>:</span> java astyle<span>-</span>java
+  <span>monaco</span><span>:</span> java
+  <span>display</span><span>:</span> Java 1.8.0_241
+  <span>comment</span><span>:</span> //
+<span>codeforces.48</span><span>:</span>
+  <span>highlight</span><span>:</span> kotlin
+  <span>display</span><span>:</span> Kotlin 1.4.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.19</span><span>:</span>
+  <span>highlight</span><span>:</span> ocaml
+  <span>monaco</span><span>:</span> plain
+  <span>display</span><span>:</span> OCaml 4.02.1
+  <span>comment</span><span>:</span> <span>[</span><span>'(*'</span><span>,</span><span>'*)'</span><span>]</span>
+<span>codeforces.3</span><span>:</span>
+  <span>highlight</span><span>:</span> pascal
+  <span>display</span><span>:</span> Delphi 7
+  <span>comment</span><span>:</span> //
+<span>codeforces.4</span><span>:</span>
+  <span>highlight</span><span>:</span> pascal
+  <span>display</span><span>:</span> Free Pascal 3.0.2
+  <span>comment</span><span>:</span> //
+<span>codeforces.51</span><span>:</span>
+  <span>highlight</span><span>:</span> pascal
+  <span>display</span><span>:</span> PascalABC.NET 3.4.2
+  <span>comment</span><span>:</span> //
+<span>codeforces.13</span><span>:</span>
+  <span>highlight</span><span>:</span> perl
+  <span>display</span><span>:</span> Perl 5.20.1
+  <span>comment</span><span>:</span> <span>'#'</span>
+<span>codeforces.6</span><span>:</span>
+  <span>highlight</span><span>:</span> php
+  <span>display</span><span>:</span> PHP 7.2.13
+  <span>comment</span><span>:</span> //
+<span>codeforces.7</span><span>:</span>
+  <span>highlight</span><span>:</span> python
+  <span>display</span><span>:</span> Python 2.7.18
+  <span>comment</span><span>:</span> <span>'#'</span>
+<span>codeforces.31</span><span>:</span>
+  <span>highlight</span><span>:</span> python
+  <span>display</span><span>:</span> Python 3.9.1
+  <span>comment</span><span>:</span> <span>'#'</span>
+<span>codeforces.40</span><span>:</span>
+  <span>highlight</span><span>:</span> python
+  <span>display</span><span>:</span> PyPy 2.7 (7.3.0)
+  <span>comment</span><span>:</span> <span>'#'</span>
+<span>codeforces.41</span><span>:</span>
+  <span>highlight</span><span>:</span> python
+  <span>display</span><span>:</span> PyPy 3.7 (7.3.0)
+  <span>comment</span><span>:</span> <span>'#'</span>
+<span>codeforces.67</span><span>:</span>
+  <span>highlight</span><span>:</span> ruby
+  <span>display</span><span>:</span> Ruby 3.0.0
+  <span>comment</span><span>:</span> <span>'#'</span>
+<span>codeforces.49</span><span>:</span>
+  <span>highlight</span><span>:</span> rust
+  <span>display</span><span>:</span> Rust 1.49.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.20</span><span>:</span>
+  <span>highlight</span><span>:</span> scala
+  <span>display</span><span>:</span> Scala 2.12.8
+  <span>comment</span><span>:</span> //
+<span>codeforces.34</span><span>:</span>
+  <span>highlight</span><span>:</span> javascript
+  <span>display</span><span>:</span> JavaScript V8 4.8.0
+  <span>comment</span><span>:</span> //
+<span>codeforces.55</span><span>:</span>
+  <span>highlight</span><span>:</span> javascript
+  <span>display</span><span>:</span> Node.js 12.6.3
+  <span>comment</span><span>:</span> //
+</code></pre>
+<div><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br><span>65</span><br><span>66</span><br><span>67</span><br><span>68</span><br><span>69</span><br><span>70</span><br><span>71</span><br><span>72</span><br><span>73</span><br><span>74</span><br><span>75</span><br><span>76</span><br><span>77</span><br><span>78</span><br><span>79</span><br><span>80</span><br><span>81</span><br><span>82</span><br><span>83</span><br><span>84</span><br><span>85</span><br><span>86</span><br><span>87</span><br><span>88</span><br><span>89</span><br><span>90</span><br><span>91</span><br><span>92</span><br><span>93</span><br><span>94</span><br><span>95</span><br><span>96</span><br><span>97</span><br><span>98</span><br><span>99</span><br><span>100</span><br><span>101</span><br><span>102</span><br><span>103</span><br><span>104</span><br><span>105</span><br><span>106</span><br><span>107</span><br><span>108</span><br><span>109</span><br><span>110</span><br><span>111</span><br><span>112</span><br><span>113</span><br><span>114</span><br><span>115</span><br><span>116</span><br><span>117</span><br><span>118</span><br><span>119</span><br><span>120</span><br><span>121</span><br><span>122</span><br><span>123</span><br><span>124</span><br><span>125</span><br><span>126</span><br><span>127</span><br><span>128</span><br><span>129</span><br><span>130</span><br><span>131</span><br><span>132</span><br><span>133</span><br><span>134</span><br><span>135</span><br><span>136</span><br><span>137</span><br><span>138</span><br><span>139</span><br><span>140</span><br><span>141</span><br><span>142</span><br><span>143</span><br></div></div><p>之后重启 Hydro 即可。</p>
+]]></content>
+    <contributor>
+      <name/>
+    </contributor>
+    <published>2021-06-22T03:41:36.000Z</published>
+  </entry>
+</feed>
