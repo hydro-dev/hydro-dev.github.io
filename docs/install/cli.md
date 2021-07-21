@@ -68,6 +68,23 @@ hydrooj cli user setJudge <uid>
 
 完成后将配置的用户名及密码写入评测机配置文件，评测机即可连接到网页端。
 
+## 黑名单相关
+
+用户封禁：
+
+```sh
+hydrooj cli user setPriv <uid> 0
+```
+
+IP/邮箱域名封禁：
+
+```sh
+# key 格式为 ip:xxx.xxx.xxx.xxx （封禁 IP 访问） 或是 mail:xxx.com （禁止 xxx.com 的邮箱注册）
+hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （默认一年，若 duration=0 则永久封禁）
+hydrooj cli blacklist get <key> # 获取黑名单中有关 <key> 的信息
+hydrooj cli blacklist del <key> # 将 <key> 移出黑名单
+```
+
 ## 命令列表
 
 所有于 [此文件夹](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) 下的函数均可用 cli 调用。
@@ -75,10 +92,6 @@ hydrooj cli user setJudge <uid>
 这里并没有列出所有可以运行的指令，因为其中很多功能我们更推荐通过 Web 访问。
 
 ```sh
-# key 格式为 ip:xxx.xxx.xxx.xxx （封禁 IP 访问） 或是 mail:xxx.com （禁止 xxx.com 的邮箱注册）
-hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （默认一年，若 duration=0 则永久封禁）
-hydrooj cli blacklist get <key> # 获取黑名单中有关 <key> 的信息
-hydrooj cli blacklist del <key> # 将 <key> 移出黑名单
 hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
 # 创建邮箱为 <mail>，用户名为 <uname>，密码为 <password>，ID 为 [uid]，注册 ip 为 [regip]，权限为 [priv] 的用户
 hydrooj cli user setPriv <uid> <priv> # 将 ID 为 <uid> 的用户的权限设为 <priv>
