@@ -27,7 +27,7 @@
 仅需要配置 config.yaml 即可，不需要上传其他文件。
 
 ```yaml
-type: subjective # 表明该题为客观题
+type: objective # 表明该题为客观题
 outputs: # 列举出每一题的正确选项与对应的得分
   - [B. 1 + 1 = 2, 50]
   - ['2', 50]

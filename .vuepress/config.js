@@ -80,7 +80,7 @@ module.exports = context => config({
                         '/docs/problem/',
                         '/docs/problem/testdata',
                         '/docs/problem/import',
-                        '/docs/problem/subjective',
+                        '/docs/problem/objective',
                     ]
                 },
                 {
@@ -104,6 +104,7 @@ module.exports = context => config({
                     children: [
                         '/docs/system/',
                         '/docs/system/settings',
+                        '/docs/system/frontend-modify',
                         '/docs/system/enhance',
                         '/docs/system/FAQ',
                     ]
