@@ -217,7 +217,7 @@ langs:
 
 上面这个例子对应的题面为：
 
-![img](./pictures/pict2.webp)
+![img](./pictures/pict2.png)
 
 ### 测试数据
 

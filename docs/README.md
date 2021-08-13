@@ -57,10 +57,10 @@
 
 ## 截图
 
-![img](./pictures/pict1.webp)
-![img](./pictures/pict2.webp)
-![img](./pictures/pict3.webp)
-![img](./pictures/pict4.webp)
+![img](./pictures/pict1.png)
+![img](./pictures/pict2.png)
+![img](./pictures/pict3.png)
+![img](./pictures/pict4.png)
 
 ## 现在开始
 
