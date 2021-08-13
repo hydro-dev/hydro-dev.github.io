@@ -31,10 +31,10 @@ ssh-keygen -t rsa
 ```
 
 一直按 `enter` 键，然后您将会在 `~/.ssh/id_rsa.pub` 取得您的公钥。  
-![生成公钥](https://i.loli.net/2018/10/19/5bc992e392705.png)
+![生成公钥](./pictures/pict1.png)
 
 然后登录您的VPS，把上面的公钥扔进`~/.ssh/authorized_keys`，如下图所示：  
-![VPS](https://i.loli.net/2018/10/19/5bc992e3ad19b.png)
+![VPS](./pictures/pict2.png)
 
 现在，您在本地机器上使用如下命令，应该可以免密码登录VPS：  
 

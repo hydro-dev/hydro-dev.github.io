@@ -67,7 +67,7 @@
 
 将被渲染为：
 
-![img](https://s3.undefined.moe/images/2021/05/24/imagea57805ae1c1ea298.png)
+![img](./pictures/pict1.png)
 
 支持内嵌 HTML：（用来对付部分 Markdown 搞不定的东西）
 
@@ -217,7 +217,7 @@ langs:
 
 上面这个例子对应的题面为：
 
-![img](https://img-kysic-1258722770.file.myqcloud.com/097144406a0f106c9751fa0b40461a84/4bca6e5b7b748.png)
+![img](./pictures/pict2.webp)
 
 ### 测试数据
 

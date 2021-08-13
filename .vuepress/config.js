@@ -85,18 +85,11 @@ module.exports = context => config({
                     ]
                 },
                 {
-                    title: '域管理员文档',
-                    collapsable: false,
-                    children: [
-                        '/docs/domain/',
-                        '/docs/domain/training',
-                    ]
-                },
-                {
                     title: '用户文档',
                     collapsable: false,
                     children: [
                         '/docs/user/',
+                        '/docs/user/domain',
                         '/docs/user/problem',
                     ],
                 },
@@ -110,7 +103,7 @@ module.exports = context => config({
                         '/dev/PERM_PRIV',
                         '/dev/javascript',
                         '/dev/typescript',
-                        '/dev/frontend-modify'
+                        '/dev/frontend-modify',
                     ],
                 }
             ],
@@ -125,7 +118,7 @@ module.exports = context => config({
                         '/plugins/migrate-vijos',
                         '/plugins/recaptcha',
                         '/plugins/sonic',
-                        '/plugins/vjudge'
+                        '/plugins/vjudge',
                     ],
                 }
             ]

@@ -57,10 +57,10 @@
 
 ## 截图
 
-![img](https://img-kysic-1258722770.file.myqcloud.com/8250a08a7c62f8e11404a79614fc0c27/3c07f1f66ce12.png)
-![img](https://img-kysic-1258722770.file.myqcloud.com/0efcbc286dc3a0dabd57526f2b449bc2/07c266a66ae2a.png)
-![img](https://img-kysic-1258722770.file.myqcloud.com/e2f843260324924ccf35f48579bcf7c6/c9929a5c07519.png)
-![img](https://img-kysic-1258722770.file.myqcloud.com/ae53edcb75d6694bfb08229963f3ed21/4fe030b07bee3.png)
+![img](./pictures/pict1.webp)
+![img](./pictures/pict2.webp)
+![img](./pictures/pict3.webp)
+![img](./pictures/pict4.webp)
 
 ## 现在开始
 
