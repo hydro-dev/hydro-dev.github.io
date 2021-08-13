@@ -1,5 +1,7 @@
 # 开发环境部署
 
+您可以使用 [gitpod](https://gitpod.io/#https://github.com/hydro-dev/Hydro) 快速打开配置完成的开发环境或是按照下方说明进行手动配置。（由于gitpod的限制，judge模块无法正常运行，若需要开发judge相关请自行部署）
+
 ## 安装依赖
 
 :::warning
