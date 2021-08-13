@@ -1,13 +1,14 @@
 # 使用 TypeScript 编写插件
 
-前置条件：NodeJS>10.10  
+前置条件：NodeJS>10.4  
 此教程将以编写剪贴板插件为例进行说明。
 
 ## Step1 初始化项目
 
-在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。
+使用 `hydrooj addon create` 快速在 `/root/addon` 下初始化一个插件或是在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。
 
 ```sh
+# 使用 yarn init 的样例
 /workspace/hydro-plugin $ yarn init
 yarn init v1.22.4
 question name (hydro-plugin): @hydrooj/pastebin
@@ -34,58 +35,34 @@ Hydro的推荐架构如下：
 
 - handler.ts: 用于处理路由
 - model.ts: 数据库模型
-- lib.ts: 不依赖于数据库等的库（如md5函数）
-- script.ts: 可能会被用户多次使用到的脚本（如重新计算rp）
+- lib.ts: 不依赖于数据库等的库（如 `md5` 函数）
+- script.ts: 可能会被用户多次使用到的脚本（如重新计算 `rp` ）
 - locale/: 翻译文件
 - template/: 页面模板
 - setting.yaml: 模块所用到的设置，格式在下方说明
 
 但注意上述结构并非全部必要，可以只创建插件需要使用的结构。
 
-## Step3 tsconfig.json
-
-```json
-{
-    "compilerOptions": {
-        "target": "es2019",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "moduleResolution": "node",
-        "declaration": true,
-        "sourceMap": true,
-        "composite": true,
-        "strictBindCallApply": true,
-        "experimentalDecorators": true,
-        "outDir": ".",
-        "rootDir": "."
-    },
-    "include": [
-        "*.ts"
-    ],
-    "exclude": []
-}
-```
-
 ## Step3 model.js
 
-提示：若不便于使用 import 引入 Hydro 的文件，可以从 global.Hydro 中取出需要的模块。
+提示：若不便于使用 import 引入 Hydro 的文件，可以从 `global.Hydro` 中取出需要的模块。
 
 ```ts
 import 'hydrooj';
-import * as db from 'hydrooj/dist/service/db'; // const db = global.Hydro.service.db;
+import * as db from 'hydrooj/src/service/db'; // const db = global.Hydro.service.db;
 
 const coll = db.collection('paste');
 
 interface Paste {
-    _id: string,
-    owner: number,
-    content: string,
-    isPrivate: boolean,
+    _id: string;
+    owner: number;
+    content: string;
+    isPrivate: boolean;
 }
 
 declare module 'hydrooj' {
     interface Collections {
-        paste: Paste,
+        paste: Paste;
     }
 }
 
@@ -141,10 +118,10 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 `apply` 函数将在初始化阶段被调用。
 
 ```ts
-import { Route, Handler } from 'hydrooj/dist/service/server';
-import { PRIV } from 'hydrooj/dist/model/builtin'; // 内置 Privilege 权限节点
-import { isContent } from 'hydrooj/dist/lib/validator'; // 用于检查用户输入是否合法
-import { NotFoundError } from 'hydrooj/dist/error';
+import { Route, Handler } from 'hydrooj/src/service/server';
+import { PRIV } from 'hydrooj/src/model/builtin'; // 内置 Privilege 权限节点
+import { isContent } from 'hydrooj/src/lib/validator'; // 用于检查用户输入是否合法
+import { NotFoundError } from 'hydrooj/src/error';
 import * as pastebin from './pastebin'; // 刚刚编写的pastebin模型
 
 // 创建新路由

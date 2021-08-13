@@ -1,13 +1,16 @@
 # 使用 JavaScript 编写插件
 
-前置条件：NodeJS>10.10  
+前置条件：NodeJS>10.4  
 此教程将以编写剪贴板插件为例进行说明。
+
+**Hydro v2 更加推荐您使用 TypeScript。**
 
 ## Step1 初始化项目
 
-在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。
+使用 `hydrooj addon create` 快速在 `/root/addon` 下初始化一个插件或是在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。
 
 ```sh
+# 使用 yarn init 的样例
 /workspace/hydro-plugin $ yarn init
 yarn init v1.22.4
 question name (hydro-plugin): @hydrooj/pastebin
