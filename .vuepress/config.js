@@ -71,6 +71,7 @@ module.exports = context => config({
                         '/docs/install/enhance',
                         '/docs/install/port-forwarding',
                         '/docs/install/cli',
+                        '/docs/install/FAQ',
                     ],
                 },
                 {

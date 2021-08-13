@@ -24,6 +24,10 @@ yarn global upgrade-interactive --latest
 
 用户注册由 Guest 用户（uid 为 0）的 PRIV_REGISTER_USER 权限控制，使用 `hydrooj cli user setPriv 0 0` 关闭即可。
 
+## 用户名为 Hydro 的用户可以登录么？
+
+用户名为 Hydro 的用户（uid 为 1）仅用于发送系统消息（与 QQ 中的 10000 类似），无法登录。
+
 ## 如何修改网站图标？
 
 使用 `hydrooj addon create` 创建一个插件，这会自动创建 `~/addon` 目录。  
