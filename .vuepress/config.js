@@ -67,36 +67,11 @@ module.exports = context => config({
                     collapsable: false,
                     children: [
                         '/docs/install/',
+                        '/docs/install/init',
                         '/docs/install/enhance',
-                        '/docs/install/cli',
                         '/docs/install/port-forwarding',
-                        '/docs/install/multi-judge',
+                        '/docs/install/cli',
                     ],
-                },
-                {
-                    title: '题目',
-                    collapsable: false,
-                    children: [
-                        '/docs/problem/',
-                        '/docs/problem/testdata',
-                        '/docs/problem/import',
-                        '/docs/problem/objective',
-                    ]
-                },
-                {
-                    title: '用户文档',
-                    collapsable: false,
-                    children: [
-                        '/docs/user/',
-                    ],
-                },
-                {
-                    title: '域管理员文档',
-                    collapsable: false,
-                    children: [
-                        '/docs/domain/',
-                        '/docs/domain/training',
-                    ]
                 },
                 {
                     title: '站点管理员文档',
@@ -109,6 +84,22 @@ module.exports = context => config({
                         '/docs/system/FAQ',
                     ]
                 },
+                {
+                    title: '域管理员文档',
+                    collapsable: false,
+                    children: [
+                        '/docs/domain/',
+                        '/docs/domain/training',
+                    ]
+                },
+                {
+                    title: '用户文档',
+                    collapsable: false,
+                    children: [
+                        '/docs/user/',
+                        '/docs/user/problem',
+                    ],
+                },
             ],
             '/dev/': [
                 {
@@ -118,7 +109,8 @@ module.exports = context => config({
                         '/dev/',
                         '/dev/PERM_PRIV',
                         '/dev/javascript',
-                        '/dev/typescript'
+                        '/dev/typescript',
+                        '/dev/frontend-modify'
                     ],
                 }
             ],

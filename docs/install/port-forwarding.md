@@ -7,7 +7,7 @@
 
 ## ngrok
 
-ngrok 是一款操作简单的软件，可以把内网的web服务映射到外网。
+ngrok 是一款操作简单的软件，可以把内网的 web 服务映射到外网。
 
 大部分的 ngrok 服务是免费的。例如：[ngrok.cc](https://www.ngrok.cc/)
 
@@ -20,7 +20,7 @@ ngrok 的缺点：
 
 虽然有这几个缺点，ngrok 仍然不失为一个好的选择。具体的配置，请参见 [ngrok.cc](https://www.ngrok.cc/) 网站。
 
-## ssh转发
+## ssh 转发
 
 这个方案需要您有一台 VPS，且 VPS 需要拥有外网 IP。
 
