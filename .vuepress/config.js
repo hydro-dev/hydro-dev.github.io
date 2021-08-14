@@ -80,8 +80,12 @@ module.exports = context => config({
                     children: [
                         '/docs/system/',
                         '/docs/system/settings',
+                        '/docs/system/import-user',
+                        '/docs/system/cdn',
+                        '/docs/system/database',
                         '/docs/system/frontend-modify',
                         '/docs/system/enhance',
+                        '/docs/system/domain-union',
                         '/docs/system/FAQ',
                     ]
                 },
