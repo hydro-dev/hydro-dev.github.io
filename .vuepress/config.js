@@ -68,7 +68,6 @@ module.exports = context => config({
                     children: [
                         '/docs/install/',
                         '/docs/install/init',
-                        '/docs/install/enhance',
                         '/docs/install/port-forwarding',
                         '/docs/install/cli',
                         '/docs/install/FAQ',

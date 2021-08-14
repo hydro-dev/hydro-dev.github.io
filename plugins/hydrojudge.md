@@ -25,23 +25,29 @@ Executorserver 需要在后台**以 root 权限**运行并监听 `127.0.0.1:5050
 
 ### 作为附加组件
 
-安装 `@hydrooj/hydrojudge`。
+:::tip
+由于用附加组件安装的评测机与 Hydro 必须在同一台服务器上，每一个 Hydro 实例最多只能有一台评测机由附加组件安装。
+:::
+
+在安装 Hydro 的机器上运行下面的指令安装 `@hydrooj/hydrojudge`：
 
 ```sh
 yarn global add @hydrooj/hydrojudge
 hydrooj addon add @hydrooj/hydrojudge
 ```
 
-重启 Hydro 后 HydroJudge 即可正常运行。
+重启 Hydro 后 hydrojudge 即可正常运行。
 
 ### 作为独立进程
 
-首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/install/cli/#创建评测账号)（在部署网页端的服务器上进行）  
-（vj4 用户需参照 [vj4 的方法](https://github.com/vijos/vj4#judging) 创建账户）。
+:::tip
+该方法可以帮助您在任意服务器上部署评测机。
+:::
 
-然后在运行评测机的服务器上执行下面的操作。
+首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/docs/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
+（vj4 用户需参照 [vj4 的方法](https://github.com/vijos/vj4#judging) 创建账户）
 
-安装 hydrojudge 插件。
+然后在运行评测机的服务器上安装 hydrojudge 插件：
 
 ```sh
 yarn global add @hydrooj/hydrojudge
@@ -92,11 +98,11 @@ hydrooj addon remove @hydrooj/hydrojudge
 
 ### 作为附加组件
 
-在 系统设置>hydrojudge 修改对应的参数，然后重启 Hydro 即可。
+在 系统设置>hydrojudge 修改对应的参数，然后重启 Hydro 和 hydrojudge 即可。
 
 ### 作为独立进程
 
-如果有需要修改单题测试点数量上限等设置，可以在 `~/.config/hydro/judge.yaml` 中添加如下内容。
+如果有需要修改单题测试点数量上限等设置，可以在 `~/.config/hydro/judge.yaml` 的末尾添加下列内容：
 
 ```yaml
 testcases_max: 100 # 单题最多测试点数量
@@ -105,22 +111,21 @@ parallelism: 2 # 单评测机评测进程数量
 # 更多可选配置均可添加在此处，格式与前面的三排类似
 ```
 
-在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到可选配置处。
+在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到此处。
 
 ## 修改编译选项/添加新语言支持
 
-首先需要修改编译指令配置文件。
-
-对于内置评测机（作为附加组件安装的评测机），在 控制面板>系统设置 中修改 judge.langs 配置项即可。  
-对于独立评测机（作为独立进程安装的评测机），修改 `~/.config/hydro/langs.yaml` 文件即可。  
+在 控制面板>系统设置 中修改 judge.langs 配置项即可。  
 按照 [此处](https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41) 格式即可。
 
 如果您添加了新的语言，您还需要前往 控制面板>系统设置 中修改 Language Highlight ID 与 Monaco language modes。  
 分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。
 
+修改完后重启 Hydro 和 hydrojudge 即可。
+
 ## 测试数据格式
 
-参照 [测试数据格式](/docs/problem/#测试数据格式) 配置。
+参照 [测试数据格式](/docs/user/problem/#测试数据格式) 配置。
 
 ## 调整沙箱空间大小
 
@@ -128,10 +133,20 @@ parallelism: 2 # 单评测机评测进程数量
 如果不调整沙箱的空间大小，当您的评测使用文件 IO 且输入输出文件较大时可能会引发错误。
 :::
 
-将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载下来并放置在与 sandbox 相同的目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
+将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在与 sandbox 相同的目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
 
 ## 开大程序运行栈空间
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
 修改 pm2 中 sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可。
+
+## 提高测评精度
+
+禁用 CPU 频率缩放与 Intel 睿频加速技术，防止 CPU 频率波动。
+
+禁用内存地址空间随机化，以使得存在内存寻址错误的代码能够得到更多可重复的结果，可以通过在 `/etc/sysctl.conf` 中添加下面这行并运行 `sudo sysctl -p` 实现：
+
+```plain
+kernel.randomize_va_space = 0
+```
