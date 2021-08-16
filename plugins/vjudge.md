@@ -2,11 +2,12 @@
 
 ## Codeforces
 
-创建名为 codeforces 的域，进入数据库 db.domain.updateOne({_id:'codeforces'},{$set:{mount:'codeforces'}});
+安装插件后创建名为 codeforces 的域，进入数据库 `db.domain.updateOne({_id:'codeforces'},{$set:{mount:'codeforces'}});`  
+
 在 codeforces 的域设置中，将 `allowedLangs` 如下配置：
 
 ```
-codeforces,codeforces.43,codeforces.52,codeforces.42,codeforces.50,codeforces.54,codeforces.2,codeforces.59,codeforces.61,codeforces.65,codeforces.9,codeforces.28,codeforces.32,codeforces.12,codeforces.60,codeforces.36,codeforces.48,codeforces.19,codeforces.3,codeforces.4,codeforces.51,codeforces.13,codeforces.6,codeforces.7,codeforces.31,codeforces.40,codeforces.41,codeforces.67,codeforces.49,codeforces.20,codeforces.34,codeforces.55
+codeforces,codeforces.43,codeforces.52,codeforces.50,codeforces.54,codeforces.59,codeforces.61,codeforces.65,codeforces.9,codeforces.28,codeforces.32,codeforces.12,codeforces.60,codeforces.36,codeforces.48,codeforces.19,codeforces.3,codeforces.4,codeforces.51,codeforces.13,codeforces.6,codeforces.7,codeforces.31,codeforces.40,codeforces.41,codeforces.67,codeforces.49,codeforces.20,codeforces.34,codeforces.55
 ```
 
 在 vjudge 表中插入如下条目：
@@ -33,11 +34,6 @@ codeforces.52:
   monaco: cpp
   display: Clang++17 Diagnostics
   comment: //
-codeforces.42:
-  highlight: cpp astyle-c
-  monaco: cpp
-  display: GNU G++11 5.1.0
-  comment: //
 codeforces.50:
   highlight: cpp astyle-c
   monaco: cpp
@@ -47,11 +43,6 @@ codeforces.54:
   highlight: cpp astyle-c
   monaco: cpp
   display: GNU G++17 7.3.0
-  comment: //
-codeforces.2:
-  highlight: cpp astyle-c
-  monaco: cpp
-  display: Microsoft Visual C++ 2010
   comment: //
 codeforces.59:
   highlight: cpp astyle-c
@@ -163,4 +154,4 @@ codeforces.55:
   comment: //
 ```
 
-之后重启 Hydro 即可。
+之后再重启 Hydro 即可。
