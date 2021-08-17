@@ -46,7 +46,6 @@ Bug 和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) �
 ## 联系我们
 
 QQ [3402182471](https://wpa.qq.com/msgrd?v=3&uin=3402182471&site=qq&menu=yes)  
-Hydro 开发群：709572015  
 Hydro 用户群：1085853538  
 Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)  
 
