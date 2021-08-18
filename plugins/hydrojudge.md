@@ -133,7 +133,14 @@ parallelism: 2 # 单评测机评测进程数量
 如果不调整沙箱的空间大小，当您的评测使用文件 IO 且输入输出文件较大时可能会引发错误。
 :::
 
-将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在与 sandbox 相同的目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
+:::tip
+可以在服务器上运行下面的代码找到 sandbox 的运行目录：
+```sh
+pm2 info sandbox | grep "exec cwd"
+```
+:::
+
+将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
 
 ## 开大程序运行栈空间
 
