@@ -79,8 +79,8 @@ hydrooj cli user setPriv <uid> 0
 IP/邮箱域名封禁：
 
 ```sh
-# key 格式为 ip:xxx.xxx.xxx.xxx （封禁 IP 访问） 或是 mail:xxx.com （禁止 xxx.com 的邮箱注册）
-hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （默认一年，若 duration=0 则永久封禁）
+# key 格式为 ip::xxx.xxx.xxx.xxx （封禁 IP 访问） 或是 mail::xxx.com （禁止 xxx.com 的邮箱注册）
+hydrooj cli blacklist add <key> [duration] # 将 <key> 拉入黑名单，时长为 [duration] （以月为单位的整数，默认为 12，若 duration=0 则永久封禁）
 hydrooj cli blacklist get <key> # 获取黑名单中有关 <key> 的信息
 hydrooj cli blacklist del <key> # 将 <key> 移出黑名单
 ```
