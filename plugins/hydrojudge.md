@@ -134,9 +134,9 @@ parallelism: 2 # 单评测机评测进程数量
 :::
 
 :::tip
-可以在服务器上运行下面的代码找到 sandbox 的运行目录：
+可以在服务器上运行下面的代码找到 hydro-sandbox 的运行目录：
 ```sh
-pm2 info sandbox | grep "exec cwd"
+pm2 info hydro-sandbox | grep "exec cwd"
 ```
 :::
 
@@ -146,7 +146,7 @@ pm2 info sandbox | grep "exec cwd"
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
-修改 pm2 中 sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可。
+修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可。
 
 ## 提高测评精度
 
