@@ -1,9 +1,11 @@
-# 反向代理
+# 反向代理 / SSL 配置
 
 :::warning
 若使用反向代理，请注意将 Hydro 设置的 X-Host header 配置正确（参照下方样例配置）。  
 X-Real-Host 配置错误会导致用户无法登录等问题。  
 X-Real-Ip 配置错误会导致无法记录用户IP。
+
+使用 `hydrooj cli system set server.xhost x-real-host` 指定自定义 Host header。
 :::
 
 在前面我们指定让 Hydro 直接监听固定端口，但是当您的服务器上需要同时运行多个 Web 服务时可能会发生端口冲突。  
@@ -13,10 +15,10 @@ Hydro 推荐您使用 [Caddy](https://caddyserver.com/)。以下为样例 Caddyf
 提示：如果您的服务器位于国内，则需要进行备案后才能使用 80 和 443 端口。
 
 ```
-hydro.org.cn {
+hydro.ac {
   reverse_proxy http://localhost:8888 {
     header_up x-real-ip {remote_host}
-    header_up x-real-host hydro.org.cn
+    header_up x-real-host hydro.ac
   }
 }
 ```

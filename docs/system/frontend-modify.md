@@ -15,7 +15,7 @@
 
 如果您希望修改页面模板：
 
-通常的，在您访问的 url 前加上 `view-source:`（如 `view-source:https://hydro.ac` 即可查看页面源代码，在第二行的 `<html data-page="xxx">` 中 `data-page` 值即为页面名。
+通常的，在您访问的 url 前加上 `view-source:`（如 `view-source:https://hydro.ac` 即可查看页面源代码，在第二行的 `<html data-page="xxx">` 中 `data-page` 值即为页面名（首页例外，为 `main.html`）。
 在 [默认 templates](https://github.com/hydro-dev/Hydro/tree/master/packages/ui-default/templates) 中找到对应文件，将其内容全部复制到 `~/addon/templates/` 文件夹下后进行修改即可。
 
 以上所有更改均会在重启 Hydro 后生效。
