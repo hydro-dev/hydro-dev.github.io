@@ -2,43 +2,45 @@ name: Deploy
 on:
   push:
     branches:
-    - docs
+      - docs
+env:
+  YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Set up Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-    - name: Get yarn cache
-      id: yarn-cache
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-    - name: Restore Cache
-      uses: actions/cache@v1
-      with:
-        path: ${{ steps.yarn-cache.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: ${{ runner.os }}-yarn-
-    - name: Install
-      run: yarn install
-    - name: Build
-      run: yarn build && echo "hydro.js.org" >./.vuepress/dist/CNAME
-    - name: Build docs
-      run: |
-        cd ..
-        git clone https://github.com/hydro-dev/Hydro.git
-        cd Hydro
-        yarn
-        yarn build
-        yarn typedoc
-        cp -r docs ../hydro-dev.github.io/.vuepress/dist/api
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./.vuepress/dist
-        publish_branch: master
-        force_orphan: true
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Restore Cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+      - name: Install
+        run: yarn install
+      - name: Build
+        run: yarn build && echo "hydro.js.org" >./.vuepress/dist/CNAME
+      - name: Build docs
+        run: |
+          cd ..
+          git clone https://github.com/hydro-dev/Hydro.git
+          cd Hydro
+          yarn
+          yarn build
+          yarn typedoc
+          cp -r docs ../hydro-dev.github.io/.vuepress/dist/api
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.vuepress/dist
+          publish_branch: master
+          force_orphan: true
