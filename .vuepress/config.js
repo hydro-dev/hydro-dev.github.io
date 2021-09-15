@@ -68,6 +68,8 @@ module.exports = context => config({
                     children: [
                         '/docs/install/',
                         '/docs/install/init',
+                        '/docs/install/maintain',
+                        '/docs/install/s3',
                         '/docs/install/proxy',
                         '/docs/install/port-forwarding',
                         '/docs/install/cli',
@@ -86,6 +88,7 @@ module.exports = context => config({
                         '/docs/system/frontend-modify',
                         '/docs/system/enhance',
                         '/docs/system/domain-union',
+                        '/docs/system/badge',
                         '/docs/system/FAQ',
                     ]
                 },
