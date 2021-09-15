@@ -15,18 +15,21 @@
 
 :::warning
 我们将会保证在用户网络良好的情况下自动安装脚本能够正常完成部署工作，我们不会帮助解决由用户网络造成的部署问题。  
-自动安装脚本将会在您的机器上安装 MongoDB、MinIO、NodeJS。如果您的机器上已经安装过上述软件，建议您重置该系统或是参考安装脚本内容自行完成 Hydro 安装。  
-**我们强烈建议没有一定专业知识的用户使用自动安装脚本部署**，我们将不会帮助此类用户解决使用其他部署方式造成的问题。
+自动安装脚本将会在您的机器上安装
+[MongoDB](https://www.mongodb.com/try/download/community)、
+[MinIO](https://min.io/download)、
+[NodeJS](https://nodejs.org/en/download/)。
+如果您的机器上已经安装过上述软件，建议您重置该系统或是参考安装脚本内容自行完成 Hydro 安装。  
+**请不熟悉Hydro架构的用户使用自动安装脚本部署**，否则出现问题。
 :::
 
 **安装和安装后的所有操作均需要在 root 权限下进行！ （ `sudo su` ）**。  
 
-安装脚本目前仅支持以下操作系统，如果需要在其他操作系统上安装 Hydro，我们建议您 [使用 Docker 安装](#使用-Docker-安装)：
+Hydro 需要 Linux 内核版本 4.4+ 。Hydro 不支持 WSL。HydroJudge 无法在 Windows/MacOS 上运行。
 
-- Ubuntu 16.04 LTS
-- Ubuntu 18.04 LTS
-- Ubuntu 20.04 LTS
-- Arch Linux
+安装脚本目前支持 `Ubuntu 16.04` `Ubuntu 18.04` `Ubuntu 20.04` `Arch Linux` 。  
+强烈推荐您使用 `Ubuntu 20.04`。
+如果需要在其他操作系统上安装 Hydro，请尝试手动安装。
 
 :::tip
 由于自动安装脚本完成后网站将会监听 8888 端口，若您已安装宝塔面板或是其他占用 8888 端口的应用，请先卸载或将其切换至其他端口。  
@@ -34,7 +37,7 @@
 :::
 
 ```sh
-wget https://s3.undefined.moe/public/install && chmod +x install && ./install
+wget https://s3.undefined.moe/public/install && chmod +x install && sudo ./install
 ```
 
 ## 使用 Docker 安装
