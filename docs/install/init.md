@@ -45,6 +45,7 @@ Hydro 系统会不定期发布更新。
 
 ```sh
 yarn global upgrade-interactive --latest
+pm2 restart hydrooj # 更新完后需重启 hydrooj
 ```
 
 </CodeGroupItem>
