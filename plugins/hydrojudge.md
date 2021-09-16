@@ -142,6 +142,18 @@ pm2 info hydro-sandbox | grep "exec cwd"
 
 将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
 
+## C/C++ 彩色编译错误信息
+
+1. 确认您安装了支持彩色输出的编译器；
+2. 在系统设置中，将 C/C++ 编译命令后加上 `-fdiagnostics-color=always`
+
+例：
+
+```yml
+c:
+  compile: /usr/bin/gcc -O2 -Wall -std=c99 -o ${name} foo.c -lm -fdiagnostics-color=always
+```
+
 ## 开大程序运行栈空间
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
