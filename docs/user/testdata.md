@@ -86,6 +86,7 @@ cases:
 # 或使用Subtask项：
 subtasks:
   - score: 30
+    type: min # 可选 min/max/sum，分别表示取所有测试点最小值、所有测试点最大值、所有测试点之和
     time: 1s
     memory: 64m
     cases:
