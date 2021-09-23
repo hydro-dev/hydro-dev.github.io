@@ -71,7 +71,6 @@ module.exports = context => config({
                         '/docs/install/s3',
                         '/docs/install/proxy',
                         '/docs/install/port-forwarding',
-                        '/docs/install/cli',
                     ],
                 },
                 {
@@ -79,6 +78,7 @@ module.exports = context => config({
                     collapsable: false,
                     children: [
                         '/docs/system/maintain',
+                        '/docs/system/cli',
                         '/docs/system/import-user',
                         '/docs/system/cdn',
                         '/docs/system/database',
