@@ -158,7 +158,16 @@ c:
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
-修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可。
+修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可：
+
+:::tip
+您需要将 `/path-to/sandbox` 更换为您机器上 sandbox 的绝对路径。
+:::
+
+```sh
+pm2 del hydro-sandbox
+pm2 start "ulimit -s unlimited && /path-to/sandbox" --name hydro-sandbox
+```
 
 ## 提高测评精度
 
