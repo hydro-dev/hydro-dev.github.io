@@ -116,7 +116,7 @@ parallelism: 2 # 单评测机评测进程数量
 ## 修改编译选项/添加新语言支持
 
 在 控制面板>系统设置 中修改 judge.langs 配置项即可。  
-按照 [此处](https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41) 格式即可。
+按照 [此处](https://github.com/hydro-dev/Hydro/blob/71bb2f0b517be8f6966f97f835f2521f179b3d84/packages/hydrooj/setting.yaml) 格式即可。
 
 如果您添加了新的语言，您还需要前往 控制面板>系统设置 中修改 Language Highlight ID 与 Monaco language modes。  
 分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。

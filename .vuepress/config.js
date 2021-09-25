@@ -83,7 +83,6 @@ module.exports = context => config({
                         '/docs/system/cdn',
                         '/docs/system/database',
                         '/docs/system/frontend-modify',
-                        '/docs/system/enhance',
                         '/docs/system/domain-union',
                         '/docs/system/FAQ',
                     ]
