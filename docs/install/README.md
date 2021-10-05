@@ -27,7 +27,7 @@
 
 **安装和安装后的所有操作均需要在 root 权限下进行！（`sudo su`）**。
 
-Hydro 主进程可以在 Windows、MacOS、Linux（需要内核版本 4.4+） 上运行，不支持 WSL。  
+Hydro 主进程可以在 Windows、MacOS、Linux（需要内核版本 4.4+）上运行，不支持 WSL。  
 评测组件 [hydrojudge](https://hydro.js.org/plugins/hydrojudge/) 无法在非 Linux 系统上运行。
 
 自动安装脚本目前支持 `Ubuntu 16.04`、`Ubuntu 18.04`、`Ubuntu 20.04`、`Arch Linux`。  
