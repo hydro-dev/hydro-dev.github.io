@@ -26,26 +26,27 @@
 -：不支持
 ```
 
-|         功能          |         Hydro         |   HustOJ    |    SYZOJ    |   QDUOJ    |  Vijos   |
-| :-------------------: | :-------------------: | :---------: | :---------: | :--------: | :------: |
-|         安装          |       一键脚本        |  一键脚本   |  手动搭建   |   docker   |  docker  |
-|        数据库         |        MongoDB        |    MySQL    |   MariaDB   |  Postgres  | MongoDB  |
-|     测试数据存储      |     本地/S3 [^1]      |    本地     |    本地     |    本地    |  数据库  |
-|       多评测机        |           +           |      =      |      +      |     +      |    +     |
-|     测试数据同步      |       按需抓取        |  全量同步   |  全量同步   |  全量同步  | 按需抓取 |
-|         比赛          |      ACM/OI/IOI       | ACM/OI [^2] |   ACM/IOI   | ACM/OI/IOI |  ACM/OI  |
-|       作业功能        |           +           |      +      |      -      |     -      |    +     |
-| 修改编译命令/添加语言 |           +           |      -      |      -      |     -      |    +     |
-|     权限系统 [^5]     |           +           |   + [^6]    |      -      |     -      |    +     |
-|    训练计划(题单)     |           +           |   - [^7]    |      -      |     -      |    +     |
-|         团队          |        + [^3]         |      -      |      -      |     -      |    +     |
-|         Hack          |           -           |      -      |      -      |     -      |    -     |
-|     SpecialJudge      |        + [^4]         |      +      |      +      |     -      |    -     |
-|        Subtask        |           +           |      +      |      +      |     -      |    -     |
-|        交互题         |           +           |      -      |      +      |     -      |    -     |
-|       题目导入        | fps/syzoj/qduoj/hydro |     fps     |    syzoj    |    fps     |    -     |
-|       后端语言        |        NodeJS         |     PHP     |   NodeJS    |   Python   |  Python  |
-|       前端框架        |         React         |  BootStrap  | Semantic UI |    Vue     |  React   |
+|         功能          |          Hydro          |   HustOJ    |    SYZOJ    |   QDUOJ    |  Vijos   |
+| :-------------------: | :---------------------: | :---------: | :---------: | :--------: | :------: |
+|         安装          |        一键脚本         |  一键脚本   |  手动搭建   |   docker   |  docker  |
+|        数据库         |         MongoDB         |    MySQL    |   MariaDB   |  Postgres  | MongoDB  |
+|     测试数据存储      |      本地/S3 [^1]       |    本地     |    本地     |    本地    |  数据库  |
+|       多评测机        |            +            |      =      |      +      |     +      |    +     |
+|     测试数据同步      |        按需抓取         |  全量同步   |  全量同步   |  全量同步  | 按需抓取 |
+|         比赛          |       ACM/OI/IOI        | ACM/OI [^2] | ACM/OI/IOI  | ACM/OI/IOI |  ACM/OI  |
+|       作业功能        |            +            |      +      |      -      |     -      |    +     |
+| 修改编译命令/添加语言 |            +            |      -      |      -      |     -      |    +     |
+|     权限系统 [^5]     |            +            |   + [^6]    |      -      |     -      |    +     |
+|    训练计划(题单)     |            +            |   - [^7]    |      -      |     -      |    +     |
+|         团队          |         + [^3]          |      -      |      -      |     -      |    +     |
+|         Hack          |            -            |      -      |      -      |     -      |    -     |
+|     SpecialJudge      |         + [^4]          |      +      |      +      |     -      |    -     |
+|        Subtask        |            +            |      +      |      +      |     -      |    -     |
+|        交互题         |            +            |      -      |      +      |     -      |    -     |
+|      RemoteJudge      | Codeforces/SPOJ/UOJ/POJ |      -      |      -      |     -      |    -     |
+|       题目导入        |  fps/syzoj/qduoj/hydro  |     fps     |    syzoj    |    fps     |    -     |
+|       后端语言        |         NodeJS          |     PHP     |   NodeJS    |   Python   |  Python  |
+|       前端框架        |          React          |  BootStrap  | Semantic UI |    Vue     |  React   |
 
 [^1]: S3 指所有兼容 Amazon S3 协议的服务，包括腾讯COS，阿里OSS 等。  
 [^2]: 切换比赛模式仅能通过修改设置全局更改。  
