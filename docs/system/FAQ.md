@@ -1,24 +1,14 @@
-# 常见问题
-
-## 使用安装脚本的用户如何重启 Hydro？
-
-```bash
-pm2 restart hydrooj
-```
-
-## 使用安装脚本的用户如何更新 Hydro？
-
-```bash
-yarn global upgrade-interactive --latest
-```
-
-然后选中需要更新的组件更新即可。
+# 常见问题/杂项
 
 ## 由安装脚本安装的 Hydro 的文件存放在何处？
 
 数据库存储于 `/data/db`。  
 测试数据等文件存储于 `/data/file`。  
 配置文件位于 `~/.config/hydro` 和 `~/.hydro`。
+
+## 使用安装脚本后忘记 MongoDB 的账号密码怎么办？
+
+可以在 `~/.hydro/config.json` 中找到 MongoDB 的账号与密码。
 
 ## 如何关闭用户注册？
 
@@ -72,7 +62,7 @@ ranking: 50 # 显示排名前五十的用户
 
 您可按需更改，显示顺序与配置中的排列顺序相同。
 
-## 评测显示“总时限超过60s，评测取消”
+## 评测显示“总时限超过 60s，评测取消”
 
 在系统设置中修改 total_time_limit 为允许的单题最大评测时长即可。
 
@@ -84,4 +74,13 @@ ranking: 50 # 显示排名前五十的用户
 
 ```html
 <script>(()=>{function e(e,n,t){return e.getAttribute(n)||t}function n(){l=i.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,u=i.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight}function c(){var t,o,i,a,m;r.clearRect(0,0,l,u),s.forEach(function(e,n){for(e.x+=e.xa,e.y+=e.ya,e.xa*=e.x>l||e.x<0?-1:1,e.ya*=e.y>u||e.y<0?-1:1,r.fillRect(e.x-.5,e.y-.5,1,1),o=n+1;o<d.length;o++)null!==(t=d[o]).x&&null!==t.y&&(i=e.x-t.x,a=e.y-t.y,(m=i*i+a*a)<t.max&&(t===y&&m>=t.max/2&&(e.x-=.03*i,e.y-=.03*a),m=(t.max-m)/t.max,r.beginPath(),r.lineWidth=m/2,r.strokeStyle="rgba("+x.c+","+(.2+m)+")",r.moveTo(e.x,e.y),r.lineTo(t.x,t.y),r.stroke()))}),w(c)}var l,u,d,t,o,i=document.createElement("canvas"),x=(t=(o=document.getElementsByTagName("script")).length,o=o[t-1],{l:t,z:e(o,"zIndex",-1),o:e(o,"opacity",.5),c:e(o,"color","0,0,0"),n:e(o,"count",99)}),a="c_n"+x.l,r=i.getContext("2d"),w=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(e){window.setTimeout(e,1e3/45)},m=Math.random,y={x:null,y:null,max:2e4};i.id=a,i.style.cssText="position:fixed;top:0;left:0;z-index:"+x.z+";opacity:"+x.o,document.getElementsByClassName("main")[0].appendChild(i),n(),window.onresize=n,window.onmousemove=function(e){e=e||window.event,y.x=e.clientX,y.y=e.clientY},window.onmouseout=function(){y.x=null,y.y=null};for(var s=[],h=0;x.n>h;h++){var f=m()*l,g=m()*u,p=2*m()-1,v=2*m()-1;s.push({x:f,y:g,xa:p,ya:v,max:6e3})}d=s.concat([y]),setTimeout(function(){c()},100)})();</script>
+```
+
+## 自定义用户标签
+
+进入 MongoDB，执行下面的操作即可（根据具体情况替换尖括号中的部分）：
+
+```sh
+use hydro
+db.user.update({"_id": <用户 UID>}, {$set: {"badge": "<标签内容>#<背景颜色（HEX）>#<文字颜色（HEX）>"}})
 ```

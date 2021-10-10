@@ -115,8 +115,9 @@ parallelism: 2 # 单评测机评测进程数量
 
 ## 修改编译选项/添加新语言支持
 
-在 控制面板>系统设置 中修改 judge.langs 配置项即可。  
-按照 [此处](https://github.com/hydro-dev/Hydro/blob/d33401c4e99ad3f125500a77637e9f486cb24c0b/packages/hydrojudge/setting.yaml#L41) 格式即可。
+对于已安装内置评测机的用户（无论内置评测机是否启动），在 控制面板>系统设置 中修改 judge.langs 配置项即可；对于没有安装内置评测机的用户，需要在 `~/.config/hydro/langs.yaml` 中配置。
+
+按照 [此处](https://github.com/hydro-dev/Hydro/blob/71bb2f0b517be8f6966f97f835f2521f179b3d84/packages/hydrooj/setting.yaml#L12) 格式即可。
 
 如果您添加了新的语言，您还需要前往 控制面板>系统设置 中修改 Language Highlight ID 与 Monaco language modes。  
 分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。
@@ -142,11 +143,32 @@ pm2 info hydro-sandbox | grep "exec cwd"
 
 将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
 
+## C/C++ 彩色编译错误信息
+
+1. 确认您安装了支持彩色输出的编译器；
+2. 在系统设置中，将 C/C++ 编译命令后加上 `-fdiagnostics-color=always`
+
+例：
+
+```yml
+c:
+  compile: /usr/bin/gcc -O2 -Wall -std=c99 -o ${name} foo.c -lm -fdiagnostics-color=always
+```
+
 ## 开大程序运行栈空间
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
-修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可。
+修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可：
+
+:::tip
+您需要将 `/path-to/sandbox` 更换为您机器上 sandbox 的绝对路径。
+:::
+
+```sh
+pm2 del hydro-sandbox
+pm2 start "ulimit -s unlimited && /path-to/sandbox" --name hydro-sandbox
+```
 
 ## 提高测评精度
 

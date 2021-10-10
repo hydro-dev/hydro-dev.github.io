@@ -4,7 +4,7 @@
 请尝试通过 `http://服务器ip:8888/` 访问 Hydro 并注册一个账号。  
 若您无法访问，请检查服务器防火墙/安全组是否放行了 8888 端口。  
 
-注册账号后，请在右上角下拉菜单找到个人信息页，在个人信息页用户名后有显示用户的 UID。  
+注册账号后，请在右上角下拉菜单找到个人信息页，在个人信息页用户名后找到用户的 UID。  
 在终端以 root 用户运行以下命令将用户设置为管理员：  
 
 <CodeGroup>
@@ -37,26 +37,3 @@ npx hydrooj cli user setSuperAdmin UID
 :::tip
 建议您完整浏览所有设置项并按需配置。（不知道是啥的别改，出问题了自行解决）
 :::
-
-Hydro 系统会不定期发布更新。
-
-<CodeGroup>
-<CodeGroupItem title="常规部署" active>
-
-```sh
-yarn global upgrade-interactive --latest
-pm2 restart hydrooj # 更新完后需重启 hydrooj
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="开发者模式">
-
-```sh
-# 请在 Hydro 的安装文件夹内运行该命令
-git pull # 拉取更新
-yarn build # 编译后端
-yarn build:ui:production # 编译前端
-```
-
-</CodeGroupItem>
-</CodeGroup>

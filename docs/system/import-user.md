@@ -17,6 +17,6 @@ test@undefined.moe,user3,passwd3
 - `user2` 密码为 `password2` ，邮箱 `bar@undefined.moe`，显示名为 `temp`；
 - `user3` 密码为 `passwd3`，邮箱 `test@undefined.moe`；
 
-:::warn
+:::warning
 用户创建后无法删除，请谨慎操作
 :::
