@@ -40,6 +40,10 @@ Hydro 主进程可以在 Windows、MacOS、Linux（需要内核版本 4.4+）上
 如果安装过程中出现安装慢的情况，可以尝试更换国内源（如 [清华源](https://mirrors.tuna.tsinghua.edu.cn/)）。
 :::
 
+:::warn
+**请注意！ 由于 Let's Encrypt 根证书更新，可能会出现证书校验失败的问题，请先使用 `apt-get upgrade openssl -y` 更新 `openssl` 版本后继续操作！若更新中出现弹框，全部按照默认选择回车确认即可**
+:::
+
 运行下面的脚本，等待几分钟即可：
 
 ```sh
