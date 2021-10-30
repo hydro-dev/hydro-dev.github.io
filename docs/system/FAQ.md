@@ -10,9 +10,9 @@
 
 可以在 `~/.hydro/config.json` 中找到 MongoDB 的账号与密码。
 
-## 如何关闭用户注册？
+## 如何关闭、打开用户注册？
 
-用户注册由 Guest 用户（uid 为 0）的 PRIV_REGISTER_USER 权限控制，使用 `hydrooj cli user setPriv 0 0` 关闭即可。
+用户注册由 Guest 用户（uid 为 0）的 PRIV_REGISTER_USER 权限控制，默认允许注册。使用 `hydrooj cli user setPriv 0 0` 即可关闭注册。若要重新打开，可使用 `hydrooj cli user setPriv 0 8`。
 
 ## 用户名为 Hydro 的用户可以登录么？
 
