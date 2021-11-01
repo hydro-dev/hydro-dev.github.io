@@ -47,7 +47,7 @@ Hydro 主进程可以在 Windows、MacOS、Linux（需要内核版本 4.4+）上
 运行下面的脚本，等待几分钟即可：
 
 ```sh
-wget https://s3.undefined.moe/public/install && chmod +x install && sudo ./install
+LANG=zh bash <(curl https://hydro.ac/install.sh)
 ```
 
 ### 使用 Docker 安装
