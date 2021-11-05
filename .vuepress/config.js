@@ -95,7 +95,7 @@ module.exports = context => config({
                         '/docs/user/domain',
                         '/docs/user/problem',
                         '/docs/user/testdata',
-                        '/docs/user/quote-problem',
+                        '/docs/user/copy-problem',
                     ],
                 },
             ],
