@@ -14,6 +14,8 @@
 
 用户注册由 Guest 用户（uid 为 0）的 PRIV_REGISTER_USER 权限控制，默认允许注册。使用 `hydrooj cli user setPriv 0 0` 即可关闭注册。若要重新打开，可使用 `hydrooj cli user setPriv 0 8`。
 
+变更后，请重启hydrooj服务：`pm2 restart hydrooj`
+
 ## 用户名为 Hydro 的用户可以登录么？
 
 用户名为 Hydro 的用户（uid 为 1）仅用于发送系统消息（与 QQ 中的 10000 类似），无法登录。
