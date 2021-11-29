@@ -4,20 +4,22 @@ heroImage: /favicon.png
 heroText: Hydro
 tagline: 高性能在线测评系统
 action:
-  - text: 介绍 💡
+  - text: 文档
     link: /docs/
     type: primary
-  - text: 部署指南
-    link: /docs/install/
+  - text: GitHub
+    link: https://github.com/hydro-dev/Hydro
 features:
 - title: 安全
   details: 使用 cgroup 隔离用户程序
 - title: 便捷
   details: 支持使用脚本一键搭建
 - title: 强大
-  details: 提供了比赛 训练 讨论 题解 作业等功能，并可通过安装附加组件进行扩展
+  details: 提供了比赛 训练 讨论 题解 作业等功能模块，并可通过安装附加组件进行扩展
 - title: 快速
   details: 沙箱复用，延迟计算，提高运行效率
+- title: 跨平台
+  details: 支持部署在x86以及arm架构的服务器
 footer: AGPL3.0 Licensed | Copyright © 2021-present Undefined
 ---
 
@@ -29,7 +31,7 @@ footer: AGPL3.0 Licensed | Copyright © 2021-present Undefined
 ![GitHub contributors](https://img.shields.io/github/contributors/hydro-dev/Hydro)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hydro-dev/Hydro)
 
-Hydro 是一个高效的信息学在线测评系统。特点：易于部署（且提供安装脚本），轻量，功能强大且易于扩展。  
+Hydro 是一个强大高效的信息学在线测评系统。
 
 [Github 仓库](https://github.com/hydro-dev/Hydro)
 
