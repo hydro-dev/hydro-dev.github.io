@@ -15,6 +15,10 @@
 - 如果您正在使用 Vijos， 可以直接使用 [migrate-vijos 插件](/plugins/migrate-vijos) 导入所有数据至 Hydro。
 - 如果您正在使用 SYZOJ 或是 SYZOJ-NG，可以使用内置的 [Import From SYZOJ 功能](/docs/user/problem/#%E4%BB%8E-syzoj-%E5%AF%BC%E5%85%A5) 将题目导入 Hydro。
 
+- 配合vjudge模块可以实现CodeForces UOJ POJ SPOJ的远程判题
+- 配合sonic模块可以实现题目的模糊搜索
+- 您可以根据官方提供的插件开发更多插件，自行扩展hydro的功能
+
 ## 功能对比
 
 此处对比了 Hydro 与其他主流 OJ 系统的功能。（只进行在不修改源代码情况下的对比）  
