@@ -1,60 +1,72 @@
-# 部署 Hydro
+# 介绍
 
-本页面将指导您部署 Hydro。  
-这里提供了几套方案帮助您建立自己的站点，请选择适合您的方案并继续。  
-搭建过程中如果遇到问题欢迎 [联系我们](/#联系我们) 提问。  
+为什么使用 Hydro？
 
-## 服务器选择
+- 安全：使用 cgroup 进行隔离，杜绝卡评测；
+- 高效：Hydro 使用了沙箱复用技术，拥有极高的评测效率；
+- 扩展：Hydro 支持安装额外模块进行扩展；
+- 强大：配合 Judge 模块（或 HydroJudge 独立评测机），可支持 spj，交互题，提交答案题，文件IO 等多种特性；
+- 自定：所有权限节点均可自由设置；
+- 易上手：无需改动源代码，系统设置中预留了大量可自行修改的内容；管理逻辑简洁；
+- 社区：Hydro 正在持续维护中；
 
-不同服务商提供的 CPU 主频不同，下方数据仅供参考。  
-最低服务器配置： CPU: 1核 内存: 1G 硬盘: 20G。（约可允许 50 人同时使用）  
-推荐服务器配置： CPU: 1核 内存: 2G 硬盘: 30G。（约可允许 150 人同时使用）  
-**请尽量不要使用突发性能实例或共享型实例，这可能会导致评测时间计量不准确**
+- 如果您正在使用 HustOJ，可以导出题目为 FPS 文件后使用 [fps-importer 插件](/plugins/fps-importer) 直接导入 Hydro。
+- 如果您正在使用 QDUOJ， 可以导出题目为 QDUOJ-zip 格式后使用 import-qduoj 插件直接导入 Hydro。
+- 如果您正在使用 Vijos， 可以直接使用 [migrate-vijos 插件](/plugins/migrate-vijos) 导入所有数据至 Hydro。
+- 如果您正在使用 SYZOJ 或是 SYZOJ-NG，可以使用内置的 [Import From SYZOJ 功能](/docs/user/problem/#%E4%BB%8E-syzoj-%E5%AF%BC%E5%85%A5) 将题目导入 Hydro。
 
-## 部署
+- 配合vjudge模块可以实现CodeForces UOJ POJ SPOJ的远程判题
+- 配合sonic模块可以实现题目的模糊搜索
+- 您可以根据官方提供的插件开发更多插件，自行扩展hydro的功能
 
-### 自动安装脚本部署
+## 功能对比
 
-:::warning
-我们将会保证在用户网络良好的情况下自动安装脚本能够正常完成部署工作，我们不会帮助解决由用户网络造成的部署问题。  
-自动安装脚本将会在您的机器上安装
-[MongoDB](https://www.mongodb.com/try/download/community)、
-[MinIO](https://min.io/download)、
-[NodeJS](https://nodejs.org/en/download/)。
-如果您的机器上已经安装过上述软件，建议您重置该系统或是参考安装脚本内容自行完成 Hydro 安装。  
-**请不熟悉 Hydro 架构的用户使用自动安装脚本部署**，否则出现问题请用户自行解决。
-:::
+此处对比了 Hydro 与其他主流 OJ 系统的功能。（只进行在不修改源代码情况下的对比）  
 
-**安装和安装后的所有操作均需要在 root 权限下进行！（`sudo su`）**。
-
-Hydro 主进程可以在 Windows、MacOS、Linux（需要内核版本 4.4+）上运行，不支持 WSL。  
-评测组件 [hydrojudge](https://hydro.js.org/plugins/hydrojudge/) 无法在非 Linux 系统上运行。
-
-自动安装脚本目前支持 `Ubuntu 16.04`、`Ubuntu 18.04`、`Ubuntu 20.04`、`Arch Linux`。  
-推荐使用 `Ubuntu 20.04`。  
-如果需要在其他操作系统上安装 Hydro，请尝试手动安装。
-
-:::tip
-由于自动安装脚本完成后网站将会监听 8888 端口，若您已安装宝塔面板或是其他占用 8888 端口的应用，请先卸载或将其切换至其他端口。  
-**不建议您在生产环境使用宝塔面板。**  
-如果安装过程中出现安装慢的情况，可以尝试更换国内源（如 [清华源](https://mirrors.tuna.tsinghua.edu.cn/)）。
-:::
-
-:::warning
-**请注意！ 由于 Let's Encrypt 根证书更新，可能会出现证书校验失败的问题，请先使用 `apt-get upgrade openssl -y` 更新 `openssl` 版本后继续操作！若更新中出现弹框，全部按照默认选择回车确认即可**
-:::
-
-运行下面的脚本，等待几分钟即可：
-
-```sh
-LANG=zh bash <(curl https://hydro.ac/install.sh)
+```plain
++：支持
+=：部分支持
+?: 未知
+-：不支持
 ```
 
-### 使用 Docker 安装
+|         功能          |          Hydro          |   HustOJ    |    SYZOJ    |   QDUOJ    |  Vijos   |
+| :-------------------: | :---------------------: | :---------: | :---------: | :--------: | :------: |
+|         安装          |        一键脚本         |  一键脚本   |  手动搭建   |   docker   |  docker  |
+|        数据库         |         MongoDB         |    MySQL    |   MariaDB   |  Postgres  | MongoDB  |
+|     测试数据存储      |      本地/S3 [^1]       |    本地     |    本地     |    本地    |  数据库  |
+|       多评测机        |            +            |      =      |      +      |     +      |    +     |
+|     测试数据同步      |        按需抓取         |  全量同步   |  全量同步   |  全量同步  | 按需抓取 |
+|         比赛          |       ACM/OI/IOI        | ACM/OI [^2] | ACM/OI/IOI  | ACM/OI/IOI |  ACM/OI  |
+|       作业功能        |            +            |      +      |      -      |     -      |    +     |
+| 修改编译命令/添加语言 |            +            |      -      |      -      |     -      |    +     |
+|     权限系统 [^5]     |            +            |   + [^6]    |      -      |     -      |    +     |
+|    训练计划(题单)     |            +            |   - [^7]    |      -      |     -      |    +     |
+|         团队          |         + [^3]          |      -      |      -      |     -      |    +     |
+|         Hack          |            -            |      -      |      -      |     -      |    -     |
+|     SpecialJudge      |         + [^4]          |      +      |      +      |     -      |    -     |
+|        Subtask        |            +            |      +      |      +      |     -      |    -     |
+|        交互题         |            +            |      -      |      +      |     -      |    -     |
+|      RemoteJudge      | Codeforces/SPOJ/UOJ/POJ |      -      |      -      |     -      |    -     |
+|       题目导入        |  fps/syzoj/qduoj/hydro  |     fps     |    syzoj    |    fps     |    -     |
+|       后端语言        |         NodeJS          |     PHP     |   NodeJS    |   Python   |  Python  |
+|       前端框架        |          React          |  BootStrap  | Semantic UI |    Vue     |  React   |
 
-仅推荐熟悉 Docker 及 docker-compose 的用户使用。  
-参照 https://github.com/hydro-dev/Hydro/blob/master/install/docker/README.md。
+[^1]: S3 指所有兼容 Amazon S3 协议的服务，包括腾讯COS，阿里OSS 等。  
+[^2]: 切换比赛模式仅能通过修改设置全局更改。  
+[^3]: 通过域功能，允许用户创建域并在域内拥有管理员权限。域之间仅共享账号数据。  
+[^4]: 支持所有主流 SPJ 格式。  
+[^5]: 此处的权限系统指 除用户/管理员二元化权限之外的 的更细粒度的权限划分。
+[^6]: HustOJ的权限管理需要手动操作数据库。
+[^7]: 部分第三方修改版提供了该功能，但未开源。  
 
-### 开发环境部署
+## 截图
 
-参考 [开发环境部署](/dev/)。
+![img](./pictures/pict1.png)
+![img](./pictures/pict2.png)
+![img](./pictures/pict3.png)
+![img](./pictures/pict4.png)
+
+## 现在开始
+
+点击 [部署](/docs/install/) ，开始部署您的 OJ 吧！
