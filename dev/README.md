@@ -26,6 +26,22 @@ yarn # 安装依赖包
 yarn build:ui:production # 编译前端
 ```
 
+## 插件
+
+开发环境部署完成后默认不启用任何插件。
+
+所有官方插件均随源码仓库下载到安装文件夹的 `packages` 子文件夹下，可以通过下面的命令启用官方插件（以启用 `@hydrooj/ui-default` 为例）：
+
+```sh
+npx hydrooj addon add @hydrooj/ui-default
+```
+
+对于非官方插件，下载后通过下面的命令启用即可（以启用位置在 `/root/addon/` 下的插件为例）：
+
+```sh
+npx hydrooj addon add /root/addon/
+```
+
 ## 启动 Hydro
 
 支持如下启动参数：
