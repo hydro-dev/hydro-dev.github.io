@@ -86,3 +86,4 @@ ranking: 50 # 显示排名前五十的用户
 use hydro
 db.user.update({"_id": <用户 UID>}, {$set: {"badge": "<标签内容>#<背景颜色（HEX）>#<文字颜色（HEX）>"}})
 ```
+替换完成后的语句应当类似于 `db.user.update({"_id": 2}, {$set: {"badge": "自定义标签#<FFC0CB>#<DC143C>"}})`
