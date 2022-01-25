@@ -15,3 +15,5 @@ Q: 安装之后做什么？
 A: 启动，进入 Hydro 系统设置面板，配置 sonic 后端地址，重启 Hydro，在脚本管理中运行重建题目索引，参数留空即可。  
 
 至此，搜索功能应当可以正常使用。
+
+// TODO: detailed instruction & PRs Welcome
