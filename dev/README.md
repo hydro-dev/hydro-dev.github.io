@@ -7,10 +7,6 @@
 
 ## 安装依赖
 
-:::warning
-CentOS 的内核版本过于老旧，可能会导致沙箱安全性问题。  
-:::
-
 - MongoDB：Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。  
 - S3：可使用 [MinIO](https://min.io) 提供 S3 服务。  
 - NodeJS：请安装 NodeJS >=14 版本。（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 [nvm](https://nvm.sh/)）  
