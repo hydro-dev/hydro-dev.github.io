@@ -2,7 +2,7 @@
 
 :::warning
 若使用反向代理，请注意将 Hydro 设置的 X-Host header 配置正确（参照下方样例配置）。  
-X-Real-Host 配置错误会导致用户无法登录等问题。  
+X-Real-Host 配置错误会导致用户无法登录等问题。(CsrfTokenError)  
 X-Real-Ip 配置错误会导致无法记录用户IP。
 
 使用 `hydrooj cli system set server.xhost x-real-host` 指定自定义 Host header。

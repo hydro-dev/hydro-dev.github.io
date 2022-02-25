@@ -62,12 +62,12 @@ interface Paste {
 
 declare module 'hydrooj' {
     interface Collections {
-        paste: Paste;
+        paste: Paste; // 声明数据表类型
     }
 }
 
 export async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
-    const pasteId = String.random(16); // Hydro提供了此方法，创建一个长度为16的随机字符串
+    const pasteId = String.random(16); // Hydro 提供了此方法，创建一个长度为16的随机字符串
     // 使用 mongodb 为数据库驱动，相关操作参照其文档
     const result = await coll.insertOne({
         _id: pasteId,
@@ -144,6 +144,7 @@ class PasteCreateHandler extends Handler {
         await pastebin.add(this.user._id, content, !!private);
         // 将用户重定向到创建完成的url
         this.response.redirect = this.url('paste_show', { id: pasteid });
+        // 相应的，提供了 this.back() 方法用于将用户重定向至前一个地址（通常用于 Ajax 或是部分更新操作）
     }
 }
 
@@ -180,7 +181,7 @@ global.Hydro.handler.pastebin = apply;
 
 ## Step5 template
 
-模板采用 nunjucks 语法。放置于 templates/ 文件夹下。  
+模板采用 nunjucks 语法。放置于 `templates/` 文件夹下。  
 会在请求结束时根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
 若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 

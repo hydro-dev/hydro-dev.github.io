@@ -47,6 +47,8 @@ pm2 start hydrooj -i <n> # 以 n 进程启动 Hydro 主进程
 
 Hydro 系统会不定期发布更新，可以使用下面的命令获取更新。
 
+无特殊情况请 **不要更新PM2** ！此操作可能导致进程列表丢失！
+
 ```sh
 yarn global upgrade-interactive --latest # 在交互式界面中选择想要更新的组件
 pm2 restart hydrooj # 更新完后需重启 hydrooj

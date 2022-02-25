@@ -21,29 +21,23 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 考虑到 CentOS 的内核过于老旧，我们推荐您切换到纯净的 Ubuntu20.04 系统来避免潜在的安全性问题。
 :::
 
-:::warning
-我们将会保证在用户网络良好的情况下自动安装脚本能够正常完成部署工作，我们不会帮助解决由用户网络造成的部署问题。  
-自动安装脚本将会在您的机器上安装
+:::tip
+兼容性说明：自动安装脚本将会在您的机器上安装 
 [MongoDB](https://www.mongodb.com/try/download/community)、
 [MinIO](https://min.io/download)、
 [NodeJS](https://nodejs.org/en/download/)。
 如果您的机器上已经安装过上述软件，建议您重置该系统或是参考安装脚本内容自行完成 Hydro 安装。  
-**请不熟悉 Hydro 架构的用户使用自动安装脚本部署**，否则出现问题请用户自行解决。
+同时，Hydro 需要以下端口： 8888, 9000, 5050, 27017，请确保这些端口空闲。  
+如果安装 MongoDB 时资源下载慢，可以百度 `Ubuntu 换源` 。  
+**安装和安装后的所有操作均需要在 root 权限下进行！（`sudo su`）**。
+**请不熟悉 Hydro 架构的用户务必使用自动安装脚本部署**。  
+**非常不建议您在生产环境使用宝塔面板。**  
 :::
 
-**安装和安装后的所有操作均需要在 root 权限下进行！（`sudo su`）**。
-
-Hydro 主进程可以在 Windows、MacOS、Linux（需要内核版本 4.4+）上运行，不支持 WSL。  
-评测组件 [hydrojudge](https://hydro.js.org/plugins/hydrojudge/) 无法在非 Linux 系统上运行。
-
-自动安装脚本目前支持 `Ubuntu 16.04`、`Ubuntu 18.04`、`Ubuntu 20.04`、`Arch Linux`。  
-推荐使用 `Ubuntu 20.04`。  
-如果需要在其他操作系统上安装 Hydro，请尝试手动安装。
-
 :::tip
-由于自动安装脚本完成后网站将会监听 8888 端口，若您已安装宝塔面板或是其他占用 8888 端口的应用，请先卸载或将其切换至其他端口。  
-**非常不建议您在生产环境使用宝塔面板。**  
-如果安装过程中出现安装慢的情况，可以尝试更换国内源（如 [清华源](https://mirrors.tuna.tsinghua.edu.cn/)）。
+自动安装脚本目前支持 `Ubuntu 16.04`、`Ubuntu 18.04`、`Ubuntu 20.04`、`Arch Linux`，推荐使用 `Ubuntu 20.04`。  
+如果需要在其他操作系统上安装 Hydro，请使用手动安装。  
+特别注意： HydroJudge 模块目前仅支持运行于 `Linux x64` 平台。
 :::
 
 :::warning
