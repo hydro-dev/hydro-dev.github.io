@@ -19,7 +19,13 @@ codeforces,codeforces.43,codeforces.52,codeforces.50,codeforces.54,codeforces.59
 {type:'codeforces', handle:'<your username>', password:'<your password>',cookie:['JSESSIONID=<your JSESSIONID>;Path=/; HttpOnly','39ce7=<your 39ce7 cookies>; Max-Age=1000000; Expires=Sun, 19-Mar-2022 01:04:54 GMT; Path=/']}
 ```
 
-这里的 `<your JSESSIONID>` 指的是当你打开 Codeforces 时，网站所用的 cookie 名称，`<39ce7>` 同理。在你的 cookie 中找到含有这两个名称的项，复制他们的内容并替换。
+这里的 `<your JSESSIONID>` 指的是当你打开 Codeforces 时，网站所用的 cookie 名称，`<39ce7>` 同理。
+
+![image](https://user-images.githubusercontent.com/79782919/157052491-d0002773-45e7-4282-bb21-0578d2abf8c4.png)
+
+![image](https://user-images.githubusercontent.com/79782919/157052640-7ff6487e-c8a7-400b-b6b3-07054dc278c0.png)
+
+在你的 cookie 中找到含有这两个名称的项，复制他们的内容并替换。
 
 当数据库配置完成后，请将如下配置添加至 langs 设置末尾：
 
