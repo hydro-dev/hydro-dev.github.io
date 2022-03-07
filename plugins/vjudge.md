@@ -13,13 +13,15 @@
 codeforces,codeforces.43,codeforces.52,codeforces.50,codeforces.54,codeforces.59,codeforces.61,codeforces.65,codeforces.9,codeforces.28,codeforces.32,codeforces.12,codeforces.60,codeforces.36,codeforces.48,codeforces.19,codeforces.3,codeforces.4,codeforces.51,codeforces.13,codeforces.6,codeforces.7,codeforces.31,codeforces.40,codeforces.41,codeforces.67,codeforces.49,codeforces.20,codeforces.34,codeforces.55
 ```
 
-在 vjudge 表中插入如下条目：
+使用 `hydrooj db` 进入数据库，新建一个名为 `vjudge` 的表，并在表中插入如下条目：
 
 ```js
-{type:'codeforces', handle:'<codeforces login handle>', password:'<codeforces login password>'}
+{type:'codeforces', handle:'<your username>', password:'<your password>',cookie:['JSESSIONID=<your JSESSIONID>;Path=/; HttpOnly','39ce7=<your 39ce7 cookies>; Max-Age=1000000; Expires=Sun, 19-Mar-2022 01:04:54 GMT; Path=/']}
 ```
 
-将如下配置添加至 langs 设置末尾：
+这里的 `<your JSESSIONID>` 指的是当你打开 Codeforces 时，网站所用的 cookie 名称，`<39ce7>` 同理。在你的 cookie 中找到含有这两个名称的项，复制他们的内容并替换。
+
+当数据库配置完成后，请将如下配置添加至 langs 设置末尾：
 
 ```yaml
 codeforces:
