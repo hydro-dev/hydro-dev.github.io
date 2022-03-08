@@ -5,20 +5,16 @@
 本文将引导您将内外的 Hydro 对外网开放。您可以选择以下方案中的一种。
 :::
 
-## ngrok
+## frp 端口转发
 
-ngrok 是一款操作简单的软件，可以把内网的 web 服务映射到外网。
+可以利用 frp 进行端口转发，仅需要有一台公网 VPS 作为服务端。客户端可以部署在内网的任意一台主机上。
 
-大部分的 ngrok 服务是免费的。例如：[ngrok.cc](https://www.ngrok.cc/)
+具体的配置文档编写方法可参考 [frp 项目主页](https://github.com/fatedier/frp)。
 
 :::tip
-ngrok 的缺点：
-
-- 速度比较慢
-- 数据并不保密，ngrok 服务提供者有能力监听 OJ 的通讯。
+存在一些免费的 frp 转发服务商，您可以在没有公网 VPS 时选择采用他们的服务。请注意自己的信息安全。
 :::
 
-虽然有这几个缺点，ngrok 仍然不失为一个好的选择。具体的配置，请参见 [ngrok.cc](https://www.ngrok.cc/) 网站。
 
 ## ssh 转发
 
@@ -61,3 +57,16 @@ autossh -M 5698 -NfR <VPS的ip>:80:<本地机器的ip>:80 <VPS用户名>@<VPS的
 
 访问 VPS 的 IP，您应该可以看到 Hydro 了。  
 如果您有域名，请添加一条 A 记录，指向 VPS 的 IP，然后就能用域名访问了。
+
+
+
+## VPN 方案
+
+这类方案的主要思路是：首先把「位于内网的主机」与「位于公网的 VPS」组建成虚拟网络，再于 VPS 上运行反向代理服务。
+
+组网有多种方式，如 wireguard、OpenVPN、zerotier 等。其中操作最简单的是 zerotier。
+
+反向代理可以通过多种软件实现，如 nginx、socat 等。
+
+从稳定性的角度考虑，笔者推荐 wireguard 组网 + nginx 转发方案。
+
