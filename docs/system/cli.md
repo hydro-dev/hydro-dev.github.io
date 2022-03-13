@@ -73,6 +73,12 @@ hydrooj cli user setJudge <uid>
 hydrooj cli user setPriv <uid> 0
 ```
 
+如果要将用户解除封禁：
+
+```sh
+hydrooj cli user setPriv <uid> 17367116
+```
+
 IP/邮箱域名封禁：
 
 ```sh
