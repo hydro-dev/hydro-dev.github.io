@@ -28,6 +28,7 @@ module.exports = context => config({
         logo: '/favicon.ico',
         nav: [
             { text: '文档', link: '/docs/' },
+            { text: '常见问题解答', link: '/FAQ/' },
             { text: '开发', link: '/dev/' },
             { text: '插件', link: '/plugins/' }
         ],
@@ -54,6 +55,9 @@ module.exports = context => config({
         displayAllHeaders: true,
         smoothScroll: true,
         sidebar: {
+            '/index': [
+                { title: '常见问题', children: ['/FAQ/'], collapsable: false },
+            ],
             '/docs/': [
                 {
                     title: '总览',
@@ -83,7 +87,6 @@ module.exports = context => config({
                         '/docs/system/cdn',
                         '/docs/system/database',
                         '/docs/system/frontend-modify',
-                        '/docs/system/domain-union',
                         '/docs/system/FAQ',
                     ]
                 },
