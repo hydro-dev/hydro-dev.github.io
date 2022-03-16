@@ -52,6 +52,10 @@
 
 百度学习 crontab 的用法后，可以使用 `sudo crontab -e` 定制自动备份计划。
 
+## 恢复备份时出现 '/data/file/hydro': Directory not empty
+
+关闭 `minio` (`pm2 stop minio`) 后手动删除 `/data/file/hydro` 文件夹再重试。
+
 ## 更新升级
 
 `yarn global upgrade-interactive --latest` 然后按空格选中除 pm2 之外的所有包更新，回车确认。
@@ -185,4 +189,6 @@ db.user.update({"_id": <用户 UID>}, {$set: {"badge": "<标签内容>#<背景�
 
 否则请选择逐个下载文件（Ctrl+点击文件名）。
 
-## 怎么批量导入用户？
+## The 'yarn global' commands have been remove in 2.x - consider using 'yarn dlx' or a third-party plugin instead
+
+如果你搞不明白这个问题，请老实用安装脚本，不要折腾开发模式。
