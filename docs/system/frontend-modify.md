@@ -21,3 +21,24 @@
 特别的，创建题目时的默认模板位于 `partials/problem_default.md`，创建训练计划时的默认模板位于 `partials/training_default.json`，修改方式同上。
 
 以上所有更改均会在重启 Hydro 后生效。
+
+例子:
+可以用find命令来查找文件位置,比如想知道题面模板在本机的具体位置可以执行
+```bash
+sudo -i # 切换到root用户
+find / -name "problem_default.md"
+```
+如果在ubuntu20.04的机器上搜索到的结果可能为(前提是采用默认脚本自动安装)
+```bash
+/usr/local/share/.cache/yarn/v6/npm-@hydrooj-ui-default-4.34.11-e897f101a977e45b2c799192010758372237b77e-integrity/node_modules/@hydrooj/ui-default/templates/partials/problem_default.md
+/usr/local/share/.cache/yarn/v6/npm-@hydrooj-ui-default-4.34.6-80003c4d53f3306a7223eca2fb40d75a86148cce-integrity/node_modules/@hydrooj/ui-default/templates/partials/problem_default.md
+/usr/local/share/.config/yarn/global/node_modules/@hydrooj/ui-default/templates/partials/problem_default.md
+```
+最后一行就是我们要修改的模板文件,修改它的内容并保存.再执行
+```bash
+pm2 restart hydrooj  #重启hydrooj
+pm2 logs hydrooj --lines 100 # 查看启动日志,如果提示worker  Server started,就说明重启成功
+```bash
+
+现在创建题目,会发现题目的默认模板就是修改后的内容
+
