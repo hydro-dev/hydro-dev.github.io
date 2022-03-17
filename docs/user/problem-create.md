@@ -102,6 +102,14 @@ int main(int argc,char* argv[]){
 
 ![pic9](./pictures/pic9.png)
 
+config.yaml文件的内容为
+```yaml
+type: default
+filename: null
+user_extra_files:
+  - tools.h
+```
+
 本题的ac代码为
 
 ```cpp
