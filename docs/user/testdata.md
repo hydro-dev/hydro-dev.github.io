@@ -32,7 +32,7 @@
 上传 `config.yaml` 文件即可，文件格式如下（下方所有样例均为可选项，若无说明则预填写的内容即为默认值）：
 
 ```yaml
-# 题目类型，可以为 default(比对输出，含spj), submit_answer（提交答案）, interactive（交互题）
+# 题目类型，可以为 default(比对输出，可以含spj), objective(客观题), interactive(交互题)
 type: default
 
 # 全局时空限制（此处的限制优先级低于测试点的限制）
@@ -43,7 +43,7 @@ memory: 128m
 filename: foo
 
 # 此部分设置当题目类型为 default 时生效
-# 比较器类型，支持的值有 default（直接比对，忽略行末空格和文件末换行）, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib
+# 比较器类型，支持的值有 default（直接比对，忽略行末空格和文件末换行）, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib(比较常用)
 checker_type: default
 # 比较器文件（当比较器类型不为 default 时填写）
 # 文件路径（位于压缩包中的路径）
