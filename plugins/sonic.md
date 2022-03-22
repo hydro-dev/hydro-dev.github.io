@@ -9,12 +9,16 @@
 ```bash
 apt install rustc #安装 rust
 apt install build-essential clang libclang-dev libc6-dev g++ llvm-dev
+
+请查看 [此文档](https://mirrors.ustc.edu.cn/help/crates.io-index.html) 更换到 USTC Crates 源后，执行如下命令：
+
+```bash
 cargo install sonic-server
 ```
 
 ### 安装 sonic 插件
 
-使用 HydroOJ 安装用户执行如下命令：
+使用 root 用户执行如下命令：
 
 ```bash
 yarn global add @hydrooj/sonic
@@ -23,7 +27,7 @@ hydrooj addon add @hydrooj/sonic
 
 ## 启动
 
-在 `/path/to/config.cfg`（没有的自行建立，也可以换成其他的你喜欢的路径）按照以下配置示例写入配置。
+在 `/root/.sonic/config.cfg`（没有的自行建立，也可以换成其他的你喜欢的路径）按照以下配置示例写入配置。
 
 配置示例：
 
@@ -98,11 +102,9 @@ max_words = 250000
 
 执行如下命令：
 ```
-pm2 start sonic -- -c /path/to/sonic.cfg
+pm2 start sonic -- -c /root/.sonic/config.cfg
 pm2 save
 ```
-
-请将 `/path/to/config.cfg` 换成你喜欢的路径。
 
 ## 配置
 
@@ -116,6 +118,8 @@ pm2 save
 - port: `1491`
 - auth: `SecretPassword`
 
+修改完成后，重启 HydroOJ。
+
 ### 重启 HydroOJ
 
 执行命令 `pm2 restart hydrooj`。
@@ -127,10 +131,6 @@ pm2 save
 至此，搜索功能应当可以正常使用。
 
 ## FAQ
-
-### sonic-server 安装报错
-
-请使用 [USTC Crates 源](https://mirrors.ustc.edu.cn/help/crates.io-index.html)。
 
 ### sonic-server 安装时卡在 librocksdb
 
