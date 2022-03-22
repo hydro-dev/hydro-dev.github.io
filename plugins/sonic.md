@@ -9,6 +9,7 @@
 ```bash
 apt install rustc #安装 rust
 apt install build-essential clang libclang-dev libc6-dev g++ llvm-dev
+```
 
 请查看 [此文档](https://mirrors.ustc.edu.cn/help/crates.io-index.html) 更换到 USTC Crates 源后，执行如下命令：
 
