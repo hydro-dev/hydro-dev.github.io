@@ -29,8 +29,8 @@ hydro.ac {
 
 # SSL配置(以Caddy为例)
 
-在 reverse_proxy 的上一行加上 tls 之后再写上您的邮箱。  
-`tls youremail@domain.com`  
+在 reverse_proxy 的上一行加上  
+`tls self_signed`  
 Caddy会自动帮您申请证书，**申请 SSL证书前，请务必提前解析好域名记录(解析后最好等一会)**，否则 Caddy会申请并配置失败！  
 
 
