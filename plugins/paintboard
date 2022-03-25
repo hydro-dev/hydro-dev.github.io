@@ -1,0 +1,32 @@
+# Paintboard
+
+## 安装
+
+### 安装 [paintboard](https://github.com/hydro-dev/paintboard/) 插件
+
+将该项目 clone 在 `Hydro/packages` 中。
+
+使用 root 用户执行如下命令：
+
+```bash
+hydrooj addon add @hydrooj/paintboard
+```
+
+## 修改配置
+
+在 `/paintboard/vite.config.ts` 中
+
+修改第四行 target 后面的端口为 Hydro 部署的端口
+
+### 重启 HydroOJ
+
+执行命令 `pm2 restart hydrooj`。
+
+### 使用
+
+在访问的域名后面加上 `/paintboard`
+
+
+
+Enjoy it :D
+
