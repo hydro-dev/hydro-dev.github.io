@@ -1,4 +1,4 @@
-# 反向代理
+# 反向代理/SSL配置
 
 :::warning
 若使用反向代理，请注意将 Hydro 设置的 X-Host header 配置正确（参照下方样例配置）。  
@@ -14,8 +14,12 @@ Hydro 可以直接监听 80/443 端口以提供服务，但是当您的服务器
 Hydro 推荐您使用 [Caddy](https://caddyserver.com/)。以下为样例 Caddyfile。
 提示：如果您的服务器位于国内，则需要进行备案后才能使用 80 和 443 端口。
 
+如需申请SSL证书请在 reverse_proxy 的上一行加上 tls。  
+Caddy会自动帮您申请证书，**申请 SSL证书前，请务必提前解析好域名记录(解析后最好等一会)**，否则 Caddy会申请并配置失败！  
+
 ```
 hydro.ac {
+  tls
   reverse_proxy http://localhost:8888 {
     header_up x-real-ip {remote_host}
     header_up x-real-host hydro.ac
@@ -26,12 +30,4 @@ hydro.ac {
 :::warning
 若您使用 Nginx，请注意配置 WebSocket 协议的反向代理。
 :::
-
-# SSL配置(以Caddy为例)
-
-在 reverse_proxy 的上一行加上  
-`tls self_signed`  
-Caddy会自动帮您申请证书，**申请 SSL证书前，请务必提前解析好域名记录(解析后最好等一会)**，否则 Caddy会申请并配置失败！  
-
-
 
