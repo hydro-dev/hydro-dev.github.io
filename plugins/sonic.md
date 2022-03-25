@@ -103,7 +103,7 @@ max_words = 250000
 
 执行如下命令：
 ```
-pm2 start sonic -- -c /root/.sonic/config.cfg
+pm2 start /root/.cargo/bin/sonic -- -c /root/.sonic/config.cfg
 pm2 save
 ```
 
