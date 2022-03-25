@@ -27,31 +27,11 @@ hydro.ac {
 若您使用 Nginx，请注意配置 WebSocket 协议的反向代理。
 :::
 
-## SSL配置
+# SSL配置(以Caddy为例)
 
-在 reverse_proxy 前加上 tls 和域名的证书(crt) 、密钥(pem)的路径。  
-如果没有 SSL 证书，则在 tls 后方加上邮箱，Caddy会自动帮您申请证书，**申请 SSL证书前，请务必提前解析好域名记录(解析后最好等一会)**，否则 Caddy会申请并配置失败！  
-以下为样例 Caddyfile  
-
-```
-hydro.ac {
-  tls youremail@domain.com
-  reverse_proxy http://localhost:8888 {
-    header_up x-real-ip {remote_host}
-    header_up x-real-host hydro.ac
-  }
-}
-```
+在 reverse_proxy 的上一行加上 tls 之后再写上您的邮箱。  
+`tls youremail@domain.com`  
+Caddy会自动帮您申请证书，**申请 SSL证书前，请务必提前解析好域名记录(解析后最好等一会)**，否则 Caddy会申请并配置失败！  
 
 
-
-```
-hydro.ac {
-  tls /etc/ssl/hydro.ac.crt /etc/ssl/hydro.ac.pem
-  reverse_proxy http://localhost:8888 {
-    header_up x-real-ip {remote_host}
-    header_up x-real-host hydro.ac
-  }
-}
-```
 
