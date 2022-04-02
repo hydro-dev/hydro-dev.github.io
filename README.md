@@ -41,7 +41,7 @@ Bug 和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) �
 
 [在 Gitpod 打开已配置完成的测试环境](https://gitpod.io/#https://github.com/hydro-dev/Hydro)
 
-[Hydro Online Judge](https://hydro.org.cn/)
+[Hydro Online Judge](https://hydro.ac/)
 
 ## 联系我们
 
