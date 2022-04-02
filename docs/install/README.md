@@ -54,9 +54,7 @@ LANG=zh bash <(curl https://hydro.ac/install.sh)
 如果您出现了该问题，可以通过运行下面的脚本，实现 official 镜像安装：
 
 ```sh
-curl https://hydro.ac/install --output install
-chmod +x ./install
-LANG=zh MIRROR=official ./install
+LANG=zh MIRROR=official bash <(curl https://hydro.ac/install.sh)
 ```
 
 ### 使用 Docker 安装
