@@ -50,6 +50,15 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 LANG=zh bash <(curl https://hydro.ac/install.sh)
 ```
 
+上面的脚本默认使用的为 tsinghua 镜像，部分海外服务器可能会出现速度过慢等问题。  
+如果您出现了该问题，可以通过运行下面的脚本，实现 official 镜像安装：
+
+```sh
+curl https://hydro.ac/install --output install
+chmod +x ./install
+LANG=zh MIRROR=official ./install
+```
+
 ### 使用 Docker 安装
 
 仅推荐熟悉 Docker 及 docker-compose 的用户使用。  
