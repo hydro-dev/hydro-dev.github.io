@@ -43,52 +43,6 @@ Hydro的推荐架构如下：
 
 但注意上述结构并非全部必要，可以只创建插件需要使用的结构。
 
-## Step3 model.js
-
-提示：若不便于使用 import 引入 Hydro 的文件，可以从 `global.Hydro` 中取出需要的模块。
-
-```ts
-import 'hydrooj';
-import * as db from 'hydrooj/src/service/db'; // const db = global.Hydro.service.db;
-
-const coll = db.collection('paste');
-
-interface Paste {
-    _id: string;
-    owner: number;
-    content: string;
-    isPrivate: boolean;
-}
-
-declare module 'hydrooj' {
-    interface Collections {
-        paste: Paste; // 声明数据表类型
-    }
-}
-
-export async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
-    const pasteId = String.random(16); // Hydro 提供了此方法，创建一个长度为16的随机字符串
-    // 使用 mongodb 为数据库驱动，相关操作参照其文档
-    const result = await coll.insertOne({
-        _id: pasteId,
-        owner: userId,
-        content,
-        isPrivate,
-    });
-    return result.insertedId; // 返回插入的文档ID
-}
-
-export async function get(pasteId: string): Promise<Paste> {
-    return await coll.findOne({ _id: pasteId });
-}
-
-// 暴露这些接口
-global.Hydro.model.pastebin = { add, get };
-
-```
-
-## Step4 handler.js
-
 在路由中定义所有的函数应均为异步函数，支持的函数有：prepare, get, post, post[Operation], cleanup  
 具体流程如下：
 
@@ -117,12 +71,60 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 应当提供 `apply` 函数，并与定义的 Handler 一同挂载到 `global.Hydro.handler[模块名]` 位置。
 `apply` 函数将在初始化阶段被调用。
 
+# Step3 model&handler
+
 ```ts
-import { Route, Handler } from 'hydrooj/src/service/server';
+// @noErrors
+// @module: esnext
+// @filename: model.ts
+import 'hydrooj';
+import * as db from 'hydrooj/src/service/db';
+
+const coll = db.collection('paste');
+
+interface Paste {
+    _id: string;
+    owner: number;
+    content: string;
+    isPrivate: boolean;
+}
+
+declare module 'hydrooj/src/interface' {
+    interface Model {
+        pastebin: typeof pastebinModel;
+    }
+    interface Collections {
+        paste: Paste; // 声明数据表类型
+    }
+}
+
+export async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
+    const pasteId = String.random(16); // Hydro 提供了此方法，创建一个长度为16的随机字符串
+    // 使用 mongodb 为数据库驱动，相关操作参照其文档
+    const result = await coll.insertOne({
+        _id: pasteId,
+        owner: userId,
+        content,
+        isPrivate,
+    });
+    return result.insertedId; // 返回插入的文档ID
+}
+
+export async function get(pasteId: string): Promise<Paste> {
+    return await coll.findOne({ _id: pasteId });
+}
+
+// 暴露这些接口
+const pastebinModel = { add, get };
+global.Hydro.model.pastebin = pastebinModel;
+
+
+// @filename: handler.ts
+import { Route, Handler, Types, param } from 'hydrooj/src/service/server';
 import { PRIV } from 'hydrooj/src/model/builtin'; // 内置 Privilege 权限节点
 import { isContent } from 'hydrooj/src/lib/validator'; // 用于检查用户输入是否合法
-import { NotFoundError } from 'hydrooj/src/error';
-import * as pastebin from './pastebin'; // 刚刚编写的pastebin模型
+import { NotFoundError, PermissionError } from 'hydrooj/src/error';
+import * as pastebin from './model'; // 刚刚编写的pastebin模型
 
 // 创建新路由
 class PasteCreateHandler extends Handler {
@@ -139,9 +141,9 @@ class PasteCreateHandler extends Handler {
     @param('private', Types.Boolean)
     // 从用户提交的表单中取出content和private字段
     // domainId 为固定传入参数
-    async post(domainId: string, content: string, private = false) {
+    async post(domainId: string, content: string, isPrivate = false) {
         // 在HTML表单提交的多选框中，选中值为 'on'，未选中则为空，需要进行转换
-        await pastebin.add(this.user._id, content, !!private);
+        const pasteid = await pastebin.add(this.user._id, content, !!isPrivate);
         // 将用户重定向到创建完成的url
         this.response.redirect = this.url('paste_show', { id: pasteid });
         // 相应的，提供了 this.back() 方法用于将用户重定向至前一个地址（通常用于 Ajax 或是部分更新操作）
@@ -179,12 +181,12 @@ export async function apply() {
 global.Hydro.handler.pastebin = apply;
 ```
 
-## Step5 template
+## Step4 template
 
 模板采用 nunjucks 语法。放置于 `templates/` 文件夹下。  
 会在请求结束时根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
 若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 
-## Step6 locale
+## Step5 locale
 
 用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。

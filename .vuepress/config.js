@@ -1,10 +1,12 @@
 const path = require('path');
 const { config } = require("vuepress-theme-hope");
+const { setupForFile, transformAttributesToHTML } = require('remark-shiki-twoslash');
 
 module.exports = context => config({
     title: 'Hydro',
     head: [
         ['link', { rel: 'icon', href: `/hydro.png` }],
+        ['link', { rel: 'stylesheet', href: '/twoslash.css' }],
         ['meta', { name: 'theme-color', content: '#ffeded' }],
         ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-CX4XJ0H0TE' }],
         ['script', {}, "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CX4XJ0H0TE');"]
@@ -20,7 +22,7 @@ module.exports = context => config({
                 {
                     name: 'Terminal',
                     path: path.resolve(__dirname, 'components', 'Terminal.vue')
-                }
+                },
             ]
         }],
     ],
@@ -132,5 +134,20 @@ module.exports = context => config({
             ]
         },
     },
+    markdown: {
+        code: false,
+        extendMarkdown: async md => {
+            const { highlighters } = await setupForFile({ theme: "nord" });
+            md.use((markdownit, options) => {
+                markdownit.options.highlight = (code, lang) => {
+                    code = code.replace(/\r?\n$/, "");
+                    let attrs = '';
+                    if (lang === 'ts') attrs = 'twoslash';
+                    const res = transformAttributesToHTML(code, [lang, attrs].join(" "), highlighters, options);
+                    return res;
+                };
+            })
+        },
+    },
     evergreen: !!context.isProd,
-})
+});
