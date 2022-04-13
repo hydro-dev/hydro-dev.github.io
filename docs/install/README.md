@@ -57,11 +57,6 @@ LANG=zh bash <(curl https://hydro.ac/install.sh)
 LANG=zh MIRROR=official bash <(curl https://hydro.ac/install.sh)
 ```
 
-### 使用 Docker 安装
-
-仅推荐熟悉 Docker 及 docker-compose 的用户使用。  
-参照 https://github.com/hydro-dev/Hydro/blob/master/install/docker/README.md。
-
 ### 开发环境部署
 
 参考 [开发环境部署](/dev/)。
