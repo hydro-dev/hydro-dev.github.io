@@ -25,7 +25,7 @@
 
 您可在下载 `Git` 命令的情况下使用 `git clone https://github.com/hydro-dev/loj-download` 在您选中的文件夹下 clone 源码。
 
-或您有其他需求，可以选择 [此下载链接][https://github.com/hydro-dev/loj-download/archive/refs/heads/master.zip] ，下载源码压缩包。
+或您有其他需求，可以选择 [此下载链接](https://github.com/hydro-dev/loj-download/archive/refs/heads/master.zip) ，下载源码压缩包。
 
 若您使用 zip 下载，请您通过 `unzip` 命令手动解压（具体操作请您尝试百度）；若使用 `Git` 命令，`Git`会自动帮您解压到`/您选中的文件夹/loj-download` 目录下，即您可忽略此步骤。
 
@@ -47,13 +47,13 @@ node loj-download.js https://您需要拷贝的题目的网址
 
 若您第一次下载未完成，**请不要急于寻求帮助**，可能是运行或 web连接 问题，请先重复执行几次该命令。具体如下：
 
-![多安装几次][https://blog.k1zxiaokeai.com/usr/uploads/2022/03/2785971967.png]
+![多安装几次](./pictures/pict3.png)
 
 #### 导入
 
 运行完成后，您可在 `/您选中的文件夹/downloads/题目来源网址/对应题号` 下找到对应网址所下载的题目。
 
-![题目位置][https://blog.k1zxiaokeai.com/usr/uploads/2022/04/4242801667.png]
+![题目位置](./pictures/pict4.png)
 
 ##### 压缩包导入（推荐）
 
@@ -61,11 +61,11 @@ node loj-download.js https://您需要拷贝的题目的网址
 
 首先，请您回到 `/您选中的文件夹/downloads/题目来源网址` 目录下，里面应该会含有您在该网站下载的题目。
 
-![题号][https://blog.k1zxiaokeai.com/usr/uploads/2022/04/381249278.png]
+![题号](./pictures/pict5.png)
 
 `Hydro` 的题目导入支持一个压缩包内含有多个题目。您需**返回上一级目录**，执行 `zip -r 你想要的标题.zip 您需要的目录/ 或多个目录/` 命令，将该文件夹或多个题目的文件夹压缩成 `.zip` 格式的压缩包。这里我拿来演示的题号是 2088 和 3，如下图：
 
-![压缩包格式][https://blog.k1zxiaokeai.com/usr/uploads/2022/04/93428854.png]
+![压缩包格式](./pictures/pict6.png)
 
 我们可以看到，这里已经将两个题目的目录成功压缩到名为 `a.zip` 的压缩包中了。
 
