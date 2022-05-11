@@ -26,7 +26,7 @@
 ## 使用配置文件
 
 :::tip
-推荐您在线编辑题目配置（点击 Create File，输入文件名 `config.yaml`），将检查配置有效性。
+推荐您通过 评测设置 在线编辑题目配置，可以拥有更好的编辑体验。
 :::
 
 上传 `config.yaml` 文件即可，文件格式如下（下方所有样例均为可选项，若无说明则预填写的内容即为默认值）：
@@ -76,14 +76,17 @@ judge_extra_files:
 #
 # The CASES option has higher priority than the SUBTASKS option!
 # 在有 CASES 设置项时，不会读取 SUBTASKS 设置项！
-score: 50     # 单个测试点分数
-time: 1s      # 时间限制
-memory: 256m  # 内存限制
-cases:
-  - input: abc.in
-    output: def.out
-  - input: ghi.in
-    output: jkl.out
+#
+# The CASES option has been deprecated in the new version, please use the more personalized SUBTASKS!
+# CASES 已于新版本中被废弃，请使用个性化程度更高的SUBTASKS！
+# score: 50     # 单个测试点分数
+# time: 1s      # 时间限制
+# memory: 256m  # 内存限制
+# cases:
+#   - input: abc.in
+#     output: def.out
+#   - input: ghi.in
+#     output: jkl.out
 # 或使用Subtask项：
 subtasks:
   - score: 30
@@ -91,7 +94,9 @@ subtasks:
     time: 1s
     memory: 64m
     cases:
-      - input: a.in
+      - time: 0.5s
+        memory: 32m # 可对单个测试点单独设置时间限制和内存限制
+        input: a.in
         output: a.out
       - input: b.in
         output: b.out
