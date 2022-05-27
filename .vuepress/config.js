@@ -31,6 +31,7 @@ module.exports = context => config({
         nav: [
             { text: '文档', link: '/docs/' },
             { text: '常见问题解答', link: '/FAQ/' },
+            { text: '常用教程', link: 'https://hydro.ac/d/faqs/p' },
             { text: '开发', link: '/dev/' },
             { text: '插件', link: '/plugins/' }
         ],
