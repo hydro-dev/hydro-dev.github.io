@@ -1,20 +1,21 @@
 # 开发环境部署
 
+如果您没有过 TypeScript 项目的开发经验，我们不建议您使用此方式。  
+使用自动脚本安装也可以基于插件系统完成大部分简单的定制需求。  
+
 您可以使用 [Gitpod](https://gitpod.io/#https://github.com/hydro-dev/Hydro) 快速打开配置完成的开发环境或是按照下方说明进行手动配置。（由于 Gitpod 的限制，hydrojudge 模块无法正常运行，若需要开发 hydrojudge 相关内容请自行部署）
 
 ## 安装依赖
 
-:::warning
-CentOS 的内核版本过于老旧，可能会导致沙箱安全性问题。  
-:::
-
 - MongoDB：Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。  
 - S3：可使用 [MinIO](https://min.io) 提供 S3 服务。  
-- NodeJS：请安装 NodeJS >=14 版本。（勿使用 apt 安装 nodejs） （推荐使用 [nvm](https://nvm.sh/)）  
+- NodeJS：请安装 NodeJS >=14 版本。（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 [nvm](https://nvm.sh/)）  
 - yarn：安装 yarn 前请先完成 NodeJS 安装。 `npm install -g yarn`  
 
+尽管这不是必须的，但文档多数区域使用了 `npx` 工具来调用工作区的程序。你可以在 **Hydro 项目文件夹外**使用 `yarn global add npx` 安装它。
+
 :::tip
-腾讯COS、Amazon S3、wasabi 等也可提供 S3 服务。  
+腾讯COS、Amazon S3、wasabi 等也可提供 S3 服务。  详见[此处](/docs/install/s3)
 :::
 
 ## 安装 Hydro

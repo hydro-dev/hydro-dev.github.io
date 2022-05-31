@@ -17,6 +17,7 @@ pm2 ls
 - `hydrooj`： Hydro 主进程
 - `hydro-sandbox`： Hydro 评测沙箱
 - `mongodb`： MongoDB 数据库
+- `minio`：用户文件存储（测试数据等）
 
 后文的指令中将用 `<name>` 替代此处的进程名称，用 `<id>` 替代进程 ID（进程 ID 可通过 `pm2 ls` 查看）。（尖括号同样需要替换）
 
@@ -34,11 +35,9 @@ pm2 attach <id> # 与进程交互
 pm2 save # 保存对 PM2 进行的修改（在添加、修改、删除进程后需要执行该指令）
 ```
 
-Hydro 主进程同样支持多进程启动。
+在部分环境（常见于 lxc 容器或是精简版系统）下，服务器重启后 Hydro 可能不能正常自启动，这时请使用 `pm2 resurrect` 手动载入进程列表。
 
-:::warning
-请不要盲目使用多进程启动 Hydro，在低端设备上会降低性能且成倍提高内存占用。
-:::
+Hydro 主进程同样支持多进程启动，但在中低端服务器（不超过4核）中没有必要使用多进程启动 Hydro，会降低性能且成倍提高内存占用。
 
 ```sh
 pm2 start hydrooj -i <n> # 以 n 进程启动 Hydro 主进程
@@ -47,6 +46,8 @@ pm2 start hydrooj -i <n> # 以 n 进程启动 Hydro 主进程
 ## 更新
 
 Hydro 系统会不定期发布更新，可以使用下面的命令获取更新。
+
+无特殊情况请 **不要更新PM2** ！此操作可能导致进程列表丢失！
 
 ```sh
 yarn global upgrade-interactive --latest # 在交互式界面中选择想要更新的组件

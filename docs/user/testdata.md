@@ -7,7 +7,8 @@
 若上传文件为 zip 格式，将会自动进行解压操作。
 :::
 
-对于一般的题目，您只需提供 `.in` 和 `.out/.ans` 文件，以下是一个例子。
+对于一般的题目，您只需提供 `.in` 和 `.out/.ans` 文件，以下是一个例子。  
+请务必确保文件名中含有数字。形如 `sample.in` 的文件是不会被自动识别的。
 
 ```bash
 喵? tree
@@ -25,13 +26,13 @@
 ## 使用配置文件
 
 :::tip
-推荐您在线编辑题目配置（点击 Create File，输入文件名 `config.yaml`），将检查配置有效性。
+推荐您通过 评测设置 在线编辑题目配置，可以拥有更好的编辑体验。
 :::
 
 上传 `config.yaml` 文件即可，文件格式如下（下方所有样例均为可选项，若无说明则预填写的内容即为默认值）：
 
 ```yaml
-# 题目类型，可以为 default(比对输出，含spj), submit_answer（提交答案）, interactive（交互题）
+# 题目类型，可以为 default(比对输出，可以含spj), objective(客观题), interactive(交互题)
 type: default
 
 # 全局时空限制（此处的限制优先级低于测试点的限制）
@@ -42,7 +43,7 @@ memory: 128m
 filename: foo
 
 # 此部分设置当题目类型为 default 时生效
-# 比较器类型，支持的值有 default（直接比对，忽略行末空格和文件末换行）, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib
+# 比较器类型，支持的值有 default（直接比对，忽略行末空格和文件末换行）, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib(比较常用)
 checker_type: default
 # 比较器文件（当比较器类型不为 default 时填写）
 # 文件路径（位于压缩包中的路径）
@@ -75,14 +76,17 @@ judge_extra_files:
 #
 # The CASES option has higher priority than the SUBTASKS option!
 # 在有 CASES 设置项时，不会读取 SUBTASKS 设置项！
-score: 50     # 单个测试点分数
-time: 1s      # 时间限制
-memory: 256m  # 内存限制
-cases:
-  - input: abc.in
-    output: def.out
-  - input: ghi.in
-    output: jkl.out
+#
+# The CASES option has been deprecated in the new version, please use the more personalized SUBTASKS!
+# CASES 已于新版本中被废弃，请使用个性化程度更高的SUBTASKS！
+# score: 50     # 单个测试点分数
+# time: 1s      # 时间限制
+# memory: 256m  # 内存限制
+# cases:
+#   - input: abc.in
+#     output: def.out
+#   - input: ghi.in
+#     output: jkl.out
 # 或使用Subtask项：
 subtasks:
   - score: 30
@@ -90,7 +94,9 @@ subtasks:
     time: 1s
     memory: 64m
     cases:
-      - input: a.in
+      - time: 0.5s
+        memory: 32m # 可对单个测试点单独设置时间限制和内存限制
+        input: a.in
         output: a.out
       - input: b.in
         output: b.out
@@ -106,9 +112,11 @@ subtasks:
 
 # 提交语言限制
 # 列举出所有本题允许使用的语言对应的代码（需要和评测机 lang.yaml 内的语言代码相同）
+# 使用语言ID而非名称！对于有子类的选项，请详细至子分类！
 langs:
   - c
   - cc
+  - cc.cc11o2
   - pas
 ```
 

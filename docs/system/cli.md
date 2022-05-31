@@ -6,8 +6,8 @@
 **用户请根据自己的情况替换掉用 `<>` 或是 `[]` 包括起来的部分（括号也应替换）**
 :::
 
-cli 可以帮助用户在控制台下快捷地进行一些操作。
-
+cli 可以帮助用户在控制台下快捷地进行一些操作。  
+这些命令需要以在终端以 root 用户执行（安装时执行命令的位置）。  
 下面给出了一些常用的例子。
 
 ## 创建用户
@@ -17,11 +17,12 @@ cli 可以帮助用户在控制台下快捷地进行一些操作。
 :::
 
 ```sh
-hydrooj cli user create <mail> <username> <password>
+hydrooj cli user create <mail> <username> <password> <uid>
 # 该用户的邮箱、用户名和密码
 
-# 如创建邮箱为 hydro@hydro.local，用户名为 Hydro，密码为 hydrohydro 的用户：
-hydrooj cli user create hydro@hydro.local Hydro hydrohydro
+# 如创建邮箱为 hydro@hydro.local，用户名为 Hydro，密码为 hydrohydro ，UID 为 2 的用户：
+# 请确保 UID 为不小于 2 的正整数且未被占用，邮箱和用户名均不重复。
+hydrooj cli user create hydro@hydro.local Hydro hydrohydro 2
 ```
 
 若一切正常，运行该指令后您会从命令行窗口中看到该用户 uid。
@@ -54,11 +55,7 @@ hydrooj cli user setPassword 1 hydrohydro
 
 ## 创建评测账号
 
-先创建一个账号。
-
-```sh
-hydrooj cli user create <mail> <username> <password>
-```
+先 [创建一个账号](#创建用户)。  
 
 您需要留意运行此指令返回的数字，表示该用户的 `uid`，需要填入下面的指令中，然后给予该账号评测权限。
 

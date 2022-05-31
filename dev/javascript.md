@@ -3,7 +3,7 @@
 前置条件：NodeJS>10.4  
 此教程将以编写剪贴板插件为例进行说明。
 
-**Hydro v2 更加推荐您使用 TypeScript。**
+**Hydro v2 已原生支持 TypeScript ，使用 TS 编写的插件无需编译。更加推荐您使用 TypeScript。**
 
 ## Step1 初始化项目
 

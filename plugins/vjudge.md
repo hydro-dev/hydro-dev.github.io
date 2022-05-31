@@ -2,6 +2,9 @@
 
 ## Codeforces
 
+由于 vjudge 更新了反爬虫机制，Codeforces RemoteJudge 需要一些特殊手段才能正常工作。  
+详情请 [阅读源码](https://github.com/hydro-dev/Hydro/blob/master/packages/vjudge/src/providers/codeforces.ts)
+
 安装插件后创建名为 codeforces 的域，进入数据库 `db.domain.updateOne({_id:'codeforces'},{$set:{mount:'codeforces'}});`  
 
 在 codeforces 的域设置中，将 `allowedLangs` 如下配置：

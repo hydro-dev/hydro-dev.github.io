@@ -141,7 +141,7 @@ pm2 info hydro-sandbox | grep "exec cwd"
 ```
 :::
 
-将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 50 行和第 54 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
+将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 64 行和第 68 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
 
 ## C/C++ 彩色编译错误信息
 

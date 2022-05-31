@@ -4,14 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-active-header-links": "^1.5.2",
-    "@vuepress/plugin-back-to-top": "^1.5.2",
-    "@vuepress/plugin-register-components": "^1.5.2",
-    "vuepress": "^1.5.2",
+    "@vuepress/plugin-active-header-links": "^1.9.7",
+    "@vuepress/plugin-back-to-top": "^1.9.7",
+    "@vuepress/plugin-register-components": "^1.9.7",
+    "hydrooj": "^3.11.6",
+    "remark-shiki-twoslash": "^3.0.9",
+    "vuepress": "^1.9.7",
     "vuepress-plugin-nprogress": "^1.1.8",
     "vuepress-plugin-smooth-scroll": "^0.0.10",
     "vuepress-plugin-zooming": "^1.1.8",
-    "vuepress-theme-hope": "^1.14.3"
+    "vuepress-theme-hope": "^1.28.4"
   },
   "scripts": {
     "dev": "vuepress dev .",
