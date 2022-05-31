@@ -32,6 +32,7 @@ Hydro 官方目前提供了以下附加组件：
 | ID                                                 | 作者      | 描述                         |
 | -------------------------------------------------- | --------- | ---------------------------- |
 | [hydro-pdf-preview](//github.com/Ri-moe/hydro-pdf) | wuxianucw | 使用 PDF.js 在题面中插入 PDF |
+| [hydrooj_pastebin](//www.npmjs.com/package/hydrooj_pastebin) | MinecraftGCB | Hydro 的剪贴板模块 |
 
 大部分插件的配置均可在安装后于 控制面板>系统设置 中找到。
 
