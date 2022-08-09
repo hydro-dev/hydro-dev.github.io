@@ -20,7 +20,7 @@
 ### 从 SYZOJ 导入
 
 Hydro 提供了一个小工具 [loj-download](https://github.com/hydro-dev/loj-download)，可从基于原版 SYZOJ/SYZOJ-NG 搭建的源站下载到符合Hydro格式的题目压缩包。  
-工具使用方法在此不做详细描述，请自行摸索并确保在网络通畅的环境下使用。
+工具使用方法请前往使用教程查看，自行摸索并确保在网络通畅的环境下使用。
 
 ### 从 FPS 文件导入
 
@@ -118,6 +118,6 @@ Hydro 提供了一个小工具 [loj-download](https://github.com/hydro-dev/loj-d
 type: objective # 表明该题为客观题
 answers: # 列举出每一题的正确选项与对应的得分
   '1': ['2', 50]
-  '2': ['A', 30]
+  '2': [['A', 'B'], 30] # 填空题支持多答案，满足其一得分
   '3': [['A', 'B'], 20] # 多选题答案为数组，有部分分
 ```
