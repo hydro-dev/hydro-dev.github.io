@@ -135,14 +135,18 @@ parallelism: 2 # 单评测机评测进程数量
 如果不调整沙箱的空间大小，当您的评测使用文件 IO 且输入输出文件较大时可能会引发错误。
 :::
 
-:::tip
-可以在服务器上运行下面的代码找到 hydro-sandbox 的运行目录：
+对于 2022/8/12 前安装的用户：
+
+在服务器上运行下面的代码找到 hydro-sandbox 的运行目录：
 ```sh
 pm2 info hydro-sandbox | grep "exec cwd"
 ```
-:::
 
 将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 64 行和第 68 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
+
+对于 2022/8/12 后安装的用户：
+
+编辑 `/root/.hydro/mount.yaml`，修改 size 即可。
 
 ## C/C++ 彩色编译错误信息
 
@@ -158,17 +162,15 @@ c:
 
 ## 开大程序运行栈空间
 
+2022/8/12 后安装的实例默认已开启无限栈空间。
+
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
-修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /path-to/sandbox` 即可：
-
-:::tip
-您需要将 `/path-to/sandbox` 更换为您机器上 sandbox 的绝对路径。
-:::
+修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /usr/bin/hydro-sandbox` 即可：
 
 ```sh
 pm2 del hydro-sandbox
-pm2 start "ulimit -s unlimited && /path-to/sandbox" --name hydro-sandbox
+pm2 start "ulimit -s unlimited && /usr/bin/hydro-sandbox" --name hydro-sandbox
 ```
 
 ## 提高测评精度
