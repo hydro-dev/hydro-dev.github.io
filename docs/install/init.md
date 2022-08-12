@@ -7,23 +7,9 @@
 注册账号后，请在右上角下拉菜单找到个人信息页，在个人信息页用户名后找到用户的 UID。  
 在终端以 root 用户运行以下命令将用户设置为管理员：  
 
-<CodeGroup>
-<CodeGroupItem title="常规部署" active>
-
 ```sh
 hydrooj cli user setSuperAdmin UID
 ```
-
-</CodeGroupItem>
-<CodeGroupItem title="开发者模式">
-
-```sh
-# 请在 Hydro 的安装文件夹内运行该命令
-npx hydrooj cli user setSuperAdmin UID
-```
-
-</CodeGroupItem>
-</CodeGroup>
 
 之后刷新页面，您应当能在导航栏看到控制面板入口。  
 进入控制面板，右侧进入系统设置，填写如下内容：  
