@@ -28,16 +28,13 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 [NodeJS](https://nodejs.org/en/download/)。
 如果您的机器上已经安装过上述软件，建议您重置该系统或是参考安装脚本内容自行完成 Hydro 安装。  
 同时，Hydro 需要以下端口： 8888, 9000, 5050, 27017，请确保这些端口空闲。  
-如果安装 MongoDB 时资源下载慢，可以百度 `Ubuntu 换源` 。  
 **安装和安装后的所有操作均需要在 root 权限下进行！（`sudo su`）**。
 **请不熟悉 Hydro 架构的用户务必使用自动安装脚本部署**。  
 **非常不建议您在生产环境使用宝塔面板。**  
 :::
 
 :::tip
-自动安装脚本目前支持 `Ubuntu 16.04`、`Ubuntu 18.04`、`Ubuntu 20.04`、`Arch Linux`，推荐使用 `Ubuntu 20.04`。  
-如果需要在其他操作系统上安装 Hydro，请使用手动安装。  
-特别注意： HydroJudge 模块目前仅支持运行于 `Linux x64` 平台。
+自动安装脚本目前支持除 CentOS 以外的大部分 x64 Linux 发行版。推荐使用 `Ubuntu 20.04`。  
 :::
 
 :::warning
@@ -50,12 +47,8 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 LANG=zh bash <(curl https://hydro.ac/install.sh)
 ```
 
-上面的脚本默认使用的为 tsinghua 镜像，部分海外服务器可能会出现速度过慢等问题。  
-如果您出现了该问题，可以通过运行下面的脚本，实现 official 镜像安装：
-
-```sh
-LANG=zh MIRROR=official bash <(curl https://hydro.ac/install.sh)
-```
+脚本默认使用的为清华大学镜像。  
+安装完成后，请查看 [初始化](/docs/install/init)
 
 ### 开发环境部署
 

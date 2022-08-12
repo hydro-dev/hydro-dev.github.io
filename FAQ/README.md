@@ -97,7 +97,8 @@ Hydro 的默认位置可以运行 `yarn global dir` 得到。（不要直接改�
 
 ## 我想让 Python 支持 numpy 等等库，怎么办？
 
-`pip3 install numpy` 后 `pm2 restart hydro-sandbox`
+如果你是 2022/8/12 日前安装，使用 `pip3 install numpy` 后 `pm2 restart hydro-sandbox`  
+否则参照请参照 [编译器](/docs/install/compiler) 章节。
 
 ## 使用安装脚本后忘记 MongoDB 的账号密码怎么办？
 
@@ -169,7 +170,7 @@ Hydro 的默认位置可以运行 `yarn global dir` 得到。（不要直接改�
 目前只支持sun原版jdk和openjdk，其他jdk暂不能保证支持。如果你用的是64位系统，你可能需要自己调整一下源代码。
 
 ## execve: no such file or directory
-脚本安装默认只装了 cpp 和 pascal 编译器。请使用 apt 按需安装其他编译器。装完之后 `pm2 restart hydro-sandbox`
+脚本安装默认只装了 cpp 和 pascal 编译器。请参照 [编译器](/docs/install/compiler) 章节安装配置其他编译器。
 
 ## 怎么自定义用户标签？
 
