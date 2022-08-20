@@ -35,6 +35,7 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 
 :::tip
 自动安装脚本目前支持除 CentOS 以外的大部分 x64 Linux 发行版。推荐使用 `Ubuntu 20.04`。  
+警惕各大平台的变种 CentOS 系统！请不要使用 `Alibaba Cloud Linux` 和 `TencentOS` 等！
 :::
 
 :::warning
