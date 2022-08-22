@@ -17,7 +17,6 @@ pm2 ls
 - `hydrooj`： Hydro 主进程
 - `hydro-sandbox`： Hydro 评测沙箱
 - `mongodb`： MongoDB 数据库
-- `minio`：用户文件存储（测试数据等）
 
 后文的指令中将用 `<name>` 替代此处的进程名称，用 `<id>` 替代进程 ID（进程 ID 可通过 `pm2 ls` 查看）。（尖括号同样需要替换）
 
