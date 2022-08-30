@@ -52,3 +52,15 @@ Hydro 系统会不定期发布更新，可以使用下面的命令获取更新�
 yarn global upgrade-interactive --latest # 在交互式界面中选择想要更新的组件
 pm2 restart hydrooj # 更新完后需重启 hydrooj
 ```
+
+## 查看已安装版本
+
+```
+cd `yarn global dir` && yarn list --pattern hydrooj
+```
+
+## 清除缓存
+
+```
+yarn cache clean && nix-collect-garbage
+```
