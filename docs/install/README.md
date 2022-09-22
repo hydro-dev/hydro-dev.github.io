@@ -45,7 +45,7 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 运行下面的脚本，等待几分钟即可：
 
 ```sh
-LANG=zh bash <(curl https://hydro.ac/install.sh)
+LANG=zh . <(curl https://hydro.ac/setup.sh)
 ```
 
 脚本默认使用的为清华大学镜像。  
