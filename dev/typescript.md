@@ -14,7 +14,7 @@ yarn init v1.22.4
 question name (hydro-plugin): @hydrooj/pastebin
 question version (1.0.0): 0.0.1
 question description: HydroOJ的剪贴板组件
-question entry point (index.js): package.json
+question entry point (index.js): index.ts
 question repository url: https://github.com/hydro-dev/pastebin.git
 question author: undefined <i@undefined.moe>
 question license (MIT): MIT
@@ -30,18 +30,6 @@ success Saved package.json
 - 提供 /paste/create 路由以创建新文档。
 - 提供 /paste/show/:ID 来查看已创建的文档。
 - 根据用户ID进行鉴权，允许将文档设置为私密以防止他人查看。
-
-Hydro的推荐架构如下：
-
-- handler.ts: 用于处理路由
-- model.ts: 数据库模型
-- lib.ts: 不依赖于数据库等的库（如 `md5` 函数）
-- script.ts: 可能会被用户多次使用到的脚本（如重新计算 `rp` ）
-- locale/: 翻译文件
-- template/: 页面模板
-- setting.yaml: 模块所用到的设置，格式在下方说明
-
-但注意上述结构并非全部必要，可以只创建插件需要使用的结构。
 
 在路由中定义所有的函数应均为异步函数，支持的函数有：prepare, get, post, post[Operation], cleanup  
 具体流程如下：
@@ -71,14 +59,13 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 应当提供 `apply` 函数，并与定义的 Handler 一同挂载到 `global.Hydro.handler[模块名]` 位置。
 `apply` 函数将在初始化阶段被调用。
 
-# Step3 model&handler
+# Step3 index.ts
 
 ```ts
 // @noErrors
 // @module: esnext
-// @filename: model.ts
-import 'hydrooj';
-import * as db from 'hydrooj/src/service/db';
+// @filename: index.ts
+import { definePlugin, Handler, Types, param, db, PRIV, validator, NotFoundError, PermissionError } from 'hydrooj';
 
 const coll = db.collection('paste');
 
@@ -89,7 +76,7 @@ interface Paste {
     isPrivate: boolean;
 }
 
-declare module 'hydrooj/src/interface' {
+declare module 'hydrooj' {
     interface Model {
         pastebin: typeof pastebinModel;
     }
@@ -98,7 +85,7 @@ declare module 'hydrooj/src/interface' {
     }
 }
 
-export async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
+async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
     const pasteId = String.random(16); // Hydro 提供了此方法，创建一个长度为16的随机字符串
     // 使用 mongodb 为数据库驱动，相关操作参照其文档
     const result = await coll.insertOne({
@@ -110,21 +97,13 @@ export async function add(userId: number, content: string, isPrivate: boolean): 
     return result.insertedId; // 返回插入的文档ID
 }
 
-export async function get(pasteId: string): Promise<Paste> {
+async function get(pasteId: string): Promise<Paste> {
     return await coll.findOne({ _id: pasteId });
 }
 
-// 暴露这些接口
+// 暴露这些接口，使得 cli 也能够正常调用这些函数；
 const pastebinModel = { add, get };
 global.Hydro.model.pastebin = pastebinModel;
-
-
-// @filename: handler.ts
-import { Route, Handler, Types, param } from 'hydrooj/src/service/server';
-import { PRIV } from 'hydrooj/src/model/builtin'; // 内置 Privilege 权限节点
-import { isContent } from 'hydrooj/src/lib/validator'; // 用于检查用户输入是否合法
-import { NotFoundError, PermissionError } from 'hydrooj/src/error';
-import * as pastebin from './model'; // 刚刚编写的pastebin模型
 
 // 创建新路由
 class PasteCreateHandler extends Handler {
@@ -169,16 +148,16 @@ class PasteShowHandler extends Handler {
     }
 }
 
-// Hydro会在服务初始化完成后调用该函数。
-export async function apply() {
-    // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
-    // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
-    // 提示：路由匹配基于 path-to-regexp
-    Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
-    Route('paste_show', '/paste/show/:id', PasteShowHandler);
-}
-
-global.Hydro.handler.pastebin = apply;
+// 定义为一个插件
+export default definePlugin({
+    apply(ctx) {
+        // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
+        // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
+        // 提示：路由匹配基于 path-to-regexp
+        ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
+        ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
+    }
+});
 ```
 
 ## Step4 template

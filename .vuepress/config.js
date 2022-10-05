@@ -113,7 +113,6 @@ module.exports = context => config({
                     children: [
                         '/dev/',
                         '/dev/PERM_PRIV',
-                        '/dev/javascript',
                         '/dev/typescript',
                         '/dev/frontend-modify',
                     ],
