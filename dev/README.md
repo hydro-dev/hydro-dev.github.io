@@ -8,15 +8,10 @@
 ## 安装依赖
 
 - MongoDB：Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。  
-- S3：可使用 [MinIO](https://min.io) 提供 S3 服务。  
 - NodeJS：请安装 NodeJS >=14 版本。（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 [nvm](https://nvm.sh/)）  
 - yarn：安装 yarn 前请先完成 NodeJS 安装。 `npm install -g yarn`  
 
-尽管这不是必须的，但文档多数区域使用了 `npx` 工具来调用工作区的程序。你可以在 **Hydro 项目文件夹外**使用 `yarn global add npx` 安装它。
-
-:::tip
-腾讯COS、Amazon S3、wasabi 等也可提供 S3 服务。  详见[此处](/docs/install/s3)
-:::
+尽管这不是必须的，但文档多数区域使用了 `npx` 工具来调用工作区的程序。如果此命令不存在，你可以在 **Hydro 项目文件夹外**使用 `yarn global add npx` 安装它。
 
 ## 安装 Hydro
 
@@ -37,10 +32,10 @@ yarn build:ui:production # 编译前端
 npx hydrooj addon add @hydrooj/ui-default
 ```
 
-对于非官方插件，下载后通过下面的命令启用即可（以启用位置在 `/root/addon/` 下的插件为例）：
+对于非官方插件，下载后通过下面的命令启用即可（以启用位置在 `/root/addon` 下的插件为例）：
 
 ```sh
-npx hydrooj addon add /root/addon/
+npx hydrooj addon add /root/addon
 ```
 
 ## 启动 Hydro
@@ -55,7 +50,7 @@ npx hydrooj addon add /root/addon/
 您可以使用 `yarn debug --port=2333` 启动 Hydro，配合上述两个命令同时使用，您可以在 2333 端口访问到 Hydro 实例，且前端的任何更改将即时生效。（更改后端代码后仍需要重启 Hydro 才能生效）  
 
 首次启动会要求您填写数据库连接信息。请根据您数据库的安装填写（若无密码则留空）  
-出现 `Storage init fail` 提示是正常现象。请按照下文说明创建管理员账户，在系统设置的 file 部分填写 S3 服务的连接信息后重启 Hydro 即可正常使用。
+请按照下文说明创建管理员账户即可正常使用。
 
 ## 更新
 
