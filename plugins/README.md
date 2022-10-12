@@ -18,14 +18,14 @@ Hydro 官方目前提供了以下附加组件：
 | @hydrooj/import-qduoj      | 导入 QDUOJ 导出的题库         |
 | @hydrooj/login-with-github | 允许用户使用 GitHub 登录      |
 | @hydrooj/login-with-google | 允许用户使用 Google 登录      |
-| @hydrooj/migrate-vijos     | 从 vijos4 的自动升级工具      |
-| @hydrooj/migrate-hustoj    | 从 HustOJ 导入所有数据        |
+| @hydrooj/migrate           | 从 vijos4/HustOJ/SYZOJ 升级 |
 | @hydrooj/recaptcha         | 注册时启用 reCAPTCHA 验证码   |
 | @hydrooj/ui-default        | Hydro 的默认用户界面          |
 | @hydrooj/onlyoffice        | 显示 doc/docx 格式题目        |
 | @hydrooj/sonic             | 基于 sonic 的题目搜索增强     |
 | @hydrooj/elastic-search    | 基于 Elastic 的题目搜索增强   |
 | @hydrooj/vjudge            | Codeforces/SPOJ/UOJ/POJ/Luogu |
+| @hydrooj/prom-client       | 导出系统状态至 Prometheus     |
 
 以下插件由社区提供：
 

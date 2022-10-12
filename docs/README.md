@@ -12,8 +12,7 @@
 
 - 如果您正在使用 HustOJ，可以导出题目为 FPS 文件后使用 [fps-importer 插件](/plugins/fps-importer) 直接导入 Hydro。
 - 如果您正在使用 QDUOJ， 可以导出题目为 QDUOJ-zip 格式后使用 import-qduoj 插件直接导入 Hydro。
-- 如果您正在使用 Vijos， 可以直接使用 [migrate-vijos 插件](/plugins/migrate-vijos) 导入所有数据至 Hydro。
-- 如果您正在使用 SYZOJ 或是 SYZOJ-NG，可以使用内置的 [Import From SYZOJ 功能](/docs/user/problem/#%E4%BB%8E-syzoj-%E5%AF%BC%E5%85%A5) 将题目导入 Hydro。
+- 如果您正在使用 Vijos / SYZOJ / HustOJ， 可以直接使用 [migrate 插件](/plugins/migrate) 导入所有数据至 Hydro。
 
 ## 功能对比
 
@@ -39,7 +38,7 @@
 |     权限系统 [^5]     |            +            |   + [^6]    |      -      |     -      |    +     |
 |    训练计划(题单)     |            +            |   - [^7]    |      -      |     -      |    +     |
 |         团队          |         + [^3]          |      -      |      -      |     -      |    +     |
-|         Hack          |            -            |      -      |      -      |     -      |    -     |
+|         Hack          |            +            |      -      |      -      |     -      |    -     |
 |     SpecialJudge      |         + [^4]          |      +      |      +      |     -      |    -     |
 |        Subtask        |            +            |      +      |      +      |     -      |    -     |
 |        交互题         |            +            |      -      |      +      |     -      |    -     |

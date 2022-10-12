@@ -1,4 +1,8 @@
-# migrate-vijos
+# migrate
+
+## 从 SYZOJ 升级
+
+TODO
 
 ## 从 Vijos 升级
 

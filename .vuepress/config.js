@@ -35,9 +35,9 @@ module.exports = context => config({
             { text: '开发', link: '/dev/' },
             { text: '插件', link: '/plugins/' }
         ],
-        pwa: {
-            cacheHTML: false,
-        },
+        pwa: false,
+        feed: false,
+        shouldPrefetch: false,
         sidebarDepth: 2,
         lastUpdated: '上次更新',
         hostname: 'https://hydro.js.org',
@@ -126,7 +126,8 @@ module.exports = context => config({
                         '/plugins/',
                         '/plugins/fps-importer',
                         '/plugins/hydrojudge',
-                        '/plugins/migrate-vijos',
+                        '/plugins/migrate',
+                        '/plugins/elastic',
                         '/plugins/recaptcha',
                         '/plugins/sonic',
                         '/plugins/vjudge',
