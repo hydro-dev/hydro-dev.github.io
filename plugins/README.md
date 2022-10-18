@@ -46,7 +46,22 @@ yarn global add @hydrooj/geoip
 hydrooj addon add @hydrooj/geoip
 ```
 
+或者，如果你正在安装一个其他途径获取的插件（自行创建等），请直接使用文件夹 **绝对路径**：
+（文件夹路径即为 **包含 package.json** 的文件夹）
+
+```sh
+hydrooj addon add /root/xxx
+```
+
+请不要将插件与插件嵌套摆放，否则可能会导致一些不可预知的问题。
+
 **安装完插件后需要重启 hydrooj 以使插件生效。**
+
+## 查看已注册的插件列表
+
+```sh
+hydrooj addon list
+```
 
 ## 更新
 
