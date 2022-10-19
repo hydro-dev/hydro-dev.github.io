@@ -44,4 +44,4 @@ hydrooj cli user setSuperAdmin 2
 - Server BaseURL: 网站完整的 URL，需要以 `/` 结尾。（重要，务必正确填写）  
 - IP Header: 若使用反向代理（含 Cloudflare 等 CDN 服务），请设置为其 IP Header（通常为 `x-forwarded-for` 或 `x-real-ip`，小写）。在不使用反向代理的情况下请勿配置该项，否则用户将可以伪造 IP 。
 
-至此，基础功能安装已全部完成。
+至此，基础功能安装已全部完成，另，如果你的服务部署在内网，且希望外网的用户可以访问，可以百度搜索 “端口映射” 相关教程。

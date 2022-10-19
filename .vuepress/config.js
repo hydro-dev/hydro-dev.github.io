@@ -76,7 +76,6 @@ module.exports = context => config({
                         '/docs/install/',
                         '/docs/install/s3',
                         '/docs/install/proxy',
-                        '/docs/install/port-forwarding',
                         '/docs/install/compiler',
                     ],
                 },
