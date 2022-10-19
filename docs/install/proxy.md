@@ -6,10 +6,11 @@ X-Forwarded-Host 配置错误会导致用户无法登录等问题。(CsrfTokenEr
 X-Forwarded-For 配置错误会导致无法记录用户IP。
 
 使用 `hydrooj cli system set server.xhost x-forwarded-host` 指定自定义 Host header。
+
+若您使用 Nginx，请注意配置 WebSocket 协议的反向代理。
 :::
 
-Hydro 可以直接监听 80/443 端口以提供服务，但是当您的服务器上需要同时运行多个 Web 服务时可能会发生端口冲突。  
-此时可以使用 Nginx, HaProxy, Caddy 等工具进行反向代理，[此处](https://github.com/hydro-dev/Hydro/tree/master/examples/reverse_proxy) 提供了一些配置样例。
+Hydro 支持使用 Caddy, HaProxy 等工具进行反向代理，[此处](https://github.com/hydro-dev/Hydro/tree/master/examples/reverse_proxy) 提供了一些配置样例。
 
 Hydro 推荐您使用 [Caddy](https://caddyserver.com/)。以下为样例 Caddyfile。
 提示：如果您的服务器位于国内，则需要进行备案后才能使用 80 和 443 端口。
@@ -21,7 +22,3 @@ hydro.ac {
   }
 }
 ```
-
-:::warning
-若您使用 Nginx，请注意配置 WebSocket 协议的反向代理。
-:::

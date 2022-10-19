@@ -5,9 +5,7 @@
 
 以下是 nix 的简要操作说明：
 
-## 安装新编译器
-
-使用 `nix-env -iA nixpkgs.编译器名` 安装，后重启沙箱 `pm2 restart hydro-sandbox` 生效。
+使用 `nix-env -iA nixpkgs.编译器名` 安装新编译器，后重启沙箱 `pm2 restart hydro-sandbox` 生效。
 
 可以在 [Nixos Search](https://search.nixos.org/packages) 中搜索你需要的编译器。  
 以下是常用编译器的示例：
@@ -30,7 +28,5 @@ nix-env -iA nixpkgs.mono # C#
 nix-env -iA nixpkgs.julia_17-bin # Julia
 ```
 
-## 删除编译器
-
-使用 `nix-env -q` 查看已安装的列表，后使用 `nix-env -e 编译器名` 删除。  
+使用 `nix-env -q` 查看已安装的列表，后使用 `nix-env -e 编译器名` 即可删除对应的编译器。  
 请注意不要误删 Hydro 基础组件，且操作完成后需要重启沙箱 `pm2 restart hydro-sandbox` 生效。
