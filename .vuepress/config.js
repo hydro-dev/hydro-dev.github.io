@@ -74,7 +74,6 @@ module.exports = context => config({
                     collapsable: false,
                     children: [
                         '/docs/install/',
-                        '/docs/install/init',
                         '/docs/install/s3',
                         '/docs/install/proxy',
                         '/docs/install/port-forwarding',
