@@ -15,7 +15,7 @@
 其参数格式如下：
 
 ```json
-{"host":"localhost","port":3306,"name":"jol","username":"","password":"",domainId":"system","contestType":"","dataDir":""}
+{"host":"localhost","port":3306,"name":"jol","username":"","password":"","domainId":"system","contestType":"","dataDir":""}
 ```
 
 - host: 数据库地址
@@ -36,7 +36,7 @@ SYZOJ 与 HUSTOJ 迁移方法类似，迁移脚本应运行名为 `migrateSyzoj`
 其参数格式如下：
 
 ```json
-{"host":"localhost","port":3306,"name":"syzoj","username":"","password":"",domainId":"system","dataDir":""}
+{"host":"localhost","port":3306,"name":"syzoj","username":"","password":"","domainId":"system","dataDir":""}
 ```
 
 - host: 数据库地址
