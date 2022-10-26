@@ -162,7 +162,7 @@ c:
 
 ## 开大程序运行栈空间
 
-2022/8/12 后安装的实例默认已开启无限栈空间。
+**2022/8/12 后安装的实例默认已开启无限栈空间，无需手动操作**
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
@@ -170,7 +170,7 @@ c:
 
 ```sh
 pm2 del hydro-sandbox
-pm2 start "ulimit -s unlimited && /usr/bin/hydro-sandbox" --name hydro-sandbox
+pm2 start bash --name hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox" 
 ```
 
 ## 提高测评精度
