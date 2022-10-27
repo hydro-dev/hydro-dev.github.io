@@ -1,5 +1,7 @@
 # 反向代理 / SSL 配置
 
+### 2022/10/27 后使用脚本安装的实例已自动配置 caddy 反向代理，请直接编辑位于 `~/.hydro/Caddyfile` 的配置文件！
+
 :::warning
 若使用反向代理，请注意将 Hydro 设置的 X-Host header 配置正确（参照下方样例配置）。  
 X-Forwarded-Host 配置错误会导致用户无法登录等问题。(CsrfTokenError)  

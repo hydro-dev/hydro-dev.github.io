@@ -60,7 +60,7 @@ yarn global add @hydrooj/hydrojudge
 hosts:
   localhost:
     type: hydro # vj4 用户请在此处填写 vj4
-    server_url: http://localhost:8888/ # Hydro 运行的网址
+    server_url: http://localhost/ # Hydro 运行的网址
     uname: judge # 评测账号用户名
     password: abc123 # 评测账号密码
     detail: true # 默认为 true

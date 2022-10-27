@@ -31,7 +31,7 @@ LANG=zh . <(curl https://hydro.ac/setup.sh)
 ```
 
 脚本默认使用的为清华大学镜像。  
-安装完成后，从 `http://服务器ip:8888/` 访问网页端，注册一个账号，之后在终端中使用  
+安装完成后，从 `http://服务器ip/` 访问网页端，注册一个账号，之后在终端中使用  
 
 ```sh
 hydrooj cli user setSuperAdmin 2
