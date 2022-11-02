@@ -20,3 +20,38 @@ test@undefined.moe,user3,passwd3
 :::warning
 用户创建后无法删除，请谨慎操作
 :::
+
+## 批量将中文名转换为拼音的脚本
+这个脚本用学生姓名的拼音当作账户和密码，并且伪造假的邮箱。适合用户比较多的时候批量导入。
+当然这有个问题就是学生忘记密码可能不太容易找回，需要管理员重置。仅供参考。姓名和密码都是
+学生姓名的拼音，邮箱是拼音全拼 + @163.com。
+
+安装必要的 python 库：
+```
+pip install pandas
+pip install xpinyin
+```
+然后执行一下脚本：
+```
+import pandas as pd
+from xpinyin import Pinyin
+
+def py(name):
+    p = Pinyin()
+    return p.get_pinyin(name, "")
+
+df = pd.read_excel("students.xlsx", header=0, sheet_name=0)
+
+df['py'] = df['姓名'].apply(py)
+df['username'] = df['py']
+df['password'] = df['py']
+df['email'] = df['py'] + "@163.com"
+
+writer = pd.ExcelWriter('students-oj.xlsx')
+df.to_excel(writer)
+writer.save()
+```
+
+> 注意 `students.xlsx` 应该与执行的 python 脚本目录相同，并且学生姓名所在的列叫做`姓名`。
+
+`students-oj.xlsx` 是结果所在的文件，自动生成到 Python 文件的同目录。
