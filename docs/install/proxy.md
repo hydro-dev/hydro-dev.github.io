@@ -16,6 +16,7 @@ Hydro 支持使用 Caddy, HaProxy 等工具进行反向代理，[此处](https:/
 
 Hydro 推荐您使用 [Caddy](https://caddyserver.com/)。以下为样例 Caddyfile。
 提示：如果您的服务器位于国内，则需要进行备案后才能使用 80 和 443 端口。
+配置文件的目录在 ` ~/.hydro/Caddyfile`，如果没有的话请自行创建。
 
 ```
 hydro.ac {
@@ -24,3 +25,6 @@ hydro.ac {
   }
 }
 ```
+### 2022/10/27 之前安装用户
+需要自行安装 `caddy` 。
+·
