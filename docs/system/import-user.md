@@ -8,7 +8,7 @@
 ```csv
 foo@undefined.moe,user1,password1
 bar@undefined.moe,user2,password2,temp
-test@undefined.moe,user3,passwd3,test1,{"group":"class1","studentId":"123","school":"Hydro School"}
+test@undefined.moe,user3,passwd3,test,{"group":"class1","studentId":"123","school":"Hydro School"}
 ```
 
 可以在粘贴后点击预览验证复制入的数据的有效性
@@ -17,7 +17,7 @@ test@undefined.moe,user3,passwd3,test1,{"group":"class1","studentId":"123","scho
 
 - `user1` 密码为 `password1` , 邮箱 `foo@undefined.moe`；
 - `user2` 密码为 `password2` ，邮箱 `bar@undefined.moe`，显示名为 `temp`；
-- `user3` 密码为 `passwd3`，邮箱 `test@undefined.moe`，显示名为 `test`，学校为 `Hydro School`，学号为 `123`，将会被分配至当前域的 `class1` 小组内；
+- `user3` 密码为 `passwd3`，邮箱 `test@undefined.moe`，显示名为 `test`，学校为 `Hydro School`，学号为 `123`，该用户将会被分配至当前域的 `class1` 小组内；
 
 :::warning
 用户创建后无法删除，请谨慎操作
