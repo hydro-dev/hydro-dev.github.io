@@ -9,7 +9,7 @@
 题目 ID 不能全为数字。若留空则使用自动分配的数字题号。
 :::
 
-详见 [laomai 编写的说明](./problem-create.md)
+详见下方题面编辑部分，以及 [laomai 编写的说明](./problem-create.md)
 
 ## 导入题目
 
@@ -53,7 +53,7 @@ Hydro 提供了一个小工具 [loj-download](https://github.com/hydro-dev/loj-d
 
 - 附加文件下载链接： `[file](file://input.in)`
 - 从附加文件引用一张图片： `![img](file://foo.jpg)`
-- 从附加文件引用 pdf 作为题面：`@[pdf](file://foo.pdf)` （该功能在部分环境可能不正常。请考虑使用 [hydro-pdf](https://github.com/Ri-moe/hydro-pdf) 插件。）
+- 从附加文件引用 pdf 作为题面：`@[pdf](file://foo.pdf)` （部分情况下若无法使用，请尝试 `@[pdf](file://foo.pdf?noDisposition=1)` ） 
 - 从附加文件引用 word 文档作为题面： `@[doc](file://foo.docx)` （依赖 onlyoffice 插件）
 <!-- TODO -->
 
