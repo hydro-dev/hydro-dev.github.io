@@ -17,6 +17,7 @@ pm2 ls
 - `hydrooj`： Hydro 主进程
 - `hydro-sandbox`： Hydro 评测沙箱
 - `mongodb`： MongoDB 数据库
+- `caddy`： 反向代理
 
 后文的指令中将用 `<name>` 替代此处的进程名称，用 `<id>` 替代进程 ID（进程 ID 可通过 `pm2 ls` 查看）。（尖括号同样需要替换）
 
@@ -27,7 +28,6 @@ pm2 start <name> # 启动进程
 pm2 stop <name> # 关闭进程
 pm2 restart <name> # 重启进程
 pm2 del <name> # 删除进程
-pm2 log <name> # 查看进程日志
 pm2 log <name> --lines=100 # 查看该进程的后 100 行日志
 pm2 start "<command>" --name <name> # 创建名为 <name> 的进程，进程执行内容为 <command>
 pm2 attach <id> # 与进程交互
