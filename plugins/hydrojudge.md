@@ -18,10 +18,6 @@
 Executorserver 需要在后台**以 root 权限**运行并监听 `127.0.0.1:5050` 。
 可使用 pm2 进行管理。
 
-:::tip
-如果您是 vj4 用户，请使用“作为独立进程”配置（设置处需设成 `type: vj4`）。
-:::
-
 ## 安装
 
 ### 作为附加组件
@@ -46,7 +42,6 @@ hydrooj addon add @hydrooj/hydrojudge
 :::
 
 首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/docs/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
-（vj4 用户需参照 [vj4 的方法](https://github.com/vijos/vj4#judging) 创建账户）
 
 然后在运行评测机的服务器上安装 hydrojudge 插件：
 
@@ -118,12 +113,12 @@ parallelism: 2 # 单评测机评测进程数量
 
 对于已安装内置评测机的用户（无论内置评测机是否启动），在 控制面板>系统设置 中修改 judge.langs 配置项即可；对于没有安装内置评测机的用户，需要在 `~/.config/hydro/langs.yaml` 中配置。
 
-按照 [此处](https://github.com/hydro-dev/Hydro/blob/71bb2f0b517be8f6966f97f835f2521f179b3d84/packages/hydrooj/setting.yaml#L12) 格式即可。
+文件格式参照 [此处](https://github.com/hydro-dev/Hydro/blob/71bb2f0b517be8f6966f97f835f2521f179b3d84/packages/hydrooj/setting.yaml#L12) 。
 
 如果您添加了新的语言，您还需要前往 控制面板>系统设置 中修改 Language Highlight ID 与 Monaco language modes。  
 分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。
 
-修改完后重启 Hydro 和 hydrojudge 即可。
+修改完后请重启 Hydro 和 hydrojudge 。
 
 ## 测试数据格式
 
@@ -166,7 +161,7 @@ c:
 
 在很多时候系统默认为程序提供的栈空间并不能满足我们的需求，此时我们需要手动为用户程序提供更大的栈空间。
 
-修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /usr/bin/hydro-sandbox` 即可：
+修改 pm2 中 hydro-sandbox 的启动参数为 `ulimit -s unlimited && /usr/bin/hydro-sandbox` ：
 
 ```sh
 pm2 del hydro-sandbox

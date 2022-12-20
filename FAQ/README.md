@@ -137,6 +137,8 @@ Hydro 的默认位置可以运行 `yarn global dir` 得到。（不要直接改�
 以上图片将在页面左上角 logo 显示。
 之后前往系统设置，找到 `nav_logo_dark` 设置项，改为 `/nav_logo_dark.png` ，重启 Hydro 即可应用更改。
 
+记得清理浏览器缓存。
+
 ## 如何重置数据？
 
 :::warning
