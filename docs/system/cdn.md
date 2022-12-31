@@ -4,12 +4,6 @@
 
 在控制面板中将 `server.cdn` 设置项修改为 CDN 域名。（如 `https://cdn.hydro.ac/`，以 `/` 结尾）。  
 
-:::tip
-您可以使用 `https://cdn.jsdelivr.net/npm/@hydrooj/ui-default@[version]/public/` 作为 CDN 地址。  
-（请替换 `[version]` 为您本地安装的 `ui-default` 插件版本）  
-但由于在中国大陆访问 jsdelivr 的速度较慢（甚至在部分地区不可用），该 CDN 可能会影响用户体验。  
-:::
-
 ## 全站 CDN
 
 如果您预算充足，可以使用全站 CDN。
