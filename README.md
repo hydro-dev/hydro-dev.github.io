@@ -22,7 +22,7 @@ footer: AGPL3.0 Licensed | Copyright © 2021-present Undefined
 ---
 
 ![LICENSE](https://img.shields.io/github/license/hydro-dev/Hydro)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hydro-dev/hydro/CI)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/hydro-dev/hydro/build.yml?branch=master)
 ![hydrooj](https://img.shields.io/npm/dm/hydrooj)
 ![npm](https://img.shields.io/npm/v/hydrooj?label=hydrooj)
 ![node-current](https://img.shields.io/node/v/hydrooj)

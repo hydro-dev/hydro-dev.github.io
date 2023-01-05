@@ -6412,6 +6412,11 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
+flexsearch@^0.6.32:
+  version "0.6.32"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.6.32.tgz#1e20684d317af65baa445cdd9864a5f5b320f510"
+  integrity sha512-EF1BWkhwoeLtbIlDbY/vDSLBen/E5l/f1Vg7iX5CDymQCamcx1vhlc3tIZxIDplPjgi0jhG37c67idFbjg+v+Q==
+
 flowchart.js@^1.17.1:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/flowchart.js/-/flowchart.js-1.17.1.tgz#3908ce3778a44b0af5cba1ab31cb61e12dc384a1"
@@ -11859,6 +11864,13 @@ vuepress-plugin-feed@^0.1.8:
     lodash.trimstart "^4.5.1"
     remove-markdown "0.3.0"
     striptags "3.1.1"
+
+vuepress-plugin-flexsearch-pro@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-flexsearch-pro/-/vuepress-plugin-flexsearch-pro-1.0.3.tgz#aa1e7454ce5728c22c3bbae04382ebe85499eab5"
+  integrity sha512-PAGRixTeZRVyJCyO4zPRmdsm4TfuA8Q2Iiu+P+Cbx6M0vARjFW9VZbQseyl77d/kP0w4OjhXE/AnkixwDczQZQ==
+  dependencies:
+    flexsearch "^0.6.32"
 
 vuepress-plugin-mailchimp@^1.4.1:
   version "1.4.2"

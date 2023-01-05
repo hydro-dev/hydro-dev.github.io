@@ -17,6 +17,7 @@ module.exports = context => config({
         'vuepress-plugin-nprogress',
         'vuepress-plugin-smooth-scroll',
         'vuepress-plugin-zooming',
+        ['flexsearch-pro'],
         ['@vuepress/register-components', {
             components: [
                 {
