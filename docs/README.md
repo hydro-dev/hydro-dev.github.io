@@ -28,7 +28,7 @@ Hydro 支持很多其他系统无法支持的题型，可在 https://hydro.ac/d/
 
 |         功能          |         Hydro         |  HustOJ   | SYZOJ[^7]  |   QDUOJ    |  Vijos   |
 |:---------------------:|:---------------------:|:---------:|:----------:|:----------:|:--------:|
-|         安装          |       一键脚本        | 一键脚本  |  手动搭建  |   docker   |  docker  |
+|         安装          |       一键脚本        | 一键脚本  |  docker  |   docker   |  docker  |
 |        数据库         |        MongoDB        |   MySQL   |  MariaDB   |  Postgres  | MongoDB  |
 |     测试数据存储      |     本地/S3 [^1]      |   本地    |    本地    |    本地    |  数据库  |
 |       多评测机        |           +           |   =[^5]   |     +      |     +      |    +     |
