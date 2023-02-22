@@ -7,14 +7,7 @@
 使用 root 用户执行如下命令：
 
 ```bash
-apt install rustc #安装 rust
-apt install build-essential clang libclang-dev libc6-dev g++ llvm-dev
-```
-
-请查看 [此文档](https://mirrors.ustc.edu.cn/help/crates.io-index.html) 更换到 USTC Crates 源后，执行如下命令：
-
-```bash
-cargo install sonic-server
+nix-env -iA sonic-server
 ```
 
 ### 安装 sonic 插件
@@ -103,7 +96,7 @@ max_words = 250000
 
 执行如下命令：
 ```
-pm2 start /root/.cargo/bin/sonic -- -c /root/.sonic/config.cfg
+pm2 start sonic -- -c /root/.sonic/config.cfg
 pm2 save
 ```
 
@@ -132,10 +125,6 @@ pm2 save
 至此，搜索功能应当可以正常使用。
 
 ## FAQ
-
-### sonic-server 安装时卡在 librocksdb
-
-考虑换台性能强点的服务器。
 
 ### 安装后题目搜索不正常
 
