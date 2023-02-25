@@ -7,7 +7,7 @@
 使用 root 用户执行如下命令：
 
 ```bash
-nix-env -iA sonic-server
+nix-env -iA nixpkgs.sonic-server
 ```
 
 ### 安装 sonic 插件

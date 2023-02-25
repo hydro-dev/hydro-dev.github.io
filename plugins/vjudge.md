@@ -1,5 +1,9 @@
 # Vjudge
 
+:::warning
+此文档已过时，仅作留存使用，请前往 FAQS 查看使用指南。
+:::
+
 ## Codeforces
 
 由于 vjudge 更新了反爬虫机制，Codeforces RemoteJudge 需要一些特殊手段才能正常工作。  

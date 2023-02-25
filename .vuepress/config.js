@@ -130,6 +130,7 @@ module.exports = context => config({
                         '/plugins/recaptcha',
                         '/plugins/sonic',
                         '/plugins/vjudge',
+                        '/plugins/geoip',
                     ],
                 }
             ]
