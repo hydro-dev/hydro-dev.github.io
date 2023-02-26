@@ -30,3 +30,43 @@ nix-env -iA nixpkgs.julia_17-bin # Julia
 
 使用 `nix-env -q` 查看已安装的列表，后使用 `nix-env -e 编译器名` 即可删除对应的编译器。  
 请注意不要误删 Hydro 基础组件，且操作完成后需要重启沙箱 `pm2 restart hydro-sandbox` 生效。
+
+## 进阶
+
+如果你需要更加复杂的编译环境配置，我们建议使用编写单独的 nix 文件。
+
+```nix
+{ 
+  system ? builtins.currentSystem,
+  pkgs ? import <nixpkgs> { system = system; }
+}:
+
+pkgs.buildEnv {
+  name = "hydrojudge-rootfs";
+  paths = with pkgs; [
+    coreutils bash diffutils nix zip unzip gcc
+    # 上方包是评测所需要的，请勿删除，
+    # 在下方列出你所需要的包，查找方式同上文：
+    fpc python3 rustc
+  ];
+  ignoreCollisions = true;
+  pathsToLink = [ "/" ];
+  # 导出一些基本信息和部分编译器所需的 /etc/passwd
+  postBuild = ''
+    mkdir $out/buildInfo
+    echo 'root:x:0:0:root:/root:/bin/bash' >$out/etc/passwd
+    date >$out/buildInfo/timestamp
+  '';
+}
+```
+
+复制以上文件，保存为 `default.nix` ，使用 `nix-build` 进行构建。  
+构建后会产生一个 `result` 文件夹，记住该文件夹所在的路径。  
+打开 `~/.hydro/mount.yaml` 将其中 `/root/.nix-profile` 替换为编译出的 `result` 文件夹（切换到新的环境）  
+之后保存并重启沙箱。  
+
+后续若需更改环境配置，仅需要修改 `default.nix` 文件之后 `nix-build` 重新构建，再重启沙箱即可生效。  
+构建过程中的缓存文件可以使用 `nix-collect-garbage` 进行清理。  
+
+更详细的 nix 语言介绍，请参照 [Nix Guide](https://nixos.org/guides/nix-language.html) 和
+[Nix Manual](https://nixos.org/manual/nix/stable/language/index.html)。
