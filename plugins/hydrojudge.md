@@ -172,8 +172,32 @@ pm2 start bash --name hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox"
 
 禁用 CPU 频率缩放与 Intel 睿频加速技术，防止 CPU 频率波动。
 
-禁用内存地址空间随机化，以使得存在内存寻址错误的代码能够得到更多可重复的结果，可以通过在 `/etc/sysctl.conf` 中添加下面这行并运行 `sudo sysctl -p` 实现：
+禁用内存地址空间随机化，以使得存在内存寻址错误的代码能够得到更多可重复的结果，可以通过在 `/etc/sysctl.conf` 中添加下面这行并运行 `sudo sysctl -p` 应用：
 
 ```plain
 kernel.randomize_va_space = 0
+```
+
+## 内存计量不准确
+
+部分 Linux 设备默认使用 cgroup2，而 cgroup2 中移除了精确计量内存消耗的接口。
+若要获得更精确的内存计量，推荐启用 cgroup v1：
+
+以 Ubuntu 的默认引导器 GRUB 2 为例，编辑 `/etc/default/grub`：
+在其中 
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+```
+
+后，加入 `cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0 syscall.x32=y`，变为：
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0 syscall.x32=y"
+```
+
+运行以下命令更新 GRUB 2 的配置，然后重新启动。
+
+```
+update-grub && reboot
 ```
