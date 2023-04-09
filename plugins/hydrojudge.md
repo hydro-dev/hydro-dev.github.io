@@ -35,7 +35,7 @@ hydrooj addon add @hydrooj/hydrojudge
 该方法可以帮助您在任意服务器上部署评测机。
 :::
 
-首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/docs/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
+首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/docs/system/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
 
 然后在运行评测机的服务器上安装 HydroJudge ：
 
