@@ -7,14 +7,8 @@
 您应该预先下载您所要支持的语言的编译器，若您在配置完评测机后 升级/重新安装 了编译器，您需要重新启动沙箱。  
 关于编译器说明，请参照 [编译器](/docs/install/compiler) 章节。
 
+如果不使用自动脚本，您需要按照如下方式手动安装沙箱服务：  
 前往 [criyle/go-judge](https://github.com/criyle/go-judge/releases) 下载 executorserver。
-
-| 系统版本   | 文件名               |
-| ---------- | -------------------- |
-| Windows 7+ | executorserver.exe   |
-| Linux 4.4+ | executorserver-amd64 |
-| MacOS ?+   | executorserver-macos |
-
 Executorserver 需要在后台**以 root 权限**运行并监听 `127.0.0.1:5050` 。
 可使用 pm2 进行管理。
 
@@ -43,10 +37,10 @@ hydrooj addon add @hydrooj/hydrojudge
 
 首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/docs/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
 
-然后在运行评测机的服务器上安装 hydrojudge 插件：
+然后在运行评测机的服务器上安装 HydroJudge ：
 
 ```sh
-yarn global add @hydrooj/hydrojudge
+. <(curl https://hydro.ac/setup.sh) --judge
 ```
 
 创建目录 `~/.config/hydro`，在该目录下创建文件 `judge.yaml`，配置文件格式如下：
