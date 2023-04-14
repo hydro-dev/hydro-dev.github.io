@@ -45,9 +45,12 @@ Bug 和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) �
 
 ## 联系我们
 
-Email [i@undefined.moe](mailto:i@undefined.moe)
+Email [i@undefined.moe](mailto:i@undefined.moe)  
 Hydro 用户群：1085853538  
 Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)  
+
+注：Hydro 为开源框架，任何人均能够在遵守协议的情况下使用这套框架。  
+版权申诉相关问题请联系对应网站管理者，（通常为其 UID=2 的用户），与开发者无关。
 
 ## 开源许可
 
