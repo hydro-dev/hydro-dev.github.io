@@ -8,22 +8,29 @@ Hydro 支持使用插件扩展自身所支持的功能。
 
 ## 附加组件列表
 
+:::tip
+部分斜体字插件需配合额外支持软件，如您只安装插件是无法使用的，详情请前往左侧插件详情查看。
+
+如您为旧版本升级失去博客功能，请直接安装 `@hydrooj/blog` ，原数据不会丢失。
+:::
+
 Hydro 官方目前提供了以下附加组件：
 
 | ID                         | 描述                          |
 | -------------------------- | ----------------------------- |
+| @hydrooj/blog              | 博客功能                     |
 | @hydrooj/fps-importer      | 导入 fps 格式的题目           |
-| @hydrooj/geoip             | 显示用户登录地                |
+| *@hydrooj/geoip*             | 显示用户登录地（需要IP库支持）   |
 | @hydrooj/hydrojudge        | 评测组件                      |
 | @hydrooj/import-qduoj      | 导入 QDUOJ 导出的题库         |
 | @hydrooj/login-with-github | 允许用户使用 GitHub 登录      |
 | @hydrooj/login-with-google | 允许用户使用 Google 登录      |
-| @hydrooj/migrate           | 从 vijos4/HustOJ/SYZOJ 升级 |
+| @hydrooj/migrate           | 从 vijos4/HustOJ/SYZOJ/UniversalOJ 升级 |
 | @hydrooj/recaptcha         | 注册时启用 reCAPTCHA 验证码   |
 | @hydrooj/ui-default        | Hydro 的默认用户界面          |
-| @hydrooj/onlyoffice        | 显示 doc/docx 格式题目        |
-| @hydrooj/sonic             | 基于 sonic 的题目搜索增强     |
-| @hydrooj/elastic-search    | 基于 Elastic 的题目搜索增强   |
+| *@hydrooj/onlyoffice*       | 显示 doc/docx 格式题目        |
+| *@hydrooj/sonic*            | 基于 sonic 的题目搜索增强     |
+| *@hydrooj/elastic-search*   | 基于 Elastic 的题目搜索增强   |
 | @hydrooj/vjudge            | Codeforces/SPOJ/UOJ/POJ/Luogu |
 | @hydrooj/prom-client       | 导出系统状态至 Prometheus     |
 

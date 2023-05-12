@@ -11,7 +11,7 @@
 
 安装插件后创建名为 codeforces 的域，进入数据库 `db.domain.updateOne({_id:'codeforces'},{$set:{mount:'codeforces'}});`  
 
-在 codeforces 的域设置中，将 `allowedLangs` 如下配置：
+在 codeforces 的域设置中，将 `allowedLangs` 如下配置（在新版即在允许提交的语言中选中所有 `codeforces` 开头的语言）：
 
 ```
 codeforces,codeforces.43,codeforces.52,codeforces.50,codeforces.54,codeforces.59,codeforces.61,codeforces.65,codeforces.9,codeforces.28,codeforces.32,codeforces.12,codeforces.60,codeforces.36,codeforces.48,codeforces.19,codeforces.3,codeforces.4,codeforces.51,codeforces.13,codeforces.6,codeforces.7,codeforces.31,codeforces.40,codeforces.41,codeforces.67,codeforces.49,codeforces.20,codeforces.34,codeforces.55

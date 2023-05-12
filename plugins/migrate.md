@@ -15,7 +15,7 @@
 其参数格式如下：
 
 ```json
-{"host":"localhost","port":3306,"name":"jol","username":"","password":"","domainId":"system","contestType":"","dataDir":""}
+{"host":"localhost","port":3306,"name":"jol","username":"","password":"","domainId":"system","contestType":"","dataDir":"","uploadDir":""}
 ```
 
 - host: 数据库地址
@@ -25,6 +25,7 @@
 - domainId: 迁入的域，默认为 `system`
 - contestType: `oi` 或者 `acm`，视情况而定
 - dataDir: HUSTOJ 中 data 文件夹的位置（这里存储着题目数据等关键信息，需要手动处理）
+- uploadDir: HUSTOJ 中 上传文件的位置（这里存储着上传的图片和文件等信息，默认已指定 `/home/judge/src/web/upload/` ，如果此路径与您路径相同，请不要填写此项）
 
 当脚本运行完成后，请重启 Hydro 实例，会自动完成之后的升级操作。
 迁移后，请使用原 HUSTOJ 的管理员账号登录实例。
@@ -49,6 +50,16 @@ SYZOJ 与 HUSTOJ 迁移方法类似，迁移脚本应运行名为 `migrateSyzoj`
 由于SYZOJ脚本会将原站所有数据迁移，所以运行耗时较长。
 当脚本运行完成后，请重启 Hydro 实例，会自动完成之后的升级操作。
 迁移后，请使用原 SYZOJ 的管理员账号登录实例。
+
+## 从 UniversalOJ 升级
+
+UniversalOJ （常称作UOJ社区版）与前两者迁移方法类似，迁移脚本应运行名为 `migrateUniversalOJ` 的脚本。
+
+由于其升级过程较为麻烦，安装脚本已提供自动升级服务，如您需要可运行安装脚本一键迁移，手动迁移请在开发群中提问。
+
+由于UniversalOJ脚本会将原站所有数据迁移，所以运行耗时较长。
+当脚本运行完成后，请重启 Hydro 实例，会自动完成之后的升级操作。
+迁移后，请使用原 UniversalOJ 的管理员账号登录实例。
 
 ## 从 Vijos 升级
 

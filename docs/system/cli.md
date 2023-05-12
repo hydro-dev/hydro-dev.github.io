@@ -91,9 +91,12 @@ hydrooj cli blacklist del <key> # 将 <key> 移出黑名单
 ```sh
 hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
 # 创建邮箱为 <mail>，用户名为 <uname>，密码为 <password>，ID 为 [uid]，注册 ip 为 [regip]，权限为 [priv] 的用户
+hydrooj cli user setUname <uid> <unmae> # 将 ID 为 <uid> 的用户的用户名设置为 <uname>
 hydrooj cli user setPriv <uid> <priv> # 将 ID 为 <uid> 的用户的权限设为 <priv>
 hydrooj cli user setPassword <uid> <password> # 将 ID 为 <uid> 的用户的密码设置为 <password>
 hydrooj cli user setEmail <uid> <mail> # 将 ID 为 <uid> 的用户的邮箱设置为 <mail>
 hydrooj cli user setSuperAdmin <uid> # 将 ID 为 <uid> 的用户设为全站管理员
+hydrooj cli problem import <domainId> <file/path> # 将 <file/path> 的Hydro格式题目包导入至 <domainId> 域中
+hydrooj cli problem export <domainId> # 将 <domainId> 域中的所有题目包导出
 hydrooj cli system set <key> <value> # 修改系统设置 <key> 值为 <value>
 ```

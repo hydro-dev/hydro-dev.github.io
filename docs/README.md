@@ -12,7 +12,7 @@
 
 - 如果您正在使用 HustOJ，可以导出题目为 FPS 文件后使用 [fps-importer 插件](/plugins/fps-importer) 直接导入 Hydro。
 - 如果您正在使用 QDUOJ， 可以导出题目为 QDUOJ-zip 格式后使用 import-qduoj 插件直接导入 Hydro。
-- 如果您正在使用 Vijos / SYZOJ / HustOJ， 可以直接使用 [migrate 插件](/plugins/migrate) 导入所有数据至 Hydro。
+- 如果您正在使用 Vijos / SYZOJ / HustOJ / UniversalOJ， 可以直接使用 [migrate 插件](/plugins/migrate) 导入所有数据至 Hydro。
 
 ## 功能对比
 

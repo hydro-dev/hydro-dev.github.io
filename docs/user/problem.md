@@ -17,6 +17,12 @@
 
 上传 Hydro 导出的题目压缩包即可。
 
+如果您的压缩包较大无法上传我们也提供cli导入方法：
+
+```
+hydrooj cli problem import <domainId> <file/path> # 将 <file(压缩文件)/path(解压后的文件夹)> 的Hydro格式题目包导入至 <domainId> 域中。
+```
+
 ### 从 SYZOJ 导入
 
 Hydro 提供了一个小工具 [loj-download](https://github.com/hydro-dev/loj-download)，可从基于原版 SYZOJ/SYZOJ-NG 搭建的源站下载到符合Hydro格式的题目压缩包。  

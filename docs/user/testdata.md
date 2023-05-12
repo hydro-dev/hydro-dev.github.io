@@ -118,6 +118,15 @@ langs:
   - cc
   - cc.cc11o2
   - pas
+
+# 时间内存倍率
+# 对某语言设置时间或内存倍率（需要和评测机 lang.yaml 内的语言代码相同）
+# 部分语言默认已存在倍率，请前往控制面板中查看！
+# 使用语言ID而非名称！对于有子类的选项，请详细至子分类！
+time_limit_rate:
+  py.py3: 2
+memory_limit_rate:
+  java: 1.5
 ```
 
 可以在 [此题库](https://hydro.ac/d/system_test/) 中找到各种类型题目的配置示例。
