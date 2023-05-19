@@ -1,8 +1,9 @@
-const path = require('path');
-const { config } = require("vuepress-theme-hope");
-const { setupForFile, transformAttributesToHTML } = require('remark-shiki-twoslash');
+import { defineUserConfig } from 'vuepress';
+import { hopeTheme } from 'vuepress-theme-hope';
+import { shikiPlugin } from "@vuepress/plugin-shiki";
+import { searchProPlugin } from "vuepress-plugin-search-pro";
 
-module.exports = context => config({
+export default defineUserConfig({
     title: 'Hydro',
     head: [
         ['link', { rel: 'icon', href: `/hydro.png` }],
@@ -12,67 +13,70 @@ module.exports = context => config({
         ['script', {}, "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CX4XJ0H0TE');"]
     ],
     plugins: [
-        '@vuepress/back-to-top',
-        '@vuepress/active-header-links',
-        'vuepress-plugin-nprogress',
-        'vuepress-plugin-smooth-scroll',
-        'vuepress-plugin-zooming',
-        ['flexsearch-pro'],
-        ['@vuepress/register-components', {
-            components: [
-                {
-                    name: 'Terminal',
-                    path: path.resolve(__dirname, 'components', 'Terminal.vue')
+        shikiPlugin({
+            theme: "nord",
+        }),
+        searchProPlugin({
+            indexContent: true,
+            customFields: [],
+            locales: {
+                '/': {
+                    cancel: "取消",
+                    placeholder: "搜索",
+                    search: "搜索",
+                    searching: "搜索中",
+                    select: "选择",
+                    navigate: "切换",
+                    exit: "关闭",
+                    history: "搜索历史",
+                    emptyHistory: "无搜索历史",
+                    emptyResult: "没有找到结果",
+                    loading: "正在加载搜索索引...",
                 },
-            ]
-        }],
+            }
+        }),
     ],
-    themeConfig: {
+    theme: hopeTheme({
         logo: '/favicon.ico',
-        nav: [
+        navbar: [
             { text: '文档', link: '/docs/' },
             { text: '常见问题解答', link: '/FAQ/' },
             { text: '常用教程', link: 'https://hydro.ac/d/faqs/p' },
             { text: '开发', link: '/dev/' },
             { text: '插件', link: '/plugins/' }
         ],
-        pwa: false,
-        feed: false,
-        shouldPrefetch: false,
-        sidebarDepth: 2,
-        lastUpdated: '上次更新',
+        plugins: {
+            activeHeaderLinks: true,
+            prismjs: false,
+            copyright: false,
+            copyCode: {},
+            mdEnhance: {
+                align: true,
+                sup: true,
+                sub: true,
+                footnote: true,
+                katex: true,
+            },
+        },
         hostname: 'https://hydro.js.org',
         repo: 'hydro-dev/Hydro',
         pageInfo: false,
-        copyright: false,
-        mdEnhance: {
-            align: true,
-            sup: true,
-            sub: true,
-            footnote: true,
-            tex: true,
-        },
         docsRepo: 'hydro-dev/hydro-dev.github.io',
         docsBranch: 'docs',
-        editLinks: true,
-        editLinkText: '文档有锅？点我修复',
-        displayAllHeaders: true,
-        smoothScroll: true,
+        editLink: true,
         sidebar: {
             '/index': [
-                { title: '常见问题', children: ['/FAQ/'], collapsable: false },
+                { text: '常见问题', children: ['/FAQ/'] },
             ],
             '/docs/': [
                 {
-                    title: '总览',
-                    collapsable: false,
+                    text: '总览',
                     children: [
                         '/docs/',
                     ],
                 },
                 {
-                    title: '部署',
-                    collapsable: false,
+                    text: '部署',
                     children: [
                         '/docs/install/',
                         '/docs/install/s3',
@@ -81,8 +85,7 @@ module.exports = context => config({
                     ],
                 },
                 {
-                    title: '站点管理员文档',
-                    collapsable: false,
+                    text: '站点管理员文档',
                     children: [
                         '/docs/system/maintain',
                         '/docs/system/cli',
@@ -94,33 +97,32 @@ module.exports = context => config({
                     ]
                 },
                 {
-                    title: '用户文档',
-                    collapsable: false,
+                    text: '用户文档',
                     children: [
                         '/docs/user/',
                         '/docs/user/domain',
                         '/docs/user/problem',
                         '/docs/user/testdata',
+                        '/docs/user/problem-format',
                         '/docs/user/copy-problem',
                     ],
                 },
             ],
             '/dev/': [
                 {
-                    title: '开发',
-                    collapsable: false,
+                    text: '开发',
                     children: [
                         '/dev/',
                         '/dev/PERM_PRIV',
                         '/dev/typescript',
+                        '/dev/hook',
                         '/dev/frontend-modify',
                     ],
                 }
             ],
             '/plugins/': [
                 {
-                    title: '插件',
-                    collapsable: false,
+                    text: '插件',
                     children: [
                         '/plugins/',
                         '/plugins/fps-importer',
@@ -135,21 +137,5 @@ module.exports = context => config({
                 }
             ]
         },
-    },
-    markdown: {
-        code: false,
-        extendMarkdown: async md => {
-            const { highlighters } = await setupForFile({ theme: "nord" });
-            md.use((markdownit, options) => {
-                markdownit.options.highlight = (code, lang) => {
-                    code = code.replace(/\r?\n$/, "");
-                    let attrs = '';
-                    if (lang === 'ts') attrs = 'twoslash';
-                    const res = transformAttributesToHTML(code, [lang, attrs].join(" "), highlighters, options);
-                    return res;
-                };
-            })
-        },
-    },
-    evergreen: !!context.isProd,
+    }),
 });

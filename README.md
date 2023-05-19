@@ -3,7 +3,7 @@ home: true
 heroImage: /favicon.png
 heroText: Hydro
 tagline: 高性能在线测评系统
-action:
+actions:
   - text: 介绍 💡
     link: /docs/
     type: primary
