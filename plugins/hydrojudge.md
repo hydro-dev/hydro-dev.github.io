@@ -172,7 +172,7 @@ pm2 start bash --name hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox"
 
 禁用内存地址空间随机化，以使得存在内存寻址错误的代码能够得到更多可重复的结果，可以通过在 `/etc/sysctl.conf` 中添加下面这行并运行 `sudo sysctl -p` 应用：
 
-```plain
+```
 kernel.randomize_va_space = 0
 ```
 
