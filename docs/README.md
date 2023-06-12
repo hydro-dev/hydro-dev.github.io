@@ -34,27 +34,28 @@ Hydro 支持很多其他系统无法支持的题型，可在 https://hydro.ac/d/
 |       多评测机        |           +           |   =[^5]   |   =[^8]    |     =      |    +     |
 |     测试数据同步      |       按需抓取        | 全量同步  |  全量同步  |  全量同步  | 按需抓取 |
 |         比赛          |    ACM/OI/IOI/乐多    |  ACM/OI   | ACM/OI/IOI | ACM/OI/IOI |  ACM/OI  |
-|         封榜          |           +           |     -     |     -      |     -      |    -     |
+|         封榜          |           +           |     +     |     -      |     -      |    -     |
 |       作业功能        |           +           |     +     |     -      |     -      |    +     |
-| 修改编译命令/添加语言 |           +           |     -     |     -      |     -      |    +     |
+| 修改编译命令/添加语言 |           +           |   =[^9]   |     -      |     -      |    +     |
 |     权限系统 [^4]     |           +           |     =     |     -      |     -      |    +     |
 |    训练计划(题单)     |           +           |     +     |   -[^6]    |     -      |    +     |
 |         团队          |        + [^2]         |     -     |     -      |     -      |    +     |
 |         Hack          |           +           |     -     |     -      |     -      |    -     |
-|     SpecialJudge      |        + [^3]         |     =     |     +      |     -      |    =     |
+|     SpecialJudge      |        + [^3]         |     +     |     +      |     -      |    =     |
 |        Subtask        |           +           |     -     |     +      |     -      |    -     |
 |        交互题         |           +           |     -     |     +      |     -      |    -     |
-|      RemoteJudge      | CF/SPOJ/UOJ/POJ/Luogu |     -     |     -      |     -      |    -     |
+|      RemoteJudge      | CF/SPOJ/UOJ/POJ/Luogu |  HDU/PKU  |     -      |     -      |    -     |
 |       题目导入        | fps/syzoj/qduoj/hydro | fps/qduoj |   syzoj    | fps/qduoj  |    -     |
 
 [^1]: S3 指所有兼容 Amazon S3 协议的服务，包括腾讯COS，阿里OSS 等。  
-[^2]: 通过域功能，允许用户创建域并在域内拥有管理员权限。域之间仅共享账号数据。  
+[^2]: 通过域功能，允许用户创建域并在域内拥有管理员权限。域之间仅共享账号数据，也可使用域内小组进行权限控制。  
 [^3]: 支持所有主流 SPJ 格式。  
 [^4]: 此处的权限系统指 除用户/管理员二元化权限之外的 的更细粒度的权限划分。  
 [^5]: 安装配置繁琐，且需要手动在服务器间同步数据。  
 [^6]: 部分二次开发版本有此功能。  
 [^7]: SYZOJ 和 Lyrio （曾用名 syzoj-ng，loj.ac 当前所用系统） 是两套不同的系统，这意味着使用 SYZOJ 无法再导入 loj.ac 的题目，同时 Lyrio 无比赛功能。  
 [^8]: 需要手动在服务器间同步数据。
+[^9]: 仅能修改部分编译参数，添加语言需要修改源代码。
 
 ## 截图
 
@@ -62,6 +63,10 @@ Hydro 支持很多其他系统无法支持的题型，可在 https://hydro.ac/d/
 ![img](./pictures/pict2.png)
 ![img](./pictures/pict3.png)
 ![img](./pictures/pict4.png)
+![img](./pictures/pict5.png)
+![img](./pictures/pict6.png)
+![img](./pictures/pict7.png)
+![img](./pictures/pict8.png)
 
 ## 现在开始
 
