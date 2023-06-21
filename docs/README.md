@@ -16,7 +16,7 @@
 
 ## 功能对比
 
-Hydro 支持很多其他系统无法支持的题型，可在 https://hydro.ac/d/system_test/p 中查看并免费下载使用样例。  
+Hydro 支持很多其他系统无法支持的题型，可在 https://hydro.ac/d/system_test/p 中查看并免费下载使用样例。（需要登录）  
 下方对比了 Hydro 与其他主流 OJ 系统的功能。（只进行在不修改源代码情况下的对比）  
 
 ```
