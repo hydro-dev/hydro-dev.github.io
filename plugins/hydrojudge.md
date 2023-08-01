@@ -179,7 +179,7 @@ kernel.randomize_va_space = 0
 ## 内存计量不准确
 
 部分 Linux 设备默认使用 cgroup2，而 cgroup2 中移除了精确计量内存消耗的接口。
-若要获得更精确的内存计量，推荐启用 cgroup v1：
+若要获得更精确的内存计量，推荐启用 cgroup v1 (您可以通过检查 `/sys/fs/cgroup/memory/memory.memsw.usage_in_bytes` 是否存在来验证是否当前系统是否启用了 cgroup v1 )：
 
 以 Ubuntu 的默认引导器 GRUB 2 为例，编辑 `/etc/default/grub`：
 在其中 
