@@ -199,7 +199,6 @@ int main(int argc, char* argv[]) {
     rnd.setSeed(time(NULL));
     int a = rnd.next(1000);
     int b = rnd.next(1000);
-    int d = a+b;
     // 本程序的输出将作为用户程序的输入
     cout << a << " " << b << endl;
     int c;
@@ -207,7 +206,7 @@ int main(int argc, char* argv[]) {
     cin >> c;
     //对比用户结果和预期结果
     if (a+b != c)
-        quitf(_wa, "%d + %d expected %d, found %d", a, b,d,c);   //输出错误的具体信息,便于做题者调试
+        quitf(_wa, "%d + %d expected %d, found %d", a, b, a+b, c);   //输出错误的具体信息,便于做题者调试
     else
         quitf(_ok, "answer of %d +  %d is %d",a,b,c);
 }
