@@ -206,7 +206,7 @@ int main(int argc, char* argv[]) {
     // 用户程序的最后输出将作为本程序的输入
     cin >> c;
     //对比用户结果和预期结果
-    if (a+b != ans)
+    if (a+b != c)
         quitf(_wa, "%d + %d expected %d, found %d", a, b,d,c);   //输出错误的具体信息,便于做题者调试
     else
         quitf(_ok, "answer of %d +  %d is %d",a,b,c);
