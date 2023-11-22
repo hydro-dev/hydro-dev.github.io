@@ -43,6 +43,7 @@ export default defineUserConfig({
             { text: '常见问题解答', link: '/FAQ/' },
             { text: '常用教程', link: 'https://hydro.ac/d/faqs/p' },
             { text: '开发', link: '/dev/' },
+            { text: 'API', link: '/api/' },
             { text: '插件', link: '/plugins/' }
         ],
         plugins: {
@@ -117,6 +118,15 @@ export default defineUserConfig({
                         '/dev/typescript',
                         '/dev/hook',
                         '/dev/frontend-modify',
+                    ],
+                }
+            ],
+            '/api/': [
+                {
+                    text: 'API',
+                    children: [
+                        '/api/',
+                        '/api/judge',
                     ],
                 }
             ],
