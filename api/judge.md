@@ -178,5 +178,5 @@ Cookie: sid=COOKIE_SID
 }
 ```
 
-除 `key`, `domainId`, `rid` 三个字段外，其他字段均为可选。关于 `STATUS_CODE` 含义请查看 [hydro-dev/Hydro/packages/utils/lib/sattus](https://github.com/hydro-dev/Hydro/blob/master/packages/utils/lib/status.ts) 。  
+除 `key`, `domainId`, `rid` 三个字段外，其他字段均为可选。关于 `STATUS_CODE` 含义请查看 [hydro-dev/Hydro/packages/utils/lib/status](https://github.com/hydro-dev/Hydro/blob/master/packages/utils/lib/status.ts) 。  
 当 `key` 为 `end` 时表示评测任务已经完成，结果确定，Web 端可进行 AC 数计量，登记成绩表等操作。  

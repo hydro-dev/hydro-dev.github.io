@@ -13,11 +13,12 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 如果使用虚拟机安装，推荐购买 UPS 保证供电稳定或是经常备份，突然断电易导致数据库损坏无法读取！
 
 :::tip
-兼容大部分 Linux 发行版，推荐使用 Ubuntu 22.04 （教程多，成功率高，上手简单），以下列表中系统不受支持：
+兼容大部分 Linux 发行版，推荐使用 Ubuntu 22.04 （教程多，成功率高，上手简单），**不支持** CentOS 及其各种变种：
 
 - CentOS  
 - Alibaba Cloud Linux  
 - TencentOS  
+- OpenCloudOS  
 :::
 
 ## 部署
