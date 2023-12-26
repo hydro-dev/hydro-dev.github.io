@@ -32,6 +32,7 @@ async function get(this: Handler) {
         SystemModel.get('login-with-github.id'),
         TokenModel.add(TokenModel.TYPE_OAUTH, 600, { redirect: this.request.referer }),
     ]);
+    // 将用户重定向至第三方平台请求授权。
     this.response.redirect = `https://github.com/login/oauth/authorize?client_id=${appid}&state=${state}&scope=read:user,user:email`;
 }
 
