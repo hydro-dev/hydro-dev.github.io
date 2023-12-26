@@ -118,6 +118,7 @@ export default defineUserConfig({
                         '/dev/typescript',
                         '/dev/hook',
                         '/dev/frontend-modify',
+                        '/dev/third-party-auth',
                     ],
                 }
             ],
