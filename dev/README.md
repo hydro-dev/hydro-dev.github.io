@@ -10,9 +10,7 @@
 - 系统要求：Hydro开发环境目前仅支持 Linux/Unix 系统，如您使用 Windows 请使用 WSL2 。
 - MongoDB：Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。  
 - NodeJS：请安装 NodeJS >=18 版本。（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 nix ，可通过`. <(curl https://hydro.ac/nix.sh)` 快速安装）  
-- yarn：安装 yarn 前请先完成 NodeJS 安装。 `npm install -g yarn`  
-
-尽管这不是必须的，但文档多数区域使用了 `npx` 工具来调用工作区的程序。如果此命令不存在，你可以在 **Hydro 项目文件夹外**使用 `yarn global add npx` 安装它。
+- yarn：安装 yarn 前请先完成 NodeJS 安装。 `nix-env -iA nixpkgs.yarn` 或 `npm install -g yarn`  
 
 ## 安装 Hydro
 
@@ -30,13 +28,13 @@ yarn build:ui:production # 编译前端
 所有官方插件均随源码仓库下载到安装文件夹的 `packages` 子文件夹下，可以通过下面的命令启用官方插件（以启用 `@hydrooj/ui-default` 为例）：
 
 ```sh
-npx hydrooj addon add @hydrooj/ui-default
+yarn hydrooj addon add @hydrooj/ui-default
 ```
 
 对于非官方插件，下载后通过下面的命令启用即可（以启用位置在 `/root/addon` 下的插件为例）：
 
 ```sh
-npx hydrooj addon add /root/addon
+yarn hydrooj addon add /root/addon
 ```
 
 ## 启动 Hydro

@@ -102,6 +102,7 @@ export default defineUserConfig({
                     children: [
                         '/docs/user/',
                         '/docs/user/domain',
+                        '/docs/user/permission',
                         '/docs/user/problem',
                         '/docs/user/testdata',
                         '/docs/user/problem-format',
