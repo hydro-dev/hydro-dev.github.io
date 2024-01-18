@@ -33,6 +33,7 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 Docker 用户请注意：
 - 使用安装脚本需要设置 `USER` 环境变量为 `root`。
 - 需要使用 `--privileged` 参数启动容器，否则评测机无法运行。
+- 开发组不对 docker 部署提供技术支持。
 :::
 
 ## 部署
