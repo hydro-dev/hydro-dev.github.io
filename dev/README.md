@@ -5,9 +5,19 @@
 
 您可以使用 [Gitpod](https://gitpod.io/#https://github.com/hydro-dev/Hydro) 快速打开配置完成的开发环境或是按照下方说明进行手动配置。（由于 Gitpod 的限制，hydrojudge 模块无法正常运行，若需要开发 hydrojudge 相关内容请自行部署）
 
+:::tip
+使用开发环境默认您有良好的国际互联网连接。以下报错信息均为网络问题导致，您可以尝试换源/使用代理/切换网络环境。
+
+- Failed to connect
+- Connection reset
+- connect timeout
+
+开发组不会为您解决任何网络问题。
+:::
+
 ## 安装依赖
 
-- 系统要求：Hydro开发环境目前仅支持 Linux/Unix 系统，如您使用 Windows 请使用 WSL2 。
+- 系统要求：Hydro开发环境目前仅支持 Linux 系统，如您使用 Windows 请使用 WSL2 。
 - MongoDB：Hydro 需要 [MongoDB](https://www.mongodb.com/try/download/community) 提供数据库服务。  
 - NodeJS：请安装 NodeJS >=18 版本。（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 nix ，可通过`. <(curl https://hydro.ac/nix.sh)` 快速安装）  
 - yarn：安装 yarn 前请先完成 NodeJS 安装。 `nix-env -iA nixpkgs.yarn` 或 `npm install -g yarn`  
