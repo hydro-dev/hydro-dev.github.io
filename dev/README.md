@@ -53,6 +53,7 @@ yarn hydrooj addon add /root/addon
 
 - `--port=2333` 指定启动端口  
 - `--debug` 启用开发模式  
+- `--watch` 启用热重载（实验性）  
 
 使用 `yarn debug --port=2333 --watch` 启动 Hydro，并在后台运行 `yarn build:ui:dev`，可以对前端源码进行实时转译，在反复修改时可节省编译时间。启动完成后，您可以在 8000 端口访问到 Hydro 实例，且前端的任何更改将即时生效。（后端热重载可能存在 bug，部分模块修改后可能仍需重启才能生效）  
 请注意：此功能仅在启用了 `@hydrooj/ui-default` 插件的情况下才会生效。
