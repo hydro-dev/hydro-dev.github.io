@@ -13,9 +13,26 @@ export async function apply(ctx: Context) {
     // RecordDetail 为需要捕获的路由名
     // get 表示仅捕获 GET 请求
     ctx.on('handler/after/RecordDetail#get', (h) => {
-        if (h.rdoc._id.getTimestamp() < new Date(Date.now() - Time.day) {
+        // 不允许查看 24 小时以前的提交记录
+        if (h.rdoc._id.getTimestamp() < new Date(Date.now() - Time.day)) {
             h.rdoc.code = '';
         }
+    });
+}
+```
+
+```ts
+import { Context } from 'hydrooj';
+
+async function getAnnounce(domainId: string, limit = 5) {
+    // 获取公告...
+    return adocs;
+}
+
+export async function apply(ctx: Context) {
+    ctx.withHandlerClass('HomeHandler', (HomeHandler) => {
+        // 修改 HomeHandler 中的一个方法（添加公告）
+        HomeHandler.prototype.getAnnounce = getAnnounce;
     });
 }
 ```
