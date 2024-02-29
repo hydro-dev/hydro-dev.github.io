@@ -116,6 +116,7 @@ export default defineUserConfig({
                     children: [
                         '/dev/',
                         '/dev/naming',
+                        '/dev/db-layout',
                         '/dev/PERM_PRIV',
                         '/dev/typescript',
                         '/dev/hook',
