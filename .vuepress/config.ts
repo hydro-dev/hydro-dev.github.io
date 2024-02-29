@@ -115,6 +115,7 @@ export default defineUserConfig({
                     text: '开发',
                     children: [
                         '/dev/',
+                        '/dev/naming',
                         '/dev/PERM_PRIV',
                         '/dev/typescript',
                         '/dev/hook',
