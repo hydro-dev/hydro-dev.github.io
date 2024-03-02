@@ -13,7 +13,7 @@ export async function apply(ctx: Context) {
     // RecordDetail 为需要捕获的路由名
     // #get 表示仅捕获 GET 请求，若无此后缀表示捕获该路由的所有请求
     ctx.on('handler/after/RecordDetail#get', (h) => { // handler 系列钩子的一参数为对应的 Handler 实例
-        if (h.rdoc._id.getTimestamp() < new Date(Date.now() - Time.day) {
+        if (h.rdoc._id.getTimestamp() < new Date(Date.now() - Time.day)) {
             h.rdoc.code = '';
         }
     });
