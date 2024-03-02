@@ -76,7 +76,9 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 // @noErrors
 // @module: esnext
 // @filename: index.ts
-import { definePlugin, Handler, Types, param, db, PRIV, validator, NotFoundError, PermissionError } from 'hydrooj';
+import {
+    db, definePlugin, Handler, NotFoundError, param, PermissionError, PRIV, Types,
+} from 'hydrooj';
 
 const coll = db.collection('paste');
 
@@ -126,14 +128,14 @@ class PasteCreateHandler extends Handler {
         this.response.template = 'paste_create.html'; // 返回此页面
     }
 
-    // 使用 isContent 检查输入
-    @param('content', Types.String, isContent)
+    // 使用 Types.Content 检查输入
+    @param('content', Types.Content)
     @param('private', Types.Boolean)
     // 从用户提交的表单中取出content和private字段
     // domainId 为固定传入参数
     async post(domainId: string, content: string, isPrivate = false) {
         // 在HTML表单提交的多选框中，选中值为 'on'，未选中则为空，需要进行转换
-        const pasteid = await pastebin.add(this.user._id, content, !!isPrivate);
+        const pasteid = await pastebinModel.add(this.user._id, content, !!isPrivate);
         // 将用户重定向到创建完成的url
         this.response.redirect = this.url('paste_show', { id: pasteid });
         // 相应的，提供了 this.back() 方法用于将用户重定向至前一个地址（通常用于 Ajax 或是部分更新操作）
@@ -159,16 +161,15 @@ class PasteShowHandler extends Handler {
     }
 }
 
-// 定义为一个插件
-export default definePlugin({
-    apply(ctx) {
-        // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
-        // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
-        // 提示：路由匹配基于 path-to-regexp
-        ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
-        ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
-    }
-});
+// Hydro会在服务初始化完成后调用该函数。
+export async function apply() {
+    // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
+    // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
+    // 提示：路由匹配基于 path-to-regexp
+    ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
+    ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
+}
+
 ```
 
 ## Step4 template
