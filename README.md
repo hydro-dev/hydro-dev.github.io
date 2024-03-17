@@ -46,11 +46,14 @@ Bug 和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) �
 ## 联系我们
 
 Email [i@undefined.moe](mailto:i@undefined.moe)  
+Telegram [@undefinedmoe](https://t.me/undefinedmoe)  
 Hydro 用户群：1085853538  
-Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)  
 
-注：Hydro 为开源框架，任何人均能够在遵守协议的情况下使用这套框架。  
+注1：Hydro 为开源框架，任何人均能够在遵守协议的情况下使用这套框架。  
 版权申诉相关问题请联系对应网站管理者，（通常为其 UID=2 的用户），与开发者无关。
+
+注2：加入用户群请先阅读[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。  
+同时群内可能存在部分令您感到不适或感到冒犯的内容。若对此有顾虑**请勿加群**。
 
 ## 开源许可
 
