@@ -188,10 +188,10 @@ kernel.randomize_va_space = 0
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 ```
 
-后，加入 `cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0 syscall.x32=y`，变为：
+后，加入 `cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0，变为：
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0 syscall.x32=y"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0"
 ```
 
 运行以下命令更新 GRUB 2 的配置，然后重新启动。
