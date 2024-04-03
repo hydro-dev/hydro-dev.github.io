@@ -46,17 +46,34 @@ Bug 和功能建议请在 [Issues](https://github.com/hydro-dev/Hydro/issues) �
 ## 联系我们
 
 Email [i@undefined.moe](mailto:i@undefined.moe)  
+Telegram [@undefinedmoe](https://t.me/undefinedmoe)  
 Hydro 用户群：1085853538  
-Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)  
 
-注：Hydro 为开源框架，任何人均能够在遵守协议的情况下使用这套框架。  
+注1：Hydro 为开源框架，任何人均能够在遵守协议的情况下使用这套框架。  
 版权申诉相关问题请联系对应网站管理者，（通常为其 UID=2 的用户），与开发者无关。
+
+注2：加入用户群请先阅读[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。  
+同时群内可能存在部分令您感到不适或感到冒犯的内容。若对此有顾虑**请勿加群**。
 
 ## 开源许可
 
-本项目基于 AGPL v3 开源。  
+本项目中的 examples/ install/ packages/ui-default/ 下的内容仅采用 AGPL-3.0 进行授权。
+项目其余部分使用双重许可：
+
+1. 您可以在遵守 AGPL-3.0 许可证和下述附加条款章节的前提下免费使用这些代码：  
+2. 如确需闭源，您也可以联系我们购买其他授权。
+
+## 附加条款
+
+基于 AGPL3 协议第七条，您在使用本项目时，需要遵守以下额外条款：
+
+1. 不可移除本项目的版权声明与作者/来源署名；（[AGPL3 7(b)](LICENSE#L356)）
+2. 当重分发经修改后的本软件时，需要在软件名或版本号中采用可识别的方式进行注明；（[AGPL3 7(c)](LICENSE#L360)）
+3. 除非得到许可，不得以宣传为目的使用作者姓名；（[AGPL3 7(d)](LICENSE#364)）
+
+即：  
 在您部署 Hydro 时，需要保留底部的 `Powered by Hydro` 字样，其中的 `Hydro` 字样需指向 `hydro.js.org/本仓库/fork` 之一的链接。  
-若您对源码做出修改，同样需要以 AGPL v3 开源，您可以以 `Powered by Hydro, Modified by xxx` 格式在页脚注明。  
+若您对源码做出修改/扩展，同样需要以 AGPL-3.0-or-later 开源，您可以以 `Powered by Hydro, Modified by xxx` 格式在页脚注明。  
 此限制对以下模块仍然有效：  
 
 - Hydro 插件；

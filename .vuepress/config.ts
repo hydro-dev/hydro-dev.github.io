@@ -1,7 +1,7 @@
 import { defineUserConfig } from 'vuepress';
 import { hopeTheme } from 'vuepress-theme-hope';
 import { shikiPlugin } from "@vuepress/plugin-shiki";
-import { searchProPlugin } from "vuepress-plugin-search-pro";
+import { webpackBundler } from '@vuepress/bundler-webpack';
 
 export default defineUserConfig({
     title: 'Hydro',
@@ -9,31 +9,12 @@ export default defineUserConfig({
         ['link', { rel: 'icon', href: `/hydro.png` }],
         ['link', { rel: 'stylesheet', href: '/twoslash.css' }],
         ['meta', { name: 'theme-color', content: '#ffeded' }],
-        ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-CX4XJ0H0TE' }],
-        ['script', {}, "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CX4XJ0H0TE');"]
+        ['script', {}, `var _paq=window._paq=[['trackPageView'],['enableLinkTracking']];(function(){var u="//analytics.hydro.ac/";_paq.push(['setTrackerUrl',u+'mt']);_paq.push(['setSiteId','2']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.async=true;g.src=u+'m.js';s.parentNode.insertBefore(g,s);})();`]
     ],
+    bundler: webpackBundler(),
     plugins: [
         shikiPlugin({
             theme: "nord",
-        }),
-        searchProPlugin({
-            indexContent: true,
-            customFields: [],
-            locales: {
-                '/': {
-                    cancel: "取消",
-                    placeholder: "搜索",
-                    search: "搜索",
-                    searching: "搜索中",
-                    select: "选择",
-                    navigate: "切换",
-                    exit: "关闭",
-                    history: "搜索历史",
-                    emptyHistory: "无搜索历史",
-                    emptyResult: "没有找到结果",
-                    loading: "正在加载搜索索引...",
-                },
-            }
         }),
     ],
     theme: hopeTheme({
@@ -43,6 +24,7 @@ export default defineUserConfig({
             { text: '常见问题解答', link: '/FAQ/' },
             { text: '常用教程', link: 'https://hydro.ac/d/faqs/p' },
             { text: '开发', link: '/dev/' },
+            { text: 'API', link: '/api/' },
             { text: '插件', link: '/plugins/' }
         ],
         plugins: {
@@ -57,6 +39,25 @@ export default defineUserConfig({
                 footnote: true,
                 katex: true,
             },
+            searchPro: {
+                indexContent: true,
+                customFields: [],
+                locales: {
+                    '/': {
+                        cancel: "取消",
+                        placeholder: "搜索",
+                        search: "搜索",
+                        searching: "搜索中",
+                        select: "选择",
+                        navigate: "切换",
+                        exit: "关闭",
+                        history: "搜索历史",
+                        emptyHistory: "无搜索历史",
+                        emptyResult: "没有找到结果",
+                        loading: "正在加载搜索索引...",
+                    },
+                }
+            }
         },
         hostname: 'https://hydro.js.org',
         repo: 'hydro-dev/Hydro',
@@ -101,6 +102,7 @@ export default defineUserConfig({
                     children: [
                         '/docs/user/',
                         '/docs/user/domain',
+                        '/docs/user/permission',
                         '/docs/user/problem',
                         '/docs/user/testdata',
                         '/docs/user/problem-format',
@@ -113,10 +115,22 @@ export default defineUserConfig({
                     text: '开发',
                     children: [
                         '/dev/',
+                        '/dev/naming',
+                        '/dev/db-layout',
                         '/dev/PERM_PRIV',
                         '/dev/typescript',
                         '/dev/hook',
                         '/dev/frontend-modify',
+                        '/dev/third-party-auth',
+                    ],
+                }
+            ],
+            '/api/': [
+                {
+                    text: 'API',
+                    children: [
+                        '/api/',
+                        '/api/judge',
                     ],
                 }
             ],

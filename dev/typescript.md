@@ -22,6 +22,17 @@ question private:
 success Saved package.json
 ```
 
+## 可选：在本机环境编写插件
+
+有时我们希望使用本机的 IDE 编写插件上传到服务器（我们也推荐这么做，编辑器提供的代码补全可以很大程度简化开发流程），可以进行如下操作：  
+
+1. 在本机安装 NodeJS 和 yarn 。
+2. 参照步骤 1 使用 `yarn init` 创建一个项目。
+3. 使用 VSCode 打开插件文件夹。
+4. 使用 `yarn add hydrooj -D` 安装相关开发组件。
+5. 参照下文进行插件开发工作
+6. 将本地的文件夹上传至服务器，并使用 `hydrooj addon add 插件绝对路径` 启用上传的插件。
+
 ## Step2 准备编写组件
 
 分析：剪贴板组件需要以下功能：
@@ -65,7 +76,9 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 // @noErrors
 // @module: esnext
 // @filename: index.ts
-import { definePlugin, Handler, Types, param, db, PRIV, validator, NotFoundError, PermissionError } from 'hydrooj';
+import {
+    db, definePlugin, Handler, NotFoundError, param, PermissionError, PRIV, Types,
+} from 'hydrooj';
 
 const coll = db.collection('paste');
 
@@ -115,14 +128,14 @@ class PasteCreateHandler extends Handler {
         this.response.template = 'paste_create.html'; // 返回此页面
     }
 
-    // 使用 isContent 检查输入
-    @param('content', Types.String, isContent)
+    // 使用 Types.Content 检查输入
+    @param('content', Types.Content)
     @param('private', Types.Boolean)
     // 从用户提交的表单中取出content和private字段
     // domainId 为固定传入参数
     async post(domainId: string, content: string, isPrivate = false) {
         // 在HTML表单提交的多选框中，选中值为 'on'，未选中则为空，需要进行转换
-        const pasteid = await pastebin.add(this.user._id, content, !!isPrivate);
+        const pasteid = await pastebinModel.add(this.user._id, content, !!isPrivate);
         // 将用户重定向到创建完成的url
         this.response.redirect = this.url('paste_show', { id: pasteid });
         // 相应的，提供了 this.back() 方法用于将用户重定向至前一个地址（通常用于 Ajax 或是部分更新操作）
@@ -148,16 +161,15 @@ class PasteShowHandler extends Handler {
     }
 }
 
-// 定义为一个插件
-export default definePlugin({
-    apply(ctx) {
-        // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
-        // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
-        // 提示：路由匹配基于 path-to-regexp
-        ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
-        ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
-    }
-});
+// Hydro会在服务初始化完成后调用该函数。
+export async function apply() {
+    // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
+    // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
+    // 提示：路由匹配基于 path-to-regexp
+    ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
+    ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
+}
+
 ```
 
 ## Step4 template
