@@ -11,7 +11,7 @@ actions:
     link: /docs/install/
 features:
 - title: 安全
-  details: 使用 cgroup 隔离用户程序
+  details: 使用 Linux 容器技术隔离用户程序
 - title: 便捷
   details: 支持使用脚本一键搭建
 - title: 强大

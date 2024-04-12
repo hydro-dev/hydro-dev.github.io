@@ -12,8 +12,8 @@
 关于编译器说明，请参照 [编译器](/docs/install/compiler) 章节。
 
 如果不使用自动脚本，您需要按照如下方式手动安装沙箱服务：  
-前往 [criyle/go-judge](https://github.com/criyle/go-judge/releases) 下载 executorserver。
-Executorserver 需要在后台**以 root 权限**运行并监听 `127.0.0.1:5050` 。
+前往 [criyle/go-judge](https://github.com/criyle/go-judge/releases) 下载对应 cpu 架构的 go-judge。
+go-judge 需要在后台运行并监听 `127.0.0.1:5050` 。如果系统使用的 cgroup 版本为 1 或者使用的为非 systemd init 的发行版，请**以 root 权限**运行。
 可使用 pm2 进行管理。
 
 ## 安装
@@ -178,7 +178,9 @@ kernel.randomize_va_space = 0
 
 ## 内存计量不准确
 
-部分 Linux 设备默认使用 cgroup2，而 cgroup2 中移除了精确计量内存消耗的接口。
+在控制面板上出现内容为 `You are using cgroup v2 without kernel 5.19+. This could result in inaccurate memory usage measurements.` 警告时，意味着当前系统的内存消耗计量存在误差。
+
+部分 Linux 设备默认使用 cgroup2，而在 5.19 版本前的内核的 cgroup2 中移除了精确计量内存消耗的接口。
 若要获得更精确的内存计量，推荐启用 cgroup v1 (您可以通过检查 `/sys/fs/cgroup/memory/memory.memsw.usage_in_bytes` 是否存在来验证是否当前系统是否启用了 cgroup v1 )：
 
 以 Ubuntu 的默认引导器 GRUB 2 为例，编辑 `/etc/default/grub`：
