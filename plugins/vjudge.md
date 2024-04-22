@@ -1,13 +1,12 @@
-# Vjudge
+# VJudge
 
 :::warning
-此文档已过时，仅作留存使用，请前往 FAQS 查看使用指南。
+此文档已过时，仅作留存使用，以下教程仅为实力，请前往 FAQS(常用教程) 查看使用指南。
+
+远程站点对提交数量和访问次数有相关限制，Hydro 不保证 VJudge 的 100% 可用性。
 :::
 
 ## Codeforces
-
-由于 vjudge 更新了反爬虫机制，Codeforces RemoteJudge 需要一些特殊手段才能正常工作。  
-详情请 [阅读源码](https://github.com/hydro-dev/Hydro/blob/master/packages/vjudge/src/providers/codeforces.ts)
 
 安装插件后创建名为 codeforces 的域，进入数据库 `db.domain.updateOne({_id:'codeforces'},{$set:{mount:'codeforces'}});`  
 
