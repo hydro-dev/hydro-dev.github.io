@@ -1,8 +1,12 @@
 # Elastic search
 
+:::tip
+此插件需配合第三方软件 Elasticsearch 使用，如**仅安装插件不配置/不安装第三方软件**会导致系统无法正常运行，Elasticsearch 并非轻量化软件，如您的服务器不满足该软件要求不建议安装。
+:::
+
 安装 Elasticsearch 后安装 `@hydrooj/elastic-search` 插件。
 
-进入 HydroOJ 控制面板，在系统设置内正确填写endpoint。
+进入 HydroOJ 控制面板，在系统设置内正确填写 `endpoint` 。
 
 然后在脚本管理中找到重建题目索引，点击运行，参数留空即可。
 
