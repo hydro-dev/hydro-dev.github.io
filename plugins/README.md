@@ -9,7 +9,7 @@ Hydro 支持使用插件扩展自身所支持的功能。
 ## 附加组件列表
 
 :::tip
-部分插件（斜体标注）需配合第三方软件使用，如仅安装不配置会导致系统无法正常运行，详情请前往左侧插件详情查看。
+部分插件（斜体标注）需配合第三方软件使用，如**仅安装不配置/不安装第三方软件**会导致系统无法正常运行，详情请前往左侧插件详情查看。
 :::
 
 Hydro 官方目前提供了以下附加组件：
@@ -21,14 +21,15 @@ Hydro 官方目前提供了以下附加组件：
 | *@hydrooj/geoip*             | 显示用户登录地（需要IP库支持）   |
 | @hydrooj/hydrojudge        | 评测组件                      |
 | @hydrooj/import-qduoj      | 导入 QDUOJ 导出的题库         |
+| @hydrooj/import-hoj        | 导入 HOJ 导出的题库         |
 | @hydrooj/login-with-github | 允许用户使用 GitHub 登录      |
 | @hydrooj/login-with-google | 允许用户使用 Google 登录      |
 | @hydrooj/migrate           | 从 vijos4/HustOJ/SYZOJ/UniversalOJ 升级 |
 | @hydrooj/recaptcha         | 注册时启用 reCAPTCHA 验证码   |
 | @hydrooj/ui-default        | Hydro 的默认用户界面          |
 | *@hydrooj/onlyoffice*       | 显示 doc/docx 格式题目        |
-| *@hydrooj/sonic*            | 基于 sonic 的题目搜索增强     |
-| *@hydrooj/elastic-search*   | 基于 Elastic 的题目搜索增强   |
+| *@hydrooj/sonic*            | 基于 sonic 的题目搜索增强（需安装 sonic）     |
+| *@hydrooj/elastic-search*   | 基于 Elastic 的题目搜索增强（需安装 Elastic）   |
 | @hydrooj/vjudge            | Codeforces/SPOJ/UOJ/POJ/Luogu |
 | @hydrooj/prom-client       | 导出系统状态至 Prometheus     |
 
