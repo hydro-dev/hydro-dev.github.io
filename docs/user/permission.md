@@ -9,15 +9,13 @@ Privilege 是用户在整套系统内拥有的权限，在所有域均生效。�
 
 特别地，`PRIV.PRIV_USER_PROFILE` 控制一个账号是否能够作为普通账号登录。若不具有此权限，该账号将无法登录（被封禁）。
 
-常见需求：若不想让普通用户上传文件 可以关闭 `PRIV_CREATE_FILE` 权限
+常见需求：若不想让普通用户上传文件 可以关闭default角色的 `PRIV_CREATE_FILE` 权限
 
 ## Permission
 
 Permission 是用户在单个域内拥有的权限，如创建题目/比赛，发布/删除讨论等等。
 
 如果 `PERM.PERM_VIEW` 被禁用，则该用户无法查看此域。
-
-## 
 
 ## 角色
 
