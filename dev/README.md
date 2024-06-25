@@ -2,6 +2,7 @@
 
 如果您没有过 TypeScript 项目的开发经验，非常不建议自建开发环境。  
 使用自动脚本安装也可以基于插件系统完成大部分的定制需求（参照左侧【使用 TypeScript 编写插件】章节）。  
+如果您需要编译 UI，请确认您的开发环境至少拥有 8GB 内存。
 
 您可以使用 [Gitpod](https://gitpod.io/#https://github.com/hydro-dev/Hydro) 快速打开配置完成的开发环境或是按照下方说明进行手动配置。（由于 Gitpod 的限制，hydrojudge 模块无法正常运行，若需要开发 hydrojudge 相关内容请自行部署）
 
