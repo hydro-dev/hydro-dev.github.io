@@ -63,6 +63,13 @@ Hydro 提供了一个小工具 [loj-download](https://github.com/hydro-dev/loj-d
 - 从附加文件引用 word 文档作为题面： `@[doc](file://foo.docx)` （依赖 onlyoffice 插件）
 <!-- TODO -->
 
+:::tip
+如果您在使用外部的存储服务，部分服务商可能会强制发送 `Content-Disposition` 导致文件直接被下载而非预览。详询对应服务商。
+
+- https://cloud.tencent.com/document/product/436/96243
+- https://help.aliyun.com/zh/oss/user-guide/how-to-ensure-an-object-is-previewed-when-you-access-the-object
+:::
+
 题面支持合并表格：
 
 ```markdown
