@@ -94,6 +94,7 @@ export default defineUserConfig({
                         '/docs/system/cdn',
                         '/docs/system/database',
                         '/docs/system/frontend-modify',
+                        '/docs/system/onsite-contest',
                         '/docs/system/FAQ',
                     ]
                 },
