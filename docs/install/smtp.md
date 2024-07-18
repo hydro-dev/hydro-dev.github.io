@@ -19,5 +19,6 @@
 - Zoho Mail
 - Outlook
 - Gmail
+- 新浪邮箱
 
 如果使用其他服务商且没有发现问题，欢迎向此列表 Pull Request。
