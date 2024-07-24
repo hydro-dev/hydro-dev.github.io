@@ -77,7 +77,7 @@ Hydro 的所有历史版本，都可以无损升级到最新版本。如果老�
 
 ## 怎么添加页脚备案号？
 
-在系统设置 `footer_extra_html` 内添加一行 `<a herf="https://beian.miit.gov.cn/">XX 备 XX 号</a>`
+在系统设置 `footer_extra_html` 内添加一行 `<a href="https://beian.miit.gov.cn/">XX 备 XX 号</a>`
 
 ## 比赛作业里面的时间是什么含义，OI排名跟普通排名有何区别？
 时间是指参与人员做出对应题目“花费”的时间：  
