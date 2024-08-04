@@ -59,11 +59,7 @@
 
 ## 更新升级
 
-`yarn global upgrade-interactive --latest` 然后按空格选中除 pm2 之外的所有包更新，回车确认。
-然后 `pm2 restart hydrooj` 重启服务。
-重启后 `pm2 logs hydrooj --lines 100` 没有看到报错并看到了 `Server started` 则一切正常。
-
-Hydro 的所有历史版本，都可以无损升级到最新版本。如果老系统更新有疑问，随时加官方群咨询群主。
+见 [升级指南](/FAQ/upgrade.md)
 
 ## 怎么导入题目/创建题目？
 

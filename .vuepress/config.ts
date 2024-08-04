@@ -67,7 +67,13 @@ export default defineUserConfig({
         editLink: true,
         sidebar: {
             '/index': [
-                { text: '常见问题', children: ['/FAQ/'] },
+                {
+                    text: '常见问题',
+                    children: [
+                        '/FAQ/',
+                        '/FAQ/upgrade',
+                    ]
+                },
             ],
             '/docs/': [
                 {
