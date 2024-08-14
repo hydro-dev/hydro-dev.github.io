@@ -22,6 +22,8 @@ export default defineUserConfig({
         navbar: [
             { text: '文档', link: '/docs/' },
             { text: '常见问题解答', link: '/FAQ/' },
+            { text: '升级指南', link: '/FAQ/upgrade' },
+            { text: '排障指南', link: '/FAQ/debug' },
             { text: '常用教程', link: 'https://hydro.ac/d/faqs/p' },
             { text: '开发', link: '/dev/' },
             { text: 'API', link: '/api/' },
@@ -72,7 +74,8 @@ export default defineUserConfig({
                     children: [
                         '/FAQ/',
                         '/FAQ/upgrade',
-                    ]
+                        '/FAQ/debug',
+                    ],
                 },
             ],
             '/docs/': [
