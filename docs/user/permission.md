@@ -9,7 +9,10 @@ Privilege 是用户在整套系统内拥有的权限，在所有域均生效。�
 
 特别地，`PRIV.PRIV_USER_PROFILE` 控制一个账号是否能够作为普通账号登录。若不具有此权限，该账号将无法登录（被封禁）。
 
-常见需求：若不想让普通用户上传文件 可以关闭default角色的 `PRIV_CREATE_FILE` 权限
+常见需求：
+
+ - 若不想让普通用户上传文件 可以关闭default角色的 `PRIV_CREATE_FILE` 权限
+ - 若需要关闭站内消息 可以关闭对应的 `PRIV_SEND_MESSAGE` 权限
 
 ## Permission
 
