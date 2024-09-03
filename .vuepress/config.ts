@@ -157,6 +157,7 @@ export default defineUserConfig({
                         '/plugins/sonic',
                         '/plugins/vjudge',
                         '/plugins/geoip',
+                        '/plugins/extra',
                     ],
                 }
             ]

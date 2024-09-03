@@ -25,7 +25,7 @@ hydrooj addon add @hydrooj/sonic
 
 配置示例：
 
-```
+```toml
 # Sonic
 # Fast, lightweight and schema-less search backend
 # Configuration file
