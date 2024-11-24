@@ -65,6 +65,10 @@ pkgs.buildEnv {
 打开 `~/.hydro/mount.yaml` 将其中 `/root/.nix-profile` 替换为编译出的 `result` 文件夹（切换到新的环境）  
 之后保存并重启沙箱。  
 
+:::tip
+有的时候会因为权限问题无法执行`echo 'root:x:0:0:root:/root:/bin/bash' >$out/etc/passwd`，可以先删去该行，然后等待build结束后手动写入。
+:::
+
 后续若需更改环境配置，仅需要修改 `default.nix` 文件之后 `nix-build` 重新构建，再重启沙箱即可生效。  
 构建过程中的缓存文件可以使用 `nix-collect-garbage` 进行清理。  
 
