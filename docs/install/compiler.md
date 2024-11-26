@@ -31,6 +31,22 @@ nix-env -iA nixpkgs.julia_17-bin # Julia
 使用 `nix-env -q` 查看已安装的列表，后使用 `nix-env -e 编译器名` 即可删除对应的编译器。  
 请注意不要误删 Hydro 基础组件，且操作完成后需要重启沙箱 `pm2 restart hydro-sandbox` 生效。
 
+:::tip
+部分语言（特指 Java 等）因为语言特性，编译需要使用较长的 CPU 时间，这在单核机器上尤为明显，
+可能需要花费数秒甚至数十秒才能完成 A+B 的编译。  
+预期性能可以通过在主机上手动运行编译命令来测试：
+
+```sh
+javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
+```
+
+同时部分编译器在可能时会尝试创建大量进程利用多核并行编译，请确保 judge 设置中 `processLimit` 项足够大，
+否则会因编译器无法创建进程失败导致编译失败。  
+
+在编译器利用多核并行编译时，Hydro 会统计这些进程的 CPU 占用之和作为 CPU 资源限制，如出现编译超时错误，
+请调整系统设置中对应语言选项下的 `compile_time_limit` 项（单位 ms）。
+:::
+
 ## 进阶
 
 如果你需要更加复杂的编译环境配置，我们建议使用编写单独的 nix 文件。
