@@ -23,6 +23,8 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 如果你有 Linux 运维经验，Hydro 同样支持在 Alpine Linux 上运行，Alpine Linux 系统启动后仅占用 ~100M 内存，是在低配置服务器上运行的更优方案。  
 :::
 
+新账号使用 [腾讯云邀请链接(无折扣)](https://curl.qcloud.com/KE7pzCW4) 或 [阿里云邀请链接(15%折扣)](https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=zqsmp9e0) 下单购买服务器, 开发者可获约 15% 返现。  
+
 :::warning
 虚拟机用户请注意：
 
