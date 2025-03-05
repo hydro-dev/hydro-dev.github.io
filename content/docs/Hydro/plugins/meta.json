@@ -1,0 +1,15 @@
+{
+    "title": "插件",
+    "icon": "blocks",
+    "pages": [
+        "fps-importer",
+        "hydrojudge",
+        "migrate",
+        "elastic",
+        "recaptcha",
+        "sonic",
+        "vjudge",
+        "geoip",
+        "extra"
+    ]
+}

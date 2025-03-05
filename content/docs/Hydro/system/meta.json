@@ -1,0 +1,14 @@
+{
+    "title": "系统文档",
+    "description": "系统文档",
+    "pages": [
+        "maintain",
+        "cli",
+        "import-user",
+        "cdn",
+        "database",
+        "frontend-modify",
+        "onsite-contest",
+        "FAQ"
+    ]
+}

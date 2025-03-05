@@ -1,0 +1,12 @@
+{
+    "title": "用户文档",
+    "description": "用户文档",
+    "pages": [
+        "domain",
+        "permission",
+        "problem",
+        "testdata",
+        "problem-format",
+        "copy-problem"
+    ]
+}
