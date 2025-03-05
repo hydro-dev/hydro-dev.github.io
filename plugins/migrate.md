@@ -29,14 +29,16 @@
 {"host":"localhost","port":3306,"name":"jol","username":"","password":"","domainId":"system","contestType":"","dataDir":"","uploadDir":""}
 ```
 
-- host: 数据库地址
-- port: 数据库端口
-- name: 数据库名，一般为 `jol`
-- username&password: 账号密码，若无则填写空字符串
+这些信息通常可以在 `/home/judge/src/web/include/db_info.inc.php` 文件中找到；
+
+- host: 数据库地址（DB_HOST）
+- port: 数据库端口（DB_PORT）
+- name: 数据库名，一般为 `jol`（DB_NAME）
+- username&password: 账号密码，若无则填写空字符串（DB_USER/DB_PASS）
 - domainId: 迁入的域，默认为 `system`
-- contestType: `oi` 或者 `acm`，视情况而定
-- dataDir: HUSTOJ 中 data 文件夹的位置（这里存储着题目数据等关键信息，需要手动处理）
-- uploadDir: HUSTOJ 中 上传文件的位置（这里存储着上传的图片和文件等信息，默认已指定 `/home/judge/src/web/upload/` ，如果此路径与您路径相同，请不要填写此项）
+- contestType: `oi` 或者 `acm`，视情况而定（OJ_OI_MODE）
+- dataDir: HUSTOJ 中 data 文件夹的位置（这里存储着题目数据等关键信息，需要手动处理）（OJ_DATA）
+- uploadDir: HUSTOJ 中 上传文件的位置（这里存储着上传的图片和文件等信息，通常为 `/home/judge/src/web/upload/`）
 
 当脚本运行完成后，请重启 Hydro 实例，会自动完成之后的升级操作。
 迁移后，请使用原 HUSTOJ 的管理员账号登录实例。
