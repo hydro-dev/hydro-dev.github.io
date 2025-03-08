@@ -36,7 +36,7 @@ export default function HomePage() {
               Hydro - 在线测评系统
             </h3>
             <p className="text-fd-muted-foreground">
-              高性能、可扩展、多语言、跨平台、易安装、有题库。
+              高性能、可扩展、多语言、跨平台、易安装、全题库。
             </p>
           </Link>
           <GithubInfo
@@ -53,7 +53,7 @@ export default function HomePage() {
               XCPC-Tools - 现场赛工具包
             </h3>
             <p className="text-fd-muted-foreground">
-              DOMJudge 支持、赛事监控、小票打印、摄像头管理
+              多平台支持、赛事监控、打印分发、气球分发、设备管理，已于多场区域赛稳定运行
             </p>
           </Link>
           <GithubInfo
