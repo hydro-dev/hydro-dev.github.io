@@ -22,6 +22,4 @@ export const baseOptions: BaseLayoutProps = {
       </>
     ),
   },
-  links: [
-  ],
 };

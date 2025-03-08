@@ -3,12 +3,24 @@ import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import type { ReactNode } from 'react';
 import { baseOptions } from '@/app/layout.config';
 import { source } from '@/lib/source';
+import { GithubInfo } from 'fumadocs-ui/components/github-info';
 
-export default function Layout({ children }: { children: ReactNode }) {
+const maps = {
+  'Hydro': <GithubInfo owner="hydro-dev" repo="Hydro" />,
+  'Tools': <GithubInfo owner="hydro-dev" repo="xcpc-tools" />,
+};
+
+export default function Layout({ children, params }: { children: ReactNode, params: { slug: string[] } }) {
   return (
     <DocsLayout
       tree={source.pageTree}
       {...baseOptions}
+      links={Object.keys(maps).find((key) => params.slug?.[0] === key) ? [
+        {
+          type: 'custom',
+          children: maps[params.slug?.[0] as keyof typeof maps],
+        },
+      ] : []}
       sidebar={{
         tabs: false,
         banner: (
