@@ -10,15 +10,16 @@ const maps = {
   'Tools': <GithubInfo owner="hydro-dev" repo="xcpc-tools" />,
 };
 
-export default function Layout({ children, params }: { children: ReactNode, params: { slug: string[] } }) {
+export default async function Layout({ children, params }: { children: ReactNode, params: Promise<{ slug: string[] }> }) {
+  const { slug } = await params;
   return (
     <DocsLayout
       tree={source.pageTree}
       {...baseOptions}
-      links={Object.keys(maps).find((key) => params.slug?.[0] === key) ? [
+      links={Object.keys(maps).find((key) => slug?.[0] === key) ? [
         {
           type: 'custom',
-          children: maps[params.slug?.[0] as keyof typeof maps],
+          children: maps[slug?.[0] as keyof typeof maps],
         },
       ] : []}
       sidebar={{

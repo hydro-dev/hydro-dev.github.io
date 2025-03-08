@@ -17,21 +17,21 @@ jobs:
           node-version: 22.x
       - name: Get yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get globalFolder)"
       - name: Restore Cache
         uses: actions/cache@v4
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
+          key: ${{ runner.os }}-next-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-next-yarn-
       - name: Install
-        run: yarn install --ignore-engines
+        run: yarn
       - name: Build
-        run: yarn build && echo "hydro.js.org" >./.vuepress/dist/CNAME
+        run: yarn build && echo "hydro.js.org" >./out/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.vuepress/dist
+          publish_dir: ./out
           publish_branch: master
           force_orphan: true
