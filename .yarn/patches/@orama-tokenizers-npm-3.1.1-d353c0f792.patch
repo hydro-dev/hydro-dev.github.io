@@ -1,0 +1,85 @@
+diff --git a/dist/commonjs/index.js b/dist/commonjs/index.js
+index 6a3f12542f84448bc9c3bd90e7a494ac9ca863a2..ddd907c66d09c2cb2118e14b5ffd488d11965896 100644
+--- a/dist/commonjs/index.js
++++ b/dist/commonjs/index.js
+@@ -1,7 +1,9 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const japanese_js_1 = require("./japanese.js");
++const mandarin_js_1 = require("./mandarin.js");
+ exports.default = {
+     japanese: japanese_js_1.createTokenizer,
++    mandarin: mandarin_js_1.createTokenizer,
+ };
+ //# sourceMappingURL=index.js.map
+diff --git a/dist/commonjs/mandarin.d.ts b/dist/commonjs/mandarin.d.ts
+index a5c44e17802c6b4d17203e59cf8563120751a193..b3910a611bdff11a800b56eac173e3d06c1110ff 100644
+--- a/dist/commonjs/mandarin.d.ts
++++ b/dist/commonjs/mandarin.d.ts
+@@ -1,9 +1,9 @@
+ import type { DefaultTokenizer, DefaultTokenizerConfig } from "@orama/orama";
+-declare const tokenizerLanguage = "japanese";
++declare const tokenizerLanguage = "mandarin";
+ type TLanguage = typeof tokenizerLanguage;
+-type JapaneseTokenizerConfig = DefaultTokenizerConfig & {
++type MandarinTokenizerConfig = DefaultTokenizerConfig & {
+     language: TLanguage;
+ };
+-export declare function createTokenizer(config?: JapaneseTokenizerConfig): DefaultTokenizer;
++export declare function createTokenizer(config?: MandarinTokenizerConfig): DefaultTokenizer;
+ export {};
+ //# sourceMappingURL=mandarin.d.ts.map
+diff --git a/dist/commonjs/mandarin.js b/dist/commonjs/mandarin.js
+index 8015b8f30f2a4198761e1f2ee469f0c6fadb3f4a..5b745cb384c1269fb547302420c7ad6016796599 100644
+--- a/dist/commonjs/mandarin.js
++++ b/dist/commonjs/mandarin.js
+@@ -2,7 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.createTokenizer = createTokenizer;
+ const internals_1 = require("@orama/orama/internals");
+-const tokenizerLanguage = "japanese";
++const tokenizerLanguage = "mandarin";
+ const defaultConfig = {
+     language: tokenizerLanguage,
+ };
+diff --git a/dist/esm/index.js b/dist/esm/index.js
+index 8ecf1802ba11bcc60573095b3794eaa690a3dcf7..944d4f4b40680adab70cc8f22a40351ba9115064 100644
+--- a/dist/esm/index.js
++++ b/dist/esm/index.js
+@@ -1,5 +1,7 @@
+ import { createTokenizer as createJapaneseTokenizer } from "./japanese.js";
++import { createTokenizer as createMandarinTokenizer } from "./mandarin.js";
+ export default {
+     japanese: createJapaneseTokenizer,
++    mandarin: createMandarinTokenizer,
+ };
+ //# sourceMappingURL=index.js.map
+\ No newline at end of file
+diff --git a/dist/esm/mandarin.d.ts b/dist/esm/mandarin.d.ts
+index a5c44e17802c6b4d17203e59cf8563120751a193..b3910a611bdff11a800b56eac173e3d06c1110ff 100644
+--- a/dist/esm/mandarin.d.ts
++++ b/dist/esm/mandarin.d.ts
+@@ -1,9 +1,9 @@
+ import type { DefaultTokenizer, DefaultTokenizerConfig } from "@orama/orama";
+-declare const tokenizerLanguage = "japanese";
++declare const tokenizerLanguage = "mandarin";
+ type TLanguage = typeof tokenizerLanguage;
+-type JapaneseTokenizerConfig = DefaultTokenizerConfig & {
++type MandarinTokenizerConfig = DefaultTokenizerConfig & {
+     language: TLanguage;
+ };
+-export declare function createTokenizer(config?: JapaneseTokenizerConfig): DefaultTokenizer;
++export declare function createTokenizer(config?: MandarinTokenizerConfig): DefaultTokenizer;
+ export {};
+ //# sourceMappingURL=mandarin.d.ts.map
+diff --git a/dist/esm/mandarin.js b/dist/esm/mandarin.js
+index 487a9ad00354b0c02cf8cd5c74fc28ac1d10b9d8..0c0d103e99bf8d81e58e71a7a6e98f5b336eac56 100644
+--- a/dist/esm/mandarin.js
++++ b/dist/esm/mandarin.js
+@@ -1,5 +1,5 @@
+ import { normalizeToken } from "@orama/orama/internals";
+-const tokenizerLanguage = "japanese";
++const tokenizerLanguage = "mandarin";
+ const defaultConfig = {
+     language: tokenizerLanguage,
+ };

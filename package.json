@@ -3,19 +3,40 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "@vuepress/bundler-webpack": "^2.0.0-rc.2",
-    "@vuepress/plugin-shiki": "^2.0.0-rc.0",
-    "katex": "^0.16.9",
-    "sass-loader": "^14.0.0",
-    "vue": "^3.3.4",
-    "vuepress": "^2.0.0-rc.2",
-    "vuepress-plugin-search-pro": "^2.0.0-rc.16",
-    "vuepress-theme-hope": "^2.0.0-rc.16"
-  },
+  "private": true,
   "scripts": {
-    "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "build": "next build",
+    "dev": "next dev --turbopack",
+    "start": "next start",
+    "postinstall": "fumadocs-mdx"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@orama/stopwords": "^3.1.1",
+    "@orama/tokenizers": "patch:@orama/tokenizers@npm%3A3.1.1#~/.yarn/patches/@orama-tokenizers-npm-3.1.1-d353c0f792.patch",
+    "embla-carousel-react": "^8.5.2",
+    "fumadocs-core": "15.0.15",
+    "fumadocs-mdx": "11.5.6",
+    "fumadocs-twoslash": "^3.1.0",
+    "fumadocs-ui": "15.0.15",
+    "katex": "^0.16.21",
+    "lucide-react": "^0.477.0",
+    "next": "15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.9",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "22.13.8",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^8",
+    "eslint-config-next": "15.2.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9",
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "yarn@4.7.0"
 }

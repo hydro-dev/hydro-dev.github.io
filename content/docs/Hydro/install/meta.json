@@ -1,0 +1,9 @@
+{
+    "title": "安装",
+    "description": "安装 Hydro",
+    "pages": [
+        "s3",
+        "proxy",
+        "compiler"
+    ]
+}
