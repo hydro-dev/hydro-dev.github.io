@@ -9,7 +9,7 @@ title: 排障指南
 检查各个进程是否已经启动（ status 为 online 且 uptime 至少一分钟）
 
 如果 caddy 无法启动，通常是端口被占用或 `~/.hydro/Caddyfile` 配置错误，可尝试 `cd ~/.hydro && caddy run` 查看详情。  
-如果 hydro-sandbox 无法启动，通常是权限不足 / 内核版本过低，使用 `pm2 logs hydro-sandbox --lines 100` 查看详情。
+如果 hydro-sandbox 无法启动，通常是权限不足 / 内核版本过低，使用 `pm2 logs hydro-sandbox --lines 100` 查看详情。  
 如果 hydrooj 无法启动 / 启动后没有正常运行，请看下方章节。
 
 ## hydrooj

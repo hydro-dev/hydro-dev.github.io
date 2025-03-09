@@ -49,6 +49,11 @@ javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
 请调整系统设置中对应语言选项下的 `compile_time_limit` 项（单位 ms）。
 </Callout>
 
+<Callout>
+在使用 `sh nix-env -iA nixpkgs.python3Packages.xxxxx` 安装 `pyhton` 包后，如果在沙箱环境中无法找到依赖。
+请参照 [在沙箱中引入 Python 包](https://hydro.ac/d/faqs/p/15) 教程更新环境变量。
+</Callout>
+
 ## 进阶
 
 如果你需要更加复杂的编译环境配置，我们建议使用编写单独的 nix 文件。
