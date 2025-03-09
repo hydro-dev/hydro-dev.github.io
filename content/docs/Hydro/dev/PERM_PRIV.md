@@ -7,4 +7,4 @@ Hydro 的权限使用位运算处理。
 
 可以看 [代码](https://github.com/hydro-dev/Hydro/blob/master/packages/hydrooj/src/model/builtin.ts) 中关于此部分的内容。
 
-扩展阅读：[权限结构](/docs/user/permission)
+扩展阅读：[权限结构](../user/permission)

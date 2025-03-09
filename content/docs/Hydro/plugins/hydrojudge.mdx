@@ -3,7 +3,7 @@ title: hydrojudge
 ---
 
 <Callout>
-您可以通过一键安装脚本快速安装独立评测机，详情请前往 [部署Hydro](/docs/install/#部署) 查看。
+您可以通过一键安装脚本快速安装独立评测机，详情请前往 [部署Hydro](../install/#部署) 查看。
 </Callout>
 
 ## 准备
@@ -11,7 +11,7 @@ title: hydrojudge
 在配置评测机之前，请确认您的站点已经可以访问并正常登录/注册。
 
 您应该预先下载您所要支持的语言的编译器，若您在配置完评测机后 升级/重新安装 了编译器，您需要重新启动沙箱。  
-关于编译器说明，请参照 [编译器](/docs/install/compiler) 章节。
+关于编译器说明，请参照 [编译器](../install/compiler) 章节。
 
 如果不使用自动脚本，您需要按照如下方式手动安装沙箱服务：  
 前往 [criyle/go-judge](https://github.com/criyle/go-judge/releases) 下载对应 cpu 架构的 go-judge。
@@ -41,7 +41,7 @@ hydrooj addon add @hydrooj/hydrojudge
 该方法可以帮助您在任意服务器上部署评测机。
 </Callout>
 
-首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](/docs/system/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
+首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](../system/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
 
 然后在运行评测机的服务器上安装 HydroJudge ：
 
@@ -122,7 +122,7 @@ parallelism: 2 # 单评测机评测进程数量
 
 ## 测试数据格式
 
-参照 [测试数据格式](/docs/user/problem/#测试数据格式) 配置。
+参照 [测试数据格式](../user/problem/#测试数据格式) 配置。
 
 ## 调整沙箱空间大小
 
@@ -137,7 +137,8 @@ parallelism: 2 # 单评测机评测进程数量
 pm2 info hydro-sandbox | grep "exec cwd"
 ```
 
-将 [mount.yaml](https://github.com/criyle/go-judge/blob/master/mount.yaml) 下载并放置在 sandbox 的运行目录下。然后修改第 64 行和第 68 行的 `size` 和 `nr_inodes` 的大小至您想要的大小，保存后重启 sandbox 即可完成更改。
+参照 [沙箱文件系统挂载文档](https://docs.goj.ac/cn/mount#自定义挂载) 中的自定义挂载的配置，保存配置内容到运行目录并命名为 `mount.yaml`。
+修改配置文件中 `work dir` 和 `tmp dir` 所对应 `size` 和 `nr_inodes` 的挂载参数至您想要的大小，保存后重启 `hydro-sandbox` 即可完成更改。
 
 对于 2022/8/12 后安装的用户：
 
@@ -203,3 +204,18 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 syst
 ```sh
 update-grub && reboot
 ```
+
+## 内存控制器未开启
+
+在控制面板上出现内容为 `The memory cgroup controller is not enabled. This could result in inaccurate memory usage measurements.` 警告时，意味着当前系统并没有开启内存 cgroup 控制器。
+
+部分 Linux (如 Raspbian) 并不会默认开启内存 cgroup 控制器，启用内存控制器可以获得更精确的内存限制和计量。
+
+以 Raspbian 为例，编辑 `/boot/firmware/cmdline.txt` (如果不存在则 `/boot/cmdline.txt`)：
+在末尾添加（注意空格）
+
+```
+cgroup_enable=memory cgroup_memory=1
+```
+
+重启之后检查 `/proc/cgroups` 确认内存控制器 `memory` 已开启。
