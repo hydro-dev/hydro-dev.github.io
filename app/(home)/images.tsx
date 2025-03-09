@@ -22,8 +22,8 @@ export function ImageCarousel() {
   }, [next]);
 
   return (
-    <div className="relative w-screen left-[50%] right-[50%] -mx-[50vw]">
-      <div className="max-w-5xl mx-auto px-4">
+    <div className="relative w-full">
+      <div className="w-full">
         <div className="relative rounded-lg overflow-hidden bg-fd-subtle mb-12 aspect-[16/10]">
           {images.map((image, index) => (
             <div

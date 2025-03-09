@@ -8,7 +8,7 @@ const contributors = ['undefined-moe', 'pandadtdyy', 'wuxianucw', 'criyle', 'Mac
 
 export default function HomePage() {
   return (
-    <main className="flex flex-1 flex-col max-w-3xl mx-auto px-4 py-16">
+    <main className="flex flex-1 flex-col max-w-3xl mx-auto px-4 py-16 overflow-x-hidden">
       <div className="flex items-center gap-4 mb-6">
         <div className="relative w-12 h-12">
           <Image

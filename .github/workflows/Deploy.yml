@@ -5,6 +5,7 @@ on:
       - docs
 env:
   YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
+  NEXT_TELEMETRY_DISABLED: '1'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +22,10 @@ jobs:
       - name: Restore Cache
         uses: actions/cache@v4
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: |
+            ${{ steps.yarn-cache.outputs.dir }}
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-next-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-next-yarn-
       - name: Install

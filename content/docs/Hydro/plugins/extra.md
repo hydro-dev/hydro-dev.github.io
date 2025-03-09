@@ -52,7 +52,7 @@ LOJ, AtCoder 与 BZOJ 部分，我们均部署了完整的测试数据镜像，�
 注：若您希望自行进行评测，也可以下载测试数据导入本地系统。
 
 - LOJ: 使用 [loj-download](https://github.com/hydro-dev/loj-download) （约 179G）
-- AtCoder: [Dropbox](https://www.dropbox.com/sh/nx3tnilzqz7df8a/AAAYlTq2tiEHl5hsESw6-yfLa?dl=0) （约 80GB）
+- AtCoder: ~~[Dropbox](https://www.dropbox.com/sh/nx3tnilzqz7df8a/AAAYlTq2tiEHl5hsESw6-yfLa?dl=0)~~ 不再提供测试数据下载。
 - BZOJ: 因特殊原因请自行搜索下载源。（约 64GB）
 
-关于洛谷题库的远端评测，请参照 [洛谷开放平台](https://docs.lgapi.cn/open/) 说明，此服务由洛谷提供。
+关于洛谷题库的远端评测，请参照 [洛谷开放平台](https://docs.lgapi.cn/open/) 说明，此服务由洛谷提供，您也可以前往 [Hydro](https://hydro.ac/luogu/pay) 直接购买授权。
