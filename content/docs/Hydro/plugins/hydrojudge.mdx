@@ -120,6 +120,14 @@ parallelism: 2 # 单评测机评测进程数量
 
 修改完后请重启 Hydro 和 hydrojudge 。
 
+## 调试沙箱环境
+
+如果需要调试沙箱内的编译或者运行错误，可以使用 `hydrojudge terminal` 来打开评测交互终端。该终端运行于与评测环境相同的独立沙箱内。
+
+## 清除数据缓存
+
+若需要清除评测数据缓存，可以使用 `hydrojudge cache prune --duration=x` 清除 `x` 天之内未使用的测试数据。若需清除所有缓存数据，可以使用 `hydrojudge cache clean` 命令。
+
 ## 测试数据格式
 
 参照 [测试数据格式](../user/problem/#测试数据格式) 配置。
