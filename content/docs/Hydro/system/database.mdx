@@ -22,6 +22,17 @@ title: 数据库备份和恢复
 
 若您使用自动脚本安装，可使用 `hydrooj backup` 快捷备份数据，备份完成后会在当前目录生成备份压缩包文件，您可使用 `hydrooj restore <备份文件路径>` 恢复之前备份的数据。
 
+备份支持以下参数：
+
+- `--dbOnly` 跳过文件备份，仅备份数据库。
+- `--withAddons` 同时备份安装的插件
+- `--withLogs` 同时备份系统日志
+
+## 增量备份
+
+自 Hydro 5.0.0-beta.6 版本起，支持基于 restic 进行增量备份。  
+首次使用请先执行 `restic init` 初始化一个存储库，之后使用 `hydrooj backup -r 存储库地址 -p 存储库密码` 进行备份。
+
 ## 手动备份
 
 可使用 MongoDB 自带的 [mongodump](https://docs.mongodb.com/database-tools/mongodump/) 进行数据库备份。并将 `/data/file` 文件夹备份即可。  
