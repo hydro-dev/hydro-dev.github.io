@@ -4,6 +4,8 @@
     "pages": [
         "s3",
         "proxy",
-        "compiler"
+        "compiler",
+        "smtp",
+        "riscv"
     ]
 }

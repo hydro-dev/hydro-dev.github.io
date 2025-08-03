@@ -1,0 +1,136 @@
+---
+title: 在 RISC-V 架构设备上安装
+---
+
+## 系统环境
+
+本文编写基于 Sipeed Lichee Pi 4A 16G, 使用 RevyOS 20250526_182059 固件，感谢 [甲辰计划](https://rv2036.org/) 提供的硬件支持，
+感谢 [Anillc](https://github.com/Anillc) 和 [NickCao](https://github.com/NickCao) 提供的帮助。
+
+## 初始化 Nix 环境
+
+```bash
+curl -sSL https://hydro.ac/nix.sh | bash
+```
+
+为了节约生命，配置额外的 binary cache: `https://cache.nichi.co https://nix-community.cachix.org`
+`nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk=`  
+
+## 构建 MongoDB
+
+MongoDB 没有提供官方的 RISC-V 支持，因此我们需要自行编译 MongoDB （如果使用 MongoDB Atlas 则可跳过该步骤）。
+
+克隆 MongoDB 存储库：
+
+```bash
+git clone git@github.com:mongodb/mongo --depth=1 --branch=r7.0.22
+```
+
+下载 mozjs release:
+
+```bash
+cd src/third_party/mozjs
+bash get-sources.sh
+```
+
+给同目录的 `gen-config.sh` 添加 RISC-V 支持：
+
+```patch
+diff --git a/src/third_party/mozjs/gen-config.sh b/src/third_party/mozjs/gen-config.sh
+index 9144a461..141e089b 100755
+--- a/src/third_party/mozjs/gen-config.sh
++++ b/src/third_party/mozjs/gen-config.sh
+@@ -61,6 +61,9 @@ case "$_Path" in
+         _xcode_setup "macosx" "x86_64" "macos-version-min=10.9"
+         _CONFIG_OPTS="--host=x86_64-apple-darwin"
+     ;;
++    "platform/riscv64/linux")
++        _CONFIG_OPTS="--host=riscv64-linux"
++    ;;
+     "platform/aarch64/iOS")
+         _xcode_setup "iphoneos" "arm64" "iphoneos-version-min=10.2"
+         _CONFIG_OPTS="--target=aarch64-apple-darwin"
+```
+
+运行 `gen-config.sh` 得到 `platform/riscv64/linux` 目录：
+
+```bash
+bash gen-config.sh riscv64 linux
+```
+
+```patch
+diff --git a/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp b/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp
+new file mode 100644
+index 00000000..624b0d97
+--- /dev/null
++++ b/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp
+@@ -0,0 +1,55 @@
++#define MOZ_UNIFIED_BUILD
++#include "builtin/Array.cpp"
++#ifdef PL_ARENA_CONST_ALIGN_MASK
++#error "builtin/Array.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
++#undef PL_ARENA_CONST_ALIGN_MASK
++#endif
++#ifdef INITGUID
+# 行数过多，下略
+```
+
+修改 MongoDB 的 `platform/pause.h` ，添加 RISC-V 支持：
+
+```patch
+diff --git a/src/mongo/platform/pause.h b/src/mongo/platform/pause.h
+index 67fe3d94..b3f50efb 100644
+--- a/src/mongo/platform/pause.h
++++ b/src/mongo/platform/pause.h
+@@ -69,7 +69,7 @@
+ 
+ #define MONGO_YIELD_CORE_FOR_SMT() __asm__ volatile("rd %%ccr, %%g0" ::: "memory")
+ 
+-#elif defined(__EMSCRIPTEN__)
++#elif defined(__EMSCRIPTEN__) || defined(__riscv)
+ 
+ // TODO: What should this be?
+ #define MONGO_YIELD_CORE_FOR_SMT()
+```
+
+将上述 patch 传入 nixpkgs：
+
+```patch
+diff --git a/pkgs/servers/nosql/mongodb/7.0.nix b/pkgs/servers/nosql/mongodb/7.0.nix
+index cb4bbf53279f..0526976d4e8b 100644
+--- a/pkgs/servers/nosql/mongodb/7.0.nix
++++ b/pkgs/servers/nosql/mongodb/7.0.nix
+@@ -35,7 +35,11 @@ buildMongoDB {
+     # mongodb-7_0's mozjs uses avx2 instructions
+     # https://github.com/GermanAizek/mongodb-without-avx/issues/16
+   ]
+-  ++ lib.optionals (!avxSupport) [ ./mozjs-noavx.patch ];
++  ++ lib.optionals (!avxSupport) [ ./mozjs-noavx.patch ]
++  ++ lib.optionals (stdenv.hostPlatform.isRiscV64) [
++    ./mongodb-riscv.patch
++    ./mozjs-riscv.patch
++  ];
+ 
+   passthru.tests = {
+     inherit (nixosTests) mongodb;
+```
+
+以上修改可参照 [Nixpkgs PR#430577](https://github.com/NixOS/nixpkgs/pull/430577)  
+
+构建得到 MongoDB 7.0.22 的 RISC-V 版本，使用 `nix copy` 传入目标设备。
+
+## 安装各种组件并启动
+
+```bash
+nix profile add nixpkgs#bashInteractive nixpkgs#nodejs nixpkgs#yarn nixpkgs#pm2 nixpkgs#gawk \
+  nixpkgs#go-judge nixpkgs#gcc # and other compilers...
+yarn global add hydrooj @hydrooj/ui-default @hydrooj/hydrojudge
+hydrooj addon add @hydrooj/ui-default
+hydrooj addon add @hydrooj/hydrojudge
+pm2 start hydrooj
+```
+
+## 编译器/语言兼容性
+
+- 测试正常：bash, c, c++, python3, nodejs, go, ruby  
+- 暂无法使用：java, pascal, kotlin, php, rust, csharp  
