@@ -68,11 +68,19 @@ hosts:
 hydrojudge
 ```
 
-### 手动部署
+### 作为手动部署
 
 ##### <Callout>
 
 该方法可以帮助您在任何服务器上部署评测机。
+</Callout>
+
+<Callout type="warn">
+该方法仅适合动手能力极强的用户！！！
+</Callout>
+
+<Callout type="warn">
+Windows 并没有真正的沙盒支持，请不要在生产环境下使用！！！
 </Callout>
 
 ##### 准备账户
@@ -81,19 +89,26 @@ hydrojudge
 
 ##### 安装依赖
 
-- 系统要求：评测机支持大部分主流系统（如 windows 、armbian）。
+- 系统要求：评测机支持大部分主流系统
 - NodeJS：请安装 NodeJS >=18 版本（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 nix ，可通过`. <(curl https://hydro.ac/nix.sh)` 快速安装）
 - yarn：安装 `yarn` 前请先完成 NodeJS 安装。 `nix-env -iA nixpkgs.yarn` 或 `npm install -g yarn`
 
 ##### 准备 go-judge
 
-在 [criyle/go-judge](https://github.com/criyle/go-judge/releases/) 处下载对应系统架构的 go-judge，并运行（监听 5050端口）。
+在 [criyle/go-judge](https://github.com/criyle/go-judge/releases/) 处下载对应系统架构的 go-judge，并保持运行（监听 5050端口）。
 
 ##### 下载评测机组件
 
 创建 `hydro-judge` 文件夹
 
 在 [hydro-dev/Hydro](https://github.com/hydro-dev/Hydro/tree/master/packages) 里下载 [common](https://github.com/hydro-dev/Hydro/tree/master/packages/common) 、[hydrojudge](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrojudge)、[utils](https://github.com/hydro-dev/Hydro/tree/master/packages/utils) 三个包，将它们放入`hydro-judge` 文件夹。
+
+从 [MikeMirzayanov/testlib](https://github.com/MikeMirzayanov/testlib/releases) 处下载 `testlib.h` 并放入 `hydro-judge/hydrojudge/vendor/testlib` 
+
+##### <Callout>
+
+有时需要修改 `hydro-judge/hydrojudge` 内的  `package.json` ，将自身添加到依赖中。
+</Callout>
 
 再在`hydro-judge` 文件夹目录下创建一个 `package.json` 内容如下：
 
@@ -110,12 +125,15 @@ hydrojudge
 }
 ```
 
-这时 `hydro-judge` 目录结构应该是这样的：
+这时 `hydro-judge` 的目录结构应该是这样的：
 
 ```
 hydro-judge/
 ├── package.json         
-├── hydrojudge/        
+├── hydrojudge/  
+│   ├── vender/
+│       ├── testlib/
+│           ├──testlib.h
 │   ├── ...         
 ├── utils/     
 │   ├── ...         
@@ -147,14 +165,12 @@ hosts:
     detail: true # 默认为 true
 ```
 
-特别地，windows 的配置文件处于 C:/Users/用户名/.hydro 目录下。
-
 ##### 启动
 
 在 `hydro-judge` 文件夹下运行：
 
 ```
-node ./hydrojudge/bin/hydrojudge
+node hydrojudge/bin/hydrojudge
 ```
 
 ## 更新
@@ -171,7 +187,13 @@ HydroJudge 会发布不定期更新。您可以使用 `yarn global upgrade-inter
 
 根据开启的方法关闭即可。
 
+### 作为手动部署
+
+根据开启的方法关闭即可。
+
 ## 卸载
+
+#### 作为附加组件或独立进程
 
 关闭后运行下面指令即可。
 
@@ -180,6 +202,10 @@ yarn global remove @hydrooj/hydrojudge
 hydrooj addon remove @hydrooj/hydrojudge
 ```
 
+#### 作为手动部署
+
+关闭后删除文件夹即可。
+
 ## 评测设置
 
 ### 作为附加组件
@@ -187,6 +213,19 @@ hydrooj addon remove @hydrooj/hydrojudge
 在 系统设置>hydrojudge 修改对应的参数，然后重启 Hydro 和 hydrojudge 即可。
 
 ### 作为独立进程
+
+如果有需要修改单题测试点数量上限等设置，可以在 `~/.config/hydro/judge.yaml` 的末尾添加下列内容：
+
+```yaml
+testcases_max: 100 # 单题最多测试点数量
+total_time_limit: 120 # 单题最大总测试时长
+parallelism: 2 # 单评测机评测进程数量
+# 更多可选配置均可添加在此处，格式与前面的三排类似
+```
+
+在 [此处](https://github.com/hydro-dev/Hydro/blob/9c0afa38e3e6fa886ab9e9237847893fa6714392/packages/hydrojudge/src/config.ts#L12) 的设置均可添加到此处。
+
+### 作为手动部署
 
 如果有需要修改单题测试点数量上限等设置，可以在 `~/.config/hydro/judge.yaml` 的末尾添加下列内容：
 
