@@ -1,5 +1,6 @@
 ---
 title: hydrojudge
+
 ---
 
 <Callout>
@@ -65,6 +66,95 @@ hosts:
 
 ```sh
 hydrojudge
+```
+
+### 手动部署
+
+##### <Callout>
+
+该方法可以帮助您在任何服务器上部署评测机。
+</Callout>
+
+##### 准备账户
+
+首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](../system/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
+
+##### 安装依赖
+
+- 系统要求：评测机支持大部分主流系统（如 windows 、armbian）。
+- NodeJS：请安装 NodeJS >=18 版本（若使用 apt 请使用 nodesource 提供的源替代官方源） （推荐使用 nix ，可通过`. <(curl https://hydro.ac/nix.sh)` 快速安装）
+- yarn：安装 `yarn` 前请先完成 NodeJS 安装。 `nix-env -iA nixpkgs.yarn` 或 `npm install -g yarn`
+
+##### 准备 go-judge
+
+在 [criyle/go-judge](https://github.com/criyle/go-judge/releases/) 处下载对应系统架构的 go-judge，并运行（监听 5050端口）。
+
+##### 下载评测机组件
+
+创建 `hydro-judge` 文件夹
+
+在 [hydro-dev/Hydro](https://github.com/hydro-dev/Hydro/tree/master/packages) 里下载 [common](https://github.com/hydro-dev/Hydro/tree/master/packages/common) 、[hydrojudge](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrojudge)、[utils](https://github.com/hydro-dev/Hydro/tree/master/packages/utils) 三个包，将它们放入`hydro-judge` 文件夹。
+
+再在`hydro-judge` 文件夹目录下创建一个 `package.json` 内容如下：
+
+```
+{
+  "name": "hydro-judge",
+  "private": true, 
+  "workspaces": [
+    "hydrojudge",
+    "utils",
+    "common"
+  ],
+  "version": "1.0.0"
+}
+```
+
+这时 `hydro-judge` 目录结构应该是这样的：
+
+```
+hydro-judge/
+├── package.json         
+├── hydrojudge/        
+│   ├── ...         
+├── utils/     
+│   ├── ...         
+└── common/                 
+    └── ...
+```
+
+##### 安装依赖
+
+在 `hydro-judge` 文件夹下执行：
+
+```
+yarn
+```
+
+选择适宜的版本。
+
+##### 创建配置文件
+
+创建目录 `~/.config/hydro`，在该目录下创建文件 `judge.yaml`，配置文件格式如下：
+
+```
+hosts:
+  localhost:
+    type: hydro # vj4 用户请在此处填写 vj4
+    server_url: http://localhost/ # Hydro 运行的网址
+    uname: judge # 评测账号用户名
+    password: abc123 # 评测账号密码
+    detail: true # 默认为 true
+```
+
+特别地，windows 的配置文件处于 C:/Users/用户名/.hydro 目录下。
+
+##### 启动
+
+在 `hydro-judge` 文件夹下运行：
+
+```
+node ./hydrojudge/bin/hydrojudge
 ```
 
 ## 更新
@@ -143,6 +233,7 @@ parallelism: 2 # 单评测机评测进程数量
 对于 2022/8/12 前安装的用户：
 
 在服务器上运行下面的代码找到 hydro-sandbox 的运行目录：
+
 ```sh
 pm2 info hydro-sandbox | grep "exec cwd"
 ```
