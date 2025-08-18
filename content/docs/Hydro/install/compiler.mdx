@@ -67,7 +67,7 @@ javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
 pkgs.buildEnv {
   name = "hydrojudge-rootfs";
   paths = with pkgs; [
-    coreutils bash diffutils nix zip unzip gcc
+    coreutils bash nix zip unzip gcc gawk
     # 上方包是评测所需要的，请勿删除，
     # 在下方列出你所需要的包，查找方式同上文：
     fpc python3 rustc
