@@ -6,7 +6,7 @@ const withMDX = createMDX();
 const config = {
   output: 'export',
   reactStrictMode: true,
-  serverExternalPackages: ['twoslash'],
+  serverExternalPackages: ['twoslash', 'typescript'],
   images: {
     unoptimized: true,
     dangerouslyAllowSVG: true,

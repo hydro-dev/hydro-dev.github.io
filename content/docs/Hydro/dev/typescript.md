@@ -10,7 +10,7 @@ title: 使用 TypeScript 编写插件
 - 修改代码后，尝试更新系统时，自己的修改被新版本覆盖，需要手动合并（或是直接丢失了更改），极大幅度增加维护成本；  
 - 第三方社区出现的大量修改分支无法直接按需求进行组合/拼装，或是功能间存在冲突；  
 
-基于以上痛点，Hydro 开创性的使用了插件系统，提供了一套完整的开发 API 供开发者使用，开发者基于提供的较稳定的 API 进行功能的编写，而无需过多关心内部实现，在多个版本间达到一致性，同时提供热重载功能，提升开发效率。
+基于以上痛点，Hydro 开创性的使用了插件系统，提供了一套完整的开发 API 供开发者使用，开发者基于提供的较稳定的 API 进行功能的编写，而无需过多关心内部实现，将功能拆分成多个最小的单元，允许用户根据需要进行自由组合，并在多个版本间达到一致性，同时提供热重载功能，提升开发效率。
 
 此教程将以编写剪贴板插件为例进行插件开发的说明。
 
@@ -85,12 +85,12 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 
 # Step3 index.ts
 
-```ts
+```ts twoslash
 // @noErrors
 // @module: esnext
 // @filename: index.ts
 import {
-    db, definePlugin, Handler, NotFoundError, param, PermissionError, PRIV, Types,
+    db, definePlugin, Handler, NotFoundError, randomstring, param, PermissionError, PRIV, Types,
 } from 'hydrooj';
 
 const coll = db.collection('paste');
@@ -112,7 +112,7 @@ declare module 'hydrooj' {
 }
 
 async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
-    const pasteId = String.random(16); // Hydro 提供了此方法，创建一个长度为16的随机字符串
+    const pasteId = randomstring(16);
     // 使用 mongodb 为数据库驱动，相关操作参照其文档
     const result = await coll.insertOne({
         _id: pasteId,

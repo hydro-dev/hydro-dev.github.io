@@ -35,7 +35,7 @@ bash get-sources.sh
 
 给同目录的 `gen-config.sh` 添加 RISC-V 支持：
 
-```patch
+```diff
 diff --git a/src/third_party/mozjs/gen-config.sh b/src/third_party/mozjs/gen-config.sh
 index 9144a461..141e089b 100755
 --- a/src/third_party/mozjs/gen-config.sh
@@ -58,7 +58,7 @@ index 9144a461..141e089b 100755
 bash gen-config.sh riscv64 linux
 ```
 
-```patch
+```diff
 diff --git a/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp b/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp
 new file mode 100644
 index 00000000..624b0d97
@@ -77,7 +77,7 @@ index 00000000..624b0d97
 
 修改 MongoDB 的 `platform/pause.h` ，添加 RISC-V 支持：
 
-```patch
+```diff
 diff --git a/src/mongo/platform/pause.h b/src/mongo/platform/pause.h
 index 67fe3d94..b3f50efb 100644
 --- a/src/mongo/platform/pause.h
@@ -95,7 +95,7 @@ index 67fe3d94..b3f50efb 100644
 
 将上述 patch 传入 nixpkgs：
 
-```patch
+```diff
 diff --git a/pkgs/servers/nosql/mongodb/7.0.nix b/pkgs/servers/nosql/mongodb/7.0.nix
 index cb4bbf53279f..0526976d4e8b 100644
 --- a/pkgs/servers/nosql/mongodb/7.0.nix

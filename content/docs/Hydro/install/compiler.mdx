@@ -13,14 +13,13 @@ title: 编译器
 以下是常用编译器的示例：
 
 ```sh
-nix-env -iA nixpkgs.busybox nixpkgs.bash nixpkgs.diffutils nixpkgs.unzip # 基础组件，已预装，不建议删除
+nix-env -iA nixpkgs.coreutils nixpkgs.bash nixpkgs.gawk nixpkgs.unzip # 基础组件，已预装，不建议删除
 nix-env -iA nixpkgs.gcc nixpkgs.fpc # C/C++ 和 Pascal，已预装，不建议删除
 nix-env -iA nixpkgs.ghc # Haskell 
 nix-env -iA nixpkgs.rustc # Rust
-nix-env -iA nixpkgs.python2 # Python2
-nix-env -iA nixpkgs.pythonPackages.numpy # Python2 Numpy 库
 nix-env -iA nixpkgs.python3Minimal
 nix-env -iA nixpkgs.python3Packages.numpy
+nix-env -iA nixpkgs.pypy3
 nix-env -iA nixpkgs.php # PHP
 nix-env -iA nixpkgs.go # Golang
 nix-env -iA nixpkgs.nodejs # NodeJS

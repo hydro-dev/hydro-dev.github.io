@@ -3,6 +3,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { transformerTwoslash } from 'fumadocs-twoslash';
 import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
+import { createFileSystemTypesCache } from 'fumadocs-twoslash/cache-fs';
 
 export const docs = defineDocs({
   dir: 'content/docs',
@@ -19,7 +20,9 @@ export default defineConfig({
       },
       transformers: [
         ...(rehypeCodeDefaultOptions.transformers ?? []),
-        transformerTwoslash(),
+        transformerTwoslash({
+          typesCache: createFileSystemTypesCache(),
+        }),
       ],
     },
   },
