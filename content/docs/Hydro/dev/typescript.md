@@ -166,7 +166,7 @@ class PasteShowHandler extends Handler {
 // Hydro会在服务初始化完成后调用该函数。
 export async function apply() {
     // 注册一个名为 paste_create 的路由，匹配 '/paste/create'，
-    // 使用PasteCreateHandler处理，访问改路由需要PRIV.PRIV_USER_PROFILE权限
+    // 使用 PasteCreateHandler 处理，访问该路由需要 PRIV.PRIV_USER_PROFILE 权限
     // 提示：路由匹配基于 path-to-regexp
     ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
     ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
@@ -183,3 +183,21 @@ export async function apply() {
 ## Step5 locale
 
 用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。
+
+## Step6 frontend
+
+在 frontend 文件夹下编写前端代码。命名符合 `[a-zA-Z0-9_]+.page.tsx?` 的文件会被自动作为入口点加载。  
+paste 功能并不需要在前端有任何额外 js 驱动的交互，因此下方给出一个最基础的格式示例。
+
+```tsx
+import './foo.css'; // 如果有额外的样式
+import { addPage, NamedPage, AutoloadPage } from '@hydrooj/ui-default';
+
+addPage(new NamedPage(['problem_detail'], () => {
+  console.log('仅在题目详情页面执行');
+}));
+
+addPage(new AutoloadPage('my_page_name', () => {
+  console.log('在所有页面均会执行');
+}));
+```
