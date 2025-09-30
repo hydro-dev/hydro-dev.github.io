@@ -40,7 +40,7 @@ pm2 save # 保存对 PM2 进行的修改（在添加、修改、删除进程后�
 
 ```
 pm2 unstartup # 清除原来的服务
-pm2 startup systemd -u root # 以 root 身份创建服务
+pm2 startup -u root # 以 root 身份创建服务
 ```
 
 **如果手动修改进程列表且已经覆盖掉保存的原列表，请使用 `pm2 stop all && pm2 del all` 清空所有进程之后重新运行安装脚本。原有数据不会丢失。**
