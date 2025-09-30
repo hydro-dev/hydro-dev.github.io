@@ -22,6 +22,7 @@ CentOS 8 [已于 2021-12-31 停止支持](https://www.centos.org/centos-linux-eo
 - OpenCloudOS  
 
 如果你的机器内存较小（\<=2GiB），请避免使用 Ubuntu 22.04，它会消耗较多的内存。建议使用 Debian 12 / Debian 11。  
+
 如果你有 Linux 运维经验，Hydro 同样支持在 Alpine Linux 上运行，Alpine Linux 系统启动后仅占用 ~100M 内存，是在低配置服务器上运行的更优方案。  
 </Callout>
 
@@ -70,6 +71,13 @@ LANG=zh . <(curl https://hydro.ac/setup.sh)
 - `--no-caddy` 不配置安装反向代理，只监听 `127.0.0.1:8888` 端口
 - `--judge` 仅作为独立评测机安装
 </Callout>
+
+**在部分环境（常见于 debian 、lxc 容器或是精简版系统）下，服务器重启后 Hydro 可能不能正常自启动，这时可尝试使用下面命令，若还不行请使用 `pm2 resurrect` 手动载入进程列表。**
+
+```
+pm2 unstartup # 清除原来的服务
+pm2 startup systemd -u root # 以 root 身份创建服务
+```
 
 阿里云/腾讯云/华为云等等用户安装后如果不能访问 请百度搜索 `xx云 放行80端口`  
 脚本默认使用的为清华大学镜像。  
