@@ -76,7 +76,7 @@ LANG=zh . <(curl https://hydro.ac/setup.sh)
 
 ```
 pm2 unstartup # 清除原来的服务
-pm2 startup systemd -u root # 以 root 身份创建服务
+pm2 startup -u root # 以 root 身份创建服务
 ```
 
 阿里云/腾讯云/华为云等等用户安装后如果不能访问 请百度搜索 `xx云 放行80端口`  
