@@ -1,5 +1,5 @@
 ---
-title: 编译器
+title: 编译器和语言
 ---
 
 从 2022/8/12 开始，Hydro 为了避免宿主机环境变化对于评测的影响，对于 **此后新安装的实例** 默认使用 [nix]() 管理环境。  
@@ -20,13 +20,14 @@ nix-env -iA nixpkgs.rustc # Rust
 nix-env -iA nixpkgs.python3Minimal
 nix-env -iA nixpkgs.python3Packages.numpy
 nix-env -iA nixpkgs.pypy3
-nix-env -iA nixpkgs.php # PHP
+nix-env -iA nixpkgs.php
 nix-env -iA nixpkgs.go # Golang
-nix-env -iA nixpkgs.nodejs # NodeJS
+nix-env -iA nixpkgs.nodejs
 nix-env -iA nixpkgs.openjdk_headless # Java
-nix-env -iA nixpkgs.ruby # Ruby
+nix-env -iA nixpkgs.ruby
 nix-env -iA nixpkgs.mono # C#
 nix-env -iA nixpkgs.julia_17-bin # Julia
+nix-env -iA nixpkgs.iverilog # Verilog
 ```
 
 使用 `nix-env -q` 查看已安装的列表，后使用 `nix-env -e 编译器名` 即可删除对应的编译器。  
@@ -53,7 +54,30 @@ javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
 请参照 [在沙箱中引入 Python 包](https://hydro.ac/d/faqs/p/15) 教程更新环境变量。
 </Callout>
 
-## 进阶
+## 针对语言修改时间限制
+
+系统默认给 Java 和 Kotlin 提供两倍时限, 此行为可在语言设置中修改：
+
+```yml
+# 系统设置->语言设置
+java:
+  # ... existing settings ...
+  time_limit_rate: 2
+```
+
+## C/C++ 彩色编译错误信息
+
+1. 确认您安装了支持彩色输出的编译器；
+2. 在系统设置中，将 C/C++ 编译命令后加上 `-fdiagnostics-color=always`
+
+例：
+
+```yml
+c:
+  compile: /usr/bin/gcc -O2 -Wall -std=c99 -o ${name} foo.c -lm -fdiagnostics-color=always
+```
+
+## 进阶环境设置
 
 如果你需要更加复杂的编译环境配置，我们建议使用编写单独的 nix 文件。
 
@@ -92,3 +116,7 @@ pkgs.buildEnv {
 
 更详细的 nix 语言介绍，请参照 [Nix Guide](https://nixos.org/guides/nix-language.html) 和
 [Nix Manual](https://nixos.org/manual/nix/stable/language/index.html)。
+
+## 其他
+
+推荐阅读 [HydroJudge](../plugins/hydrojudge) 章节，了解更多关于评测机设置的详细信息。

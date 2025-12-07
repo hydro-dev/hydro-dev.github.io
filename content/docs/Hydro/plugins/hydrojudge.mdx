@@ -41,6 +41,11 @@ hydrooj addon add @hydrooj/hydrojudge
 该方法可以帮助您在任意服务器上部署评测机。
 </Callout>
 
+<Callout type="warn">
+我们推荐所有独立评测机使用相同配置机器并关闭内置评测机, 以保证评测结果的稳定性。  
+系统设置中的评测机相关选项仅控制内置评测机, 独立评测机需要在 judge.yaml 中进行设置。
+</Callout>
+
 首先需要创建一个有 PRIV_JUDGE 权限的账户，具体方法参照 [此处](../system/cli/#创建评测账号)。（在部署 Hydro 的服务器上运行）  
 
 然后在运行评测机的服务器上安装 HydroJudge ：
@@ -73,13 +78,8 @@ HydroJudge 会发布不定期更新。您可以使用 `yarn global upgrade-inter
 
 ## 关闭
 
-### 作为附加组件
-
-在 系统设置>hydrojudge 中有一栏 Disable builtin judge，将它勾上，然后重启 Hydro 即可。
-
-### 作为独立进程
-
-根据开启的方法关闭即可。
+- 作为附加组件: 在 系统设置>配置管理 中有一栏 Disable builtin judge，将它勾上，然后重启 Hydro。
+- 作为独立进程: 根据开启的方法关闭。
 
 ## 卸载
 
@@ -111,7 +111,8 @@ parallelism: 2 # 单评测机评测进程数量
 
 ## 修改编译选项/添加新语言支持
 
-对于已安装内置评测机的用户（无论内置评测机是否启动），在 控制面板>系统设置 中修改 judge.langs 配置项即可；对于没有安装内置评测机的用户，需要在 `~/.config/hydro/langs.yaml` 中配置。
+在 控制面板>系统设置 中修改 hydrooj.langs 配置项(对所有连接到该服务器的评测机生效)  
+或在 `~/.config/hydro/langs.yaml` 中配置(对单个独立评测机生效, 不推荐)。
 
 文件格式参照 [此处](https://github.com/hydro-dev/Hydro/blob/master/packages/hydrooj/setting.yaml#L22) 。
 
@@ -119,6 +120,8 @@ parallelism: 2 # 单评测机评测进程数量
 分别表示选择对应的语言后的高亮设置（基于 PrismJS）和 Monaco 编辑器语法规则设置。
 
 修改完后请重启 Hydro 和 hydrojudge 。
+
+在 [编译器和语言](../install/compiler) 章节可查看更多信息。
 
 ## 调试沙箱环境
 
@@ -153,18 +156,6 @@ pm2 info hydro-sandbox | grep "exec cwd"
 对于 2022/8/12 后安装的用户：
 
 编辑 `/root/.hydro/mount.yaml`，修改 size 即可。
-
-## C/C++ 彩色编译错误信息
-
-1. 确认您安装了支持彩色输出的编译器；
-2. 在系统设置中，将 C/C++ 编译命令后加上 `-fdiagnostics-color=always`
-
-例：
-
-```yml
-c:
-  compile: /usr/bin/gcc -O2 -Wall -std=c99 -o ${name} foo.c -lm -fdiagnostics-color=always
-```
 
 ## 开大程序运行栈空间
 
