@@ -11,6 +11,10 @@ title: 其他
 
 前置条件：需要您申请阿里云或是腾讯云的短信 API，并配置好短信模板，等待审核通过。
 
+## 微信登录
+
+支持微信扫码登录系统
+
 ## contest-pdf
 
 快速导出一场比赛的所有题面生成一个 PDF 文件。
@@ -27,9 +31,17 @@ title: 其他
 
 首页轮播大图。
 
-## announce
+## AI
 
-公告模块
+AI 查错/题目答疑/题解解析 ...
+
+## Turtle/GOC
+
+海龟画图相关功能
+
+## 用户有效期
+
+过期后用户自动失去对应题库权限/禁止登录
 
 ## user-list
 
@@ -38,7 +50,7 @@ title: 其他
 
 ## blockly
 
-拼积木。
+积木编程。
 
 ## 课程系统
 
@@ -55,4 +67,4 @@ LOJ, AtCoder 与 BZOJ 部分，我们均部署了完整的测试数据镜像，�
 - AtCoder: ~~[Dropbox](https://www.dropbox.com/sh/nx3tnilzqz7df8a/AAAYlTq2tiEHl5hsESw6-yfLa?dl=0)~~ 不再提供测试数据下载。
 - BZOJ: 因特殊原因请自行搜索下载源。（约 64GB）
 
-关于洛谷题库的远端评测，请参照 [洛谷开放平台](https://docs.lgapi.cn/open/) 说明，此服务由洛谷提供，您也可以前往 [Hydro](https://hydro.ac/luogu/pay) 直接购买授权。
+关于洛谷题库的远端评测，请参照 [洛谷开放平台](https://docs.lgapi.cn/open/) 说明，此服务由洛谷提供，您也可以前往 [Hydro](https://hydro.ac/luogu/pay) 以渠道价直接购买授权。
