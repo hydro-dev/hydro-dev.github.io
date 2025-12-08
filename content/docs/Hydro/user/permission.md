@@ -3,7 +3,7 @@ title: 权限系统
 ---
 
 Hydro 的权限系统使用双层结构，分别为 Privilege (PRIV) 和 Permission (PERM)。  
-权限在系统内部使用位运算表示，具体的定义与数值可以查看 [源代码](https://github.com/hydro-dev/Hydro/blob/master/packages/hydrooj/src/model/builtin.ts) 。
+权限在系统内部使用位运算表示，具体的定义与数值可以查看 [源代码](https://github.com/hydro-dev/Hydro/blob/master/packages/common/permission.ts)。
 
 ## Privilege
 
