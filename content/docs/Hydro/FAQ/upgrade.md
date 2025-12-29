@@ -28,7 +28,9 @@ yarn global upgrade-interactive --latest
 pm2 restart hydrooj --update-env
 ```
 
-## Your sandbox version is tooooooo low!
+## 升级沙箱
+
+遇到 `Your sandbox version is tooooooo low!` 或者 `Your sandbox version is vulnerable to symlink escape issue` 提示时，请升级沙箱：
 
 ```bash
 nix-channel --update
