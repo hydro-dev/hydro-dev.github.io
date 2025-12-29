@@ -43,7 +43,7 @@ javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
 ```
 
 同时部分编译器在可能时会尝试创建大量进程利用多核并行编译，请确保 judge 设置中 `processLimit` 项足够大，
-否则会因编译器无法创建进程失败导致编译失败。  
+否则会因编译器无法创建进程导致编译失败。  
 
 在编译器利用多核并行编译时，Hydro 会统计这些进程的 CPU 占用之和作为 CPU 资源限制，如出现编译超时错误，
 请调整系统设置中对应语言选项下的 `compile_time_limit` 项（单位 ms）。
