@@ -180,6 +180,17 @@ pm2 start bash --name hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox"
 kernel.randomize_va_space = 0
 ```
 
+启用沙箱的 CPU 绑定功能，例如在 `8` 核系统上，限制评测任务仅使用 CPU `2,4,6` 时可以参照以下配置：
+
+```sh
+pm2 start hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox -mount-conf /root/.hydro/mount.yaml -cpuset 2,4,6"
+pm2 save
+```
+
+这时，最大同时运行任务数限制为 `,` 分割的核心数量（在这个例子里为 `3`），并且同时运行的每个评测任务会分别分配到该项配置中的一个核心。启用该配置时， `parallelism` 建议设置与沙箱任务能够使用的核心数量相同。此项配置需要根据评测机具体的 CPU 配置 (例如是否开启超线程, 使用 NUMA 等情况) 调整。同时，此项配置需要沙箱版本升级至 `v1.11.2` 或以上。
+
+同时，如果为了避免其他任务使用这些核心，可以在内核启动参数中使用 `isolcpus` 配置。例如在 `8` 核系统上，禁止其他任务使用 CPU `2-7` 时可以加入 `isolcpus=2-7` 内核启动参数。具体可以参照 [内存计量不准确](#内存计量不准确) 章节内容修改内核启动参数。
+
 ## 内存计量不准确
 
 在控制面板上出现内容为 `You are using cgroup v2 without kernel 5.19+. This could result in inaccurate memory usage measurements.` 警告时，意味着当前系统的内存消耗计量存在误差。
