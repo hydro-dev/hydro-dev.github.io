@@ -29,4 +29,4 @@ const search = {
     },
 };
 
-export const { staticGET: GET } = createFromSource(source, undefined, search);
+export const { staticGET: GET } = createFromSource(source, search);

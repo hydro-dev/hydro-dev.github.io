@@ -1,9 +1,9 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import type { ReactNode } from 'react';
 import { baseOptions } from '@/app/layout.config';
 import { source } from '@/lib/source';
 import { GithubInfo } from 'fumadocs-ui/components/github-info';
+import { RootToggle } from '@/components/RootToggle';
 
 const maps = {
   'Hydro': <GithubInfo owner="hydro-dev" repo="Hydro" />,
