@@ -1,0 +1,128 @@
+---
+title: 系统升级指南
+---
+
+<Callout type="warn">
+  **数据无价，谨慎操作。** 在执行任何升级操作前，请务必完整备份您的数据！
+</Callout>
+
+## 从旧版升级到 v4
+
+本部分适用于从 Hydro V4 之前的旧版本进行升级。
+
+### Step 1. 备份数据
+
+执行备份命令，确保您的所有数据都已安全保存。
+
+```bash
+hydrooj backup
+```
+
+### Step 2. 更新环境与核心依赖
+
+对于早期版本（使用 nvm 的环境），我们推荐移除 `nvm` 并迁移至 `nix`。
+
+```bash
+# （可选）如果存在 ~/.nvm 目录，请移除
+rm -rf ~/.nvm
+
+# 更新 nix 包管理器并安装最新环境
+nix-channel --update
+nix-env -iA nixpkgs.nodejs nixpkgs.yarn nixpkgs.pm2
+```
+
+### Step 3. 更新 Hydro 核心包
+
+使用 `yarn` 将 Hydro 核心包更新到指定版本。
+
+```bash
+# 移除旧的 hydrooj 和 ui-default 全局包
+yarn global remove hydrooj ui-default
+# 安装指定版本的 hydrooj 和 ui-default
+yarn global add hydrooj@4.19.0 ui-default@4.57.0
+```
+
+`hydrooj 4.19.0` 和 `ui-default 4.57.0` 是 v4 版本的稳定核心包。
+
+### Step 4. 升级评测沙箱
+
+如果在系统日志中看到 `Your sandbox version is tooooooo low!` 或类似的提示，说明需要升级沙箱。
+
+```bash
+# 确保 nix 已是最新
+nix-channel --update
+# 移除旧版沙箱并安装新版 go-judge
+nix-env -e hydro.sandbox
+nix-env -iA nixpkgs.go-judge
+# 创建软链接
+ln -sf $(which go-judge) /usr/bin/hydro-sandbox
+```
+
+### Step 5. 重启所有服务
+
+应用所有更新并重启服务。
+
+```bash
+pm2 restart all --update-env
+```
+
+最后，使用 `pm2 logs hydrooj --lines 100` 检查日志。如果能看到 `Server started` 且没有错误信息，则表示升级成功。
+
+---
+
+## 从 v4 升级到 v5
+
+<Callout type="warning">
+  **V5 为破坏性更新。**
+  内含数据库表结构调整，升级后**无法回退**至旧版本。请务必在升级前完成备份。
+</Callout>
+
+### Step 1. 检查前置条件
+
+- **Hydro 版本**: 确认当前版本至少为 `4.12`。如低于此版本，请先按照[上一章节](#从旧版升级到-v4)升级到 `4.19`。
+- **NodeJS 版本**: V5 要求 NodeJS 版本 `≥ 22`。
+- **系统依赖**: 新版评测机依赖 `gawk`。
+
+### Step 2. 更新环境依赖
+
+执行以下命令更新 NodeJS 并安装 `gawk`。
+
+```bash
+nix-channel --update
+nix-env -iA nixpkgs.nodejs
+nix-env -iA nixpkgs.gawk
+```
+
+### Step 3. 升级 Hydro 核心包
+
+使用 `yarn` 安装 v5 (next) 版本的核心包。
+
+```bash
+yarn global add hydrooj@next @hydrooj/ui-default@next @hydrooj/hydrojudge@next
+```
+
+<Callout type="info">
+  请注意，升级主程序后，您需要手动检查并更新所有已启用的第三方插件，以确保其与
+  v5 兼容。
+</Callout>
+
+### Step 4. 重启服务与数据库迁移
+
+重启服务后，系统将自动开始数据库迁移。
+
+```bash
+pm2 restart all --update-env
+```
+
+<Callout type="warn">
+  数据库迁移可能需要数分钟时间，期间请勿再次重启服务器或进行其他操作，以免造成数据损坏。
+</Callout>
+
+### Step 5. 故障排查：更新后无法访问
+
+如果在升级后无法访问网页，但 `pm2 ls` 和 `pm2 logs hydrooj` 显示服务均正常运行，这可能是服务监听地址变更导致的。执行以下命令：
+
+```bash
+hydrooj cli system set server.host 0.0.0.0
+pm2 restart hydrooj
+```
