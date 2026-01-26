@@ -1,22 +1,9 @@
 ---
-title: 使用 TypeScript 编写插件
+title: 使用 TypeScript 编写插件 - 以剪贴板插件为例
 ---
+## Step 1.初始化项目
 
-## Step0 为什么使用插件？
-
-如果您参与过其他工程项目的开发，经常会遇到以下的痛点：
-
-- 若修改前端源代码，需要重新编译打包前端，编译通常消耗大量的内存与时间，且编译完成后需要重启服务，用户侧资源缓存也会全部失效；  
-- 修改代码后，尝试更新系统时，自己的修改被新版本覆盖，需要手动合并（或是直接丢失了更改），极大幅度增加维护成本；  
-- 第三方社区出现的大量修改分支无法直接按需求进行组合/拼装，或是功能间存在冲突；  
-
-基于以上痛点，Hydro 开创性的使用了插件系统，提供了一套完整的开发 API 供开发者使用，开发者基于提供的较稳定的 API 进行功能的编写，而无需过多关心内部实现，将功能拆分成多个最小的单元，允许用户根据需要进行自由组合，并在多个版本间达到一致性，同时提供热重载功能，提升开发效率。
-
-此教程将以编写剪贴板插件为例进行插件开发的说明。
-
-## Step1 初始化项目
-
-前置条件：NodeJS>=22  
+前置条件：NodeJS $ \geq $ 22
 
 使用 `hydrooj addon create` 快速在 `/root/addon` 下初始化一个插件或是在一个空文件夹中运行 `yarn init` 并按照提示填写相关信息。
 
@@ -35,46 +22,41 @@ question private:
 success Saved package.json
 ```
 
-## 可选：在本机环境编写插件
+### 可选：在本机环境编写插件
 
-有时我们希望使用本机的 IDE 编写插件上传到服务器（我们也推荐这么做，编辑器提供的代码补全可以很大程度简化开发流程），可以进行如下操作：  
+有时我们希望使用本机的 IDE 编写插件上传到服务器（我们也推荐这么做，编辑器提供的代码补全可以很大程度简化开发流程），可以进行如下操作：
 
 1. 在本机安装 NodeJS 和 yarn 。
 2. 参照步骤 1 使用 `yarn init` 创建一个项目。
 3. 使用 VSCode 打开插件文件夹。
 4. 使用 `yarn add hydrooj -D` 安装相关开发组件。
 5. 参照下文进行插件开发工作
-6. 将本地的文件夹上传至服务器，并使用 `hydrooj addon add 插件绝对路径` 启用上传的插件。
+6. 将本地的文件夹上传至服务器，并使用 `hydrooj addon add <插件绝对路径>` 启用上传的插件。
 
-## Step2 准备编写组件
+## Step 2.准备编写组件
 
-分析：剪贴板组件需要以下功能：
-
-- 与数据库交互来存储/检索相应文档。
-- 提供 /paste/create 路由以创建新文档。
-- 提供 /paste/show/:ID 来查看已创建的文档。
-- 根据用户ID进行鉴权，允许将文档设置为私密以防止他人查看。
-
-在路由中定义所有的函数应均为异步函数，支持的函数有：prepare, get, post, post[Operation], cleanup  
-具体流程如下：
+### Step 2.1.插件路由执行顺序和基础定义
+在路由中定义所有的函数应均为**异步函数**，支持的函数有：`prepare`, `get`, `post`, `post[Operation]`, `cleanup`。  
+一个标准的处理请求流程具体流程如下：
 
 ```
-先执行 prepare(args) （如果存在）
-args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参数，
-再执行 prepare(args) （如果存在）
-检查请求类型：
+检查是否存在 prepare 函数
+-> 存在 ?
+    -> 执行 prepare(args) 
 
-为 GET ？
-  -> 执行 get(args)
-为 POST ?
-  -> 执行 post(args)
-  -> 含有 operation 字段？
-       -> 执行 post[Operation]
+检查请求类型：
+-> 为 GET ？
+    -> 执行 get(args)
+-> 为 POST ?
+    -> 含有 operation 字段？
+        -> 执行 post[Operation]
+    -> 否则
+        -> 执行 post(args)
 
 执行 cleanup()
 ```
-
-如果在 this.response.template 指定模板则渲染，否则直接返回 this.response.body 中的内容。
+其中 `args` 为传入的参数集合（包括 QueryString, Body, Path）中的全部参数。  
+如果在 `this.response.template` 指定模板则渲染，否则直接返回 `this.response.body` 中的内容。
 
 * 在表单提交时的 operation 字段使用下划线，函数名使用驼峰命名。
 
@@ -83,9 +65,17 @@ args 为传入的参数集合（包括 QueryString, Body, Path）中的全部参
 应当提供 `apply` 函数，并与定义的 Handler 一同挂载到 `global.Hydro.handler[模块名]` 位置。
 `apply` 函数将在初始化阶段被调用。
 
-# Step3 index.ts
+### Step 2.2.分析剪贴板组件需求
+剪贴板组件需要以下功能：
 
-```ts twoslash
+- 与数据库交互来存储 / 检索相应文档。
+- 提供 `/paste/create` 路由以创建新文档。
+- 提供 `/paste/show/:ID` 路由以查看已创建的文档。
+- 根据用户 ID 进行鉴权，允许将文档设置为私密以防止他人查看。
+
+## Step 3.编写入口文件
+
+```ts lineNumbers
 // @noErrors
 // @module: esnext
 // @filename: index.ts
@@ -185,20 +175,31 @@ export async function apply() {
 
 ```
 
-## Step4 template
+## Step 4.编写前端页面模板
 
-模板采用 nunjucks 语法。放置于 `templates/` 文件夹下。  
-会在请求结束时根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
+插件需要的 HTML 模板采用 nunjucks 语法。放置于 `templates/` 文件夹下。
+插件会在请求结束时根据 `response.template` 的值选择模板，并使用 `response.body` 的值进行渲染，存入 `response.body` 中。  
 若 `response.template` 为空或 `request.headers['accept'] == 'application/json'`，则跳过渲染步骤。
 
-## Step5 locale
+针对本插件而言，请参考[入口文件](./typescript#step-3编写入口文件)的 `53` 行，`65` 行，`78~79` 行。
 
-用于提供多国翻译。格式与 Hydro 的 locale 文件夹格式相同。
+由于篇幅限制，此处不会给出完整的 HTML 模板代码。如果想要获得模板参考，可以访问[此链接](https://github.com/Floating-Ocean/hydrooj-pastebin-plus-fix/tree/Hydro-V5/templates)。
+## Step 5.编写多语言文件
 
-## Step6 frontend
+用于提供多国翻译。格式为 YAML。放置于 `locales/` 文件夹下。如果需要启用多语言功能，在编写前端模板的时候需要将所有的文字替换成对应的翻译 key，并使用 `{{ _('translation_key') }}` 进行调用。
 
-在 frontend 文件夹下编写前端代码。命名符合 `[a-zA-Z0-9_]+.page.tsx?` 的文件会被自动作为入口点加载。  
-paste 功能并不需要在前端有任何额外 js 驱动的交互，因此下方给出一个最基础的格式示例。
+```yaml
+# @filename: locales/zh.yaml
+'pastebin': '云剪贴板'
+'paste_create': '创建新剪贴板'
+'paste_manage': '管理剪贴板'
+# ...
+```
+
+## Step 6.前端组件相关
+
+在 `frontend/` 文件夹下编写前端代码。命名符合 `[a-zA-Z0-9_]+.page.tsx?` 的文件会被自动作为入口点加载。  
+本例中，剪贴板功能并不需要在前端有任何额外 js 驱动的交互，因此下方给出一个最基础的格式示例。
 
 ```tsx
 import './foo.css'; // 如果有额外的样式

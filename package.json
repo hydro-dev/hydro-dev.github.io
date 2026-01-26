@@ -19,7 +19,7 @@
     "fumadocs-mdx": "14.2.6",
     "fumadocs-twoslash": "^3.1.12",
     "fumadocs-ui": "16.4.8",
-    "katex": "^0.16.27",
+    "katex": "^0.16.28",
     "lucide-react": "^0.563.0",
     "next": "16.1.4",
     "react": "^19.2.3",

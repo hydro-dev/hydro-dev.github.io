@@ -1,13 +1,14 @@
 {
-    "title": "Hydro",
-    "root": true,
-    "description": "Hydro",
-    "pages": [
-        "install",
-        "system",
-        "user",
-        "FAQ",
-        "dev",
-        "plugins"
-    ]
+  "title": "Hydro",
+  "root": true,
+  "description": "Hydro",
+  "pages": [
+    "install",
+    "system",
+    "user",
+    "FAQ",
+    "plugins",
+    "plugins-dev",
+    "system-dev"
+  ]
 }

@@ -1,0 +1,5 @@
+{
+  "title": "插件开发",
+  "description": "插件开发",
+  "pages": ["typescript", "hook", "frontend-modify", "third-party-auth"]
+}
