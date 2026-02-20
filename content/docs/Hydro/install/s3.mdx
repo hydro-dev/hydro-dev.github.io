@@ -22,20 +22,20 @@ title: 存储
 如果关闭了 `file.pathStyle` 选项，请在 `endPointForUser` 和 `endPointForJudge` 设置中填写真实 url，`/fs/` 端点将不可用。
 </Callout>
 
-**MinIO**
+**SeaweedFS**
 
 <Callout type="warn">
-新版本 MinIO 占用较大，如果您为轻量使用，我们不建议使用 MinIO 。旧版本 Hydro 用户大部分可直接切换至 file 模式，由 Hydro 代替读取。
+SeaweedFS 的安装和维护较为繁琐且需要较多的专业知识，仅作为参考，不建议非专业用户使用。
 </Callout>
 
-[安装 MinIO](https://min.io/) 后进入 控制面板>manage_config。
+[安装并配置 SeaweedFS](https://github.com/seaweedfs/seaweedfs) 后进入 控制面板>manage_config。
 
 - `file.type`: `s3`
-- `file.endPoint`： `http://127.0.0.1:9000`（即 MinIO 启动时显示的 endPoint）
-- `file.accessKey`： 参照 MinIO 配置
-- `file.secretKey`： 参照 MinIO 配置
-- `file.bucket`： `hydro`（MinIO 内部存储桶名称）
-- `file.region`： `us-east-1`
+- `file.endPoint`： `http://127.0.0.1:8333`
+- `file.accessKey`： 参照 SeaweedFS 配置
+- `file.secretKey`： 参照 SeaweedFS 配置
+- `file.bucket`： `hydro`（SeaweedFS 内部存储桶名称）
+- `file.region`： `Auto`
 - `file.pathStyle`： true
 - `file.endPointForUser`： `/fs/`
 - `file.endPointForJudge`： `/fs/`
