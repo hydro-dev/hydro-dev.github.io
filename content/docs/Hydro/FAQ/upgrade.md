@@ -2,9 +2,11 @@
 title: 升级指南
 ---
 
-`yarn global upgrade-interactive --latest` 然后按空格选中除 pm2 之外的所有包更新，回车确认。
-然后 `pm2 restart hydrooj` 重启服务。
-重启后 `pm2 logs hydrooj --lines 100` 没有看到报错并看到了 `Server started` 则一切正常。
+`yarn global upgrade-interactive --latest` 然后按空格选中除 pm2 之外的 **所有** 包更新，回车确认。
+然后 `pm2 restart hydrooj` 重启服务。  
+重启后 `pm2 logs hydrooj --lines 100` 没有看到报错并看到了 `Server started` 则一切正常。  
+安装/升级插件时请务必先升级系统。混用新旧版本可能导致各种意料之外的问题。  
+同时，如果您有从链接安装的插件 `hydrooj install https://xxxx`，请在升级系统时重新运行该命令以更新此插件。  
 
 Hydro 的所有历史版本，都可以无损升级到最新版本。如果老系统更新有疑问，随时加官方群咨询群主。
 
