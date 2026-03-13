@@ -1,0 +1,104 @@
+---
+title: Hydro CLI
+---
+
+<Callout>
+Before using the CLI, please complete database configuration.  
+Parameters wrapped in `<>` are required, and parameters wrapped in `[]` are optional. If omitted, default settings are used.  
+**Please replace all parts wrapped in `<>` or `[]` based on your own environment (including the brackets).**
+</Callout>
+
+The CLI helps users quickly perform operations in the terminal.  
+These commands should be run in a terminal as the root user (the same location used during installation).  
+Some common examples are listed below.
+
+## Create a User
+
+<Callout>
+Rarely used. We recommend using Control Panel > Import Users instead.
+</Callout>
+
+```sh
+hydrooj cli user create <mail> <username> <password> <uid>
+# User email, username, and password
+
+# For example, to create a user with email hydro@hydro.local, username Hydro, password hydrohydro, and UID 2:
+# Make sure UID is an integer >= 2 and not already in use, and that email and username are unique.
+hydrooj cli user create hydro@hydro.local Hydro hydrohydro 2
+```
+
+If everything works correctly, you will see the user's uid in the command line output.
+
+## Set Site Super Admin
+
+```sh
+hydrooj cli user setSuperAdmin <uid>
+
+# For example, set user with uid 2 as admin:
+hydrooj cli user setSuperAdmin 2
+```
+
+## Set User Privilege
+
+```sh
+hydrooj cli user setPriv <uid> <priv>
+```
+
+For parameter `[priv]`, see [here](../dev/PERM_PRIV/).
+
+## Change User Password
+
+```sh
+hydrooj cli user setPassword <uid> <password>
+
+# For example, change password of uid 1 to hydrohydro:
+hydrooj cli user setPassword 1 hydrohydro
+```
+
+## Create a Judge Account
+
+First, [create an account](#create-a-user).  
+
+Pay attention to the number returned by the command; it is the user's `uid`. You need it for the next command, then grant judging permission to that account.
+
+```sh
+hydrooj cli user setJudge <uid>
+```
+
+After that, write the configured username and password into the judge machine config file, and the judge machine can connect to the web side.
+
+## Blacklist
+
+Ban a user:
+
+```sh
+hydrooj cli user setPriv <uid> 0
+```
+
+Ban IP/email domain:
+
+```sh
+# key format: ip::xxx.xxx.xxx.xxx (ban IP access) or mail::xxx.com (forbid registration with xxx.com emails)
+hydrooj cli blacklist add <key> [duration] # Add <key> to blacklist, duration is [duration] months (integer, default 12; if duration=0 then permanent)
+hydrooj cli blacklist get <key> # Get blacklist information for <key>
+hydrooj cli blacklist del <key> # Remove <key> from blacklist
+```
+
+## Command List
+
+All functions under [this folder](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) can be called via CLI.
+
+Not all runnable commands are listed here, because many features are better used via the Web interface.
+
+```sh
+hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
+# Create user with email <mail>, username <uname>, password <password>, ID [uid], registration IP [regip], privilege [priv]
+hydrooj cli user setUname <uid> <unmae> # Set username of user <uid> to <uname>
+hydrooj cli user setPriv <uid> <priv> # Set privilege of user <uid> to <priv>
+hydrooj cli user setPassword <uid> <password> # Set password of user <uid> to <password>
+hydrooj cli user setEmail <uid> <mail> # Set email of user <uid> to <mail>
+hydrooj cli user setSuperAdmin <uid> # Set user <uid> as site super admin
+hydrooj cli problem import <domainId> <file/path> # Import Hydro-format problem package from <file/path> into Domain <domainId>
+hydrooj cli problem export <domainId> # Export all problem packages from Domain <domainId>
+hydrooj cli system set <key> <value> # Change system setting <key> to <value>
+```

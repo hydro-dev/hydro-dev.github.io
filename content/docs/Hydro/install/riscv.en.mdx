@@ -1,0 +1,136 @@
+---
+title: Installation on RISC-V Architecture
+---
+
+## System Environment
+
+This article is based on Sipeed Lichee Pi 4A 16G, using RevyOS 20250526_182059 firmware. Thanks to the [Jiachen Project](https://rv2036.org/) for hardware support,
+and thanks to [Anillc](https://github.com/Anillc) and [NickCao](https://github.com/NickCao) for their help.
+
+## Initialize the Nix Environment
+
+```bash
+curl -sSL https://hydro.ac/nix.sh | bash
+```
+
+To save your life, configure extra binary caches: `https://cache.nichi.co https://nix-community.cachix.org`
+`nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk=`  
+
+## Build MongoDB
+
+MongoDB does not provide official RISC-V support, so we need to compile MongoDB ourselves (this step can be skipped if using MongoDB Atlas).
+
+Clone the MongoDB repository:
+
+```bash
+git clone git@github.com:mongodb/mongo --depth=1 --branch=r7.0.22
+```
+
+Download mozjs release:
+
+```bash
+cd src/third_party/mozjs
+bash get-sources.sh
+```
+
+Add RISC-V support to `gen-config.sh` in the same directory:
+
+```diff
+diff --git a/src/third_party/mozjs/gen-config.sh b/src/third_party/mozjs/gen-config.sh
+index 9144a461..141e089b 100755
+--- a/src/third_party/mozjs/gen-config.sh
++++ b/src/third_party/mozjs/gen-config.sh
+@@ -61,6 +61,9 @@ case "$_Path" in
+         _xcode_setup "macosx" "x86_64" "macos-version-min=10.9"
+         _CONFIG_OPTS="--host=x86_64-apple-darwin"
+     ;;
++    "platform/riscv64/linux")
++        _CONFIG_OPTS="--host=riscv64-linux"
++    ;;
+     "platform/aarch64/iOS")
+         _xcode_setup "iphoneos" "arm64" "iphoneos-version-min=10.2"
+         _CONFIG_OPTS="--target=aarch64-apple-darwin"
+```
+
+Run `gen-config.sh` to generate the `platform/riscv64/linux` directory:
+
+```bash
+bash gen-config.sh riscv64 linux
+```
+
+```diff
+diff --git a/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp b/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp
+new file mode 100644
+index 00000000..624b0d97
+--- /dev/null
++++ b/src/third_party/mozjs/platform/riscv64/linux/build/Unified_cpp_js_src0.cpp
+@@ -0,0 +1,55 @@
++#define MOZ_UNIFIED_BUILD
++#include "builtin/Array.cpp"
++#ifdef PL_ARENA_CONST_ALIGN_MASK
++#error "builtin/Array.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
++#undef PL_ARENA_CONST_ALIGN_MASK
++#endif
++#ifdef INITGUID
+# 行数过多，下略
+```
+
+Modify MongoDB `platform/pause.h` to add RISC-V support:
+
+```diff
+diff --git a/src/mongo/platform/pause.h b/src/mongo/platform/pause.h
+index 67fe3d94..b3f50efb 100644
+--- a/src/mongo/platform/pause.h
++++ b/src/mongo/platform/pause.h
+@@ -69,7 +69,7 @@
+ 
+ #define MONGO_YIELD_CORE_FOR_SMT() __asm__ volatile("rd %%ccr, %%g0" ::: "memory")
+ 
+-#elif defined(__EMSCRIPTEN__)
++#elif defined(__EMSCRIPTEN__) || defined(__riscv)
+ 
+ // TODO: What should this be?
+ #define MONGO_YIELD_CORE_FOR_SMT()
+```
+
+Pass the patches above into nixpkgs:
+
+```diff
+diff --git a/pkgs/servers/nosql/mongodb/7.0.nix b/pkgs/servers/nosql/mongodb/7.0.nix
+index cb4bbf53279f..0526976d4e8b 100644
+--- a/pkgs/servers/nosql/mongodb/7.0.nix
++++ b/pkgs/servers/nosql/mongodb/7.0.nix
+@@ -35,7 +35,11 @@ buildMongoDB {
+     # mongodb-7_0's mozjs uses avx2 instructions
+     # https://github.com/GermanAizek/mongodb-without-avx/issues/16
+   ]
+-  ++ lib.optionals (!avxSupport) [ ./mozjs-noavx.patch ];
++  ++ lib.optionals (!avxSupport) [ ./mozjs-noavx.patch ]
++  ++ lib.optionals (stdenv.hostPlatform.isRiscV64) [
++    ./mongodb-riscv.patch
++    ./mozjs-riscv.patch
++  ];
+ 
+   passthru.tests = {
+     inherit (nixosTests) mongodb;
+```
+
+For the modifications above, refer to [Nixpkgs PR#430577](https://github.com/NixOS/nixpkgs/pull/430577)  
+
+Build to obtain MongoDB 7.0.22 for RISC-V, then use `nix copy` to transfer it to the target device.
+
+## Install Components and Start
+
+```bash
+nix profile add nixpkgs#bashInteractive nixpkgs#nodejs nixpkgs#yarn nixpkgs#pm2 nixpkgs#gawk \
+  nixpkgs#go-judge nixpkgs#gcc # and other compilers...
+yarn global add hydrooj @hydrooj/ui-default @hydrooj/hydrojudge
+hydrooj addon add @hydrooj/ui-default
+hydrooj addon add @hydrooj/hydrojudge
+pm2 start hydrooj
+```
+
+## Compiler/Language Compatibility
+
+- Tested and working: bash, c, c++, python3, nodejs, go, ruby  
+- Not available yet: java, pascal, kotlin, php, rust, csharp  

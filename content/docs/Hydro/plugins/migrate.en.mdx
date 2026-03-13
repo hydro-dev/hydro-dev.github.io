@@ -1,0 +1,112 @@
+---
+title: migrate
+---
+
+## Upgrade from HUSTOJ
+
+<Callout>
+If you are using the original version of HUSTOJ, it is recommended to follow these steps:
+
+1. Check and fix all invalid data (invalid dates / invalid email format / start time later than end time, etc.)
+2. It is recommended to create a server snapshot.
+3. Run the installation script directly on the machine where HUSTOJ is installed. The script will prompt you to import data.
+4. Check whether all data is normal. If everything is fine, you're done.
+5. If not, run `pm2 stop all && systemctl start nginx` to switch back to HUSTOJ and fix the data.
+6. Run `rm -rf /data ~/.hydro` and then rerun the installation script, returning to step 3.
+</Callout>
+
+<Callout type="warn">
+Migration will delete all current Hydro data (including user account information) and import HUSTOJ data.
+Please make sure to back up relevant files.
+</Callout>
+
+Please complete Hydro deployment first and finish file service configuration (`setting_file`).
+Before migrating data, stop all running HUSTOJ services and keep only its database running.
+Note that the database used by Hydro must not be the same as the source HUSTOJ database.
+
+After installing the plugin, you should find a script named `migrateHustoj` in Control Panel > Script Management.
+Its parameter format is as follows:
+
+```json
+{"host":"localhost","port":3306,"name":"jol","username":"","password":"","domainId":"system","contestType":"","dataDir":"","uploadDir":""}
+```
+
+This information can usually be found in `/home/judge/src/web/include/db_info.inc.php`;
+
+- host: database host (`DB_HOST`)
+- port: database port (`DB_PORT`)
+- name: database name, usually `jol` (`DB_NAME`)
+- username&password: account/password, use empty strings if none (`DB_USER`/`DB_PASS`)
+- domainId: target domain for migration, default is `system`
+- contestType: `oi` or `acm`, depending on your setup (`OJ_OI_MODE`)
+- dataDir: location of the `data` folder in HUSTOJ (stores critical data such as problem test data; requires manual handling) (`OJ_DATA`)
+- uploadDir: location of uploaded files in HUSTOJ (stores uploaded images and files, usually `/home/judge/src/web/upload/`)
+
+After the script finishes, restart the Hydro instance to automatically complete the remaining upgrade steps.
+After migration, log in using the original HUSTOJ administrator account.
+
+
+## Upgrade from SYZOJ
+
+The migration process for SYZOJ is similar to HUSTOJ. Run the script named `migrateSyzoj`; unlike HUSTOJ migration, `contestType` is not required.
+Its parameter format is as follows:
+
+```json
+{"host":"localhost","port":3306,"name":"syzoj","username":"","password":"","domainId":"system","dataDir":""}
+```
+
+- host: database host
+- port: database port
+- name: database name, usually `syzoj`
+- username&password: account/password, use empty strings if none
+- domainId: target domain for migration, default is `system`
+- dataDir: location of the `data` folder in SYZOJ (stores critical data such as problem test data; requires manual handling)
+
+Since the SYZOJ script migrates all data from the original site, it may take a long time to run.
+After the script finishes, restart the Hydro instance to automatically complete the remaining upgrade steps.
+After migration, log in using the original SYZOJ administrator account.
+
+## Upgrade from UniversalOJ
+
+UniversalOJ (commonly called UOJ community edition) uses a migration process similar to the two above. Run the script named `migrateUniversalOJ`.
+
+Because its upgrade process is relatively complex, the installation script already provides automatic upgrade support. If needed, you can run the installation script for one-click migration. For manual migration, please ask in the developer group.
+
+Since the UniversalOJ script migrates all data from the original site, it may take a long time to run.
+After the script finishes, restart the Hydro instance to automatically complete the remaining upgrade steps.
+After migration, log in using the original UniversalOJ administrator account.
+
+## Upgrade from Vijos
+
+<Callout type="warn">
+Migration will delete all current Hydro data (including user account information) and import vj4 data.
+Please make sure to back up relevant files.
+</Callout>
+
+Please complete Hydro deployment first and finish file service configuration (`setting_file`).
+Before migrating data, stop all running vj4 services and keep only its database running.
+Note that the database used by Hydro must not be the same as the source vj4 database.
+If you are using vj4-docker, you can modify `docker-compose.yml` to map the database to a different local port.
+
+After installing the plugin, you should find a script named `migrateVijos` in Control Panel > Script Management.
+Its parameter format is as follows:
+
+```json
+{"host":"localhost","port":27017,"name":"vj4","username":"","password":""}
+```
+
+- host: database host
+- port: database port
+- name: database name
+- username&password: account/password, use empty strings if none
+
+<Callout>
+In vj4-docker, the database name is vj4 with no account/password.
+</Callout>
+
+After the script finishes, restart the Hydro instance to automatically complete the remaining upgrade steps.
+After migration, log in using the original vj4 administrator account.
+
+<Callout type="warn">
+If your vj4 was upgraded from vj2 or tyvj, do not uninstall this plugin after migration, or some users may be unable to log in.
+</Callout>

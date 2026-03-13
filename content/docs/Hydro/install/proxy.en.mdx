@@ -1,0 +1,44 @@
+---
+title: Reverse Proxy / SSL Configuration
+---
+
+### Instances installed via script after 2022/10/27 are already configured with Caddy reverse proxy automatically. Please edit the config file at `~/.hydro/Caddyfile` directly!
+
+<Callout type="warn">
+If you use a reverse proxy, ensure `server.xff` and `server.xhost` in system settings are set correctly (lowercase). They correspond to header names added by the reverse proxy (usually `x-forwarded-for` and `x-forwarded-host`; some reverse proxy tools use `x-real-ip` instead of `x-forwarded-for`).  
+Incorrect `server.xhost` will cause issues such as user login failures. (CsrfTokenError)  
+Incorrect `server.xff` will prevent recording user IPs.
+
+Except for one-click installation scripts that auto-configure these settings after installing Caddy, when using other tools you must configure system settings before using them! Otherwise, issues like failed user login and missing user IP logs will occur.
+
+If you use Nginx, make sure WebSocket reverse proxy is configured; otherwise judge status cannot auto-refresh and online IDE may not work properly.
+</Callout>
+
+Hydro supports reverse proxy tools such as Caddy and HaProxy. Some configuration examples are provided [here](https://github.com/hydro-dev/Hydro/tree/master/examples/reverse_proxy).
+
+Hydro recommends using [Caddy](https://caddyserver.com/). Below is a sample Caddyfile.
+Tip: If your server is located in mainland China, ICP filing is required before you can use ports 80 and 443.
+
+```
+hydro.ac {
+  log {
+    output file /data/access.log {
+      roll_size 1gb
+      roll_keep_for 72h
+    }
+    format json
+  }
+  root * /root/.hydro/static
+  @static {
+    file {
+      try_files {path}
+    }
+  }
+  handle @static {
+    file_server
+  }
+  handle {
+    reverse_proxy http://127.0.0.1:8888
+  }
+}
+```

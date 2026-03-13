@@ -5,28 +5,25 @@ import { stopwords as mandarinStopwords } from "@orama/stopwords/mandarin";
 
 export const revalidate = false;
 
-const tokenizer = createTokenizer({
+const mandarinTokenizer = createTokenizer({
     language: 'mandarin',
     stopWords: mandarinStopwords,
 });
 
-const search = {
-    tokenizer,
-    components: {
-        tokenizer,
-    },
-    search: {
-        threshold: 1.5,
-        tolerance: 2,
-        boost: {
-            title: 2,
-            content: 1,
+export const { staticGET: GET } = createFromSource(source, {
+    localeMap: {
+        cn: {
+            tokenizer: mandarinTokenizer,
+            components: {
+                tokenizer: mandarinTokenizer,
+            },
+            search: {
+                threshold: 1.5,
+                tolerance: 2,
+            },
+        },
+        en: {
+            language: 'english',
         },
     },
-    insertOptions: {
-        batchSize: 100,
-        async: true,
-    },
-};
-
-export const { staticGET: GET } = createFromSource(source, search);
+});

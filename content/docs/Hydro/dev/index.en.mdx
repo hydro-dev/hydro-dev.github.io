@@ -1,0 +1,86 @@
+---
+title: Development Environment Setup
+---
+
+The development environment is only suitable for users who need to make extensive deep modifications or want to contribute code.  
+If you do not have development experience with TypeScript projects, it is strongly recommended not to set up your own development environment. Please use the plugin system to add and modify the features you need.  
+In principle, the project team does not provide any form of technical support for deployment and usage in development mode.  
+Using the automatic installation script can also satisfy most customization needs through the plugin system (see the "Write Plugins with TypeScript" section on the left).  
+If you need to compile the UI, make sure your development environment has at least 8GB of memory.
+
+|   Feature Comparison   | Production Mode | Development Mode |
+|:----------------------:|:---------------:|:----------------:|
+|      Quick Start       |        ✅        |        ❌         |
+|      Plugin API        |        ✅        |        ✅         |
+|   Low-level Code Edits |        ❌        |        ✅         |
+|      Hot Reload        |        ❌        |        ✅         |
+|   Performance Tuning   |        ✅        |        ❌         |
+|     Compatibility      |        ✅        |        ❌         |
+|    Technical Support   |        ✅        |        ❌         |
+|  Deployment Difficulty |      Easy       |     Complex      |
+|        Upgrade         |      Easy       |     Complex      |
+|    Skill Requirement   |       Low       |       High       |
+|   Free Memory Needed   |       2G        |        8G        |
+| Switch to Dev Mode     |       Yes       |        =         |
+| Switch to Prod Mode    |        =        | Requires rewrite |
+
+<Callout>
+Using the development environment assumes you have good international internet connectivity by default. The following errors are all caused by network issues. You can try switching mirrors / using a proxy / changing network environments.
+
+- Failed to connect
+- Connection reset
+- connect timeout
+</Callout>
+
+Before development, make sure you are using an IDE with TypeScript support. This can greatly reduce development difficulty.
+
+## Install Dependencies
+
+- System requirements: Hydro development environment currently only supports Linux. If you use Windows, please use WSL2.
+- MongoDB: Hydro requires [MongoDB](https://www.mongodb.com/try/download/community) to provide database services.  
+- NodeJS: Please install NodeJS >=18. (If using apt, use the nodesource repository instead of the official one.) (Nix is recommended; you can install quickly via `. <(curl https://hydro.ac/nix.sh)`)  
+- yarn: Please complete NodeJS installation before installing `yarn`. `nix-env -iA nixpkgs.yarn` or `npm install -g yarn`  
+- If you need to use `hydrojudge`, please refer to the [hydrojudge plugin documentation](./plugins/hydrojudge) to complete sandbox installation and configuration.
+
+## Install Hydro
+
+```sh
+git clone https://github.com/hydro-dev/Hydro.git /root/Hydro --recursive # 下载至 /root/Hydro 文件夹
+cd /root/Hydro # 进入工作目录
+yarn # 安装依赖包
+yarn build:ui:production # 编译前端
+```
+
+## Plugins
+
+No plugins are enabled by default after development environment deployment is completed.
+
+All official plugins are downloaded with the source repository into the `packages` subfolder in the installation directory. You can enable official plugins with the command below (using `@hydrooj/ui-default` as an example):
+
+```sh
+yarn hydrooj addon add @hydrooj/ui-default
+```
+
+For non-official plugins, after downloading, enable them with the following command (using a plugin located at `/root/addon` as an example):
+
+```sh
+yarn hydrooj addon add /root/addon
+```
+
+## Start Hydro
+
+The following startup parameters are supported:
+
+- `--port=2333` specifies the startup port  
+- `--debug` enables development mode  
+- `--watch` enables hot reload (experimental)  
+
+Run Hydro with `yarn debug --port=2333 --watch`, and run `yarn build:ui:dev` in the background to transpile frontend source code in real time, which can save compile time during repeated modifications. After startup completes, you can access the Hydro instance on port 8000, and any frontend changes will take effect immediately. (Backend hot reload may have bugs; some module changes may still require a restart to take effect.)  
+Please note: this feature only works when the `@hydrooj/ui-default` plugin is enabled.
+
+On first startup, you will be asked to fill in database connection information. Please fill it in according to your database installation (leave blank if there is no password).  
+Please follow the instructions below to create an administrator account, and then it can be used normally.
+
+## Update
+
+When an update is needed, enter the corresponding repository folder and run `git pull`, then re-run `yarn && yarn build:ui:production`.

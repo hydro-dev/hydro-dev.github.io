@@ -1,0 +1,74 @@
+---
+title: Introduction
+description: Why use Hydro?
+---
+
+- Secure: Uses Linux container technologies (read-only filesystem, namespaces, and cgroups) for isolation, eliminating judge-carding attacks;
+- Efficient: Hydro uses sandbox reuse technology for extremely high judging efficiency;
+- Extensible: Hydro supports installing additional modules for extension;
+- Powerful: Combined with the Judge module (or HydroJudge standalone judge machine), it supports many features such as SPJ, interactive problems, output-only problems, file I/O, and more;
+- Customizable: All permission nodes can be freely configured;
+- Easy to start: No source code changes required; system settings reserve plenty of customizable options; management logic is concise;
+- Community: Hydro is actively maintained;
+
+- If you are using HustOJ, you can export problems as FPS files and import them directly into Hydro using the [fps-importer plugin](/docs/Hydro/plugins/fps-importer).
+- If you are using QDUOJ, you can export problems in QDUOJ-zip format and import them directly into Hydro using the import-qduoj plugin.
+- If you are using Vijos / SYZOJ / HustOJ / UniversalOJ, you can directly import all data into Hydro using the [migrate plugin](/docs/Hydro/plugins/migrate).
+
+## Feature Comparison
+
+Hydro supports many problem types that other systems cannot support. You can view and download sample problems at https://hydro.ac/d/system_test/p. (Login required)  
+Below is a feature comparison between Hydro and other mainstream OJ systems. (Compared only under the condition of not modifying source code)  
+
+```
++: Supported
+=: Partially supported
+?: Unknown
+-: Not supported
+```
+
+|         Feature         |         Hydro         |  HustOJ   | SYZOJ[^7]  |   QDUOJ    |  Vijos   |
+|:-----------------------:|:---------------------:|:---------:|:----------:|:----------:|:--------:|
+|      Installation       |    One-click script   | One-click script | Manual setup |   docker   |  docker  |
+|        Database         |        MongoDB        |   MySQL   |  MariaDB   |  Postgres  | MongoDB  |
+|    Test Data Storage    |      Local/S3 [^1]    |   Local   |    Local   |    Local   | Database |
+|    Multiple Judges      |           +           |   =[^5]   |   =[^8]    |     =      |    +     |
+|   Test Data Sync        |      On-demand fetch  | Full sync |  Full sync |  Full sync | On-demand fetch |
+|        Contests         |   ACM/OI/IOI/Leduo    |  ACM/OI   | ACM/OI/IOI | ACM/OI/IOI |  ACM/OI  |
+|    Scoreboard Freeze    |           +           |     +     |     -      |     -      |    -     |
+|   Assignment Features   |           +           |     +     |     -      |     -      |    +     |
+| Modify compile command / add language |           +           |   =[^9]   |     -      |     -      |    +     |
+|   Permission System [^4] |           +           |     =     |     -      |     -      |    +     |
+| Training Plans (Problem Lists) |           +           |     +     |   -[^6]    |     -      |    +     |
+|          Teams          |        + [^2]         |     -     |     -      |     -      |    +     |
+|          Hack           |           +           |     -     |     -      |     -      |    -     |
+|      SpecialJudge       |        + [^3]         |     +     |     +      |     -      |    =     |
+|         Subtask         |           +           |     -     |     +      |     -      |    -     |
+|   Interactive Problems  |           +           |     -     |     +      |     -      |    -     |
+|      RemoteJudge        | CF/SPOJ/UOJ/POJ/Luogu |  HDU/PKU  |     -      |     -      |    -     |
+|     Problem Import      | fps/syzoj/qduoj/hydro | fps/qduoj |   syzoj    | fps/qduoj  |    -     |
+
+[^1]: S3 refers to all services compatible with the Amazon S3 protocol, including 腾讯COS (Tencent Cloud COS), 阿里OSS (Alibaba Cloud OSS), etc.  
+[^2]: Through the domain feature, users can create domains and have administrator permissions within their own domains. Domains share only account data with each other, and in-domain groups can also be used for permission control.  
+[^3]: Supports all mainstream SPJ formats.  
+[^4]: The permission system here refers to finer-grained permission division beyond simple user/admin binary permissions.  
+[^5]: Installation and configuration are cumbersome, and data must be synchronized manually across servers.  
+[^6]: Some secondary-development versions include this feature.  
+[^7]: SYZOJ and Lyrio (formerly syzoj-ng, the system currently used by loj.ac) are two different systems. This means using SYZOJ cannot import problems from loj.ac, while Lyrio has no contest feature.  
+[^8]: Data must be synchronized manually across servers.
+[^9]: Only some compile parameters can be modified; adding a language requires source code changes.
+
+## Screenshots
+
+![img](./pictures/pict1.png)
+![img](./pictures/pict2.png)
+![img](./pictures/pict3.png)
+![img](./pictures/pict4.png)
+![img](./pictures/pict5.png)
+![img](./pictures/pict6.png)
+![img](./pictures/pict7.png)
+![img](./pictures/pict8.png)
+
+## Get Started Now
+
+Click [Deploy](/docs/Hydro/install/) to start deploying your OJ!

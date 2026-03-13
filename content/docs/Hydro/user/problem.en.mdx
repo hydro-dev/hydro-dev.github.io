@@ -1,0 +1,141 @@
+---
+title: Problem
+---
+
+## Create Problem
+
+Users with `PERM_CREATE_PROBLEM` can create new problems.  
+Click the `Create Problem` button at the bottom-right of the problemset page.
+
+<Callout>
+Problem ID cannot be all digits. If left empty, an auto-assigned numeric problem ID will be used.
+</Callout>
+
+See the statement editing section below, and [the guide written by laomai](./problem-create).
+
+## Import Problem
+
+### Import from Hydro
+
+Upload a problem archive exported by Hydro.
+
+If your archive is too large to upload, we also provide CLI import:
+
+```
+hydrooj cli problem import <domainId> <file/path> # 将 <file(压缩文件)/path(解压后的文件夹)> 的Hydro格式题目包导入至 <domainId> 域中。
+```
+
+### Import from SYZOJ
+
+Hydro provides a small tool [loj-download](https://github.com/hydro-dev/loj-download), which can download Hydro-format problem archives from source sites based on original SYZOJ/SYZOJ-NG.  
+Please read its tutorial for usage, explore as needed, and ensure your network connection is stable.
+
+### Import from FPS file
+
+See plugin [fps-importer](../plugins/fps-importer/).
+
+### Import from QDUOJ
+
+See plugin import-qduoj.
+
+## Edit
+
+### Statement
+
+Problem statements use Markdown syntax with some extensions.  
+
+Sample data grouping is supported:
+
+`````
+```input1
+1 2
+```
+
+```output1
+3
+```
+`````
+
+The trailing number is the test case index. Cases with the same index are automatically paired and shown in side-by-side columns.
+
+Referencing resources from additional files is supported. (You can create the problem first, upload files, then edit the problem.)
+
+- Additional file download link: `[file](file://input.in)`
+- Reference an image from additional files: `![img](file://foo.jpg)`
+- Reference a PDF from additional files as statement: `@[pdf](file://foo.pdf)` (if it fails in some cases, try `@[pdf](file://foo.pdf?noDisposition=1)` ) 
+- Reference a Word document from additional files as statement: `@[doc](file://foo.docx)` (requires onlyoffice plugin)
+
+
+<Callout>
+If you use external storage services, some providers may force-send `Content-Disposition`, causing files to be downloaded instead of previewed. Please consult your provider.
+
+- https://cloud.tencent.com/document/product/436/96243
+- https://help.aliyun.com/zh/oss/user-guide/how-to-ensure-an-object-is-previewed-when-you-access-the-object
+</Callout>
+
+Merged table rendering is supported in statements:
+
+```markdown
+| 1   | 1   | 3   | 4   | 5   |
+| --- | --- | --- | --- | --- |
+| 1   | 1   | 2   | 2   | 6   |
+| 1   | 1   | 2   | 2   | 7   |
+| 1   | 4   | 3   | 5   | 5   |
+```
+
+Will be rendered as:
+
+![img](./pictures/pict1.png)
+
+Embedded HTML is supported: (for things Markdown cannot easily handle)
+
+```markdown
+<span bgcolor="red">foo</span>
+```
+
+### Tags
+
+You can quickly add tags from the category panel on the right, or separate multiple tags with English half-width commas.
+
+## Files
+
+In the "Files" panel on the right of the problem, you can upload test data and additional files. (Drag-and-drop upload to corresponding area is supported.)  
+[Test Data Format](../user/testdata).
+
+## Objective Problems
+
+### Statement
+
+```yaml
+1. 填空题
+
+1+1 = {{ input(1) }}
+
+2. 选择题
+
+{{ select(2) }}
+- 1+1=2
+- 1+1=3
+- 1+1=4
+
+3. 多选题
+
+{{ multiselect(3) }}
+- A
+- B
+- C
+```
+
+### Test Data
+
+You only need to configure `config.yaml`; no other files are required.
+
+```yaml
+type: objective # 表明该题为客观题
+answers: # 列举出每一题的正确选项与对应的得分
+  '1': ['2', 50] # 填空题/选择题，单答案
+  '2': # 填空题/选择题，多答案，不同答案对应不同分数，注意空格缩进
+    'A': 30 # 也可以使用相同分数，即同时存在多个正确答案
+    'B': 10
+  '3': [['A', 'B'], 20] # 多选题答案为数组，有部分分
+```

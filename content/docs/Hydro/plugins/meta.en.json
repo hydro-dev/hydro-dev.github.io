@@ -1,0 +1,15 @@
+{
+    "title": "Plugins",
+    "icon": "blocks",
+    "pages": [
+        "fps-importer",
+        "hydrojudge",
+        "migrate",
+        "elastic",
+        "recaptcha",
+        "sonic",
+        "vjudge",
+        "geoip",
+        "extra"
+    ]
+}

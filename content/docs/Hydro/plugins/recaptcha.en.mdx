@@ -1,0 +1,12 @@
+---
+title: recaptcha
+---
+
+<Callout>
+We use reCAPTCHA v3 to verify that registrants are human. It is normal not to see a traditional CAPTCHA during registration.
+</Callout>
+
+Go to https://www.google.com/recaptcha/admin/create to create reCAPTCHA keys.
+For reCAPTCHA type, choose "reCAPTCHA v3".
+
+After creation, fill the site key and secret key into `key` and `secret` under the recaptcha section in System Settings respectively. Restart Hydro, and reCAPTCHA will work properly.

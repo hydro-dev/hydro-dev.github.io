@@ -1,0 +1,233 @@
+---
+title: hydrojudge
+---
+
+<Callout>
+You can quickly install a standalone judge machine with the one-click installation script. For details, see [Deploy Hydro](../install/#部署).
+</Callout>
+
+## Preparation
+
+Before configuring the judge machine, make sure your site is accessible and login/registration works normally.
+
+You should download compilers for the languages you want to support in advance. If you upgrade/reinstall compilers after configuring the judge machine, you need to restart the sandbox.
+For compiler details, refer to the [Compiler](../install/compiler) section.
+
+If you are not using the automatic script, you need to manually install the sandbox service as follows:
+Go to [criyle/go-judge](https://github.com/criyle/go-judge/releases) and download the go-judge build for your CPU architecture.
+go-judge needs to run in the background and listen on `127.0.0.1:5050`. If your system uses cgroup v1 or a distro without systemd init, run it **as root**.
+You can manage it with pm2.
+
+## Installation
+
+### As an add-on
+
+<Callout>
+Because a judge installed as an add-on must be on the same server as Hydro, each Hydro instance can have at most one add-on-installed judge machine.
+</Callout>
+
+Run the following commands on the machine where Hydro is installed to install `@hydrooj/hydrojudge`:
+
+```sh
+yarn global add @hydrooj/hydrojudge
+hydrooj addon add @hydrooj/hydrojudge
+```
+
+After restarting Hydro, hydrojudge will run normally.
+
+### As a standalone process
+
+<Callout>
+This method helps you deploy judge machines on any server.
+</Callout>
+
+<Callout type="warn">
+We recommend that all standalone judge machines use identical hardware and that you disable the built-in judge to ensure stable judging results.
+Judge-related options in System Settings only control the built-in judge. Standalone judges must be configured in judge.yaml.
+</Callout>
+
+First, create an account with PRIV_JUDGE permission. See [here](../system/cli/#创建评测账号) for details. (Run this on the Hydro server)
+
+Then install HydroJudge on the server that runs the judge machine:
+
+```sh
+. <(curl https://hydro.ac/setup.sh) --judge
+```
+
+Create directory `~/.config/hydro`, then create file `judge.yaml` in it. The config format is:
+
+```yaml
+hosts:
+  localhost:
+    type: hydro # For vj4 users, fill in vj4 here
+    server_url: http://localhost/ # URL where Hydro runs
+    uname: judge # Judge account username
+    password: abc123 # Judge account password
+    detail: true # default is true
+```
+
+After configuration, run the command below to start it (you can manage it with pm2):
+
+```sh
+hydrojudge
+```
+
+## Update
+
+HydroJudge receives updates from time to time. You can use `yarn global upgrade-interactive --latest` to check for and apply updates.
+
+## Disable
+
+- As an add-on: In System Settings > Config Management, enable Disable builtin judge, then restart Hydro.
+- As a standalone process: Stop it according to how you started it.
+
+## Uninstall
+
+After disabling, run the commands below.
+
+```sh
+yarn global remove @hydrooj/hydrojudge
+hydrooj addon remove @hydrooj/hydrojudge
+```
+
+## Judge Settings
+
+### As an add-on
+
+Modify parameters in System Settings > hydrojudge, then restart Hydro and hydrojudge.
+
+### As a standalone process
+
+If you need to change settings such as the maximum number of test cases per problem, add the following at the end of `~/.config/hydro/judge.yaml`:
+
+```yaml
+testcases_max: 100 # Maximum test cases per problem
+total_time_limit: 120 # Maximum total judging time per problem
+parallelism: 2 # Number of judging processes per judge machine
+# More optional settings can be added here, in the same format as above
+```
+
+All settings listed [here](https://github.com/hydro-dev/Hydro/blob/master/packages/hydrojudge/src/config.ts#L16) can be added here.
+
+## Modify compiler options / add support for new languages
+
+Modify `hydrooj.langs` in Control Panel > System Settings (applies to all judge machines connected to this server)
+or configure it in `~/.config/hydro/langs.yaml` (applies to a single standalone judge machine, not recommended).
+
+For file format, see [here](https://github.com/hydro-dev/Hydro/blob/master/packages/hydrooj/setting.yaml#L22).
+
+If you added a new language, you also need to modify Language Highlight ID and Monaco language modes in Control Panel > System Settings.
+These define syntax highlighting (based on PrismJS) and Monaco editor language mode respectively after selecting that language.
+
+After modification, restart Hydro and hydrojudge.
+
+See more in the [Compilers and Languages](../install/compiler) section.
+
+## Debug sandbox environment
+
+If you need to debug compilation/runtime errors in the sandbox, use `hydrojudge terminal` to open an interactive judge terminal. This terminal runs in an isolated sandbox identical to the judging environment.
+
+## Clear data cache
+
+To clear judging data cache, use `hydrojudge cache prune` to remove test data unused for 30 days. To specify days, add parameter `--duration=x` to clear data unused for `x` days.
+
+To clear all cached data, use `hydrojudge cache clean`.
+
+## Test data format
+
+Configure according to [Test Data Format](../user/problem/#测试数据格式).
+
+## Adjust sandbox storage size
+
+<Callout type="warn">
+If you do not adjust sandbox storage size, judging with file I/O and large input/output files may cause errors.
+</Callout>
+
+For users installed before 2022/8/12:
+
+Run the following on the server to find the runtime directory of hydro-sandbox:
+```sh
+pm2 info hydro-sandbox | grep "exec cwd"
+```
+
+Refer to custom mount configuration in [Sandbox filesystem mount documentation](https://docs.goj.ac/cn/mount#自定义挂载), save it in the runtime directory as `mount.yaml`.
+Modify `size` and `nr_inodes` mount parameters for `work dir` and `tmp dir` to your desired values, save, then restart `hydro-sandbox` to apply.
+
+For users installed after 2022/8/12:
+
+Edit `/root/.hydro/mount.yaml` and modify `size`.
+
+## Increase program stack size
+
+**Instances installed after 2022/8/12 already have unlimited stack size enabled by default; no manual action needed**
+
+In many cases, the default stack size provided by the system is insufficient. You need to manually provide a larger stack for user programs.
+
+Modify hydro-sandbox startup arguments in pm2 to `ulimit -s unlimited && /usr/bin/hydro-sandbox`:
+
+```sh
+pm2 del hydro-sandbox
+pm2 start bash --name hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox" 
+```
+
+## Improve judging precision
+
+Disable CPU frequency scaling and Intel Turbo Boost to avoid CPU frequency fluctuations.
+
+Disable ASLR so code with memory addressing errors can produce more reproducible results. Add the following line in `/etc/sysctl.conf` and run `sudo sysctl -p`:
+
+```
+kernel.randomize_va_space = 0
+```
+
+Enable sandbox CPU affinity. For example, on an `8`-core system, to restrict judging tasks to CPU `2,4,6`, use:
+
+```sh
+pm2 start hydro-sandbox -- -c "ulimit -s unlimited && hydro-sandbox -mount-conf /root/.hydro/mount.yaml -cpuset 2,4,6"
+pm2 save
+```
+
+Then the maximum number of concurrent tasks is the number of cores separated by `,` (in this example, `3`), and each concurrent judging task is assigned one core in the configuration. When enabling this option, `parallelism` is recommended to match the number of cores available to sandbox tasks. This setting should be tuned based on the judge machine's CPU specifics (such as hyper-threading, NUMA, etc.). It also requires sandbox version `v1.11.2` or above.
+
+Also, to prevent other tasks from using those cores, you can use `isolcpus` kernel parameter. For example, on an `8`-core system, to prevent other tasks from using CPU `2-7`, add `isolcpus=2-7` to kernel boot parameters. See [Inaccurate memory measurement](#内存计量不准确) for how to modify kernel boot parameters.
+
+## Inaccurate memory measurement
+
+If you see warning `You are using cgroup v2 without kernel 5.19+. This could result in inaccurate memory usage measurements.` in the control panel, it means current memory usage measurement has error.
+
+Some Linux devices use cgroup2 by default, and cgroup2 kernels before 5.19 removed interfaces for precise memory usage accounting.
+For more accurate memory measurement, enabling cgroup v1 is recommended (you can verify whether cgroup v1 is enabled by checking if `/sys/fs/cgroup/memory/memory.memsw.usage_in_bytes` exists):
+
+Using Ubuntu's default bootloader GRUB 2 as an example, edit `/etc/default/grub`:
+In
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+```
+
+add `cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0`, so it becomes:
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0"
+```
+
+Run the following command to update GRUB 2 config, then reboot.
+
+```sh
+update-grub && reboot
+```
+
+## Memory controller not enabled
+
+If you see warning `The memory cgroup controller is not enabled. This could result in inaccurate memory usage measurements.` in the control panel, it means the memory cgroup controller is not enabled on current system.
+
+Some Linux systems (such as Raspbian) do not enable the memory cgroup controller by default. Enabling it provides more accurate memory limits and measurements.
+
+Using Raspbian as an example, edit `/boot/firmware/cmdline.txt` (or `/boot/cmdline.txt` if it does not exist):
+Add the following at the end (note the space)
+
+```
+cgroup_enable=memory cgroup_memory=1
+```
+
+After reboot, check `/proc/cgroups` to confirm memory controller `memory` is enabled.

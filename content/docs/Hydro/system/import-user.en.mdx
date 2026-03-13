@@ -1,0 +1,27 @@
+---
+title: Import Users
+---
+
+Currently supports importing user data in CSV format (separated by `,`) or Excel format (TAB-separated). Data can be created with a text editor or with tools like Excel.  
+
+Each line must contain at least 3 columns and at most 5 columns: email, username, password, display name, user profile. (Display name and user profile are optional.)  
+Please use UTF-8 encoding, otherwise Chinese text may become garbled.  
+If you use CSV format (comma-separated), the user profile column is unavailable.
+
+```text
+foo@undefined.moe	user1	password1
+bar@undefined.moe	user2	password2	temp
+test@undefined.moe	user3	password3	test	{"group":"class1","studentId":"123","school":"Hydro School"}
+```
+
+After pasting, you can click Preview to validate the imported data.
+
+This will create three users:
+
+- `user1` with password `password1`, email `foo@undefined.moe`;
+- `user2` with password `password2`, email `bar@undefined.moe`, display name `temp`;
+- `user3` with password `password3`, email `test@undefined.moe`, display name `test`, school `Hydro School`, student ID `123`; this user will be assigned to group `class1` in the current Domain;
+
+<Callout type="warn">
+Users cannot be deleted after creation. Please proceed carefully.
+</Callout>

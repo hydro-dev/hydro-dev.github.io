@@ -1,0 +1,111 @@
+---
+title: Domain
+---
+
+## Introduction
+
+The Domain feature is similar to teams, allowing multiple environments (such as different classes or different functions) within one system.  
+Users can create multiple Domains. (Requires `PRIV_CREATE_DOMAIN`; by default, only admin accounts have this.)
+Data is fully isolated between Domains, and only user account information is shared (after registration, the account is valid in all Domains of this instance).  
+
+## Create a Domain
+
+After logging in, go to "My" tab, find "My Domains", click "Create Domain", and fill in:
+
+- ID: Each Domain has a unique ID, reflected in the Domain URL. **Cannot be changed after creation.**
+- Name: Domain name, can be changed after creation.
+- Announcement: Announcement shown on the Domain homepage, can be changed after creation.
+- avatar: Domain avatar, similar to user avatar. You can use formats like `gravatar:email`, `qq:id`, `github:name`, or `url:link`. It is shown in "My Domains".
+
+After creating a Domain, you will have admin permissions in this Domain and can add problems/create contests, etc.
+
+## Initialize Discussion Nodes
+
+In the "Manage Domain" tab, click "Initialize Discussion Nodes" to initialize discussion nodes.
+
+## Access Control
+
+### Hydro v5
+
+Starting from Hydro v5, users who are not logged in and users who have not joined a Domain use `guest` permissions by default, while users who joined a Domain use `default` permissions by default.  
+You can set "allow users to join Domain by themselves" in join-domain management and assign `default` permissions, to get the same behavior as v4.  
+In v5, only users who have joined the Domain appear on the Domain ranking list.  
+After a Domain admin changes a specific user's role to something other than `default` or `guest`, that user can bypass other join conditions and automatically get the assigned role when joining.  
+Explicitly setting a user's role to `guest` can prevent them from joining via self-service join-domain.  
+After joining, users can leave voluntarily or be removed by admins; then their role resets to `guest` until they join again.  
+Only joined Domains are shown in "My Domains". After registration, users are automatically added to the `system` Domain and cannot leave it voluntarily.  
+
+During upgrade from Hydro v4 to Hydro v5, the following operations are performed:
+
+- Mark all existing users as joined  
+- For Domains without join conditions configured or configured so no user can self-join, change them to allow all users to self-join and assign `default`
+
+### Hydro v4
+
+**Not-logged-in users use `guest` by default; logged-in users use `default` by default.** (So users set to `default` do not appear on "Manage Users", which also means all users are hidden from the management list by default.)  
+So setting a user's role to `default` is equivalent to removing that user from the Domain.
+
+For users not in the list, click "Add User" at the top-right, select user on the left, choose role on the right, then click "Confirm".
+
+## Create Contest/Homework
+
+If you want to create a contest/homework, go to the "Contest" or "Homework" tab and click "Create" on the right side.
+The problem field supports auto-filter by problem ID or title. After settings are done, click "Create" to create the contest (for description-like fields, fill anything if unsure; they cannot be empty).
+
+<Callout>
+If deleting problems in a contest/homework makes it impossible to open, you can directly access `/contest/<id>/edit` or `/homework/<id>/edit` (append `/edit` to the inaccessible page URL) to open the edit page and fix it.
+</Callout>
+
+## Create Training
+
+If you want to create a training, in the "Training" tab click "Create Training Plan" and fill in:
+
+- Title: Title of this training;
+- Summary: Brief intro of this training, shown with title in list page;
+- Description: Detailed information of this training;
+- Plan: Specific problems and plan configuration for this training, format:
+
+```
+[
+  {章节详细信息},
+  {章节详细信息},
+  ...
+  {章节详细信息}
+]
+```
+
+Here, each section detail object includes:
+
+- `_id`: Numeric section ID;
+- `title`: Section title;
+- `requireNids`: Numeric IDs of sections that must be completed before this section; leave empty if none; separate multiple values with commas;
+- `pids`: **ID**s of problems included in this section; separate multiple values with commas.
+
+**Example**: to create three sections containing problems with **ID** 1, 2, 3 respectively; sections 1 and 2 have no prerequisites; section 3 requires both sections 1 and 2 completed first:
+
+```json
+[
+  {
+    "_id": 1,
+    "title": "Beginner",
+    "requireNids": [],
+    "pids": [1]
+  },
+  {
+    "_id": 2,
+    "title": "Proficient",
+    "requireNids": [],
+    "pids": [2]
+  },
+  {
+    "_id": 3,
+    "title": "Master",
+    "requireNids": [1,2],
+    "pids": [3]
+  }
+]
+```
+
+<Callout>
+If deleting problems in a training plan makes the plan inaccessible, you can directly access `/training/<id>/edit` (append `/edit` to the training page URL) to open the training edit page and fix the config file.
+</Callout>

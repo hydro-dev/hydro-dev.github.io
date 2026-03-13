@@ -1,0 +1,82 @@
+---
+title: Plugins
+---
+
+Hydro supports extending its functionality through plugins.
+
+<Callout type="warn">
+Plugins have full access to all content on your site. Do not enable plugins from unknown sources.
+</Callout>
+
+## Add-on List
+
+<Callout>
+When installing with the installation script, the **bolded** plugins below are installed automatically.
+Some plugins (*italicized*) require third-party software. If you **only install the plugin without configuring/installing the third-party software**, the system may fail to run properly. See the plugin detail pages in the left sidebar for more information.
+</Callout>
+
+Hydro officially provides the following add-ons:
+
+| ID                         | Description                                   |
+|----------------------------|-----------------------------------------------|
+| **@hydrooj/a11y**          | Some small utility features                   |
+| @hydrooj/onsite-toolkit    | Onsite contest toolkit                        |
+| @hydrooj/blog              | Blog functionality                            |
+| **@hydrooj/fps-importer**  | Import problems in fps format                 |
+| *@hydrooj/geoip*           | Display user login location (requires IP DB)  |
+| **@hydrooj/hydrojudge**    | Judging component                             |
+| @hydrooj/import-qduoj      | Import problem sets exported from QDUOJ       |
+| @hydrooj/import-hoj        | Import problem sets exported from HOJ         |
+| @hydrooj/login-with-github | Allow users to log in with GitHub             |
+| @hydrooj/login-with-google | Allow users to log in with Google             |
+| @hydrooj/migrate           | Upgrade from vijos4/HustOJ/SYZOJ/UniversalOJ |
+| @hydrooj/recaptcha         | Enable reCAPTCHA during registration          |
+| **@hydrooj/ui-default**    | Hydro's default user interface                |
+| *@hydrooj/onlyoffice*      | Display problems in doc/docx format           |
+| *@hydrooj/sonic*           | Sonic-based enhanced problem search (requires sonic) |
+| *@hydrooj/elastic-search*  | Elastic-based enhanced problem search (requires Elastic) |
+| @hydrooj/vjudge            | Codeforces/SPOJ/UOJ/POJ                       |
+| @hydrooj/prom-client       | Export system status to Prometheus            |
+
+Most plugin configurations can be found after installation in Control Panel > System Settings.
+
+Some plugins may affect normal system usage if installed but not properly configured!
+
+## Installation
+
+First install the required module globally, then register it with hydrooj. Example: installing @hydrooj/geoip
+
+```sh
+yarn global add @hydrooj/geoip
+hydrooj addon add @hydrooj/geoip
+```
+
+Or, if you are installing a plugin obtained through other means (such as one you created yourself), use the folder **absolute path** directly:
+(the folder path must be the one that **contains package.json**)
+
+```sh
+hydrooj addon add /root/xxx
+```
+
+Do not place plugins nested inside other plugin folders, or it may cause unpredictable issues.
+
+**After installing a plugin, you must restart hydrooj for it to take effect.**
+
+## View Registered Plugin List
+
+```sh
+hydrooj addon list
+```
+
+## Update
+
+```sh
+yarn global upgrade-interactive --latest
+```
+
+## Uninstall
+
+```sh
+yarn global remove @hydrooj/geoip
+hydrooj addon remove @hydrooj/geoip
+```
