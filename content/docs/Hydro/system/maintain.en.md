@@ -2,69 +2,60 @@
 title: Maintenance
 ---
 
-## PM2
+## Process Management (PM2)
 
-Hydro installed with the one-click script uses PM2 to manage processes.
+Hydro's automated installation script uses **PM2** to manage system processes.
 
-### Process Names
+### Core Processes
+You can view active processes by running `pm2 ls`. A typical Hydro installation includes:
+- `hydrooj`: The main web application.
+- `hydro-sandbox`: The judge sandbox component.
+- `mongodb`: The database engine.
+- `caddy`: The reverse proxy and SSL manager.
 
-You can view all processes currently managed by PM2 with the command below.
+### Standard Commands
+Use `<id>` or `<name>` from the process list as a parameter (e.g., `pm2 restart hydrooj` or `pm2 restart 0`).
 
-```sh
-pm2 ls
+```bash
+pm2 ls                          # List all processes
+pm2 start <id/name>             # Start a process
+pm2 stop <id/name>              # Stop a process
+pm2 restart <id/name>           # Restart a process
+pm2 logs <id/name> --lines 100  # View the last 100 log entries
+pm2 save                        # Save current process list for auto-boot
+pm2 resurrect                   # Manually restore a saved process list
 ```
 
-By default, the one-click install script creates the following processes:
+<Callout>
+### Performance Notes
+- **LXC/Minimal Systems**: In some environments, Hydro may not auto-start after a server reboot. If this occurs, use `pm2 resurrect` to restore your processes.
+- **Service Recovery**: If your process list becomes corrupt, run `pm2 stop all && pm2 del all`, then rerun the automated installation script. **Existing data will not be lost.**
+- **Multi-Process Mode**: While Hydro supports clustering (`-i <n>`), this is generally unnecessary for servers with 4 or fewer cores and will significantly increase memory consumption.
+</Callout>
 
-- `hydrooj`: Hydro main process
-- `hydro-sandbox`: Hydro judging sandbox
-- `mongodb`: MongoDB database
-- `caddy`: Reverse proxy
+## Software Updates
 
-In the commands below, `<name>` refers to a process name from this list, and `<id>` refers to a process ID (you can get IDs with `pm2 ls`). (The angle brackets must also be replaced.)
+Hydro releases regular updates. To upgrade your instance:
 
-### Basic PM2 Commands
+```bash
+# Update Hydro and its core components
+yarn global upgrade-interactive --latest
 
-```sh
-pm2 ls # View process list
-pm2 start <id> # Start process
-pm2 stop <id> # Stop process
-pm2 restart <id> # Restart process
-pm2 del <id> # Delete process
-pm2 log <id/name> --lines=100 # View last 100 log lines of the process
-pm2 attach <id> # Interact with process
-pm2 save # Save changes made to PM2 (required after adding/modifying/deleting processes)
+# Apply the updates by restarting the service
+pm2 restart hydrooj
 ```
 
-**In some environments (commonly LXC containers or minimal systems), Hydro may fail to auto-start after reboot. In that case, use `pm2 resurrect` to manually load the process list.**
+**Warning**: Do **not** upgrade PM2 itself unless specifically instructed, as this may clear your saved process configuration.
 
-**If you manually changed the process list and overwrote the saved original list, run `pm2 stop all && pm2 del all` to clear all processes, then run the install script again. Existing data will not be lost.**
-
-Hydro main process also supports multi-process startup, but on low-to-mid-end servers (up to 4 cores), multi-process Hydro is unnecessary, may reduce performance, and will significantly increase memory usage.
-
-```sh
-pm2 start hydrooj -i <n> # Start Hydro main process with n instances
+### Version Checking
+To check your currently installed Hydro version:
+```bash
+cd $(yarn global dir) && yarn list --pattern hydrooj
 ```
 
-## Update
-
-Hydro releases updates periodically. You can use the following commands to update.
-
-Under normal circumstances, **do not update PM2**! This may cause your process list to be lost!
-
-```sh
-yarn global upgrade-interactive --latest # Select components to update in interactive mode
-pm2 restart hydrooj # Restart hydrooj after updating
-```
-
-## View Installed Version
-
-```
-cd `yarn global dir` && yarn list --pattern hydrooj
-```
-
-## Clear Cache
-
-```
+### System Cleanup
+To free up disk space from package caches:
+```bash
 yarn cache clean && nix-collect-garbage
 ```
+

@@ -2,50 +2,35 @@
 title: Database Layout
 ---
 
-## document
+## Core Collections
 
-Basic columns: (domainId, docId, docType), owner, title, content
-Stores all documents, including problems, contests, trainings, etc. Document types are distinguished by the docType field. For docType definitions, refer to packages/hydrooj/src/model/document.ts.
+Hydro uses MongoDB for data storage. The following are the most critical collections:
 
-## document.status
+### `document`
+- **Fields**: `domainId`, `docId`, `docType`, `owner`, `title`, `content`.
+- **Description**: Stores all main entities, including problems, contests, and training plans. 
+- **Types**: Differentiated by the `docType` field. See `packages/hydrooj/src/model/document.ts` for type definitions.
 
-Basic columns: (domainId, docId, docType, uid), owner, title, content
-Stores information left by users under corresponding documents, such as problem submission status, contest scores, etc.
+### `document.status`
+- **Fields**: `domainId`, `docId`, `docType`, `uid`, `status`.
+- **Description**: Stores user-specific states related to a document, such as problem submission history or contest participation scores.
 
-## record
+### `record`
+- **Fields**: `_id`, `domainId`, `uid`, `code`, `lang`, `score`, `status`.
+- **Description**: Stores submission records.
 
-Basic columns: ((_id), domainId), uid, code, lang, score, status
-Stores user submission records.
+### `user`
+- **Fields**: `_id`, `uname`, `unameLower`, `mail`, `mailLower`, `priv`.
+- **Description**: All user account information.
 
-## user
+## System Collections
 
-Basic columns: (_id), uname, unameLower, mail, mailLower, priv
-All users in the system.
+- **`oplog`**: System logs.
+- **`blacklist`**: Banned IPs and email domains.
+- **`system`**: Global system configuration.
+- **`task`**: Submission and background task queues.
+- **`event`**: Internal event messaging (Used by the core, do not modify manually).
+- **`schedule`**: Scheduled task definitions.
+- **`opcount`**: Access statistics for rate-limiting.
+- **`token`**: Temporary data, including session states and verification codes.
 
-## oplog
-
-Stores system logs.
-
-## blacklist
-
-## system
-
-## task
-
-Used for submission queues, etc.
-
-## event
-
-Used for Hydro internal event communication. Do not operate manually.
-
-## schedule
-
-Related to scheduled tasks.
-
-## opcount
-
-Used to record user access statistics for rate limiting
-
-## token
-
-Stores temporary information, such as login state, registration verification codes, etc.

@@ -2,38 +2,149 @@
 title: Write Plugins with TypeScript
 ---
 
-## Step0 Why use plugins?
+## Why Use Plugins?
 
-If you have worked on other engineering projects, you often encounter the following pain points:
+If you've worked on other large engineering projects, you likely face these common issues:
 
-- If you modify frontend source code, you need to recompile and repack the frontend. Compilation usually consumes a lot of memory and time, and after compilation you need to restart services, while all cached user-side resources become invalid;  
-- After modifying code, when trying to update the system, your own changes are overwritten by new versions and require manual merging (or changes are lost directly), greatly increasing maintenance costs;  
-- A large number of modified branches in the third-party community cannot be directly combined/assembled as needed, or there are conflicts between features;  
+1. **Recompilation Delay**: Modifying frontend core code requires full recompilation and service restarts, invalidating user caches and wasting time.
+2. **Maintenance Overhead**: Updating a modified core results in merge conflicts or overwritten changes.
+3. **Fragmented Ecosystem**: Diverse community branches are often incompatible or difficult to combine.
 
-Based on the pain points above, Hydro innovatively uses a plugin system and provides a complete development API set for developers. Developers can build features based on relatively stable APIs without paying too much attention to internal implementation details, split features into minimal units, allow users to combine them freely as needed, maintain consistency across versions, and benefit from hot reload to improve development efficiency.
+Hydro's **Plugin System** addresses these by providing a stable, high-level API. Developers can build features as isolated, reusable units that remain consistent across updates and support hot-reloading for rapid development.
 
-This tutorial explains plugin development using a pastebin plugin as an example.
+---
 
-## Step1 Initialize project
+## Getting Started: A Pastebin Plugin
 
-Prerequisite: NodeJS>=22  
+In this guide, we'll implement a simple pastebin service.
 
-Use `hydrooj addon create` to quickly initialize a plugin under `/root/addon`, or run `yarn init` in an empty folder and fill in the relevant information as prompted.
+### 1. Initialize Your Project
+Prerequisite: **Node.js >= 22**
 
-```sh
-# 使用 yarn init 的样例
-/workspace/hydro-plugin $ yarn init
-yarn init v1.22.4
-question name (hydro-plugin): @hydrooj/pastebin
-question version (1.0.0): 0.0.1
-question description: HydroOJ的剪贴板组件
-question entry point (index.js): index.ts
-question repository url: https://github.com/hydro-dev/pastebin.git
-question author: undefined <i@undefined.moe>
-question license (MIT): MIT
-question private:
-success Saved package.json
+Use the following command to bootstrap a plugin directory (e.g., in `/root/addon`):
+```bash
+# Using 'yarn init' as an example
+mkdir hydro-pastebin && cd hydro-pastebin
+yarn init
+# Follow the prompts (e.g., @hydrooj/pastebin)
 ```
+
+**Recommended Dev Workflow**: Use a local IDE (like VS Code) with code completion. Run `yarn add hydrooj -D` locally to enable TypeScript types for the Hydro API.
+
+### 2. Component Design
+Our pastebin requires the following:
+- **Database Access**: To store and retrieve documents.
+- **Routes**:
+  - `GET /paste/create`: Show the creation form.
+  - `POST /paste/create`: Submit a new paste.
+  - `GET /paste/show/:id`: View a specific paste.
+- **Access Control**: Users can set pastes to private.
+
+### 3. Handler Lifecycle
+Handlers process incoming requests. They support the following lifecycle methods (all must be `async`):
+- `prepare(args)`: Runs first. Used for common parameter validation or pre-fetching data.
+- `get(args)`: Handles GET requests.
+- `post(args)`: Handles POST requests.
+- `post[Operation](args)`: Triggered if a `POST` request includes an `operation` field in the body.
+  - *Example*: `<input name="operation" value="delete_item">` maps to `postDeleteItem`.
+- `cleanup()`: Runs after the response is sent.
+
+**Rendering Logic**: If `this.response.template` is set, the template will be rendered. Otherwise, `this.response.body` is returned directly (typically as JSON).
+
+### 4. Implementation (`index.ts`)
+
+```ts twoslash
+// @noErrors
+// @module: esnext
+import {
+    db, definePlugin, Handler, NotFoundError, randomstring, param, PermissionError, PRIV, Types,
+} from 'hydrooj';
+
+const coll = db.collection('paste');
+
+interface Paste {
+    _id: string;
+    owner: number;
+    content: string;
+    isPrivate: boolean;
+}
+
+declare module 'hydrooj' {
+    interface Model {
+        pastebin: typeof pastebinModel;
+    }
+    interface Collections {
+        paste: Paste; // Define the database collection type
+    }
+}
+
+// Model Logic
+async function add(userId: number, content: string, isPrivate: boolean): Promise<string> {
+    const pasteId = randomstring(16);
+    const result = await coll.insertOne({
+        _id: pasteId,
+        owner: userId,
+        content,
+        isPrivate,
+    });
+    return result.insertedId;
+}
+
+async function get(pasteId: string): Promise<Paste> {
+    return await coll.findOne({ _id: pasteId });
+}
+
+const pastebinModel = { add, get };
+global.Hydro.model.pastebin = pastebinModel;
+
+// Route Handlers
+class PasteCreateHandler extends Handler {
+    async get() {
+        this.response.template = 'paste_create.html';
+    }
+
+    @param('content', Types.Content)
+    @param('private', Types.Boolean)
+    async post(domainId: string, content: string, isPrivate = false) {
+        const id = await pastebinModel.add(this.user._id, content, !!isPrivate);
+        this.response.redirect = this.url('paste_show', { id });
+    }
+}
+
+class PasteShowHandler extends Handler {
+    @param('id', Types.String)
+    async get(domainId: string, id: string) {
+        const doc = await pastebinModel.get(id);
+        if (!doc) throw new NotFoundError(id);
+        if (doc.isPrivate && this.user._id !== doc.owner) {
+            throw new PermissionError();
+        }
+        this.response.body = { doc };
+        this.response.template = 'paste_show.html';
+    }
+}
+
+// Plugin Registration
+export async function apply(ctx) {
+    // Registers named routes for URL generation
+    ctx.Route('paste_create', '/paste/create', PasteCreateHandler, PRIV.PRIV_USER_PROFILE);
+    ctx.Route('paste_show', '/paste/show/:id', PasteShowHandler);
+}
+```
+
+### 5. Frontend & UI
+- **Templates**: Place `.html` files in the `templates/` directory. Use **Nunjucks** syntax.
+- **Frontend Logic**: Place `.tsx` or `.page.ts` files in the `frontend/` folder. They are automatically bundled as entry points.
+
+```tsx
+// Example frontend/main.page.tsx
+import { addPage, NamedPage } from '@hydrooj/ui-default';
+
+addPage(new NamedPage(['problem_detail'], () => {
+    console.log("This script only runs on problem detail pages.");
+}));
+```
+
 
 ## Optional: Write plugins on local machine
 

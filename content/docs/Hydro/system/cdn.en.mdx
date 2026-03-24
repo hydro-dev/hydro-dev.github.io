@@ -2,39 +2,42 @@
 title: Use a Content Delivery Network
 ---
 
-If you want to improve Hydro access quality, especially when your server bandwidth is limited, you can consider using a CDN. In most cases, configuring only a static resource CDN can significantly improve access quality. For setup details and any issues, please contact your cloud provider.
+## Overview
 
-## Resource CDN
+Using a Content Delivery Network (CDN) can significantly improve the performance and accessibility of your Hydro instance, especially if your server has limited bandwidth. In most cases, configuring a **Static Resource CDN** provides the best balance of performance gains and ease of setup.
 
-Create and configure a resource CDN, then set `server.cdn` in the control panel to your CDN domain (for example, `https://cdn.hydro.ac/`, ending with `/`).  
+## Static Resource CDN
 
-Set CDN origin to your origin server. Configure cache duration as needed (recommended: one week or longer), and allow CORS and Referer (may also be called anti-leech). Make sure empty Referer requests are allowed.
+To offload static assets (images, scripts, styles) to a CDN:
+1. Create a CDN distribution with your cloud provider.
+2. Set the CDN origin to your Hydro server's address.
+3. In the Hydro Control Panel, set `server.cdn` to your CDN domain (e.g., `https://cdn.example.com/`). **Ensure it ends with a trailing slash.**
+4. **Caching Configuration**: 
+   - Recommended cache duration: 1 week or longer.
+   - **CORS/Referer**: Ensure the CDN allows Cross-Origin Resource Sharing (CORS) and permits requests with an empty Referer (common for anti-leech settings).
 
-## Full-site CDN
+## Full-Site CDN (Acceleration)
 
-If your budget allows, you can use a full-site CDN.
+A full-site CDN proxies all traffic, including dynamic pages.
 
 <Callout type="warn">
-Full-site CDN configuration is relatively complex. If you do not have related experience, only set up a resource CDN. In most cases, a resource CDN alone can greatly improve access quality.
-Because full-site CDN configuration methods differ by provider, the process and required settings vary. **The configuration below is for reference only**. If you encounter issues, first check provider documentation and consult the provider's engineers.
+Full-site CDN configuration is complex and varies significantly between providers. If you are inexperienced, we recommend using only a **Static Resource CDN**. 
 </Callout>
 
 <Callout type="warn">
-When configuring a full-site CDN, you must enable WebSocket support in CDN (the method differs by provider and may incur additional fees), otherwise judging status may not update automatically / IDE may not work, etc.  
-Please ensure only static resource files are cached! Otherwise user login status may become inconsistent.
+**Critical Requirements for Full-Site CDNs:**
+- **WebSocket Support**: You **must** enable WebSocket support in your CDN settings. Without it, real-time features like judging status updates and the Online IDE will fail.
+- **Dynamic Content Caching**: Ensure that **only** static assets are cached. Caching dynamic pages (like login or profile pages) will lead to session inconsistencies and security issues.
 </Callout>
 
-You can refer to the following cache settings:
+### Recommended Cache Settings:
+| Type | Content | Cache Behavior |
+| :--- | :--- | :--- |
+| Dynamic | All other files | Follow Origin (No Cache) |
+| Static | `.jpg, .js, .png, .css, .gif` | Cache (e.g., 1 day) |
 
-| Type     | Content             | Cache Behavior |
-| -------- | ------------------- | -------------- |
-| All files | All files           | Follow origin  |
-| Suffix   | jpg,js,png,css,gif  | Cache 1 day    |
+### IP Forwarding:
+To ensure Hydro can identify the real user IP instead of the CDN's IP:
+1. Configure your CDN to include the client's original IP in the `X-Forwarded-For` header.
+2. In Hydro System Settings, set `server.xff` to `x-forwarded-for` (case-insensitive).
 
-Also set additional origin HTTP request headers:
-
-| Header Parameter | Header Value                                     |
-| ---------------- | ------------------------------------------------ |
-| X-Forward-For    | Configure client source IP based on your CDN provider docs |
-
-And you should set `server.xff` in system settings to `X-Forwarded-For`, so the system can correctly obtain user IP addresses.

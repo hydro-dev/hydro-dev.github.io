@@ -2,85 +2,88 @@
 title: Deploy Hydro
 ---
 
-Several options are provided here to help you build your own site. Please choose the one that suits you and continue.  
-If you encounter issues during setup, feel free to [contact us](/#联系我们).  
+Multiple deployment options are available to help you build your site. Choose the one that best fits your needs.
+If you encounter any issues during setup, feel free to [contact us](/#contact-us).
 
-## Choosing a Server
+## Selecting a Server
 
-CPU frequencies vary by provider; the data below is for reference only.  
-Minimum server specs: CPU: 1 core, RAM: 2G. (Supports about 100 users)  
-**Please avoid burstable instances or shared instances whenever possible, as they may cause inaccurate judging time measurements**
+Performance varies by provider; the specifications below are for reference only.
+- **Minimum Requirements**: 1 CPU core, 2GB RAM. (Supports ~100 concurrent users).
+- **Important**: Avoid burstable (e.g., AWS t-series) or shared-core instances where possible, as they can cause inconsistent and inaccurate judging time measurements.
 
-CentOS 8 [reached end of support on 2021-12-31](https://www.centos.org/centos-linux-eol/), and will no longer receive security patches. Reinstalling with another OS is recommended.  
+**Operating System Notes:**
+- CentOS 8 reached [End-of-Life (EOL)](https://www.centos.org/centos-linux-eol/) on 2021-12-31 and no longer receives security patches. We recommend reinstalling your server with a supported OS.
 
 <Callout>
-Compatible with most Linux distributions. Debian 12 / Debian 11 / Ubuntu 22.04 are recommended (more tutorials, higher success rate, easier to get started). CentOS and its variants are **not supported**:
+**Recommended OS**: Debian 12, Debian 11, or Ubuntu 22.04. These distributions offer the best support, documentation, and success rate for beginners.
 
-- CentOS  
-- Alibaba Cloud Linux  
-- TencentOS  
-- OpenCloudOS  
+**Unsupported OS**: CentOS and its derivatives (Alibaba Cloud Linux, TencentOS, OpenCloudOS, etc.) are **not supported**.
 
-If your machine has low memory (\<=2GiB), avoid Ubuntu 22.04 because it consumes more memory. Debian 12 / Debian 11 are recommended.  
-If you have Linux operations experience, Hydro also supports Alpine Linux. Alpine Linux uses only ~100M memory after boot, making it a better option for low-spec servers.  
+**Low-Memory Servers (≤ 2GB RAM)**: Avoid Ubuntu 22.04 due to its higher memory footprint. Debian 12 or 11 is recommended.
+For experienced Linux users, **Alpine Linux** is an excellent choice, consuming only ~100MB RAM after boot.
 </Callout>
 
-Use [Tencent Cloud referral link (no discount)](https://curl.qcloud.com/KE7pzCW4) or [Alibaba Cloud referral link (15% discount)](https://www.aliyun.com/minisite/goods?userCode=806xqzxc) to purchase a server; developers can get about 15% cashback.  
+Using these referral links helps support the project through small cashbacks (at no extra cost to you):
+- [Tencent Cloud](https://curl.qcloud.com/KE7pzCW4)
+- [Alibaba Cloud (15% discount)](https://www.aliyun.com/minisite/goods?userCode=806xqzxc)
 
 <Callout type="warn">
-It is known that without ICP filing, China Telecom Cloud (天翼云) forbids using ports 80/443. If you are unfamiliar with the process, choose another provider when purchasing.
+**Mainland China Users**: Without an ICP filing, some providers (like China Telecom Cloud) block ports 80 and 443. Ensure you understand the regulations before purchasing.
 </Callout>
 
 <Callout type="warn">
-Virtual machine users please note:
+**Virtual Machine (VM) Users**:
+- Hydro's database relies on the CPU **AVX instruction set** for optimal performance. Most virtualization software (VMware, VirtualBox, etc.) disables AVX by default; check your documentation to enable it.
+- Lack of exclusive CPU access can lead to inconsistent judging times.
+- Sudden power loss can easily corrupt VM databases. **Regular backups are essential.**
 
-- The database used by Hydro depends on the CPU AVX instruction set for better performance. Most VM software does not enable AVX by default; please refer to your VM software documentation.  
-- Because VMs do not have exclusive CPU usage, judging time measurement precision may decrease.  
-- Due to VM data persistence mechanisms, sudden power loss can easily corrupt the database and make it unreadable. Be sure to back up your database regularly. If possible, use a UPS to ensure stable power.
-
-Docker users please note:
+**Docker Users**:
 - When using the installation script, set the `USER` environment variable to `root`.
-- Start the container with `--privileged`, otherwise the judge machine cannot run.
-- The development team does not provide free technical support for Docker deployments.
+- You **must** start the container with `--privileged` for the judge sandbox to function.
+- The development team does not provide free technical support for Docker-based deployments.
 
-Third-party panel users (such as BaoTa) please note:
-- Some panels have had multiple critical vulnerabilities. To avoid data loss, do not use them in production environments!
-- Developers are not responsible for any issues caused by using such panels.
-- The development team does not provide free technical support for third-party panel deployments.
+**Control Panel Users (e.g., BT/BaoTa)**:
+- These panels often have critical security vulnerabilities. We strongly advise against using them in production.
+- Developers are not responsible for issues arising from panel usage.
+- Free technical support is not available for deployments using third-party panels.
 
-If you need paid technical support, you can contact us via WeCom.
+For **paid technical support**, please contact us via WeCom.
 </Callout>
 
-## Deployment
+## Deployment Process
 
 <Callout>
-Hydro requires these ports: 80, 443, 2019, 8888, 5050, 27017. Ensure they are available.  
-**Installation and all post-install operations must be run with root privileges! (`sudo su` and enter the user password, or `su -` and enter the root password).**  
+**Required Ports**: Ensure ports `80, 443, 2019, 8888, 5050, 27017` are open in your firewall.
+**Permissions**: All installation and post-installation steps **must** be performed with root privileges (`sudo -i`).
 </Callout>
 
-Run the script below and wait a few minutes (copy-paste is recommended to avoid typos):
+Run the following command to start the installation (copy and paste to avoid errors):
 
 ```sh
-LANG=zh . <(curl https://hydro.ac/setup.sh)
+LANG=en . <(curl https://hydro.ac/setup.sh)
 ```
 
 <Callout>
-If you have special requirements, the installation script supports optional advanced flags. Invoke it like this: `. <(curl https://hydro.ac/setup.sh) --foo --bar`
-
-- `--no-caddy` skip reverse proxy setup; only listen on `127.0.0.1:8888`
-- `--judge` install only as a standalone judge machine
+The installation script supports advanced flags for custom requirements:
+- `--no-caddy`: Skips reverse proxy setup; the service will listen only on `127.0.0.1:8888`.
+- `--judge`: Installs only the standalone judge component.
+Example: `. <(curl https://hydro.ac/setup.sh) --no-caddy`
 </Callout>
 
-For users of Alibaba Cloud / Tencent Cloud / Huawei Cloud, etc., if you cannot access the service after installation, search for `xx cloud allow port 80`.  
-The script uses Tsinghua University mirrors by default.  
-After installation, open `http://server-ip/`, register an account, then run in terminal:  
+**Post-Installation Tips**:
+- If you are on a cloud provider (AWS, Alibaba, etc.), ensure your "Security Group" allows traffic on port 80.
+- Open `http://your-server-ip/` in your browser and register an account.
+- To promote the first registered user to Super Admin, run:
 
 ```sh
 hydrooj cli user setSuperAdmin 2
 ```
 
-This sets the first registered user as super admin. Refresh the page, and you should see the control panel entry in the top navigation bar.  
-Enter the control panel, go to System Settings on the right, verify admin password, and adjust settings as needed. Note that `Server BaseURL` must be the full URL used to access the website and must end with `/`. (Important, must be correct. Example: `https://hydro.ac/`)  
+- After logging in, access the Control Panel from the navigation bar.
+- **Critical**: In System Settings, verify the `Server BaseURL`. It must be the full URL (including `https://` if applicable) and **must end with a trailing slash `/`** (e.g., `https://hydro.ac/`).
 
-After system installation, if you need a problem set, visit the free section at https://hydro.ac/d/tk/p for download; batch import is supported.
-At this point, all basic features are installed. In addition, if your service is deployed in an intranet and you want external users to access it, search for tutorials about “port forwarding”.
+**Loading Problems**:
+You can find a free starter problem set at [hydro.ac/d/tk/p](https://hydro.ac/d/tk/p). Batch import is supported.
+
+If your server is in a private network, you may need to configure "Port Forwarding" or a VPN for external access.
+

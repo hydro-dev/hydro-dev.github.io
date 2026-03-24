@@ -2,86 +2,62 @@
 title: Compilers and Languages
 ---
 
-Starting from 2022/8/12, Hydro uses [nix]() by default to manage environments for **instances installed after that date**, to avoid host environment changes affecting judging.  
-If your Hydro was installed before that, please install compilers via apt, restart sandbox with `pm2 restart hydro-sandbox`, and ignore this section.
+## Environment Management
 
-Below is a brief guide to nix operations:
+Starting from 2022-08-12, Hydro uses **Nix** to manage judge environments for new installations. This prevents host-environment changes from affecting judging consistency. 
 
-Use `nix-env -iA nixpkgs.<compiler-name>` to install a new compiler, then restart the sandbox with `pm2 restart hydro-sandbox` for it to take effect.
+If your Hydro instance was installed prior to this date, please install compilers via your distribution's package manager (e.g., `apt`), restart the sandbox with `pm2 restart hydro-sandbox`, and you may skip the Nix-specific sections below.
 
-You can search for required compilers at [Nixos Search](https://search.nixos.org/packages).  
-Examples of commonly used compilers:
+### Using Nix for Compilers
 
-```sh
-nix-env -iA nixpkgs.coreutils nixpkgs.bash nixpkgs.gawk nixpkgs.unzip # 基础组件，已预装，不建议删除
-nix-env -iA nixpkgs.gcc nixpkgs.fpc # C/C++ 和 Pascal，已预装，不建议删除
-nix-env -iA nixpkgs.ghc # Haskell 
-nix-env -iA nixpkgs.rustc # Rust
-nix-env -iA nixpkgs.python3Minimal
-nix-env -iA nixpkgs.python3Packages.numpy
-nix-env -iA nixpkgs.pypy3
-nix-env -iA nixpkgs.php
-nix-env -iA nixpkgs.go # Golang
-nix-env -iA nixpkgs.nodejs
-nix-env -iA nixpkgs.openjdk_headless # Java
-nix-env -iA nixpkgs.ruby
-nix-env -iA nixpkgs.mono # C#
-nix-env -iA nixpkgs.julia_17-bin # Julia
-nix-env -iA nixpkgs.iverilog # Verilog
+To install a new compiler, use `nix-env -iA nixpkgs.<compiler-name>`, then restart the sandbox with `pm2 restart hydro-sandbox`. 
+
+You can search for available packages at [Nixos Search](https://search.nixos.org/packages). Common examples include:
+
+```bash
+# Core components (Installed by default; do not remove).
+nix-env -iA nixpkgs.gcc nixpkgs.fpc nixpkgs.coreutils nixpkgs.bash nixpkgs.gawk nixpkgs.unzip
+
+# Additional languages:
+nix-env -iA nixpkgs.ghc                   # Haskell 
+nix-env -iA nixpkgs.rustc                 # Rust
+nix-env -iA nixpkgs.python3Minimal        # Python
+nix-env -iA nixpkgs.python3Packages.numpy # Python + Numpy
+nix-env -iA nixpkgs.openjdk_headless      # Java
+nix-env -iA nixpkgs.nodejs                # Node.js
+nix-env -iA nixpkgs.go                    # Go
+nix-env -iA nixpkgs.php                   # PHP
 ```
 
-Use `nix-env -q` to view installed packages, then use `nix-env -e <compiler-name>` to remove a compiler.  
-Be careful not to remove Hydro base components by mistake. Restart sandbox with `pm2 restart hydro-sandbox` after changes for them to take effect.
+**Managing Packages:**
+- View installed packages: `nix-env -q`
+- Uninstall a package: `nix-env -e <compiler-name>`
+- After any change: `pm2 restart hydro-sandbox`
 
 <Callout>
-For some languages (especially Java and similar), compilation inherently requires longer CPU time, which is more obvious on single-core machines,
-and compiling even A+B may take several seconds or even tens of seconds.  
-Expected performance can be tested by manually running compile commands on the host:
+### Compilation Performance and Resource Limits
 
-```sh
-javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
-```
-
-Also, some compilers may try to create many processes for multicore parallel compilation whenever possible. Ensure `processLimit` in judge settings is high enough,
-otherwise compilation may fail because the compiler cannot create processes.  
-
-When compilers use multicore parallel compilation, Hydro sums CPU usage across these processes as CPU resource usage. If compile timeout errors occur,
-please adjust `compile_time_limit` (in ms) for the corresponding language in system settings.
-
-Similarly, if memory limit exceeded errors occur, adjust `compile_memory_limit` (in MB) for the corresponding language.
+- **Java/JVM**: Languages like Java and Kotlin require significant CPU time for compilation. On single-core servers, even simple "A+B" problems may take several seconds to compile. You can verify native performance by running the compilation command manually on the host.
+- **Process Limits**: Some compilers spawn many threads for parallel compilation. Ensure `processLimit` in your judge settings is high enough to prevent compilation errors.
+- **CPU/Memory Limits**: For parallel compilers, Hydro aggregates CPU usage across all threads. If you encounter **Compile Timeout** or **Compile Memory Exceeded** errors, adjust the `compile_time_limit` and `compile_memory_limit` in your System Settings.
 </Callout>
 
-<Callout>
-After installing a `python` package using `sh nix-env -iA nixpkgs.python3Packages.xxxxx`, if dependencies cannot be found in the sandbox environment,
-please follow the guide [Import Python packages into sandbox](https://hydro.ac/d/faqs/p/15) to update environment variables.
-</Callout>
+### Language Multipliers
+By default, Java and Kotlin are given a 2.0x time limit multiplier. You can modify this in the **Language Settings** section of the Control Panel:
 
-## Language-specific Time Limit Modifications
-
-By default, the system gives Java and Kotlin 2x time limit. This behavior can be changed in language settings:
-
-```yml
-# 系统设置->语言设置
+```yaml
 java:
-  # ... existing settings ...
-  time_limit_rate: 2
+  time_limit_rate: 2.0
 ```
 
-## Colored C/C++ Compilation Error Output
-
-1. Confirm you installed a compiler that supports colored output;
-2. In system settings, append `-fdiagnostics-color=always` to C/C++ compile commands
-
-Example:
-
-```yml
-c:
-  compile: /usr/bin/gcc -O2 -Wall -std=c99 -o ${name} foo.c -lm -fdiagnostics-color=always
-```
+### Colored C++ Error Messages
+To enable colored output in your submission logs:
+1. Ensure your installed compiler supports it.
+2. Add `-fdiagnostics-color=always` to your C/C++ compile commands in System Settings.
 
 ## Advanced Environment Configuration
 
-If you need more complex compiler environment configuration, we recommend writing a separate nix file.
+For complex dependencies, we recommend using a custom `default.nix` file.
 
 ```nix
 { 
@@ -93,13 +69,11 @@ pkgs.buildEnv {
   name = "hydrojudge-rootfs";
   paths = with pkgs; [
     coreutils bash nix zip unzip gcc gawk
-    # 上方包是评测所需要的，请勿删除，
-    # 在下方列出你所需要的包，查找方式同上文：
+    # List additional packages below:
     fpc python3 rustc
   ];
   ignoreCollisions = true;
   pathsToLink = [ "/" ];
-  # 导出一些基本信息和部分编译器所需的 /etc/passwd
   postBuild = ''
     mkdir $out/buildInfo
     echo 'root:x:0:0:root:/root:/bin/bash' >$out/etc/passwd
@@ -108,17 +82,14 @@ pkgs.buildEnv {
 }
 ```
 
-Copy the file above, save it as `default.nix`, and build it with `nix-build`.  
-After building, a `result` folder will be generated. Note the path of that folder.  
-Open `~/.hydro/mount.yaml` and replace `/root/.nix-profile` with the compiled `result` folder (switch to the new environment).  
-Then save and restart the sandbox.  
+**How to Apply:**
+1. Save the file as `default.nix` and run `nix-build`.
+2. This generates a `result` symlink. Note the path.
+3. Update `~/.hydro/mount.yaml`, replacing `/root/.nix-profile` with your new `result` path.
+4. Restart the sandbox: `pm2 restart hydro-sandbox`.
 
-If you need to change environment configuration later, just modify `default.nix`, run `nix-build` again, and restart sandbox to apply changes.  
-Cache files produced during build can be cleaned with `nix-collect-garbage`.  
+For more on Nix, see the [Nix Guide](https://nixos.org/guides/nix-language.html).
 
-For more detailed nix language references, see [Nix Guide](https://nixos.org/guides/nix-language.html) and
-[Nix Manual](https://nixos.org/manual/nix/stable/language/index.html).
+## Further Reading
+Refer to the [HydroJudge documentation](../plugins/hydrojudge) for deeper configuration details.
 
-## Others
-
-Recommended reading: [HydroJudge](../plugins/hydrojudge) for more detailed judge machine configuration information.

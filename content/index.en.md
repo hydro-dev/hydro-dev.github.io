@@ -31,70 +31,67 @@ footer: AGPL3.0 Licensed | Copyright © 2021-present Undefined
 ![GitHub contributors](https://img.shields.io/github/contributors/hydro-dev/Hydro)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hydro-dev/Hydro)
 
-Hydro is an efficient online judge system for informatics. Features: easy deployment (with installation scripts provided), lightweight, powerful, and easy to extend.  
+Hydro is a high-performance online judge system for competitive programming. It is designed to be lightweight, powerful, and easy to deploy with provided installation scripts.
 
 [GitHub Repository](https://github.com/hydro-dev/Hydro)
 
-Welcome to star this project; it encourages the developers.  
-Project development and maintenance require funding, and donations are welcome.  
-Hydro provides paid custom feature development services; contact us if needed.  
-If related documentation is not detailed enough, please submit a Pull Request or contact the development team with details.  
-Please submit bug reports and feature suggestions in [Issues](https://github.com/hydro-dev/Hydro/issues).
+Starring this project encourages the developers!  
+We welcome donations to support the development and maintenance of Hydro.  
+Hydro also offers paid custom development services; please contact us for inquiries.  
+If you find the documentation lacking, please submit a Pull Request or contact the development team with suggestions.  
+Please report bugs and suggest features through [GitHub Issues](https://github.com/hydro-dev/Hydro/issues).
 
-[Open the preconfigured test environment on Gitpod](https://gitpod.io/#https://github.com/hydro-dev/Hydro)
+[Try it on Gitpod](https://gitpod.io/#https://github.com/hydro-dev/Hydro)
 
 [Hydro Online Judge](https://hydro.ac/)
 
 ## Contact Us
 
-Email [i@undefined.moe](mailto:i@undefined.moe)  
-Telegram [@undefinedmoe](https://t.me/undefinedmoe)  
-Hydro user group: 1085853538  
+- Email: [i@undefined.moe](mailto:i@undefined.moe)
+- Telegram: [@undefinedmoe](https://t.me/undefinedmoe)
+- Hydro User Group: 1085853538
 
-Note 1: Hydro is an open-source framework. Anyone can use this framework as long as they comply with the license.  
-For copyright complaint issues, please contact the administrator of the corresponding website (usually the user with UID=2), which is unrelated to the developers.
+**Note 1:** Hydro is an open-source framework. Anyone can use it in compliance with the license. For copyright complaints, please contact the administrator of the specific website (typically the user with UID=2); the developers are not responsible for hosted content.
 
-Note 2: Before joining the user group, please read ["How To Ask Questions The Smart Way"](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md).  
-Also, there may be content in the group that could make you uncomfortable or feel offended. If you have concerns about this, **please do not join the group**.
+**Note 2:** Before joining the user group, please read ["How To Ask Questions The Smart Way"](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README.md). Please be aware that the group may contain informal or potentially offensive content. If this is a concern, **please do not join**.
 
 ## Open-source License
 
-Content under examples/, install/, and packages/ui-default/ in this project is licensed only under AGPL-3.0.
-The rest of the project uses dual licensing:
+Content under `examples/`, `install/`, and `packages/ui-default/` is licensed under AGPL-3.0.
+The rest of the project is dual-licensed:
 
-1. You may use this code for free as long as you comply with the AGPL-3.0 license and the additional terms section below;  
-2. If you need closed-source usage, you may also contact us to purchase another license.
+1. Free usage is permitted under the terms of the AGPL-3.0 license and the additional terms below.
+2. For closed-source or commercial usage, please contact us to purchase a separate license.
 
 ## Additional Terms
 
-Based on Article 7 of the AGPL3 license, when using this project, you must comply with the following additional terms:
+In accordance with Article 7 of the AGPL-3.0 license, the following additional terms apply:
 
-1. You may not remove copyright notices and author/source attribution from this project; ([AGPL3 7(b)](LICENSE#L356))
-2. When redistributing modified versions of this software, you must clearly indicate modifications in the software name or version number; ([AGPL3 7(c)](LICENSE#L360))
-3. Unless permitted, the author's name may not be used for promotional purposes; ([AGPL3 7(d)](LICENSE#364))
+1. You may not remove copyright notices or author/source attributions. ([AGPL3 7(b)](LICENSE#L356))
+2. When redistributing modified versions, you must clearly indicate the modifications in the software name or version number. ([AGPL3 7(c)](LICENSE#L360))
+3. The author's name may not be used for promotional purposes without explicit permission. ([AGPL3 7(d)](LICENSE#364))
 
-That is:  
-When deploying Hydro, you must keep the footer text `Powered by Hydro`, and the `Hydro` text must link to one of `hydro.js.org/this-repo/fork`.  
-If you modify/extend the source code, you must also open-source it under AGPL-3.0-or-later, and you may indicate this in the footer as `Powered by Hydro, Modified by xxx`.  
-This restriction still applies to the following modules:  
+Specifically:
+- Deployments of Hydro must retain the `Powered by Hydro` footer text, linking to `hydro.js.org/this-repo/fork`.
+- If you modify or extend the source code, your modifications must also be open-sourced under AGPL-3.0-or-later. You may indicate this as `Powered by Hydro, Modified by xxx`.
+- This restriction extends to the following:
+  - Hydro plugins.
+  - Components interacting with Hydro via HTTP or other protocols.
 
-- Hydro plugins;
-- Components including but not limited to those interacting with Hydro over HTTP;
+If you require these modules to remain closed-source, please contact us to purchase a license.
 
-If you need to keep these modules closed-source, please consider contacting us to purchase a license.  
-In view of the [discord incident](https://github.com/mamoe/mirai/issues/850) related to Mirai, this project makes the following statements:
+In light of past community incidents, we make the following statements:
+- Open-sourcing this project does not obligate the developers to provide support.
+- Please read "How To Ask Questions The Smart Way" before seeking help.
+- Developers reserve the right to cease providing technical support to any individual or entity.
+- While we **strive** to ensure smooth upgrades, we cannot guarantee that new versions will not introduce breaking changes. Internal implementations may be modified or removed without prior notice.
 
-- Open-sourcing the project does not mean developers are obligated to provide service.
-- Please read "How To Ask Questions The Smart Way" before asking questions.
-- If necessary, developers reserve the right to stop providing any technical support to you.
-- The development team will **do its best** to ensure smooth upgrades, but cannot guarantee that new versions will not introduce usage-impacting issues, and internal implementations may be renamed/modified/removed without any notice.  
-
-If you feel uncomfortable with the above terms, we recommend you stop using this project.
+If you do not agree with these terms, please refrain from using this project.
 
 ## Acknowledgements
 
-Order is not ranked and follows link lexicographical order.
+(In alphabetical order)
 
-- [GitHub](https://github.com/) provides code hosting and automated builds for Hydro.
-- [criyle](https://github.com/criyle) provides the judge sandbox implementation.
-- [Vijos](https://github.com/vijos/vj4) provides the UI framework for Hydro.
+- [GitHub](https://github.com/) for code hosting and CI/CD.
+- [criyle](https://github.com/criyle) for the judge sandbox implementation.
+- [Vijos](https://github.com/vijos/vj4) for the UI framework inspiration.

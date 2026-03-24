@@ -2,51 +2,44 @@
 title: Problem
 ---
 
-## Create Problem
+## Creating a Problem
 
-Users with `PERM_CREATE_PROBLEM` can create new problems.  
-Click the `Create Problem` button at the bottom-right of the problemset page.
+Users with the `PERM_CREATE_PROBLEM` permission can create new problems.
+To do so, click the **"Create Problem"** button at the bottom-right of the problem set page.
 
 <Callout>
-Problem ID cannot be all digits. If left empty, an auto-assigned numeric problem ID will be used.
+Problem IDs cannot be solely numeric. If you leave the ID field empty, the system will auto-assign a numeric ID.
 </Callout>
 
-See the statement editing section below, and [the guide written by laomai](./problem-create).
+For detailed instructions on editing problem statements, see below and [laomai's guide](./problem-create).
 
-## Import Problem
+## Importing Problems
 
-### Import from Hydro
+### From Hydro Archives
+You can upload problem archives previously exported from Hydro. For large archives, use the CLI import tool:
 
-Upload a problem archive exported by Hydro.
-
-If your archive is too large to upload, we also provide CLI import:
-
-```
-hydrooj cli problem import <domainId> <file/path> # 将 <file(压缩文件)/path(解压后的文件夹)> 的Hydro格式题目包导入至 <domainId> 域中。
+```bash
+# Import a Hydro-format package (.zip or folder) into a specific domain.
+hydrooj cli problem import <domainId> <file_or_folder_path>
 ```
 
-### Import from SYZOJ
+### From SYZOJ
+The [loj-download](https://github.com/hydro-dev/loj-download) tool can download Hydro-format problem archives from sites based on SYZOJ or SYZOJ-NG.
 
-Hydro provides a small tool [loj-download](https://github.com/hydro-dev/loj-download), which can download Hydro-format problem archives from source sites based on original SYZOJ/SYZOJ-NG.  
-Please read its tutorial for usage, explore as needed, and ensure your network connection is stable.
+### From FPS Files
+See the [fps-importer](../plugins/fps-importer/) plugin documentation.
 
-### Import from FPS file
+### From QDUOJ
+See the `import-qduoj` plugin documentation.
 
-See plugin [fps-importer](../plugins/fps-importer/).
+## Editing Problem Statements
 
-### Import from QDUOJ
+Problem statements are written using Markdown with several built-in extensions.
 
-See plugin import-qduoj.
+### Sample Data Grouping
+Test cases with the same numeric index are paired automatically and displayed side-by-side:
 
-## Edit
-
-### Statement
-
-Problem statements use Markdown syntax with some extensions.  
-
-Sample data grouping is supported:
-
-`````
+`````markdown
 ```input1
 1 2
 ```
@@ -56,86 +49,60 @@ Sample data grouping is supported:
 ```
 `````
 
-The trailing number is the test case index. Cases with the same index are automatically paired and shown in side-by-side columns.
+### Referencing Additional Files
+You can link to or embed files uploaded in the "Files" tab:
 
-Referencing resources from additional files is supported. (You can create the problem first, upload files, then edit the problem.)
-
-- Additional file download link: `[file](file://input.in)`
-- Reference an image from additional files: `![img](file://foo.jpg)`
-- Reference a PDF from additional files as statement: `@[pdf](file://foo.pdf)` (if it fails in some cases, try `@[pdf](file://foo.pdf?noDisposition=1)` ) 
-- Reference a Word document from additional files as statement: `@[doc](file://foo.docx)` (requires onlyoffice plugin)
-
+- **Download Link**: `[Download input.in](file://input.in)`
+- **Image Embedding**: `![Visual Representation](file://image.jpg)`
+- **PDF Viewing**: `@[pdf](file://specification.pdf)`
+- **Word Document Viewing**: `@[doc](file://manual.docx)` (Requires the `onlyoffice` plugin).
 
 <Callout>
-If you use external storage services, some providers may force-send `Content-Disposition`, causing files to be downloaded instead of previewed. Please consult your provider.
-
-- https://cloud.tencent.com/document/product/436/96243
-- https://help.aliyun.com/zh/oss/user-guide/how-to-ensure-an-object-is-previewed-when-you-access-the-object
+If using external storage (S3/OSS), files may be downloaded instead of previewed due to `Content-Disposition` headers. Please refer to your storage provider's documentation to enable in-browser previews:
+- [Tencent Cloud COS Docs](https://cloud.tencent.com/document/product/436/96243)
+- [Alibaba Cloud OSS Docs](https://help.aliyun.com/zh/oss/user-guide/how-to-ensure-an-object-is-previewed-when-you-access-the-object)
 </Callout>
 
-Merged table rendering is supported in statements:
-
-```markdown
-| 1   | 1   | 3   | 4   | 5   |
-| --- | --- | --- | --- | --- |
-| 1   | 1   | 2   | 2   | 6   |
-| 1   | 1   | 2   | 2   | 7   |
-| 1   | 4   | 3   | 5   | 5   |
-```
-
-Will be rendered as:
-
-![img](./pictures/pict1.png)
-
-Embedded HTML is supported: (for things Markdown cannot easily handle)
-
-```markdown
-<span bgcolor="red">foo</span>
-```
+### Advanced Formatting
+- **Merged Tables**: Use standard Markdown table syntax; Hydro handles cell merging where appropriate.
+- **Embedded HTML**: For layouts not supported by Markdown, you can use safe HTML tags like `<span style="color:red">text</span>`.
 
 ### Tags
+Assign tags using the category panel on the right or by entering comma-separated terms.
 
-You can quickly add tags from the category panel on the right, or separate multiple tags with English half-width commas.
+## Test Data and Files
 
-## Files
+Manage test cases and additional resources via the **"Files"** panel. Drag-and-drop is supported. See [Test Data Format](../user/testdata) for more details.
 
-In the "Files" panel on the right of the problem, you can upload test data and additional files. (Drag-and-drop upload to corresponding area is supported.)  
-[Test Data Format](../user/testdata).
+## Objective Problems (Multiple Choice/Fill-in-the-Blank)
 
-## Objective Problems
+### Statement Syntax
+Objective problems use custom tags to place input fields or selection menus:
 
-### Statement
+```markdown
+1. Fill in the blank: 1 + 1 = {{ input(1) }}
 
-```yaml
-1. 填空题
+2. Single choice: {{ select(2) }}
+- Choice A (Correct)
+- Choice B
+- Choice C
 
-1+1 = {{ input(1) }}
-
-2. 选择题
-
-{{ select(2) }}
-- 1+1=2
-- 1+1=3
-- 1+1=4
-
-3. 多选题
-
-{{ multiselect(3) }}
-- A
-- B
-- C
+3. Multiple choice: {{ multiselect(3) }}
+- Answer 1
+- Answer 2
+- Answer 3
 ```
 
-### Test Data
-
-You only need to configure `config.yaml`; no other files are required.
+### Configuration (`config.yaml`)
+Objective problems require a `config.yaml` file to define correct answers and scoring:
 
 ```yaml
-type: objective # 表明该题为客观题
-answers: # 列举出每一题的正确选项与对应的得分
-  '1': ['2', 50] # 填空题/选择题，单答案
-  '2': # 填空题/选择题，多答案，不同答案对应不同分数，注意空格缩进
-    'A': 30 # 也可以使用相同分数，即同时存在多个正确答案
+type: objective
+answers:
+  '1': ['2', 50]         # Question 1: Answer is '2', worth 50 points.
+  '2':                   # Question 2: Multiple valid answers with different scores.
+    'A': 30
     'B': 10
-  '3': [['A', 'B'], 20] # 多选题答案为数组，有部分分
+  '3': [['A', 'B'], 20]  # Question 3: Both A and B must be selected for 20 points.
 ```
+

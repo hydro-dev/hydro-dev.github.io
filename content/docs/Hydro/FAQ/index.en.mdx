@@ -2,223 +2,135 @@
 title: FAQ Collection
 ---
 
-## Good news! This page and major browsers have partnered up—use Ctrl-F to quickly search keywords!
+## Quick Start and Community
 
-## For more tutorials, see [Common Tutorials](https://hydro.ac/d/faqs/p).
+- **Tip**: Use `Ctrl+F` to quickly search for keywords on this page.
+- **Community Support**: Join the Hydro User Group on QQ (1085853538).
+- **In-depth Tutorials**: Explore [Common Tutorials](https://hydro.ac/d/faqs/p).
+- **Feature Demo**: Visit [Hydro Demo Site](https://hydro.ac/discuss/6172ceeed850d38c79ae18f9) for a serverless experience.
 
-## User QQ Group: 1085853538
+If you don't require heavy customization, we recommend using our online service. Our repository contains over 20,000 problems available for immediate use without any server maintenance.
 
-## How can I quickly get familiar with system features?
+### Frequently Asked Questions
 
-Refer to this post: [https://hydro.ac/discuss/6172ceeed850d38c79ae18f9](https://hydro.ac/discuss/6172ceeed850d38c79ae18f9) for a serverless quick experience of system features.
-If you do not need heavy secondary development, we recommend using the online service directly. Problemsets with over 20,000 problems can be copied directly, with no need to buy cloud servers or maintain them manually.
-If you need customizations such as binding your own domain or changing logos, you can also enable advanced features in the admin panel yourself.
+**Can I delete users?**
+No. Users can only be edited or disabled. This design choice prevents accidental mass deletions ("teaching accidents"). 
 
-Users in the system only support edit and disable, not delete. This is to fundamentally prevent "teaching accidents." Please do not request user deletion features. If you are certain you will never misoperate, develop that feature yourself.
+**What is an Online Judge (OJ)?**
+An OJ is an automated system for evaluating programming solutions. It is not AI; it relies on strict input/output matching.
+1. Teachers define problems with specific I/O formats.
+2. Multiple sets of test data (input and expected output) are uploaded.
+3. Students submit code.
+4. The system runs the code and compares its output character-by-character with the expected output.
+5. Exact matches pass; any difference (even an extra space or prompt like "Enter input:") results in a **Wrong Answer**.
 
-## What is an OJ?
-
-The judging system you are using now is just a program, not artificial intelligence. So in many places, you need to adapt to it. Otherwise, even if your answer is essentially correct, format errors can make the system unable to understand it and still result in wrong answers.
-The system workflow is as follows:
-
-- Teachers add problems in the system and strictly define input/output formats.
-- Teachers add multiple sets of test data according to the problem format; each set includes input and expected output.
-- Students read the problem and submit programs based on their understanding.
-- The system compiles and runs student programs, then feeds the pre-provided input data to the programs and checks their output.
-- If a student's output is exactly identical to the teacher-provided output, character by character, the program is considered correct; otherwise it is considered wrong.
-- If memory/time limits are exceeded during execution, the program is interrupted and marked incorrect.
-
-After understanding the above, students should realize that if a problem does not require prompts like "Please Input Two Number", printing such text yourself will make your output differ from expected output, causing Wrong Answer.
-If a problem requires a blank line between every two output lines and you omit it, that is a format error, and vice versa.
-You may feel the system is bad for not auto-detecting this; in fact, this is exactly how it effectively trains programming precision and good coding habits. Many strong programmers started by complaining about this system and learned to code carefully and rigorously.
-To run all submissions in a unified way, the system must constrain submission format for everyone.
-For C/C++ learners, every submission must contain exactly one `main` function, it must return `int`, and preferably return 0, because non-zero return values are considered runtime errors by the operating system.
-When a compile error occurs, click the "Compile Error" text link for detailed explanation.
-
-## Error `[ERR_STREAM_PREMATURE_CLOSE]: Premature close` when installing in Arch Linux development mode
-
+**Arch Linux: [ERR_STREAM_PREMATURE_CLOSE] during installation**
 Delete `.yarnrc.yml` and `.yarn`, then try again.
 
-## Why can't I access the site after installation?
+**I can't access my site after installation.**
+Ensure your cloud provider's **Security Group** allows inbound traffic on ports 80 and 443.
 
-If you are using providers such as Alibaba Cloud/Tencent Cloud, ensure ports 80 and 443 are allowed in the security group.
+**CsrfTokenError / Login Issues**
+Usually caused by incorrect reverse proxy headers (Caddy/Nginx). Ensure the `Host` header is set correctly. [See Details](./install/proxy).
 
-## Why can't I log in after configuring reverse proxy (caddy/nginx) (CsrfTokenError)?
+**Data Backup and Migration**
+- **Backup**: `hydrooj backup`
+- **Restore**: `hydrooj restore backup-filename.zip`
+- Use `crontab` to automate this process (`sudo crontab -e`).
 
-When reverse proxying, ensure the Host Header is set correctly. [Details](./install/proxy)
+**Should I import many problems at once?**
+No. We recommend importing only the 5–10 problems needed for an assignment. This avoids clutter and maintains a logical progression for students. Focus on quality over quantity.
 
-## How to back up / restore backup / migrate data?
+**Adding an ICP Filing Number**
+In System Settings, add your link to the `footer_extra_html` field:
+`<a href="https://beian.miit.gov.cn/">Your ICP Number Here</a>`
 
-`hydrooj backup` `hydrooj restore backup-xxx.zip`
+**What do "Time" and "Penalty" mean in contests?**
+- **Spent Time**: `Time of successful submission - Contest start time + Penalty`.
+- **Penalty**: Typically 20 minutes for each incorrect submission prior to acceptance.
+- **OI Ranking**: Based on score (often proportional based on test cases passed).
+- **Normal Ranking**: Based on the number of solved problems and spent time.
 
-After learning how crontab works, you can use `sudo crontab -e` to create automatic backup schedules.
+**Where is Hydro installed?**
+- Use `yarn global dir` to find the installation path.
+- **Database**: `/data/db` (Use `hydrooj backup` instead of direct copying).
+- **Files/Test Data**: `/data/file`
+- **Configuration**: `/root/.config/hydro` and `/root/.hydro`
 
-## Upgrade
+**What is the precision of time and memory limits?**
+- **Time**: 1ms resolution (measured precision is ~4ms due to OS kernel).
+- **Memory**: 1MB resolution. For interpreted languages (Python, Java), this includes the overhead of the VM/runtime.
 
-See [Upgrade Guide](./FAQ/upgrade)
+**"Outdated lockfile. Please run 'yarn install' and try again."**
+Run: `cd $(yarn global dir) && rm -rf node_modules yarn.lock && yarn install`
 
-## How to import/create problems?
+**How can I add libraries like numpy to Python?**
+For installations after 2022-08-12, please refer to the [Compiler section](./install/compiler). For older installations, run `pip3 install numpy` and `pm2 restart hydro-sandbox`.
 
-There are corresponding entries on the right side of the problem list page.
-
-Remember: do not import too many problems you do not need yet. The correct approach is to import only 5–10 required problems per training assignment. After the assignment/contest ends, let those become part of the training problemset. This keeps lower problem IDs gradually increasing in difficulty and makes self-training easier for later students. Do not chase quantity while ignoring quality. Use fewer problems you do not understand, and use them cautiously.
-
-## How to restrict access for unlogged users?
-
-Manage Domain -> Manage Permissions: disable the "View this domain" permission for Guest group.
-
-## How to add ICP filing number in footer?
-
-Add a line in system setting `footer_extra_html`: `<a href="https://beian.miit.gov.cn/">XX ICP XX No.</a>`
-
-## What does time mean in contests/assignments? Difference between OI ranking and normal ranking?
-Time means the time "spent" for participants to solve a problem:
-That is: time solved – contest start time + penalty time
-Penalty time = number of wrong submissions before acceptance * 20 minutes.
-Normal ranking is based on number of solved problems and "spent" time.
-OI ranking is based on score. Problems can be scored proportionally by pass ratio, 100 points each. If you want non-uniform score distribution, use config.
-
-## Where does the script install OJ?
-
-You can get Hydro's default location with `yarn global dir`. (Do not modify code directly; updates will overwrite all changes there. Use the plugin API instead.)
-Default database files are in `/data/db`, but do not copy files directly; `hydrooj backup` is recommended.
-Files such as test data are stored in `/data/file`.
-Config files are in `/root/.config/hydro` and `/root/.hydro`.
-For production servers in operation, always make an offline backup before any operation.
-Always unzip backup files to verify all data is included, and check backup size (large systems should have backups of hundreds of MB). If possible, verify restore success in a VM.
-
-## What is the precision of time limit and memory limit?
-
-The literal time limit precision is 1ms, but due to OS kernel constraints, actual measured precision is usually 4ms.
-Memory limit precision is 1MB. For local native compiled languages like c/c++/pascal/freebasic/clang, it measures the program's own memory allocation; for VM/script languages, it includes memory consumed by the VM/interpreter itself.
-
-## `Outdated lockfile. Please run 'yarn install' and try again.`
-
-```
-cd `yarn global dir` && rm -rf node_modules yarn.lock && yarn install
-```
-
-Then try again.
-
-## I want Python to support numpy and similar libraries. What should I do?
-
-If installed before 2022/8/12, run `pip3 install numpy` then `pm2 restart hydro-sandbox`.
-Otherwise refer to the [Compiler](./install/compiler) section.
-
-## I forgot MongoDB account/password after using installation script. What should I do?
-
+**I forgot my MongoDB credentials.**
 Check `/root/.hydro/config.json`.
 
-## How to disable/enable user registration?
+**Disabling User Registration**
+Registration is controlled via the Guest group's permissions (UID 0).
+- **Disable**: `hydrooj cli user setPriv 0 0`
+- **Enable**: `hydrooj cli user setPriv 0 8`
+After making changes, restart the service: `pm2 restart hydrooj`.
 
-Registration is controlled by Guest user (uid = 0) permission PRIV_REGISTER_USER, enabled by default.
-Use `hydrooj cli user setPriv 0 0` to disable registration.
-To re-enable, use `hydrooj cli user setPriv 0 8`.
+**What is the "Hydro" system user (UID 1)?**
+This account is used solely for sending system notifications and cannot be logged into.
 
-After changing it, restart hydrooj service: `pm2 restart hydrooj`
+**Changing the Website Icon/Logo**
+1. Use `hydrooj addon create` to generate a plugin.
+2. Place your icons in `/root/addon/public/` (e.g., `favicon.ico`, `nav_logo_dark.png`).
+3. Update the `nav_logo_dark` path in System Settings to `/nav_logo_dark.png`.
 
-## What is user Hydro for? What's the password? Can it log in?
-
-User Hydro (uid = 1) is only for sending system messages (similar to 10000 in QQ) and cannot log in.
-
-## How to modify website icon?
-
-Use `hydrooj addon create` to create a plugin, which will create `/root/addon` automatically.
-Go to `/root/addon/public`, and place your site icons there.
-You need these files in that directory (for different browsers):
-
-- `favicon-16x16.png`
-- `favicon-32x32.png`
-- `favicon-96x96.png`
-- `favicon.ico` (32x32)
-- `android-chrome-192x192.png`
-- `apple-touch-icon-180x180.png`
-
-Matching resolution is recommended but not mandatory. These images are shown on browser tabs.
-You also need this file in that directory:
-
-- `nav_logo_dark.png`
-
-This image is shown as the top-left logo.
-Then go to system settings, find `nav_logo_dark`, change it to `/nav_logo_dark.png`, and restart Hydro to apply changes.
-
-Remember to clear browser cache.
-
-## How to reset data?
-
+**How do I reset all data?**
 <Callout type="warn">
-This operation will delete all users/problems/contests and other data. Proceed with caution!
+This will permanently delete all users, problems, and contests.
 </Callout>
+Download and run the [reset script](https://github.com/hydro-dev/Hydro/blob/master/install/reset.sh).
 
-Download [this script](https://github.com/hydro-dev/Hydro/blob/master/install/reset.sh) and run it on the server.
+**Judge error: "Total time limit exceeds 60s"**
+Increase the `total_time_limit` in System Settings.
 
-You can adjust as needed; display order matches the order in configuration.
-
-## Judge shows "Total time limit exceeds 60s, judging canceled"
-
-In system settings, modify `total_time_limit` to the allowed maximum judging duration per problem.
-
-## How to add line animation effects in background?
-
-After creating a plugin, put the following content in plugin `frontend/animation.page.ts`:
-
-> Based on https://github.com/hustcc/canvas-nest.js , MIT
-
+**Adding background animation effects**
+Create a plugin and add the following to `frontend/animation.page.ts`:
 ```js
+// Based on https://github.com/hustcc/canvas-nest.js (MIT)
 (()=>{function e(e,n,t){return e.getAttribute(n)||t}function n(){l=i.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,u=i.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight}function c(){var t,o,i,a,m;r.clearRect(0,0,l,u),s.forEach(function(e,n){for(e.x+=e.xa,e.y+=e.ya,e.xa*=e.x>l||e.x<0?-1:1,e.ya*=e.y>u||e.y<0?-1:1,r.fillRect(e.x-.5,e.y-.5,1,1),o=n+1;o<d.length;o++)null!==(t=d[o]).x&&null!==t.y&&(i=e.x-t.x,a=e.y-t.y,(m=i*i+a*a)<t.max&&(t===y&&m>=t.max/2&&(e.x-=.03*i,e.y-=.03*a),m=(t.max-m)/t.max,r.beginPath(),r.lineWidth=m/2,r.strokeStyle="rgba("+x.c+","+(.2+m)+")",r.moveTo(e.x,e.y),r.lineTo(t.x,t.y),r.stroke()))}),w(c)}var l,u,d,t,o,i=document.createElement("canvas"),x=(t=(o=document.getElementsByTagName("script")).length,o=o[t-1],{l:t,z:e(o,"zIndex",-1),o:e(o,"opacity",.5),c:e(o,"color","0,0,0"),n:e(o,"count",99)}),a="c_n"+x.l,r=i.getContext("2d"),w=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(e){window.setTimeout(e,1e3/45)},m=Math.random,y={x:null,y:null,max:2e4};i.id=a,i.style.cssText="position:fixed;top:0;left:0;z-index:"+x.z+";opacity:"+x.o,document.getElementsByClassName("main")[0].appendChild(i),n(),window.onresize=n,window.onmousemove=function(e){e=e||window.event,y.x=e.clientX,y.y=e.clientY},window.onmouseout=function(){y.x=null,y.y=null};for(var s=[],h=0;x.n>h;h++){var f=m()*l,g=m()*u,p=2*m()-1,v=2*m()-1;s.push({x:f,y:g,xa:p,ya:v,max:6e3})}d=s.concat([y]),setTimeout(function(){c()},100)})();
 ```
 
-## How much does Hydro cost?
+**How much does Hydro cost?**
+Hydro is free and open-source under the AGPL license. You can support the developer via [donations](https://pay.undefined.moe).
 
-It's free. We are AGPL. If you have extra money, you can [send me a red packet](https://pay.undefined.moe).
+**"execve: no such file or directory"**
+The installation script sets up core compilers only. Refer to the [Compiler section](./install/compiler) for additional runtimes.
 
-## execve: no such file or directory
-
-Script installation installs only a small subset of compilers by default. Please refer to the [Compiler](./install/compiler) section to install/configure other compilers.
-
-## How to customize user badges?
-
-Enter MongoDB and execute the following (replace placeholders in angle brackets accordingly):
-
+**How do I customize user badges?**
+In MongoDB:
 ```sh
 use hydro
-db.user.update({"_id": <用户 UID>}, {$set: {"badge": "<标签内容>#<背景颜色（HEX）>#<文字颜色（HEX）>"}})
+db.user.update({"_id": <USER_UID>}, {$set: {"badge": "<Label>#<Background_HEX>#<Text_HEX>"}})
 ```
 
-## Why can't I batch download multiple files?
+**Why can't I batch download files?**
+Ensure your site is using HTTPS and that you are using a modern browser. Otherwise, use `Ctrl+Click` to download files individually.
 
-Please use a modern browser and try enabling HTTPS for your site.
-Otherwise, download files one by one (Ctrl+click filename).
+**Why are there no language options on the submission page?**
+Check **Problem -> Judge Settings** and **Domain Settings -> Edit Domain Profile**. Ensure "Allowed languages" contains comma-separated language IDs (e.g., `c,cc,py3`). Leave empty for defaults.
 
-## Why is there no language option on my submission page?
+**"The 'yarn global' commands have been removed in 2.x"**
+This affects development mode. We recommend using the installation script unless you are specifically working on Hydro development.
 
-Problem -> Judge Settings -> Allowed languages
-Domain Settings -> Edit Domain Profile -> Allowed languages
-In both places, fill language IDs separated by English commas. If unsure, leave empty.
+**Rate Limiting Issues**
+If many users share an IP (e.g., in a lab):
+- Set up a proxy server to forward individual IPs (Recommended).
+- Increase limits: `hydrooj cli system set limit.user_login 999`.
+- Start with `--benchmark` to disable rate limiting (Not recommended).
 
-## The 'yarn global' commands have been remove in 2.x - consider using 'yarn dlx' or a third-party plugin instead
+**Memory/Disk usage on Judge**
+Hydro uses `/dev/shm` for temporary judge files. Ensure it has at least 512MB:
+- View size: `df -h /dev/shm`
+- Increase size: `sudo mount -o remount,size=1G /dev/shm`
 
-If you cannot understand this issue, just use the installation script and do not mess with development mode.
 
-## I'm in a computer lab environment; many users share one IP and trigger rate limits. How to solve?
-
-Option 1: Set up a proxy server in the intranet and forward intranet IPs to the server. (Recommended)
-Option 2: Use commands like `hydrooj cli system set limit.user_login 999` to set new rate limits (the error page shows which limit was triggered)
-Option 3: Start with `pm2 start hydrooj -- --benchmark` to disable all rate limits (Not recommended)
-
-## Adjust temporary directory size
-
-Judge stores temporary files in /dev/shm, including contestants' output, compiled executables, etc. These files are automatically deleted after judging.
-If you set high parallel judging, pay attention to /dev/shm size limit. We usually recommend reserving at least 512MB.
-
-Check /dev/shm size:
-
-```bash
-df -h /dev/shm
-```
-
-Adjust /dev/shm size:
-
-```bash
-sudo mount -o remount,size=1024M /dev/shm
-```

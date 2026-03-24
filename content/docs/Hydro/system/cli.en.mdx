@@ -2,103 +2,80 @@
 title: Hydro CLI
 ---
 
-<Callout>
-Before using the CLI, please complete database configuration.  
-Parameters wrapped in `<>` are required, and parameters wrapped in `[]` are optional. If omitted, default settings are used.  
-**Please replace all parts wrapped in `<>` or `[]` based on your own environment (including the brackets).**
-</Callout>
+## Overview
 
-The CLI helps users quickly perform operations in the terminal.  
-These commands should be run in a terminal as the root user (the same location used during installation).  
-Some common examples are listed below.
-
-## Create a User
+The Hydro CLI allows you to perform common administrative tasks directly from your terminal. 
 
 <Callout>
-Rarely used. We recommend using Control Panel > Import Users instead.
+- Ensure your database is configured before using the CLI.
+- Commands must be run as the **root** user from the same directory used during installation.
+- Syntax: `<required_parameter>`, `[optional_parameter]`. **Replace these placeholders (including the brackets) with your actual values.**
 </Callout>
 
-```sh
-hydrooj cli user create <mail> <username> <password> <uid>
-# User email, username, and password
+## Common Operations
 
-# For example, to create a user with email hydro@hydro.local, username Hydro, password hydrohydro, and UID 2:
-# Make sure UID is an integer >= 2 and not already in use, and that email and username are unique.
-hydrooj cli user create hydro@hydro.local Hydro hydrohydro 2
+### Create a User
+*Note: We recommend using the Web UI (Control Panel > Import Users) for creating multiple users.*
+
+```bash
+# Syntax: hydrooj cli user create <email> <username> <password> <uid>
+# Example: Create a user with UID 2. 
+# Ensure the UID is an integer >= 2 and not already in use.
+hydrooj cli user create admin@example.com admin p@ssword123 2
 ```
 
-If everything works correctly, you will see the user's uid in the command line output.
-
-## Set Site Super Admin
-
-```sh
-hydrooj cli user setSuperAdmin <uid>
-
-# For example, set user with uid 2 as admin:
+### Promote to Super Admin
+```bash
+# Grant full site administrative privileges to a user by UID.
 hydrooj cli user setSuperAdmin 2
 ```
 
-## Set User Privilege
-
-```sh
-hydrooj cli user setPriv <uid> <priv>
+### Update User Privileges
+```bash
+# Syntax: hydrooj cli user setPriv <uid> <priv_level>
+# Refer to the Privilege documentation for available levels.
+hydrooj cli user setPriv 2 1
 ```
 
-For parameter `[priv]`, see [here](../dev/PERM_PRIV/).
-
-## Change User Password
-
-```sh
-hydrooj cli user setPassword <uid> <password>
-
-# For example, change password of uid 1 to hydrohydro:
-hydrooj cli user setPassword 1 hydrohydro
+### Reset Password
+```bash
+# Forcefully change a user's password.
+hydrooj cli user setPassword 2 new_secure_password
 ```
 
-## Create a Judge Account
-
-First, [create an account](#create-a-user).  
-
-Pay attention to the number returned by the command; it is the user's `uid`. You need it for the next command, then grant judging permission to that account.
-
-```sh
+### Create a Judge Account
+1. Create a regular user account using the steps above.
+2. Note the `uid` returned by the creation command.
+3. Grant judging permissions to that account:
+```bash
 hydrooj cli user setJudge <uid>
 ```
+4. Enter these credentials into your judge machine's configuration file to establish a connection.
 
-After that, write the configured username and password into the judge machine config file, and the judge machine can connect to the web side.
+## Security and Blacklisting
 
-## Blacklist
-
-Ban a user:
-
-```sh
+### Ban a User
+Set their privilege level to 0 to disable their account:
+```bash
 hydrooj cli user setPriv <uid> 0
 ```
 
-Ban IP/email domain:
-
-```sh
-# key format: ip::xxx.xxx.xxx.xxx (ban IP access) or mail::xxx.com (forbid registration with xxx.com emails)
-hydrooj cli blacklist add <key> [duration] # Add <key> to blacklist, duration is [duration] months (integer, default 12; if duration=0 then permanent)
-hydrooj cli blacklist get <key> # Get blacklist information for <key>
-hydrooj cli blacklist del <key> # Remove <key> from blacklist
+### Ban IP or Email Domains
+```bash
+# Key formats: ip::1.2.3.4 or mail::example.com
+# Duration is in months (integer). Use 0 for a permanent ban (default is 12).
+hydrooj cli blacklist add <key> [duration]
+hydrooj cli blacklist get <key>
+hydrooj cli blacklist del <key>
 ```
 
-## Command List
+## Additional CLI Commands
 
-All functions under [this folder](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) can be called via CLI.
+Most internal models can be triggered via the CLI. Below are some additional useful commands:
 
-Not all runnable commands are listed here, because many features are better used via the Web interface.
+- `hydrooj cli user setUname <uid> <new_username>`: Update a username.
+- `hydrooj cli user setEmail <uid> <new_email>`: Update a user's email.
+- `hydrooj cli problem import <domainId> <path_to_package>`: Import a problem package into a domain.
+- `hydrooj cli problem export <domainId>`: Export all problems from a domain.
+- `hydrooj cli system set <key> <value>`: Modify a system configuration setting.
 
-```sh
-hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
-# Create user with email <mail>, username <uname>, password <password>, ID [uid], registration IP [regip], privilege [priv]
-hydrooj cli user setUname <uid> <unmae> # Set username of user <uid> to <uname>
-hydrooj cli user setPriv <uid> <priv> # Set privilege of user <uid> to <priv>
-hydrooj cli user setPassword <uid> <password> # Set password of user <uid> to <password>
-hydrooj cli user setEmail <uid> <mail> # Set email of user <uid> to <mail>
-hydrooj cli user setSuperAdmin <uid> # Set user <uid> as site super admin
-hydrooj cli problem import <domainId> <file/path> # Import Hydro-format problem package from <file/path> into Domain <domainId>
-hydrooj cli problem export <domainId> # Export all problem packages from Domain <domainId>
-hydrooj cli system set <key> <value> # Change system setting <key> to <value>
-```
