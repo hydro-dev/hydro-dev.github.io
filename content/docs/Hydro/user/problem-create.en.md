@@ -24,7 +24,7 @@ If you want to prepare problems locally and then upload them in batches, the for
 Each problem should use its own directory, with the directory name as the problem number such as 1, 2, 3, 4, etc.  
 Each problem directory usually contains the following:  
 `problem_zh.md` This file is the problem content, i.e., problem statement, in markdown format.  
-`probelm.yaml` file. This is the problem configuration information, such as title and tags.  
+`problem.yaml` file. This is the problem configuration information, such as title and tags.  
 `testdata` subdirectory, corresponding to files in the test data section on the website.  
 It must contain at least one `config.yaml` file to describe judge type; see examples below for details.  
 If a problem has test cases, each case should provide at least one `.in` file and one output file (some test types do not require this; see details below).  

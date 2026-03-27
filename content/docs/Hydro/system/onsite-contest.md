@@ -22,4 +22,4 @@ publishEndpoint 填写 `https://scoreboard.hydrooj.com/_publish`，设置完成�
 
 ## 选手机，气球，打印
 
-参照 [XCPC-Tools](/docs/Tools)
+参照 [XCPC-Tools](../../Tools)

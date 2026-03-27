@@ -33,5 +33,5 @@ To perform a "reveal" or "playback" of the contest results:
 
 ## Logistics: Team PCs, Balloons, and Printing
 
-For a comprehensive suite of contest tools, see the [XCPC-Tools](/docs/Tools) documentation.
+For a comprehensive suite of contest tools, see the [XCPC-Tools](../../Tools) documentation.
 
