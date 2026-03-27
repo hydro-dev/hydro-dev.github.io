@@ -2,61 +2,62 @@
 title: Storage
 ---
 
-## File Storage
+<Callout>
+Hydro instances deployed using the one-click installation script are generally automatically configured for storage.
+</Callout>
 
-Hydro stores user-uploaded files (test data, profile pictures, and attachments) in `/data/file/hydro` by default. 
+Files are stored locally in the `/data/file/hydro` directory by default. When switching storage backends, you need to manually copy or move the existing files.  
+Please read the corresponding tutorial based on the type of storage backend you are using. (We also welcome users of other storage types to provide us with detailed storage tutorials.)
+
+If you wish to move the file storage location, please follow these steps in order:
+
+1. Stop the Hydro service
+2. Move the `/data/file/hydro` directory to the new location
+3. Start Hydro, and immediately go to Control Panel -> Configuration Management, and set `file.path` to the new directory location
+4. Restart the Hydro service
+
+### Use S3 as the Storage Backend
 
 <Callout>
-Hydro instances deployed via the automated installation script are pre-configured with local storage.
+If the `file.pathStyle` option is disabled, please fill in the real URLs in the `endPointForUser` and `endPointForJudge` settings; the `/fs/` endpoint will be unavailable.
 </Callout>
 
-### Changing Local Storage Location
-
-If you need to move the file storage to a different disk or directory:
-1. Stop the Hydro service (`pm2 stop hydrooj`).
-2. Move the entire `/data/file/hydro` directory to the new path.
-3. Start the Hydro service (`pm2 start hydrooj`).
-4. **Immediately** navigate to the Control Panel > System Settings and update `file.path` to the new absolute path.
-5. Restart the Hydro service once more.
-
-## Using S3-Compatible Cloud Storage
-
-Hydro supports Amazon S3 and S3-compatible services like Tencent Cloud COS and Alibaba Cloud OSS. 
+**SeaweedFS**
 
 <Callout type="warn">
-### Manual File Migration
-When switching from local storage to S3, you must manually upload existing files in `/data/file/hydro` to your S3 bucket.
+The installation and maintenance of SeaweedFS are relatively complex and require a considerable amount of professional knowledge. This is for reference only and is not recommended for non-professional users.
 </Callout>
 
-### Tencent Cloud COS
-1. Go to **Control Panel > System Settings > Bucket Settings**.
-2. Configure the following fields:
-   - **`file.type`**: `s3`
-   - **`file.endPoint`**: `https://cos.<bucket-region>.myqcloud.com`
-   - **`file.accessKey`**: Your Tencent Cloud `SecretId`.
-   - **`file.secretKey`**: Your Tencent Cloud `SecretKey`.
-   - **`file.bucket`**: Your bucket name (e.g., `hydro-1250000000`).
-   - **`file.region`**: `Auto`
-   - **`file.pathStyle`**: `false`
-   - **`file.endPointForUser`**: `https://<bucket>.cos.<bucket-region>.myqcloud.com/`
-   - **`file.endPointForJudge`**: `https://<bucket>.cos.<bucket-region>.myqcloud.com/`
+After [installing and configuring SeaweedFS](https://github.com/seaweedfs/seaweedfs), go to Control Panel > manage_config.
 
-### SeaweedFS
-<Callout type="warn">
-SeaweedFS installation and management require advanced system administration expertise. This is not recommended for non-technical users.
-</Callout>
+- `file.type`: `s3`
+- `file.endPoint`: `http://127.0.0.1:8333`
+- `file.accessKey`: Refer to SeaweedFS configuration
+- `file.secretKey`: Refer to SeaweedFS configuration
+- `file.bucket`: `hydro` (SeaweedFS internal bucket name)
+- `file.region`: `Auto`
+- `file.pathStyle`: true
+- `file.endPointForUser`: `/fs/`
+- `file.endPointForJudge`: `/fs/`
 
-1. Ensure SeaweedFS is [installed and configured](https://github.com/seaweedfs/seaweedfs).
-2. Configure the following in the Hydro Control Panel:
-   - **`file.type`**: `s3`
-   - **`file.endPoint`**: `http://127.0.0.1:8333`
-   - **`file.accessKey`**: From SeaweedFS config.
-   - **`file.secretKey`**: From SeaweedFS config.
-   - **`file.bucket`**: `hydro`
-   - **`file.pathStyle`**: `true`
-   - **`file.endPointForUser`**: `/fs/`
-   - **`file.endPointForJudge`**: `/fs/`
+Save and restart. For existing files, please copy them manually.
 
-### Alibaba Cloud OSS
-Alibaba Cloud OSS is fully supported via the S3-compatible configuration. PRs for a specific guide are welcome.
+**Tencent Cloud COS**
 
+Go to Control Panel > System Settings > Bucket Settings.
+
+- `file.type`: `s3`
+- `file.endPoint`: `https://cos.<bucket-region>.myqcloud.com` (or https)
+- `file.accessKey`: The SecretId of your Tencent Cloud API key
+- `file.secretKey`: The SecretKey of your Tencent Cloud API key
+- `file.bucket`: \<bucket-name>
+- `file.region`: Auto
+- `file.pathStyle`: false
+- `file.endPointForUser`: `https://<bucket>.cos.<bucket-region>.myqcloud.com/`
+- `file.endPointForJudge`: `https://<bucket>.cos.<bucket-region>.myqcloud.com/`
+
+Save and restart. For existing files, please copy them manually.
+
+**Alibaba Cloud OSS**
+
+// TODO & PRs Welcome
