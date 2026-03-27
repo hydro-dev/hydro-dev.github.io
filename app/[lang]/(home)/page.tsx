@@ -9,7 +9,7 @@ import { Rocket, Zap, Box, Shield, Puzzle, Github, ArrowRight, Star, ExternalLin
 import FeatureCard from './FeatureCard';
 
 const translations = {
-  cn: {
+  zh: {
     tagline: '专注信息学竞赛，提供一站式服务',
     hydroOJ: 'Hydro 在线测评系统',
     modernOJ: '现代 OJ 系统',
@@ -147,7 +147,7 @@ const itemVariants: Variants = {
 
 export default function HomePage() {
   const params = useParams();
-  const lang = (params.lang === 'en' ? 'en' : 'cn') as keyof typeof translations;
+  const lang = (params.lang === 'en' ? 'en' : 'zh') as keyof typeof translations;
   const t = translations[lang];
   return (<>
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pb-20">

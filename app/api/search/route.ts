@@ -12,7 +12,7 @@ const mandarinTokenizer = createTokenizer({
 
 export const { staticGET: GET } = createFromSource(source, {
     localeMap: {
-        cn: {
+        zh: {
             tokenizer: mandarinTokenizer,
             components: {
                 tokenizer: mandarinTokenizer,

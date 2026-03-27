@@ -150,7 +150,7 @@ Run the following on the server to find the runtime directory of hydro-sandbox:
 pm2 info hydro-sandbox | grep "exec cwd"
 ```
 
-Refer to custom mount configuration in [Sandbox filesystem mount documentation](https://docs.goj.ac/cn/mount#自定义挂载), save it in the runtime directory as `mount.yaml`.
+Refer to custom mount configuration in [Sandbox filesystem mount documentation](https://docs.goj.ac/mount#customization), save it in the runtime directory as `mount.yaml`.
 Modify `size` and `nr_inodes` mount parameters for `work dir` and `tmp dir` to your desired values, save, then restart `hydro-sandbox` to apply.
 
 For users installed after 2022/8/12:
