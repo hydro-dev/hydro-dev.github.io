@@ -5,11 +5,11 @@ title: Hydro Problem Format
 To facilitate data exchange between systems, Hydro defines a zip-based standard format for problem transfer. The file structure inside the archive is as follows:
 
 ```
-喵? tree
+>? tree
 .
-├── 任意文件名的文件夹
+├── any_name_folder/
 │   ├── problem.yaml
-│   ├── problem_zh.md
+│   ├── problem_en.md
 │   ├── testdata
 │   │   ├── config.yaml
 │   │   ├── a1.in
@@ -27,14 +27,14 @@ To facilitate data exchange between systems, Hydro defines a zip-based standard 
 `problem.yaml` content is as follows:
 
 ```yaml
-title: 题目名
+title: Problem Title
 tag:
-- 标签1
-- 标签2
-pid: 题号（字母+数字）
+- tag1
+- tag2
+pid: problem_id (letters + numbers)
 ```
 
-`problem_*.md` stores the statement in markdown format. Language codes support full forms (such as zh_CN) and short forms (such as zh). If statements in multiple languages exist at the same time, Hydro will automatically detect and provide language switching.
+`problem_*.md` stores the statement in markdown format. Language codes support full forms (such as en_US) and short forms (such as en). If statements in multiple languages exist at the same time, Hydro will automatically detect and provide language switching.
 
 The `testdata` folder stores all test data files. For naming rules and config file format, refer to the **Test Data Format** section.
 
