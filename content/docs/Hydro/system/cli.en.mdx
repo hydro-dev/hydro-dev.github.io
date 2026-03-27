@@ -1,0 +1,104 @@
+---
+title: Hydro CLI
+---
+
+<Callout>
+Before using the CLI, please complete the database configuration.  
+Parameters wrapped in `<>` are required, and parameters wrapped in `[]` are optional. If omitted, default settings are used.  
+**Please replace all parts wrapped in `<>` or `[]` according to your specific situation (including the brackets).**
+</Callout>
+
+The CLI helps users quickly perform some operations in the console.  
+These commands need to be executed in the terminal as the root user (in the location where the installation command was executed).  
+Some commonly used examples are provided below.
+
+## Create a User
+
+<Callout>
+Rarely used. We recommend using the Control Panel > Import Users feature instead.
+</Callout>
+
+```sh
+hydrooj cli user create <mail> <username> <password> <uid>
+# The email, username, and password for this user
+
+# For example, to create a user with email hydro@hydro.local, username Hydro, password hydrohydro, and UID 2:
+# Please ensure the UID is a positive integer not less than 2 and is not occupied, and that both the email and username are unique.
+hydrooj cli user create hydro@hydro.local Hydro hydrohydro 2
+```
+
+If everything is normal, you will see the user's uid in the command line window after running this command.
+
+## Set Site Super Admin
+
+```sh
+hydrooj cli user setSuperAdmin <uid>
+
+# For example, to set the user with uid 2 as an admin:
+hydrooj cli user setSuperAdmin 2
+```
+
+## Set User Privilege
+
+```sh
+hydrooj cli user setPriv <uid> <priv>
+```
+
+For information about the `[priv]` parameter, you can read [here](../dev/PERM_PRIV/).
+
+## Change User Password
+
+```sh
+hydrooj cli user setPassword <uid> <password>
+
+# For example, to change the password of the user with uid 1 to hydrohydro:
+hydrooj cli user setPassword 1 hydrohydro
+```
+
+## Create a Judge Account
+
+First, [create an account](#create-a-user).  
+
+You need to pay attention to the number returned by running this command, which indicates the user's `uid`. You need to fill it in the command below, and then grant judging privileges to that account.
+
+```sh
+hydrooj cli user setJudge <uid>
+```
+
+Once completed, write the configured username and password into the judge machine configuration file, and the judge machine will be able to connect to the web side.
+
+## Blacklist Related
+
+Ban a user:
+
+```sh
+hydrooj cli user setPriv <uid> 0
+```
+
+IP/Email domain ban:
+
+```sh
+# The key format is ip::xxx.xxx.xxx.xxx (bans IP access) or mail::xxx.com (forbids registration with xxx.com emails)
+hydrooj cli blacklist add <key> [duration] # Add <key> to the blacklist for a duration of [duration] (an integer in months, defaults to 12; if duration=0, it's a permanent ban)
+hydrooj cli blacklist get <key> # Get information about <key> in the blacklist
+hydrooj cli blacklist del <key> # Remove <key> from the blacklist
+```
+
+## Command List
+
+All functions located in [this folder](https://github.com/hydro-dev/Hydro/tree/master/packages/hydrooj/src/model) can be called using the CLI.
+
+Not all runnable commands are listed here, because for many features, we recommend accessing them via the Web.
+
+```sh
+hydrooj cli user create <mail> <uname> <password> [uid] [regip] [priv]
+# Create a user with email <mail>, username <uname>, password <password>, ID [uid], registration IP [regip], and privilege [priv]
+hydrooj cli user setUname <uid> <uname> # Set the username of the user with ID <uid> to <uname>
+hydrooj cli user setPriv <uid> <priv> # Set the privilege of the user with ID <uid> to <priv>
+hydrooj cli user setPassword <uid> <password> # Set the password of the user with ID <uid> to <password>
+hydrooj cli user setEmail <uid> <mail> # Set the email of the user with ID <uid> to <mail>
+hydrooj cli user setSuperAdmin <uid> # Set the user with ID <uid> as the site super admin
+hydrooj cli problem import <domainId> <file/path> # Import the Hydro format problem package from <file/path> into the <domainId> domain
+hydrooj cli problem export <domainId> # Export all problem packages in the <domainId> domain
+hydrooj cli system set <key> <value> # Modify the value of the system setting <key> to <value>
+```

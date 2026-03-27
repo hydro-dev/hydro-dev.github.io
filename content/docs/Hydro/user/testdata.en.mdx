@@ -1,0 +1,106 @@
+---
+title: Test Data Format
+---
+
+## Automatic Recognition Mode
+
+<Callout>
+You can multi-select files to upload or use drag-and-drop. Zip archives will be automatically extracted upon upload.
+</Callout>
+
+For standard problems, you only need to provide `.in` and `.out` (or `.ans`) files. Files must contain a numeric suffix to be correctly identified (e.g., `1.in` or `test1.in`). Files like `sample.in` will not be automatically recognized as test cases.
+
+```bash
+# Example Directory Structure:
+.
+├── a1.in
+├── a1.out
+├── a2.in
+├── a2.out
+├── a3.in
+└── a3.out
+```
+
+Detected test data will use default limits of **1s** (time) and **256MB** (memory).
+
+## Using a Configuration File (`config.yaml`)
+
+<Callout>
+We recommend using the **Judge Settings** panel in the problem editor for a more intuitive experience.
+</Callout>
+
+A `config.yaml` file allows for granular control. The following example shows available options:
+
+```yaml
+# Problem type: default (standard comparison), objective, or interactive.
+type: default
+
+# Global limits (overridden by per-testcase limits).
+time: 1s
+memory: 128m
+
+# Input/Output Filename (e.g., foo.in / foo.out). 
+# Remove this for Standard I/O (stdin/stdout).
+filename: foo
+
+# Options for type: default
+# Checker type: default (ignores trailing whitespace/newlines), 
+# testlib (common), hustoj, lemon, etc.
+checker_type: default
+
+# Path to the custom checker (if not default).
+# Language is identified by extension (.cc for C++).
+checker: chk.cc
+
+# Path to the interactor (required for interactive problems).
+interactor: interactor.cc
+
+# Extra files to be copied into the judge working directory.
+user_extra_files:
+  - helper_input.txt
+judge_extra_files:
+  - secret_data.txt
+
+# Test Case Configuration
+# If CASES and SUBTASKS are missing, the system defaults to automatic recognition.
+subtasks:
+  - score: 30
+    type: min # min/max/sum: score for the subtask based on cases within it.
+    time: 1s
+    memory: 64m
+    cases:
+      - time: 0.5s
+        memory: 32m
+        input: a.in
+        output: a.out
+      - input: b.in
+        output: b.out
+  - score: 70
+    time: 0.5s
+    memory: 32m
+    if: [0] # Dependent on passing subtask 0.
+    cases:
+      - input: c.in
+        output: c.out
+      - input: d.in
+        output: d.out
+
+# Permitted Languages (Must match judge machine lang.yaml IDs).
+langs:
+  - c
+  - cc
+  - cc.cc11o2
+  - pas
+
+# Per-language Time/Memory multipliers.
+time_limit_rate:
+  py.py3: 2
+memory_limit_rate:
+  java: 1.5
+```
+
+Sample configurations for various problem types can be found in the [System Test Problemset](https://hydro.ac/d/system_test/).
+
+```
+
+You can find config examples for different problem types in [this problemset](https://hydro.ac/d/system_test/).

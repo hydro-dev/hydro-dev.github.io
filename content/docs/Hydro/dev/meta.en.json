@@ -1,0 +1,14 @@
+{
+    "title": "Development",
+    "description": "Development",
+    "pages": [
+        "index",
+        "naming",
+        "db-layout",
+        "PERM_PRIV",
+        "typescript",
+        "hook",
+        "frontend-modify",
+        "third-party-auth"
+    ]
+}

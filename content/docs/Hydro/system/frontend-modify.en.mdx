@@ -1,0 +1,31 @@
+---
+title: Frontend Modification
+---
+
+This guide teaches you how to modify frontend files.
+
+If you are using developer mode, directly modify files under `packages/ui-default/templates`.
+
+If you deployed using the installation script:
+
+First run `hydrooj addon create` to create a local addon (if you have not done this before).
+
+## Modify page translations or add a new language:
+
+- Modify translations: search the translation you want to change in [zh.yaml](https://github.com/hydro-dev/Hydro/blob/master/packages/ui-default/locales/zh.yaml), then add **only that line, not the whole file** after editing into `~/addon/locales/zh.yaml`.
+- Add a language: create a new file using [zh.yaml](https://github.com/hydro-dev/Hydro/blob/master/packages/ui-default/locales/zh.yaml) as reference format. Community contributions to multilingual translations are welcome.
+
+## Modify page templates:
+
+Usually, add `view-source:` before the URL you visit (for example, `view-source:https://hydro.ac`) to view source code. In line 2, `<html data-page="xxx">` contains `data-page`, which is the page name (except homepage, which is `main.html`).
+Find the corresponding file in [default templates](https://github.com/hydro-dev/Hydro/tree/master/packages/ui-default/templates), copy the **entire file content** to `~/addon/templates/`, then modify it.
+
+<Callout type="warn">
+Template modification may cause feature issues after system upgrades. For better compatibility, we recommend using addon frontend features to dynamically inject/modify elements, instead of replacing entire templates.
+
+For more details, see [Plugin Development](../dev/typescript).
+</Callout>
+
+In particular, the default template for creating problems is at `partials/problem_default.md`, and for creating training plans at `partials/training_default.json`; modify them the same way.
+
+All changes above take effect after restarting Hydro.

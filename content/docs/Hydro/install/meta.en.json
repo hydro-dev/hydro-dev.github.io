@@ -1,0 +1,11 @@
+{
+    "title": "Installation",
+    "description": "Install Hydro",
+    "pages": [
+        "s3",
+        "proxy",
+        "compiler",
+        "smtp",
+        "riscv"
+    ]
+}

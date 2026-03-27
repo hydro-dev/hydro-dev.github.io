@@ -1,6 +1,6 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import type { ReactNode } from 'react';
-import { baseOptions } from '@/app/layout.config';
+import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
 import { GithubInfo } from 'fumadocs-ui/components/github-info';
 import { RootToggle } from '@/components/RootToggle';
@@ -10,12 +10,18 @@ const maps = {
   'Tools': <GithubInfo owner="hydro-dev" repo="xcpc-tools" />,
 };
 
-export default async function Layout({ children, params }: { children: ReactNode, params: Promise<{ slug?: string[] }> }) {
-  const { slug } = await params;
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ lang: string; slug?: string[] }>;
+}) {
+  const { lang, slug } = await params;
   return (
     <DocsLayout
-      tree={source.pageTree}
-      {...baseOptions}
+      tree={source.getPageTree(lang)}
+      {...baseOptions(lang)}
       links={Object.keys(maps).find((key) => slug?.[0] === key) ? [
         {
           type: 'custom',
@@ -30,12 +36,12 @@ export default async function Layout({ children, params }: { children: ReactNode
               {
                 title: 'Hydro',
                 description: 'The Online Judge System',
-                url: '/docs/Hydro',
+                url: `/${lang}/docs/Hydro`,
               },
               {
                 title: 'XCPC-Tools',
                 description: 'Tools for on-site contests',
-                url: '/docs/Tools',
+                url: `/${lang}/docs/Tools`,
               },
             ]}
           />

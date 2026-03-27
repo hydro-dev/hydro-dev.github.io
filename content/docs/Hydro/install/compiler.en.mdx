@@ -1,0 +1,119 @@
+---
+title: Compilers and Languages
+---
+
+Starting from 2022/8/12, to prevent host-environment changes from affecting judging consistency, Hydro uses [nix]() by default to manage environments for **instances installed after this date**.  
+If your Hydro instance was installed prior to this date, please install compilers via `apt`, restart the sandbox with `pm2 restart hydro-sandbox`, and skip this section.
+
+Below is a brief guide to nix operations:
+
+Use `nix-env -iA nixpkgs.<compiler_name>` to install a new compiler, then restart the sandbox with `pm2 restart hydro-sandbox` for it to take effect.
+
+You can search for required compilers at [Nixos Search](https://search.nixos.org/packages).  
+Here are examples of commonly used compilers:
+
+```sh
+nix-env -iA nixpkgs.coreutils nixpkgs.bash nixpkgs.gawk nixpkgs.unzip # Base components, pre-installed, do not remove
+nix-env -iA nixpkgs.gcc nixpkgs.fpc # C/C++ and Pascal, pre-installed, do not remove
+nix-env -iA nixpkgs.ghc # Haskell 
+nix-env -iA nixpkgs.rustc # Rust
+nix-env -iA nixpkgs.python3Minimal
+nix-env -iA nixpkgs.python3Packages.numpy
+nix-env -iA nixpkgs.pypy3
+nix-env -iA nixpkgs.php
+nix-env -iA nixpkgs.go # Golang
+nix-env -iA nixpkgs.nodejs
+nix-env -iA nixpkgs.openjdk_headless # Java
+nix-env -iA nixpkgs.ruby
+nix-env -iA nixpkgs.mono # C#
+nix-env -iA nixpkgs.julia_17-bin # Julia
+nix-env -iA nixpkgs.iverilog # Verilog
+```
+
+Use `nix-env -q` to view the list of installed packages, and use `nix-env -e <compiler_name>` to remove a specific compiler.  
+Please be careful not to accidentally delete Hydro base components. After completing your operations, you must restart the sandbox with `pm2 restart hydro-sandbox` for the changes to take effect.
+
+<Callout>
+Some languages (specifically Java, etc.), due to their language characteristics, require a longer CPU time for compilation. This is particularly noticeable on single-core machines, where compiling even A+B might take several seconds or even tens of seconds.  
+The expected performance can be tested by manually running the compilation command on the host:
+
+```sh
+javac -d /w -encoding utf8 ./Main.java && jar cvf Main.jar *.class
+```
+
+At the same time, some compilers will attempt to create a large number of processes to utilize multi-core parallel compilation whenever possible. Please ensure the `processLimit` item in the judge settings is large enough; otherwise, compilation will fail because the compiler cannot create processes.  
+
+When the compiler utilizes multi-core parallel compilation, Hydro sums the CPU usage of these processes as the CPU resource limit. If a compilation timeout error occurs, please adjust the `compile_time_limit` item (in ms) under the corresponding language option in the system settings.
+
+Similarly, if a memory limit exceeded error occurs, you can modify the `compile_memory_limit` item (in MB) for the corresponding language.
+</Callout>
+
+<Callout>
+After installing a `python` package using `sh nix-env -iA nixpkgs.python3Packages.xxxxx`, if dependencies cannot be found in the sandbox environment, please refer to the [Import Python packages into sandbox](https://hydro.ac/d/faqs/p/15) tutorial to update environment variables.
+</Callout>
+
+## Language-specific Time Limit Modifications
+
+By default, the system provides double the time limit for Java and Kotlin. This behavior can be modified in the language settings:
+
+```yml
+# System Settings -> Language Settings
+java:
+  # ... existing settings ...
+  time_limit_rate: 2
+```
+
+## Colored C/C++ Compilation Error Output
+
+1. Ensure you have installed a compiler that supports colored output;
+2. In system settings, append `-fdiagnostics-color=always` to the C/C++ compilation commands.
+
+Example:
+
+```yml
+c:
+  compile: /usr/bin/gcc -O2 -Wall -std=c99 -o ${name} foo.c -lm -fdiagnostics-color=always
+```
+
+## Advanced Environment Configuration
+
+If you require a more complex compilation environment configuration, we recommend writing a separate nix file.
+
+```nix
+{ 
+  system ? builtins.currentSystem,
+  pkgs ? import <nixpkgs> { system = system; }
+}:
+
+pkgs.buildEnv {
+  name = "hydrojudge-rootfs";
+  paths = with pkgs; [
+    coreutils bash nix zip unzip gcc gawk
+    # The packages above are required for judging, do not remove them.
+    # List the packages you need below, search method is the same as above:
+    fpc python3 rustc
+  ];
+  ignoreCollisions = true;
+  pathsToLink = [ "/" ];
+  # Export some basic info and /etc/passwd required by some compilers
+  postBuild = ''
+    mkdir $out/buildInfo
+    echo 'root:x:0:0:root:/root:/bin/bash' >$out/etc/passwd
+    date >$out/buildInfo/timestamp
+  '';
+}
+```
+
+Copy the file above, save it as `default.nix`, and use `nix-build` to build it.  
+After building, a `result` folder will be generated. Remember the path where this folder is located.  
+Open `~/.hydro/mount.yaml` and replace `/root/.nix-profile` in it with the compiled `result` folder (switching to the new environment).  
+Then save and restart the sandbox.  
+
+If you need to change the environment configuration later, simply modify the `default.nix` file, use `nix-build` to rebuild, and restart the sandbox for it to take effect.  
+Cache files generated during the build process can be cleaned up using `nix-collect-garbage`.  
+
+For a more detailed introduction to the nix language, please refer to the [Nix Guide](https://nixos.org/guides/nix-language.html) and [Nix Manual](https://nixos.org/manual/nix/stable/language/index.html).
+
+## Others
+
+Recommended reading: the [HydroJudge](../plugins/hydrojudge) section, to learn more detailed information about judge machine settings.

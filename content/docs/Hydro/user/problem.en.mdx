@@ -1,0 +1,108 @@
+---
+title: Problem
+---
+
+## Creating a Problem
+
+Users with the `PERM_CREATE_PROBLEM` permission can create new problems.
+To do so, click the **"Create Problem"** button at the bottom-right of the problem set page.
+
+<Callout>
+Problem IDs cannot be solely numeric. If you leave the ID field empty, the system will auto-assign a numeric ID.
+</Callout>
+
+For detailed instructions on editing problem statements, see below and [laomai's guide](./problem-create).
+
+## Importing Problems
+
+### From Hydro Archives
+You can upload problem archives previously exported from Hydro. For large archives, use the CLI import tool:
+
+```bash
+# Import a Hydro-format package (.zip or folder) into a specific domain.
+hydrooj cli problem import <domainId> <file_or_folder_path>
+```
+
+### From SYZOJ
+The [loj-download](https://github.com/hydro-dev/loj-download) tool can download Hydro-format problem archives from sites based on SYZOJ or SYZOJ-NG.
+
+### From FPS Files
+See the [fps-importer](../plugins/fps-importer/) plugin documentation.
+
+### From QDUOJ
+See the `import-qduoj` plugin documentation.
+
+## Editing Problem Statements
+
+Problem statements are written using Markdown with several built-in extensions.
+
+### Sample Data Grouping
+Test cases with the same numeric index are paired automatically and displayed side-by-side:
+
+`````markdown
+```input1
+1 2
+```
+
+```output1
+3
+```
+`````
+
+### Referencing Additional Files
+You can link to or embed files uploaded in the "Files" tab:
+
+- **Download Link**: `[Download input.in](file://input.in)`
+- **Image Embedding**: `![Visual Representation](file://image.jpg)`
+- **PDF Viewing**: `@[pdf](file://specification.pdf)`
+- **Word Document Viewing**: `@[doc](file://manual.docx)` (Requires the `onlyoffice` plugin).
+
+<Callout>
+If using external storage (S3/OSS), files may be downloaded instead of previewed due to `Content-Disposition` headers. Please refer to your storage provider's documentation to enable in-browser previews:
+- [Tencent Cloud COS Docs](https://cloud.tencent.com/document/product/436/96243)
+- [Alibaba Cloud OSS Docs](https://help.aliyun.com/zh/oss/user-guide/how-to-ensure-an-object-is-previewed-when-you-access-the-object)
+</Callout>
+
+### Advanced Formatting
+- **Merged Tables**: Use standard Markdown table syntax; Hydro handles cell merging where appropriate.
+- **Embedded HTML**: For layouts not supported by Markdown, you can use safe HTML tags like `<span style="color:red">text</span>`.
+
+### Tags
+Assign tags using the category panel on the right or by entering comma-separated terms.
+
+## Test Data and Files
+
+Manage test cases and additional resources via the **"Files"** panel. Drag-and-drop is supported. See [Test Data Format](../user/testdata) for more details.
+
+## Objective Problems (Multiple Choice/Fill-in-the-Blank)
+
+### Statement Syntax
+Objective problems use custom tags to place input fields or selection menus:
+
+```markdown
+1. Fill in the blank: 1 + 1 = {{ input(1) }}
+
+2. Single choice: {{ select(2) }}
+- Choice A (Correct)
+- Choice B
+- Choice C
+
+3. Multiple choice: {{ multiselect(3) }}
+- Answer 1
+- Answer 2
+- Answer 3
+```
+
+### Configuration (`config.yaml`)
+Objective problems require a `config.yaml` file to define correct answers and scoring:
+
+```yaml
+type: objective
+answers:
+  '1': ['2', 50]         # Question 1: Answer is '2', worth 50 points.
+  '2':                   # Question 2: Multiple valid answers with different scores.
+    'A': 30
+    'B': 10
+  '3': [['A', 'B'], 20]  # Question 3: Both A and B must be selected for 20 points.
+```
+

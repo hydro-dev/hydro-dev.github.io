@@ -1,0 +1,14 @@
+{
+    "title": "System Documentation",
+    "description": "System Documentation",
+    "pages": [
+        "maintain",
+        "cli",
+        "import-user",
+        "cdn",
+        "database",
+        "frontend-modify",
+        "onsite-contest",
+        "FAQ"
+    ]
+}

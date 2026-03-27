@@ -3,9 +3,111 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { Rocket, Zap, Box, Shield, Puzzle, Github, ArrowRight, Star, ExternalLink, Wrench, Pencil, User } from 'lucide-react';
 import FeatureCard from './FeatureCard';
+
+const translations = {
+  zh: {
+    tagline: '专注信息学竞赛，提供一站式服务',
+    hydroOJ: 'Hydro 在线测评系统',
+    modernOJ: '现代 OJ 系统',
+    highPerformance: '高性能',
+    extensible: '可扩展',
+    multiLang: '多语言',
+    easySetup: '易安装',
+    multiSource: '多题库',
+    onSiteToolkit: '现场赛工具包',
+    multiPlatform: '多平台',
+    realtimeMonitor: '实时监控',
+    printDistribute: '打印分发',
+    balloonMgmt: '气球管理',
+    deviceMaint: '设备维护',
+    problemPlatform: '一站式出题平台',
+    problemWriting: '题面编写',
+    dataGen: '数据生成',
+    codeVerify: '代码验证',
+    versionControl: '版本管理',
+    collaboration: '多人协作',
+    proctoringPlatform: '监考平台',
+    contactCommercial: '联系我们以获得商业支持',
+    antiCheat: '反作弊',
+    screenLock: '防切屏',
+    realtimeAV: '实时音视频',
+    dualCamera: '双机位录制',
+    keyFeatures: '优势特性',
+    whyHydro: '为什么选择 Hydro',
+    powerful: '强大',
+    powerfulDesc: '比赛、训练、讨论、题解、作业等功能',
+    performance: '性能',
+    performanceDesc: '沙箱复用，延迟计算，提高运行效率',
+    security: '安全',
+    securityDesc: '使用 Linux 容器技术隔离用户程序',
+    convenient: '便捷',
+    convenientDesc: '支持使用脚本一键搭建',
+    extensibleTitle: '扩展',
+    extensibleDesc: '可通过安装附加组件进行扩展',
+    openSource: '开源',
+    openSourceDesc: '代码基于 AGPL 开源',
+    systemPreview: '系统预览',
+    systemPreviewDesc: '简洁、现代、强大的界面设计',
+    communityDriven: 'Hydro 由开源社区驱动',
+    activeContributors: '我们的一些活跃贡献者',
+    readyToStart: '准备好开始了吗？',
+    joinUs: '加入我们，一起打造更好的在线评测系统',
+    viewDocs: '查看文档',
+  },
+  en: {
+    tagline: 'Focused on competitive programming, providing all-in-one solutions',
+    hydroOJ: 'Hydro Online Judge',
+    modernOJ: 'Modern OJ System',
+    highPerformance: 'High Performance',
+    extensible: 'Extensible',
+    multiLang: 'Multi-language',
+    easySetup: 'Easy Setup',
+    multiSource: 'Multi-source',
+    onSiteToolkit: 'On-site Contest Toolkit',
+    multiPlatform: 'Multi-platform',
+    realtimeMonitor: 'Real-time Monitor',
+    printDistribute: 'Print & Distribute',
+    balloonMgmt: 'Balloon Management',
+    deviceMaint: 'Device Maintenance',
+    problemPlatform: 'All-in-one Problem Setting Platform',
+    problemWriting: 'Problem Writing',
+    dataGen: 'Data Generation',
+    codeVerify: 'Code Verification',
+    versionControl: 'Version Control',
+    collaboration: 'Collaboration',
+    proctoringPlatform: 'Proctoring Platform',
+    contactCommercial: 'Contact us for commercial support',
+    antiCheat: 'Anti-cheating',
+    screenLock: 'Screen Lock',
+    realtimeAV: 'Real-time A/V',
+    dualCamera: 'Dual-camera Recording',
+    keyFeatures: 'Key Features',
+    whyHydro: 'Why Choose Hydro',
+    powerful: 'Powerful',
+    powerfulDesc: 'Contests, training, discussions, editorials, assignments and more',
+    performance: 'Performance',
+    performanceDesc: 'Sandbox reuse, lazy evaluation, improved runtime efficiency',
+    security: 'Security',
+    securityDesc: 'User programs isolated using Linux container technology',
+    convenient: 'Convenient',
+    convenientDesc: 'One-click setup with installation script',
+    extensibleTitle: 'Extensible',
+    extensibleDesc: 'Extend functionality by installing add-on modules',
+    openSource: 'Open Source',
+    openSourceDesc: 'Code open-sourced under AGPL license',
+    systemPreview: 'System Preview',
+    systemPreviewDesc: 'Clean, modern, and powerful interface design',
+    communityDriven: 'Hydro is driven by the open-source community',
+    activeContributors: 'Some of our active contributors',
+    readyToStart: 'Ready to Get Started?',
+    joinUs: 'Join us in building a better online judge system',
+    viewDocs: 'View Documentation',
+  },
+} as const;
 
 const contributors = ['undefined-moe', 'pandadtdyy', 'wuxianucw', 'criyle', 'Macesuted', 'guke1024', 'FrexCheat'];
 
@@ -44,6 +146,9 @@ const itemVariants: Variants = {
 };
 
 export default function HomePage() {
+  const params = useParams();
+  const lang = (params.lang === 'en' ? 'en' : 'zh') as keyof typeof translations;
+  const t = translations[lang];
   return (<>
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pb-20">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20" />
@@ -87,7 +192,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xl md:text-2xl text-fd-muted-foreground mb-8 font-light"
           >
-            专注信息学竞赛，提供一站式服务
+            {t.tagline}
           </motion.p>
         </div>
         <motion.div
@@ -102,22 +207,22 @@ export default function HomePage() {
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl transition-transform duration-500" />
             <div className="relative">
-              <Link href="/docs/Hydro" className="block">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 bg-gradient-to-br from-blue-200 to-purple-200 rounded-xl">
-                    <BraceIcon className="w-6 h-6 text-blue-700" />
-                  </div>
-                  <h3 className="text-2xl font-bold">Hydro 在线测评系统</h3>
+               <Link href={`/${lang}/docs/Hydro`} className="block">
+                 <div className="flex items-center gap-3 mb-3">
+                   <div className="p-2.5 bg-gradient-to-br from-blue-200 to-purple-200 rounded-xl">
+                     <BraceIcon className="w-6 h-6 text-blue-700" />
+                   </div>
+                   <h3 className="text-2xl font-bold">{t.hydroOJ}</h3>
                 </div>
                 <p className="text-fd-muted-foreground mb-4">
-                  现代 OJ 系统
+                  {t.modernOJ}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">高性能</span>
-                  <span className="px-3 py-1 text-sm bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">可扩展</span>
-                  <span className="px-3 py-1 text-sm bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full">多语言</span>
-                  <span className="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">易安装</span>
-                  <span className="px-3 py-1 text-sm bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full">多题库</span>
+                   <span className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">{t.highPerformance}</span>
+                   <span className="px-3 py-1 text-sm bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">{t.extensible}</span>
+                   <span className="px-3 py-1 text-sm bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full">{t.multiLang}</span>
+                   <span className="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">{t.easySetup}</span>
+                   <span className="px-3 py-1 text-sm bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full">{t.multiSource}</span>
                 </div>
               </Link>
               <a
@@ -138,20 +243,20 @@ export default function HomePage() {
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl transition-transform duration-500" />
             <div className="relative">
-              <Link href="/docs/Tools" className="block">
+               <Link href={`/${lang}/docs/Tools`} className="block">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="relative p-2.5 bg-gradient-to-br from-purple-200 to-pink-200 rounded-xl">
                     <Wrench className="w-5 h-5 text-purple-700" />
                   </div>
                   <h3 className="text-2xl font-bold">XCPC-Tools</h3>
                 </div>
-                <p className="text-fd-muted-foreground mb-4">现场赛工具包</p>
+                 <p className="text-fd-muted-foreground mb-4">{t.onSiteToolkit}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 text-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">多平台</span>
-                  <span className="px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">实时监控</span>
-                  <span className="px-3 py-1 text-sm bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">打印分发</span>
-                  <span className="px-3 py-1 text-sm bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full">气球管理</span>
-                  <span className="px-3 py-1 text-sm bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">设备维护</span>
+                   <span className="px-3 py-1 text-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">{t.multiPlatform}</span>
+                   <span className="px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">{t.realtimeMonitor}</span>
+                   <span className="px-3 py-1 text-sm bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">{t.printDistribute}</span>
+                   <span className="px-3 py-1 text-sm bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full">{t.balloonMgmt}</span>
+                   <span className="px-3 py-1 text-sm bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">{t.deviceMaint}</span>
                 </div>
               </Link>
               <a
@@ -184,14 +289,14 @@ export default function HomePage() {
                 <h3 className="text-2xl font-bold">Polyhedron</h3>
               </div>
               <p className="text-fd-muted-foreground mb-4">
-                一站式出题平台
+                 {t.problemPlatform}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-3 py-1 text-sm bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">题面编写</span>
-                <span className="px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">数据生成</span>
-                <span className="px-3 py-1 text-sm bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full">代码验证</span>
-                <span className="px-3 py-1 text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full">版本管理</span>
-                <span className="px-3 py-1 text-sm bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 rounded-full">多人协作</span>
+                 <span className="px-3 py-1 text-sm bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">{t.problemWriting}</span>
+                 <span className="px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">{t.dataGen}</span>
+                 <span className="px-3 py-1 text-sm bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full">{t.codeVerify}</span>
+                 <span className="px-3 py-1 text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full">{t.versionControl}</span>
+                 <span className="px-3 py-1 text-sm bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 rounded-full">{t.collaboration}</span>
               </div>
             </a>
           </motion.div>
@@ -210,16 +315,16 @@ export default function HomePage() {
                 <div className="p-2.5 bg-gradient-to-br from-orange-200 to-amber-200 rounded-xl">
                   <User className="w-5 h-5 text-orange-700" />
                 </div>
-                <h3 className="text-2xl font-bold">监考平台</h3>
+                 <h3 className="text-2xl font-bold">{t.proctoringPlatform}</h3>
               </div>
               <p className="text-fd-muted-foreground mb-4">
-                联系我们以获得商业支持
+                 {t.contactCommercial}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-3 py-1 text-sm bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full">反作弊</span>
-                <span className="px-3 py-1 text-sm bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">防切屏</span>
-                <span className="px-3 py-1 text-sm bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full">实时音视频</span>
-                <span className="px-3 py-1 text-sm bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full">双机位录制</span>
+                 <span className="px-3 py-1 text-sm bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full">{t.antiCheat}</span>
+                 <span className="px-3 py-1 text-sm bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">{t.screenLock}</span>
+                 <span className="px-3 py-1 text-sm bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full">{t.realtimeAV}</span>
+                 <span className="px-3 py-1 text-sm bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full">{t.dualCamera}</span>
               </div>
             </a>
           </motion.div>
@@ -235,8 +340,8 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">优势特性</h2>
-          <p className="text-xl text-fd-muted-foreground">为什么选择 Hydro</p>
+           <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.keyFeatures}</h2>
+           <p className="text-xl text-fd-muted-foreground">{t.whyHydro}</p>
         </motion.div>
         <motion.div
           variants={containerVariants}
@@ -247,54 +352,54 @@ export default function HomePage() {
         >
           <FeatureCard
             icon={<Rocket className="w-6 h-6 text-white" />}
-            title="强大"
+            title={t.powerful}
             subtitle="Battery included"
-            description="比赛、训练、讨论、题解、作业等功能"
+            description={t.powerfulDesc}
             iconBgGradient="bg-gradient-to-br from-red-500 to-orange-500"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
           />
           <FeatureCard
             icon={<Zap className="w-6 h-6 text-white" />}
-            title="性能"
+            title={t.performance}
             subtitle="Blazingly fast"
-            description="沙箱复用，延迟计算，提高运行效率"
+            description={t.performanceDesc}
             iconBgGradient="bg-gradient-to-br from-yellow-500 to-orange-500"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
           />
           <FeatureCard
             icon={<Shield className="w-6 h-6 text-blue-700" />}
-            title="安全"
+            title={t.security}
             subtitle="(Not only) memory safe"
-            description="使用 Linux 容器技术隔离用户程序"
+            description={t.securityDesc}
             iconBgGradient="bg-gradient-to-br from-blue-200 to-pink-200"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
           />
           <FeatureCard
             icon={<Box className="w-6 h-6 text-white" />}
-            title="便捷"
+            title={t.convenient}
             subtitle="Easy setup"
-            description="支持使用脚本一键搭建"
+            description={t.convenientDesc}
             iconBgGradient="bg-gradient-to-br from-green-500 to-teal-500"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
           />
           <FeatureCard
             icon={<Puzzle className="w-6 h-6 text-white" />}
-            title="扩展"
+            title={t.extensibleTitle}
             subtitle="Plugin integration"
-            description="可通过安装附加组件进行扩展"
+            description={t.extensibleDesc}
             iconBgGradient="bg-gradient-to-br from-purple-300 to-pink-300"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
           />
           <FeatureCard
             icon={<Github className="w-6 h-6 text-white" />}
-            title="开源"
+            title={t.openSource}
             subtitle="Open source"
-            description="代码基于 AGPL 开源"
+            description={t.openSourceDesc}
             iconBgGradient="bg-gradient-to-br from-gray-700 to-gray-900"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
@@ -314,8 +419,8 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">系统预览</h2>
-          <p className="text-xl text-fd-muted-foreground">简洁、现代、强大的界面设计</p>
+           <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.systemPreview}</h2>
+           <p className="text-xl text-fd-muted-foreground">{t.systemPreviewDesc}</p>
         </motion.div>
         <div className="relative overflow-hidden">
           <div className="flex gap-6 pb-4 animate-scroll">
@@ -363,7 +468,7 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-2 mb-8">
             <Star className="w-6 h-6 text-red-500 fill-red-500" />
             <p className="text-xl text-fd-muted-foreground">
-              Hydro 由开源社区驱动
+               {t.communityDriven}
             </p>
           </div>
           <motion.div
@@ -407,7 +512,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-fd-muted-foreground mt-12"
           >
-            我们的一些活跃贡献者
+             {t.activeContributors}
           </motion.p>
         </motion.div>
       </div>
@@ -430,7 +535,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl md:text-5xl font-bold mb-6"
             >
-              准备好开始了吗？
+               {t.readyToStart}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -439,7 +544,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-xl mb-8 opacity-90"
             >
-              加入我们，一起打造更好的在线评测系统
+               {t.joinUs}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -448,11 +553,11 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <Link
-                href="/docs/Hydro"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-500 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
+               <Link
+                 href={`/${lang}/docs/Hydro`}
+                 className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-500 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
               >
-                查看文档
+                 {t.viewDocs}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a

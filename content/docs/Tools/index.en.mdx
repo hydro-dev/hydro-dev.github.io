@@ -1,0 +1,74 @@
+---
+title: Onsite Contest Guide
+---
+
+This guide is for users who want to run onsite contests and deploy judging infrastructure in an internal network.  
+The date schedule below is for reference only; you can arrange it based on actual conditions.
+
+Some content in this article also applies to DOMJudge.
+
+## Day -1 Preparation
+
+Please check whether all items in the list below are configured as required:
+
+About contestant machines:
+
+- Contestant machines are preinstalled with Linux and have the corresponding development environment.
+- CAICPC is recommended as the installation image; select the second boot option for one-click installation.
+- All contestant machines are connected to the internal network, cannot access each other, but can access public network servers (if your router does not support this, you can use iptables on contestant machines to block other traffic).
+- DHCP can be used to configure contestant machine networking, but ensure lease duration is long enough (seven days recommended).
+
+About server setup:
+
+- The server uses a static IP and can access any device in the internal network (including contestant machines);
+- The server runs Linux with a relatively new kernel. Older kernel versions are known to potentially freeze under high load [details](https://blog.taoky.moe/2023-12-02/icpc-2023-hefei-judgehosts-scale.html);
+
+About the CAICPC image:
+
+- This image is modified from the standard ICPC image.
+- Added status reporting for unified server status monitoring;
+- Supports calling VLC to capture screen and camera streams for the live module;
+- Supports batch dispatch of management commands (one-click lock screen / unlock / reboot / show seat number, etc.);
+
+## Day 0 Preparation
+
+- Install Hydro using the installation script.
+- Import required contest users.
+- Install the `@hydrooj/onsite-toolkit` plugin.
+- Install standalone modules by following `https://github.com/hydro-dev/xcpc-tools`.
+- Volunteers open the seat.txt file on all contestant desktops, fill in seat numbers, save; seat numbers shown in the backend should refresh synchronously;
+- If automatic login by seat number is needed, export the IP/team table and fill it in onsite-toolkit settings.
+- After preparation is complete, batch-change contestant machine passwords to strong passwords!!!
+
+// TODO: tools configuration
+
+About printing:
+
+- Printing is configured in `xcpc-tools`.
+- Create a printer token on the server side, place a computer next to the contest site, install corresponding printer drivers, run `xcpc-tools` in client mode, fill in the token, and it can connect.
+- `xcpc-tools` automatically fetches and prints print tasks. By default, each file prints at most five pages, and team name and seat number are printed at the top of the paper.
+
+About balloons:
+
+- Balloons are usually printed by a receipt printer. Whenever a team solves a problem, a receipt is printed;
+- The receipt contains team name, seat number, balloon color, all current balloon colors of that team, etc. Volunteers distribute balloons according to the receipt.
+
+About automatic login:
+
+After enabling, users in the address list are automatically logged into the specified corresponding account. Users cannot log in again, cannot log out, and cannot log in from other IPs.
+Before operating, make sure the list does not contain administrator accounts and IPs used by administrators!
+
+Optional:
+
+- Install grafana and netdata to monitor server runtime status ~~and show leadership~~;
+
+## Day 1 Warm-up Contest
+
+Warm-up contests usually use at least one problem that can be brute-forced with repeated submissions, guiding contestants to submit heavily and testing server load.
+
+## Day 2 Official Contest
+
+- If balloons are needed, inflate them early (usually the balloon group is very busy in the hour before the contest)
+- Remember to refill printer paper, same for receipt printers.
+
+// TODO: scoreboard freeze configuration

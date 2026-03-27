@@ -1,0 +1,94 @@
+---
+title: Domain
+---
+
+## Overview
+
+The **Domain** feature functions similarly to "Teams" or "Groups," allowing multiple isolated environments (e.g., different classes, clubs, or organizations) within a single Hydro instance.
+
+Users with the `PRIV_CREATE_DOMAIN` permission (granted to admins by default) can create new domains. Data is fully isolated between domains, though user account credentials are shared across the entire instance.
+
+## Creating a Domain
+
+1. Log in and navigate to the **"My"** tab.
+2. Find **"My Domains"** and click **"Create Domain"**.
+3. Fill in the following details:
+   - **ID**: A unique identifier used in the domain's URL. **Note: This cannot be changed after creation.**
+   - **Name**: The display name of the domain.
+   - **Announcement**: Content shown on the domain's homepage.
+   - **Avatar**: The domain's icon. Supports `gravatar:email`, `qq:id`, `github:name`, or a direct `url:link`.
+
+Once created, you will have administrative privileges within that domain, allowing you to manage problems, contests, and users.
+
+## Initializing Discussion Nodes
+
+In the **"Manage Domain"** tab, click **"Initialize Discussion Nodes"** to set up the default forum structure for your domain.
+
+## Access Control
+
+### Hydro v5 and Later
+
+In Hydro v5, access is managed through two primary roles:
+- **Guest**: The default role for non-logged-in users or users who have not yet joined the domain.
+- **Default**: The standard role for members who have joined the domain.
+
+**Key Features:**
+- **Self-Service Joining**: Admins can enable "Allow users to join domain" in the domain settings.
+- **Rankings**: Only users who have joined the domain will appear on its ranking list.
+- **Manual Assignment**: If an admin manually assigns a role other than `guest` or `default` to a user, that user will automatically join the domain with the assigned role.
+- **Blocking**: Explicitly setting a user's role to `guest` prevents them from re-joining via self-service.
+- **Leaving**: Users can leave a domain voluntarily (unless it is the `system` domain) or be removed by an admin, which resets their role to `guest`.
+
+**v4 to v5 Migration:**
+During the upgrade, Hydro automatically:
+1. Marks all existing users in a domain as "joined."
+2. Enables self-service joining (assigning the `default` role) for domains that previously had no join conditions.
+
+### Hydro v4
+
+In v4, non-logged-in users are `guest` and logged-in users are `default` by default. Setting a user's role to `default` is equivalent to removing them from the domain's specific member list.
+
+## Creating Contests and Homework
+
+To create a contest or homework assignment:
+1. Navigate to the **"Contest"** or **"Homework"** tab.
+2. Click **"Create"** on the right sidebar.
+3. Use the search/filter feature to add problems by ID or title.
+
+<Callout>
+If a contest or homework becomes inaccessible (e.g., due to deleted problems), you can force-access the edit page by appending `/edit` to the URL (e.g., `/contest/<id>/edit`).
+</Callout>
+
+## Creating Training Plans
+
+Training plans allow you to group problems into structured paths. To create one:
+1. In the **"Training"** tab, click **"Create Training Plan"**.
+2. Fill in the **Title**, **Summary**, and **Description**.
+3. Configure the **Plan** using the following JSON-like format:
+
+```json
+[
+  {
+    "_id": 1,
+    "title": "Getting Started",
+    "requireNids": [],
+    "pids": [1001, 1002]
+  },
+  {
+    "_id": 2,
+    "title": "Advanced Topics",
+    "requireNids": [1],
+    "pids": [1003]
+  }
+]
+```
+
+- `_id`: Numeric identifier for the section.
+- `title`: Section name.
+- `requireNids`: Array of section IDs that must be completed first.
+- `pids`: Array of problem IDs included in this section.
+
+<Callout>
+If a training plan becomes inaccessible, append `/edit` to the URL (e.g., `/training/<id>/edit`) to fix the configuration.
+</Callout>
+

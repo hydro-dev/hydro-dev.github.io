@@ -1,0 +1,12 @@
+{
+    "title": "User Guide",
+    "description": "User Guide",
+    "pages": [
+        "domain",
+        "permission",
+        "problem",
+        "testdata",
+        "problem-format",
+        "copy-problem"
+    ]
+}

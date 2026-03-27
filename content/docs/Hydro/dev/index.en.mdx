@@ -1,0 +1,81 @@
+---
+title: Development Environment Setup
+---
+
+## Overview
+
+The Hydro development environment is intended **only** for developers who plan to contribute to the core codebase or perform extensive low-level modifications. 
+
+If you are not experienced with TypeScript or Node.js development, we strongly recommend using the **Plugin System** instead. The automated installation script supports most customization needs via plugins without the complexity of a manual build environment.
+
+### Comparison: Production vs. Development
+
+| Feature | Production Mode | Development Mode |
+| :--- | :---: | :---: |
+| **Ease of Setup** | ✅ Simple | ❌ Complex |
+| **Plugin API Support** | ✅ Full | ✅ Full |
+| **Direct Core Edits** | ❌ Not Recommended | ✅ Supported |
+| **Hot Reloading** | ❌ No | ✅ Yes (Experimental) |
+| **Performance/Stability** | ✅ Optimized | ❌ Unoptimized |
+| **Technical Support** | ✅ Available | ❌ Not Provided |
+| **Memory Required** | 2 GB | 8 GB+ (for UI builds) |
+| **Migration Path** | Can switch to Dev | Requires full reinstall |
+
+<Callout>
+**Network Requirements**: Building Hydro from source requires a stable international internet connection. Failures like `Connection Reset` or `Timeout` are almost always due to local network restrictions. Consider using a proxy or mirror if you encounter these.
+</Callout>
+
+## Prerequisites
+
+- **OS**: Linux is required. Windows users should use **WSL2**.
+- **Database**: [MongoDB](https://www.mongodb.com/try/download/community) 4.4+ is required.
+- **Node.js**: Version 18 or later. We recommend using **Nix** for environment management: `. <(curl https://hydro.ac/nix.sh)`.
+- **Yarn**: Version 1.x. Install via `npm install -g yarn` or `nix-env -iA nixpkgs.yarn`.
+- **IDE**: A modern editor with robust TypeScript support (e.g., VS Code) is highly recommended.
+
+## Installation Steps
+
+```bash
+# Clone the repository and its submodules
+git clone https://github.com/hydro-dev/Hydro.git --recursive
+cd Hydro
+
+# Install dependencies
+yarn
+
+# Build the frontend (Requires ~8GB RAM)
+yarn build:ui:production
+```
+
+## Managing Plugins
+
+In development mode, no plugins are enabled by default. 
+
+**Official Plugins**: These are located in the `packages/` directory. To enable one (e.g., the default UI):
+```bash
+yarn hydrooj addon add @hydrooj/ui-default
+```
+
+**Custom/Third-party Plugins**: Specify the absolute path to the plugin directory:
+```bash
+yarn hydrooj addon add /path/to/your/addon
+```
+
+## Running the Development Server
+
+The following flags are supported:
+- `--port=XXXX`: Specify the listening port.
+- `--debug`: Enable verbose debug logging.
+- `--watch`: Enable backend hot-reloading.
+
+**Recommended Dev Workflow**:
+1. Run the backend: `yarn debug --port=8888 --watch`
+2. In a separate terminal, run the frontend watcher: `yarn build:ui:dev`
+
+The frontend watcher transpiles changes in real-time. Note that while the backend supports hot-reloading, some module changes may still require a manual restart. This workflow requires the `@hydrooj/ui-default` plugin to be enabled.
+
+## Updates
+To update your development environment:
+1. `git pull` in the root directory.
+2. `yarn && yarn build:ui:production`.
+
