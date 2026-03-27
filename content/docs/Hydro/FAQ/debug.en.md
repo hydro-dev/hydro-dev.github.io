@@ -2,34 +2,43 @@
 title: Debugging Guide
 ---
 
-Enter the server console and use `pm2 ls` to check the current list of running processes.
-Under normal conditions, there should be four running processes: `hydrooj`, `hydro-sandbox`, `mongodb`, and `caddy`.
-If processes are missing, run `pm2 stop all`, then `pm2 del all`, and rerun the installation script.
+## Process Management
 
-Check whether each process has started (status is online and uptime is at least one minute).
+Access your server console and use `pm2 ls` to view the status of running processes.
+A healthy Hydro instance typically has four processes: `hydrooj`, `hydro-sandbox`, `mongodb`, and `caddy`.
 
-If caddy cannot start, it is usually due to port conflicts or errors in `~/.hydro/Caddyfile`; you can try `cd ~/.hydro && caddy run` for details.
-If hydro-sandbox cannot start, it is usually due to insufficient permissions / kernel version too low; use `pm2 logs hydro-sandbox --lines 100` for details.
-If hydrooj cannot start / does not run properly after starting, see the section below.
+If any processes are missing or failing to start:
+1. Run `pm2 stop all` and `pm2 del all`.
+2. Rerun the installation script to restore the default process configuration.
 
-## hydrooj
+### Troubleshooting Process Failures
 
-After stopping with `pm2 stop hydrooj`, run command `hydrooj` directly to run Hydro in the foreground for easier log inspection.
+- **Caddy**: Usually fails due to port conflicts (port 80/443 already in use) or syntax errors in `~/.hydro/Caddyfile`. Run `cd ~/.hydro && caddy run` in the foreground to see detailed error messages.
+- **Hydro-Sandbox**: Often fails due to insufficient permissions or an outdated kernel. Check logs with `pm2 logs hydro-sandbox --lines 100`.
+- **HydroOJ**: If the main service fails, refer to the section below.
 
-1. Try updating to the latest version and check whether it works properly.
-2. Back up the plugin list with `cp ~/.hydro/addon.json ~/.hydro/addon.json.bak`.
-3. Use `hydrooj addon list` to view plugins, and disable all non-official plugins (those without the `@hydrooj/` prefix) with `hydrooj addon remove <name>`.
-4. Restart and check whether it runs properly.
-5. If it works, the issue is caused by a third-party plugin. Try re-enabling the plugins you just disabled one by one and check when the issue appears, then contact the plugin provider.
-6. If it still does not run properly, provide the development team with the full log from Hydro startup to fault occurrence for troubleshooting.
+## Debugging HydroOJ
 
-## Frontend issues
+To inspect detailed logs, stop the background process and run Hydro in the foreground:
+1. `pm2 stop hydrooj`
+2. Run the command `hydrooj` directly.
 
-This refers to frontend pages failing to load (continuous spinner or yellow/red error prompts at the bottom-left).
+**Suggested Steps:**
+1. **Update**: Ensure you are running the latest version.
+2. **Plugins**: Third-party plugins are a common cause of crashes. 
+   - Back up your plugin list: `cp ~/.hydro/addon.json ~/.hydro/addon.json.bak`.
+   - View active plugins: `hydrooj addon list`.
+   - Remove non-official plugins (those without the `@hydrooj/` prefix): `hydrooj addon remove <name>`.
+3. **Restart**: Check if the system runs correctly without third-party plugins. If it does, re-enable them one by one to identify the culprit.
+4. **Support**: If the issue persists, provide the development team with the full console output from startup until the error occurs.
 
-1. Press `Ctrl+Shift+Delete` to clear browser cache and try again.
-2. Update Chrome to the latest version and try again.
-3. Same as above, try disabling third-party plugins.
-3. If the issue still persists, open F12 Developer Tools, go to the `Console` tab, and check for error messages.
-4. Open the `Network` tab and check for failed requests.
-5. Report the issue in the group and attach screenshots of the above.
+## Frontend Issues
+
+Symptoms include pages failing to load, infinite loading spinners, or error prompts (yellow/red) at the bottom-left of the screen.
+
+1. **Clear Cache**: Press `Ctrl+Shift+Delete` to clear your browser cache and reload.
+2. **Browser Version**: Ensure you are using the latest version of Chrome or a Chromium-based browser.
+3. **Disable Extensions**: Browser extensions can sometimes interfere with page scripts.
+4. **Developer Tools**: Press `F12`, go to the **Console** tab for script errors, and the **Network** tab to identify failed requests.
+5. **Report**: When seeking help in the user group, please include screenshots of both the Console and Network tabs.
+

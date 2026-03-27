@@ -2,71 +2,39 @@
 title: Other
 ---
 
-This page lists some official paid plugins. If you want to purchase any of the plugins below or have other needs, please join QQ group 1085853538 and contact the group owner.
+## Premium and Custom Add-ons
 
-## SMS
+Hydro offers a variety of premium plugins for enterprise and complex educational needs. For inquiries or custom development, please contact the development team via the **QQ Group (1085853538)**.
 
-Use SMS instead of email for account registration/password recovery.
-Or enable phone number binding verification while keeping email.
+### Authentication and Security
+- **SMS Support**: Replace or augment email with SMS for registration and password recovery. Supports Alibaba, Tencent, and Huawei Cloud APIs.
+- **WeChat Login**: Allows users to log in by scanning a WeChat QR code (Requires a verified WeChat Service Account).
 
-Prerequisite: You need to apply for SMS APIs from Alibaba Cloud / Tencent Cloud / Huawei Cloud, configure SMS signatures and SMS templates, and wait for approval.
+### Contest Tools
+- **Contest PDF**: Instantly export all problem statements in a contest into a single, formatted PDF.
+- **Bulk Submit**: Tools for offline contests (OI-style) to collect, package, and upload contestant code for centralized judging.
 
-## WeChat Login
+### Educational Features
+- **Course System**: A comprehensive management suite for classes, handouts, and student progress tracking.
+- **User Expiration**: Automate access control based on subscription or enrollment periods.
+- **Blockly**: Integrated block-based visual programming for beginners.
 
-Supports logging into the system by scanning a WeChat QR code.
+### UI and UX
+- **Swiper**: A customizable carousel banner for the site homepage.
+- **History Charts**: Visual representation of user rating and submission frequency history.
+- **User Management Panel**: An enhanced, one-stop web interface for administrators to manage users and permissions.
 
-Prerequisite: You need to apply for a WeChat Service Account and complete verification.
+### Advanced Capabilities
+- **AI Integration**: AI-driven bug detection, problem Q&A, and solution analysis.
+- **Turtle/GOC Graphics**: Specialized environments for Turtle graphics and GOC programming.
 
-## contest-pdf
+### External Problem Sets
 
-Quickly export all problem statements of a contest into a single PDF file.
+We provide access to high-quality mirrors for popular competitive programming platforms:
+- **Mirror Services**: For **LOJ, AtCoder, and BZOJ**, we maintain dedicated mirrors with complete test data. We charge a nominal operational fee of **0.002 CNY per submission**.
+- **Self-Hosting Data**:
+  - **LOJ**: Use [loj-download](https://github.com/hydro-dev/loj-download) (~180GB).
+  - **AtCoder**: Public test data downloads are no longer provided.
+  - **BZOJ**: Please search for third-party sources (approx. 64GB).
+- **Luogu Integration**: Remote judging for Luogu is available through the [Luogu Open Platform](https://docs.lgapi.cn/open/). This service is managed by Luogu. Alternatively, you can purchase authorization directly through [Hydro](https://hydro.ac/luogu/pay) at a discounted channel rate.
 
-## contestBulkSubmit
-
-Collect contestants' code in offline contests, package it, upload to the system, and judge uniformly (similar to OI).
-
-## history
-
-View user rating / submission status history charts.
-
-## swiper
-
-Homepage carousel banner.
-
-## AI
-
-AI bug checking / problem Q&A / solution analysis ...
-
-## Turtle/GOC
-
-Turtle graphics related features.
-
-## User Expiration
-
-After expiration, users automatically lose corresponding problemset access / are prevented from logging in.
-
-## user-list
-
-Enhanced one-stop user management panel.
-Supports administrators editing user info / resetting passwords / changing permissions, etc. on the web.
-
-## blockly
-
-Block-based programming.
-
-## Course System
-
-Supports creating courses / uploading handouts / multiple classes / multiple teachers / different progress for different students / class-based management / ...
-
-## Remote Judge Series
-
-The beginner and advanced programming competition problemsets from 一本通 are permanently free in part.
-For parts of LOJ, AtCoder, and BZOJ, we deploy complete test data mirrors and charge an operational cost of CNY 0.002 per submission.
-
-Note: If you want to judge by yourself, you can also download test data and import it into your local system.
-
-- LOJ: use [loj-download](https://github.com/hydro-dev/loj-download) (about 179G)
-- AtCoder: ~~[Dropbox](https://www.dropbox.com/sh/nx3tnilzqz7df8a/AAAYlTq2tiEHl5hsESw6-yfLa?dl=0)~~ test data download is no longer provided.
-- BZOJ: due to special reasons, please search for download sources yourself. (about 64GB)
-
-For remote judging of the Luogu problemset, refer to [Luogu Open Platform](https://docs.lgapi.cn/open/). This service is provided by Luogu. You can also go to [Hydro](https://hydro.ac/luogu/pay) to purchase authorization directly at channel pricing.

@@ -2,18 +2,16 @@
 title: Test Data Format
 ---
 
-## Automatic Mode
+## Automatic Recognition Mode
 
 <Callout>
-You can directly select files (multi-select supported) to upload, or drag files to the target area for upload.  
-If the uploaded file is in zip format, it will be automatically extracted.
+You can multi-select files to upload or use drag-and-drop. Zip archives will be automatically extracted upon upload.
 </Callout>
 
-For general problems, you only need to provide `.in` and `.out/.ans` files. Example below.  
-Make sure the filename contains digits. Files like `sample.in` are not recognized automatically.
+For standard problems, you only need to provide `.in` and `.out` (or `.ans`) files. Files must contain a numeric suffix to be correctly identified (e.g., `1.in` or `test1.in`). Files like `sample.in` will not be automatically recognized as test cases.
 
 ```bash
-喵? tree
+# Example Directory Structure:
 .
 ├── a1.in
 ├── a1.out
@@ -23,81 +21,56 @@ Make sure the filename contains digits. Files like `sample.in` are not recognize
 └── a3.out
 ```
 
-Test data will be automatically recognized, with default limits of 1S and 256MB.
+Detected test data will use default limits of **1s** (time) and **256MB** (memory).
 
-## Use Config File
+## Using a Configuration File (`config.yaml`)
 
 <Callout>
-We recommend editing problem config online via Judge Settings for a better editing experience.
+We recommend using the **Judge Settings** panel in the problem editor for a more intuitive experience.
 </Callout>
 
-Upload a `config.yaml` file. Format is as follows (all examples below are optional; if not specified, prefilled values are defaults):
+A `config.yaml` file allows for granular control. The following example shows available options:
 
 ```yaml
-# 题目类型，可以为 default(比对输出，可以含spj), objective(客观题), interactive(交互题)
+# Problem type: default (standard comparison), objective, or interactive.
 type: default
 
-# 全局时空限制（此处的限制优先级低于测试点的限制）
+# Global limits (overridden by per-testcase limits).
 time: 1s
 memory: 128m
 
-# 输入输出文件名（例：使用 foo.in 和 foo.out），若使用标准 IO 删除此配置项即可
+# Input/Output Filename (e.g., foo.in / foo.out). 
+# Remove this for Standard I/O (stdin/stdout).
 filename: foo
 
-# 此部分设置当题目类型为 default 时生效
-# 比较器类型，支持的值有 default（直接比对，忽略行末空格和文件末换行）, ccr, cena, hustoj, lemon, qduoj, syzoj, testlib(比较常用)
+# Options for type: default
+# Checker type: default (ignores trailing whitespace/newlines), 
+# testlib (common), hustoj, lemon, etc.
 checker_type: default
-# 比较器文件（当比较器类型不为 default 时填写）
-# 文件路径（位于压缩包中的路径）
-# 将通过扩展名识别语言，与编译命令处一致。在默认配置下，C++ 扩展名应为 .cc 而非 .cpp
+
+# Path to the custom checker (if not default).
+# Language is identified by extension (.cc for C++).
 checker: chk.cc
 
-# 此部分设置当题目类型为interactive时生效
-# 交互器路径（位于压缩包中的路径）
+# Path to the interactor (required for interactive problems).
 interactor: interactor.cc
 
-# Extra files 额外文件
-# These files will be copied to the working directory 这些文件将被复制到工作目录。
-# 提示：您无需手动上传 testlib.h。
+# Extra files to be copied into the judge working directory.
 user_extra_files:
-  - extra_input.txt
+  - helper_input.txt
 judge_extra_files:
-  - extra_file.txt
+  - secret_data.txt
 
-# Test Cases 测试数据列表
-# If neither CASES or SUBTASKS are set(or config.yaml doesn't exist), judge will try to locate them automaticly.
-# 如果 CASES 和 SUBTASKS 都没有设置或 config.yaml 不存在， 系统会自动尝试识别数据点。
-# We support these names for auto mode: 自动识别支持以下命名方式：
-# 1. [name(optional)][number].(in/out/ans)         RegExp: /^([a-zA-Z]*)([0-9]+).in$/
-#   examples: 
-#     - c1.in / c1.out
-#     - 1.in / 1.out
-#     - c1.in / c1.ans
-# 2. input[number].txt / output[number].txt        RegExp: /^(input)([0-9]+).txt$/
-#   - example: input1.txt / input2.txt
-#
-# The CASES option has higher priority than the SUBTASKS option!
-# 在有 CASES 设置项时，不会读取 SUBTASKS 设置项！
-#
-# The CASES option has been deprecated in the new version, please use the more personalized SUBTASKS!
-# CASES 已于新版本中被废弃，请使用个性化程度更高的SUBTASKS！
-# score: 50     # 单个测试点分数
-# time: 1s      # 时间限制
-# memory: 256m  # 内存限制
-# cases:
-#   - input: abc.in
-#     output: def.out
-#   - input: ghi.in
-#     output: jkl.out
-# 或使用Subtask项：
+# Test Case Configuration
+# If CASES and SUBTASKS are missing, the system defaults to automatic recognition.
 subtasks:
   - score: 30
-    type: min # 可选 min/max/sum，分别表示分数取所有测试点最小值、所有测试点最大值、所有测试点之和
+    type: min # min/max/sum: score for the subtask based on cases within it.
     time: 1s
     memory: 64m
     cases:
       - time: 0.5s
-        memory: 32m # 可对单个测试点单独设置时间限制和内存限制
+        memory: 32m
         input: a.in
         output: a.out
       - input: b.in
@@ -105,30 +78,29 @@ subtasks:
   - score: 70
     time: 0.5s
     memory: 32m
-    if: [0] # 可选，传入数组，表示仅在subtask0通过时此subtask才计分
+    if: [0] # Dependent on passing subtask 0.
     cases:
       - input: c.in
         output: c.out
       - input: d.in
         output: d.out
 
-# 提交语言限制
-# 列举出所有本题允许使用的语言对应的代码（需要和评测机 lang.yaml 内的语言代码相同）
-# 使用语言ID而非名称！对于有子类的选项，请详细至子分类！
+# Permitted Languages (Must match judge machine lang.yaml IDs).
 langs:
   - c
   - cc
   - cc.cc11o2
   - pas
 
-# 时间内存倍率
-# 对某语言设置时间或内存倍率（需要和评测机 lang.yaml 内的语言代码相同）
-# 部分语言默认已存在倍率，请前往控制面板中查看！
-# 使用语言ID而非名称！对于有子类的选项，请详细至子分类！
+# Per-language Time/Memory multipliers.
 time_limit_rate:
   py.py3: 2
 memory_limit_rate:
   java: 1.5
+```
+
+Sample configurations for various problem types can be found in the [System Test Problemset](https://hydro.ac/d/system_test/).
+
 ```
 
 You can find config examples for different problem types in [this problemset](https://hydro.ac/d/system_test/).

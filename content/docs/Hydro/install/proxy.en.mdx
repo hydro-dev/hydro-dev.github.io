@@ -2,22 +2,22 @@
 title: Reverse Proxy / SSL Configuration
 ---
 
-### Instances installed via script after 2022/10/27 are already configured with Caddy reverse proxy automatically. Please edit the config file at `~/.hydro/Caddyfile` directly!
+### Instances installed via script after 2022/10/27 are already configured with Caddy reverse proxy automatically. Please edit the config file located at `~/.hydro/Caddyfile` directly!
 
 <Callout type="warn">
-If you use a reverse proxy, ensure `server.xff` and `server.xhost` in system settings are set correctly (lowercase). They correspond to header names added by the reverse proxy (usually `x-forwarded-for` and `x-forwarded-host`; some reverse proxy tools use `x-real-ip` instead of `x-forwarded-for`).  
-Incorrect `server.xhost` will cause issues such as user login failures. (CsrfTokenError)  
-Incorrect `server.xff` will prevent recording user IPs.
+If you use a reverse proxy, please note that the `server.xff` and `server.xhost` settings in the system settings need to be filled in correctly (in lowercase), corresponding to the header names added by the reverse proxy (usually `x-forwarded-for` and `x-forwarded-host`; some reverse proxy tools use `x-real-ip` instead of `x-forwarded-for`).  
+Incorrect configuration of the `server.xhost` setting will cause issues such as users being unable to log in. (CsrfTokenError)  
+Incorrect configuration of the `server.xff` setting will result in the inability to record user IPs.
 
-Except for one-click installation scripts that auto-configure these settings after installing Caddy, when using other tools you must configure system settings before using them! Otherwise, issues like failed user login and missing user IP logs will occur.
+Except for the one-click installation script which automatically configures these settings after installing Caddy, for other tools please configure the system settings before using the tool! Otherwise, it will cause problems like users being unable to log in and user IPs not being recorded.
 
-If you use Nginx, make sure WebSocket reverse proxy is configured; otherwise judge status cannot auto-refresh and online IDE may not work properly.
+If you use Nginx, please remember to configure the reverse proxy for the WebSocket protocol; otherwise, it will cause issues such as the judging status not refreshing automatically and the online IDE not functioning properly.
 </Callout>
 
-Hydro supports reverse proxy tools such as Caddy and HaProxy. Some configuration examples are provided [here](https://github.com/hydro-dev/Hydro/tree/master/examples/reverse_proxy).
+Hydro supports using tools like Caddy and HAProxy for reverse proxying. Some configuration examples are provided [here](https://github.com/hydro-dev/Hydro/tree/master/examples/reverse_proxy).
 
-Hydro recommends using [Caddy](https://caddyserver.com/). Below is a sample Caddyfile.
-Tip: If your server is located in mainland China, ICP filing is required before you can use ports 80 and 443.
+Hydro recommends that you use [Caddy](https://caddyserver.com/). Below is a sample Caddyfile.
+Tip: If your server is located in mainland China, you need to complete ICP filing before you can use ports 80 and 443.
 
 ```
 hydro.ac {

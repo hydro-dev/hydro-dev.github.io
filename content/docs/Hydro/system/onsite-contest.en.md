@@ -2,24 +2,36 @@
 title: Onsite Contest Guide
 ---
 
-## External Scoreboard
+## External Scoreboard (Public View)
 
-For XCPC rules, after installing `@hydrooj/scoreboard-xcpcio`, you can find `scoreboard-xcpcio.publish` in settings to configure automatic publishing of the external scoreboard.  
+For XCPC rules, you can publish a public-facing scoreboard by installing the `@hydrooj/scoreboard-xcpcio` plugin.
 
-`domainId` and `contestId` point to the contest you want to export. Fill `publishToken` with any random string (to prevent overwrite), and `publishPath` is the scoreboard path, supporting letters + numbers.  
-Set `publishEndpoint` to `https://scoreboard.hydrooj.com/_publish`, then restart the server. The corresponding contest scoreboard will sync to `https://scoreboard.hydrooj.com/<publishPath>` (ensure contest-time server network connectivity).
+### Configuration:
+In the Control Panel, locate the `scoreboard-xcpcio.publish` settings:
+- **`domainId` / `contestId`**: Specify the contest you wish to export.
+- **`publishToken`**: A secret string to prevent unauthorized overwrites.
+- **`publishPath`**: The URL slug for your scoreboard (alphanumeric only).
+- **`publishEndpoint`**: Set to `https://scoreboard.hydrooj.com/_publish`.
 
-## Resolver Playback
+Restart your server after configuration. The live scoreboard will be synchronized to `https://scoreboard.hydrooj.com/<your_publishPath>`.
 
-After installing `@hydrooj/onsite-toolkit`, you can export a contest cdp package after the contest, download and extract it, open [https://resolver.hydrooj.com](https://resolver.hydrooj.com), select the directory containing the extracted ndjson files, disable JudgingQueue in options, disable school badge display, and enable user avatar display to start resolver playback.  
-Keyboard shortcuts:
+## Resolver Playback (Final Reveal)
 
-- Left mouse button / Right arrow / Down arrow / Space: Step
-- `R`: Restart
-- `A`: Auto
-- `[` / `]`: Speed control
-- `Ctrl + Right arrow`: Fast forward
+To perform a "reveal" or "playback" of the contest results:
+1. Install the `@hydrooj/onsite-toolkit` plugin.
+2. Export the contest's CDP package and extract it on your local machine.
+3. Open [resolver.hydrooj.com](https://resolver.hydrooj.com).
+4. Select the directory containing the extracted `.ndjson` files.
+5. In the settings, disable **JudgingQueue** and **School Badge Display**, and enable **User Avatar Display**.
 
-## Team PC, Balloons, Printing
+### Controls:
+- **Step (Single Action)**: Left Mouse Button / Right Arrow / Down Arrow / Space.
+- **Auto (Automatic Reveal)**: `A`
+- **Speed Up / Slow Down**: `[` and `]`
+- **Fast Forward**: `Ctrl + Right Arrow`
+- **Restart**: `R`
 
-See [XCPC-Tools](/docs/Tools)
+## Logistics: Team PCs, Balloons, and Printing
+
+For a comprehensive suite of contest tools, see the [XCPC-Tools](/docs/Tools) documentation.
+

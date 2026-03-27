@@ -10,15 +10,15 @@ title: FAQ Collection
 
 ## How can I quickly get familiar with system features?
 
-Refer to this post: [https://hydro.ac/discuss/6172ceeed850d38c79ae18f9](https://hydro.ac/discuss/6172ceeed850d38c79ae18f9) for a serverless quick experience of system features.
-If you do not need heavy secondary development, we recommend using the online service directly. Problemsets with over 20,000 problems can be copied directly, with no need to buy cloud servers or maintain them manually.
-If you need customizations such as binding your own domain or changing logos, you can also enable advanced features in the admin panel yourself.
+Refer to this post: [https://hydro.ac/discuss/6172ceeed850d38c79ae18f9](https://hydro.ac/discuss/6172ceeed850d38c79ae18f9) for a serverless quick experience of system features.  
+If you do not need heavy secondary development, we recommend using the online service directly. Problemsets with over 20,000 problems can be copied directly, with no need to buy cloud servers or maintain them manually.  
+If you need customizations such as binding your own domain or changing logos, you can also enable advanced features in the admin panel yourself.  
 
 Users in the system only support edit and disable, not delete. This is to fundamentally prevent "teaching accidents." Please do not request user deletion features. If you are certain you will never misoperate, develop that feature yourself.
 
 ## What is an OJ?
 
-The judging system you are using now is just a program, not artificial intelligence. So in many places, you need to adapt to it. Otherwise, even if your answer is essentially correct, format errors can make the system unable to understand it and still result in wrong answers.
+The judging system you are using now is just a program, not artificial intelligence. So in many places, you need to adapt to it. Otherwise, even if your answer is essentially correct, format errors can make the system unable to understand it and still result in wrong answers.  
 The system workflow is as follows:
 
 - Teachers add problems in the system and strictly define input/output formats.
@@ -28,11 +28,11 @@ The system workflow is as follows:
 - If a student's output is exactly identical to the teacher-provided output, character by character, the program is considered correct; otherwise it is considered wrong.
 - If memory/time limits are exceeded during execution, the program is interrupted and marked incorrect.
 
-After understanding the above, students should realize that if a problem does not require prompts like "Please Input Two Number", printing such text yourself will make your output differ from expected output, causing Wrong Answer.
-If a problem requires a blank line between every two output lines and you omit it, that is a format error, and vice versa.
-You may feel the system is bad for not auto-detecting this; in fact, this is exactly how it effectively trains programming precision and good coding habits. Many strong programmers started by complaining about this system and learned to code carefully and rigorously.
-To run all submissions in a unified way, the system must constrain submission format for everyone.
-For C/C++ learners, every submission must contain exactly one `main` function, it must return `int`, and preferably return 0, because non-zero return values are considered runtime errors by the operating system.
+After understanding the above, students should realize that if a problem does not require prompts like "Please Input Two Number", printing such text yourself will make your output differ from expected output, causing Wrong Answer.  
+If a problem requires a blank line between every two output lines and you omit it, that is a format error, and vice versa.  
+You may feel the system is bad for not auto-detecting this; in fact, this is exactly how it effectively trains programming precision and good coding habits. Many strong programmers started by complaining about this system and learned to code carefully and rigorously.  
+To run all submissions in a unified way, the system must constrain submission format for everyone.  
+For C/C++ learners, every submission must contain exactly one `main` function, it must return `int`, and preferably return 0, because non-zero return values are considered runtime errors by the operating system.  
 When a compile error occurs, click the "Compile Error" text link for detailed explanation.
 
 ## Error `[ERR_STREAM_PREMATURE_CLOSE]: Premature close` when installing in Arch Linux development mode
@@ -72,20 +72,20 @@ Manage Domain -> Manage Permissions: disable the "View this domain" permission f
 Add a line in system setting `footer_extra_html`: `<a href="https://beian.miit.gov.cn/">XX ICP XX No.</a>`
 
 ## What does time mean in contests/assignments? Difference between OI ranking and normal ranking?
-Time means the time "spent" for participants to solve a problem:
-That is: time solved – contest start time + penalty time
-Penalty time = number of wrong submissions before acceptance * 20 minutes.
-Normal ranking is based on number of solved problems and "spent" time.
+Time means the time "spent" for participants to solve a problem:  
+That is: time solved – contest start time + penalty time  
+Penalty time = number of wrong submissions before acceptance * 20 minutes.  
+Normal ranking is based on number of solved problems and "spent" time.  
 OI ranking is based on score. Problems can be scored proportionally by pass ratio, 100 points each. If you want non-uniform score distribution, use config.
 
 ## Where does the script install OJ?
 
-You can get Hydro's default location with `yarn global dir`. (Do not modify code directly; updates will overwrite all changes there. Use the plugin API instead.)
-Default database files are in `/data/db`, but do not copy files directly; `hydrooj backup` is recommended.
-Files such as test data are stored in `/data/file`.
+You can get Hydro's default location with `yarn global dir`. (Do not modify code directly; updates will overwrite all changes there. Use the plugin API instead.)  
+Default database files are in `/data/db`, but do not copy files directly; `hydrooj backup` is recommended.  
+Files such as test data are stored in `/data/file`.  
 Config files are in `/root/.config/hydro` and `/root/.hydro`.
-For production servers in operation, always make an offline backup before any operation.
-Always unzip backup files to verify all data is included, and check backup size (large systems should have backups of hundreds of MB). If possible, verify restore success in a VM.
+For production servers in operation, always make an offline backup before any operation.  
+Always unzip backup files to verify all data is included, and check backup size (large systems should have backups of hundreds of MB). If possible, verify restore success in a VM.  
 
 ## What is the precision of time limit and memory limit?
 
@@ -102,7 +102,7 @@ Then try again.
 
 ## I want Python to support numpy and similar libraries. What should I do?
 
-If installed before 2022/8/12, run `pip3 install numpy` then `pm2 restart hydro-sandbox`.
+If installed before 2022/8/12, run `pip3 install numpy` then `pm2 restart hydro-sandbox`  
 Otherwise refer to the [Compiler](./install/compiler) section.
 
 ## I forgot MongoDB account/password after using installation script. What should I do?
@@ -123,8 +123,8 @@ User Hydro (uid = 1) is only for sending system messages (similar to 10000 in QQ
 
 ## How to modify website icon?
 
-Use `hydrooj addon create` to create a plugin, which will create `/root/addon` automatically.
-Go to `/root/addon/public`, and place your site icons there.
+Use `hydrooj addon create` to create a plugin, which will create `/root/addon` automatically.  
+Go to `/root/addon/public`, and place your site icons there.  
 You need these files in that directory (for different browsers):
 
 - `favicon-16x16.png`
@@ -134,7 +134,7 @@ You need these files in that directory (for different browsers):
 - `android-chrome-192x192.png`
 - `apple-touch-icon-180x180.png`
 
-Matching resolution is recommended but not mandatory. These images are shown on browser tabs.
+Matching resolution is recommended but not mandatory. These images are shown on browser tabs.  
 You also need this file in that directory:
 
 - `nav_logo_dark.png`
@@ -182,7 +182,7 @@ Enter MongoDB and execute the following (replace placeholders in angle brackets 
 
 ```sh
 use hydro
-db.user.update({"_id": <用户 UID>}, {$set: {"badge": "<标签内容>#<背景颜色（HEX）>#<文字颜色（HEX）>"}})
+db.user.update({"_id": <USER UID>}, {$set: {"badge": "<Label>#<Background HEX>#<Text HEX>"}})
 ```
 
 ## Why can't I batch download multiple files?
@@ -192,8 +192,8 @@ Otherwise, download files one by one (Ctrl+click filename).
 
 ## Why is there no language option on my submission page?
 
-Problem -> Judge Settings -> Allowed languages
-Domain Settings -> Edit Domain Profile -> Allowed languages
+Problem -> Judge Settings -> Allowed languages  
+Domain Settings -> Edit Domain Profile -> Allowed languages  
 In both places, fill language IDs separated by English commas. If unsure, leave empty.
 
 ## The 'yarn global' commands have been remove in 2.x - consider using 'yarn dlx' or a third-party plugin instead
@@ -202,13 +202,13 @@ If you cannot understand this issue, just use the installation script and do not
 
 ## I'm in a computer lab environment; many users share one IP and trigger rate limits. How to solve?
 
-Option 1: Set up a proxy server in the intranet and forward intranet IPs to the server. (Recommended)
-Option 2: Use commands like `hydrooj cli system set limit.user_login 999` to set new rate limits (the error page shows which limit was triggered)
+Option 1: Set up a proxy server in the intranet and forward intranet IPs to the server. (Recommended)  
+Option 2: Use commands like `hydrooj cli system set limit.user_login 999` to set new rate limits (the error page shows which limit was triggered)  
 Option 3: Start with `pm2 start hydrooj -- --benchmark` to disable all rate limits (Not recommended)
 
 ## Adjust temporary directory size
 
-Judge stores temporary files in /dev/shm, including contestants' output, compiled executables, etc. These files are automatically deleted after judging.
+Judge stores temporary files in /dev/shm, including contestants' output, compiled executables, etc. These files are automatically deleted after judging.  
 If you set high parallel judging, pay attention to /dev/shm size limit. We usually recommend reserving at least 512MB.
 
 Check /dev/shm size:

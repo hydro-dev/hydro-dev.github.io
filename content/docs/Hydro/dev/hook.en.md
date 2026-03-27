@@ -2,39 +2,53 @@
 title: Write Plugins with TypeScript - Hooks
 ---
 
-Please note: before reading this section, make sure you have read the "Write Plugins with TypeScript" section and completed plugin creation.
+## Using Hooks in Plugins
 
-## Examples
+Hooks allow you to intercept and modify system behavior at specific points in the execution flow.
+
+### Handler Hooks
+You can listen for events on specific routes using the following syntax:
+`handler/<timing>/<RouteName>#<Method>`
+
+- **Timing**: `before`, `before-operation`, `after`.
+- **RouteName**: The internal name of the route (e.g., `RecordDetail`).
+- **Method**: (Optional) `get` or `post`. If omitted, all methods are captured.
+
+**Example: Restricting Code Visibility**
+This hook prevents users from viewing submission code if the record is more than 24 hours old.
 
 ```ts
 import { Context, Time } from 'hydrooj';
 
 export async function apply(ctx: Context) {
-    // handler indicates route events
-    // after means running after main logic completes; before and before-operation are also supported, see the "Plugin Development" chapter "Request Flow"
-    // RecordDetail is the route name to capture
-    // #get means capture GET requests only; without this suffix, all requests of this route are captured
-    ctx.on('handler/after/RecordDetail#get', (h) => { // first parameter for handler-series hooks is the corresponding Handler instance
-        // do not allow viewing submission records older than 24 hours
-        if (h.rdoc._id.getTimestamp() < new Date(Date.now() - Time.day)) {
-            h.rdoc.code = '';
+    // Intercept the RecordDetail route after the main logic completes
+    ctx.on('handler/after/RecordDetail#get', (h) => {
+        // 'h' is the Handler instance. We can access the record data via h.rdoc.
+        const oneDayAgo = new Date(Date.now() - Time.day);
+        if (h.rdoc._id.getTimestamp() < oneDayAgo) {
+            h.rdoc.code = 'Access Expired';
         }
     });
 }
 ```
 
+### Injecting Methods into Handlers
+If you need to replace or extend a method in an existing Handler class, use `withHandlerClass`.
+
+**Example: Overriding Homepage Announcements**
 ```ts
 import { Context } from 'hydrooj';
 
-async function getAnnounce(domainId: string, limit = 5) {
-    // get announcements...
-    return adocs;
+async function customGetAnnounce(domainId: string, limit = 5) {
+    // Custom logic to fetch announcements...
+    return []; 
 }
 
 export async function apply(ctx: Context) {
+    // Wait for HomeHandler to be registered, then modify its prototype
     ctx.withHandlerClass('HomeHandler', (HomeHandler) => {
-        // modify a method in HomeHandler (add announcements)
-        HomeHandler.prototype.getAnnounce = getAnnounce;
+        HomeHandler.prototype.getAnnounce = customGetAnnounce;
     });
 }
 ```
+

@@ -2,47 +2,51 @@
 title: Database Backup and Restore
 ---
 
-## Enter the Database
+## Overview
+
+Hydro uses MongoDB as its primary data store. 
 
 <Callout type="error">
-**Direct database operations are strongly discouraged!**
-
-1. When you modify a field, you may forget to update related parts. It may seem fine at first, but issues can appear later, and you may not realize this DB change caused them.
-2. After directly modifying the database, the main program may not be notified, and cache may still exist, so your change appears ineffective.
-3. Direct database operations have very high privileges, and mistakes are usually catastrophic.
+### Direct Database Access Warning
+**Modifying the database directly is strongly discouraged.**
+1. **Relational Integrity**: Modifying a field in one table may break references in others. This can lead to unpredictable system failures.
+2. **Caching**: Changes made directly to the database may not be recognized by Hydro's caching mechanism, making them appear ineffective.
+3. **Privilege Risk**: Direct database operations are highly privileged. A single mistake can lead to catastrophic data loss.
 </Callout>
 
-In most cases, direct database operations are unnecessary or not allowed. If really needed, use `hydrooj db` to open the database shell, or read the database connection string from `~/.hydro/config.json` and connect with external tools.
+If a direct query is absolutely necessary, use the `hydrooj db` command to open the database shell or retrieve the connection string from `~/.hydro/config.json`.
 
-Note: MongoDB users are attached to specific databases. When using external tools, ensure the correct `authSource` option is set.
+*Note: Ensure your MongoDB client is configured with the correct `authSource` (typically `admin` or `hydro`).*
 
-## Quick Backup and Restore
+## Backup and Restore
 
-To ensure data safety, please back up regularly.  
+To ensure data integrity, we recommend scheduling regular backups.
 
-If you installed via the automatic script, you can use `hydrooj backup` for quick backups. After completion, a backup archive file is generated in the current directory. You can use `hydrooj restore <backup-file-path>` to restore previous backup data.
+### Automated Backups
+If you installed Hydro using the automated script, use the following commands:
+- **Backup**: `hydrooj backup`
+  - This generates a `.zip` archive in your current directory containing both the database and files.
+  - Parameters: `--dbOnly` (Database only), `--withAddons`, `--withLogs`.
+- **Restore**: `hydrooj restore <path_to_backup_file>`
 
-Backup supports these parameters:
+### Incremental Backups (Hydro 5.0.0+)
+Hydro supports incremental backups via **Restic**.
+1. Initialize a repository: `restic init`
+2. Run backup: `hydrooj backup -r <repo_address> -p <repo_password>`
 
-- `--dbOnly` Skip file backup and back up database only.
-- `--withAddons` Also back up installed addons.
-- `--withLogs` Also back up system logs.
+### Manual Backups
+If you prefer standard tools:
+1. Use `mongodump` for the database.
+2. Back up the `/data/file` directory for test data and attachments.
 
-## Incremental Backup
-
-Since Hydro 5.0.0-beta.6, incremental backup based on restic is supported.  
-Before first use, run `restic init` to initialize a repository, then back up with `hydrooj backup -r repository-address -p repository-password`.
-
-## Manual Backup
-
-You can use MongoDB's built-in [mongodump](https://docs.mongodb.com/database-tools/mongodump/) for database backup, and back up the `/data/file` directory.  
-
-For the database, **do not directly copy database directories while the database is running**. After each backup, check backup file size and content to confirm success.  
-Do not store backup data and the Hydro system on the same machine, as data loss risk remains high.  
+**Best Practices:**
+- **Never** copy the database directory while MongoDB is running.
+- **Verification**: Regularly verify the size and contents of your backup files.
+- **Off-Site Storage**: Always store backups on a different machine or cloud storage to mitigate hardware failure risks.
 
 ## Manual Restore
-
-Use MongoDB's built-in [mongorestore](https://docs.mongodb.com/database-tools/mongorestore/) to import backup database files, and restore files under `/data/file`.  
+1. Use `mongorestore` to import the database data.
+2. Restore the contents of `/data/file` to the corresponding path on your new server.
 
 {/* It actually works, but most people are not doing it right, so it's better to hide this instruction */}
 {/* If you only want to migrate deployment between machines, simply copy related folders (usually `/data/db`, `/data/file`, and `/root/.hydro/config.json`) **after stopping Hydro and MongoDB services**. */}

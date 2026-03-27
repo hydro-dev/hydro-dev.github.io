@@ -3,38 +3,38 @@ title: Storage
 ---
 
 <Callout>
-Hydro deployed with the one-click installation script is usually already configured for storage automatically.  
+Hydro instances deployed using the one-click installation script are generally automatically configured for storage.
 </Callout>
 
-Files are stored locally in `/data/file/hydro` by default. When switching storage backends, you need to manually copy or move existing files.  
-Please read the corresponding guide based on the storage backend you use. (Users of other storage backends are also welcome to provide detailed guides)
+Files are stored locally in the `/data/file/hydro` directory by default. When switching storage backends, you need to manually copy or move the existing files.  
+Please read the corresponding tutorial based on the type of storage backend you are using. (We also welcome users of other storage types to provide us with detailed storage tutorials.)
 
-If you want to move the file storage location, follow these steps in order:
+If you wish to move the file storage location, please follow these steps in order:
 
 1. Stop the Hydro service
 2. Move the `/data/file/hydro` directory to the new location
-3. Start Hydro, immediately go to Control Panel -> Configuration Management, and set `file.path` to the new directory
+3. Start Hydro, and immediately go to Control Panel -> Configuration Management, and set `file.path` to the new directory location
 4. Restart the Hydro service
 
 ### Use S3 as the Storage Backend
 
 <Callout>
-If `file.pathStyle` is disabled, please fill in real URLs for `endPointForUser` and `endPointForJudge`; the `/fs/` endpoint will be unavailable.
+If the `file.pathStyle` option is disabled, please fill in the real URLs in the `endPointForUser` and `endPointForJudge` settings; the `/fs/` endpoint will be unavailable.
 </Callout>
 
 **SeaweedFS**
 
 <Callout type="warn">
-SeaweedFS installation and maintenance are relatively complex and require considerable expertise. This is for reference only and is not recommended for non-professional users.
+The installation and maintenance of SeaweedFS are relatively complex and require a considerable amount of professional knowledge. This is for reference only and is not recommended for non-professional users.
 </Callout>
 
 After [installing and configuring SeaweedFS](https://github.com/seaweedfs/seaweedfs), go to Control Panel > manage_config.
 
 - `file.type`: `s3`
 - `file.endPoint`: `http://127.0.0.1:8333`
-- `file.accessKey`: refer to SeaweedFS configuration
-- `file.secretKey`: refer to SeaweedFS configuration
-- `file.bucket`: `hydro` (bucket name inside SeaweedFS)
+- `file.accessKey`: Refer to SeaweedFS configuration
+- `file.secretKey`: Refer to SeaweedFS configuration
+- `file.bucket`: `hydro` (SeaweedFS internal bucket name)
 - `file.region`: `Auto`
 - `file.pathStyle`: true
 - `file.endPointForUser`: `/fs/`
@@ -42,14 +42,14 @@ After [installing and configuring SeaweedFS](https://github.com/seaweedfs/seawee
 
 Save and restart. For existing files, please copy them manually.
 
-**腾讯云COS (Tencent Cloud COS)**
+**Tencent Cloud COS**
 
 Go to Control Panel > System Settings > Bucket Settings.
 
 - `file.type`: `s3`
-- `file.endPoint`: `https://cos.<bucket-region>.myqcloud.com` (or use HTTPS)
-- `file.accessKey`: SecretId of your Tencent Cloud API key
-- `file.secretKey`: SecretKey of your Tencent Cloud API key
+- `file.endPoint`: `https://cos.<bucket-region>.myqcloud.com` (or https)
+- `file.accessKey`: The SecretId of your Tencent Cloud API key
+- `file.secretKey`: The SecretKey of your Tencent Cloud API key
 - `file.bucket`: \<bucket-name>
 - `file.region`: Auto
 - `file.pathStyle`: false
@@ -58,6 +58,6 @@ Go to Control Panel > System Settings > Bucket Settings.
 
 Save and restart. For existing files, please copy them manually.
 
-**阿里云OSS (Alibaba Cloud OSS)**
+**Alibaba Cloud OSS**
 
 // TODO & PRs Welcome

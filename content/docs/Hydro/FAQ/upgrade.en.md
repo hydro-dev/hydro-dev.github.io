@@ -2,40 +2,44 @@
 title: Upgrade Guide
 ---
 
-Run `yarn global upgrade-interactive --latest`, then press Space to select **all** packages except pm2 for upgrade, and press Enter to confirm.
-Then restart the service with `pm2 restart hydrooj`.
-After restart, if `pm2 logs hydrooj --lines 100` shows no errors and you see `Server started`, then everything is fine.
-When installing/upgrading plugins, be sure to upgrade the system first. Mixing old and new versions may cause various unexpected issues.
-Also, if you have plugins installed from URLs like `hydrooj install https://xxxx`, rerun that command during system upgrade to update those plugins.
+## Recommended Upgrade Path
 
-All historical Hydro versions can be upgraded to the latest version without data loss. If you have questions about upgrading older systems, join the official group and ask the group owner anytime.
+To upgrade your Hydro instance to the latest version:
+1. Run: `yarn global upgrade-interactive --latest`
+2. Use the spacebar to select **all** packages except for `pm2`.
+3. Press Enter to confirm.
+4. Restart the service: `pm2 restart hydrooj`
+5. Verify success: Check logs with `pm2 logs hydrooj --lines 100`. Look for the "Server started" message.
 
-The following are issues you may encounter during upgrade:
+**Important Considerations:**
+- Always upgrade the system before adding or updating plugins to avoid compatibility issues.
+- If you have installed plugins from URLs (e.g., `hydrooj install https://...`), re-run those install commands after a system upgrade to ensure the plugins are also updated.
+- All historical versions of Hydro are designed for a seamless upgrade to the latest version. If you have any questions, please contact the official user group.
 
-## Remove nvm
+## Common Upgrade Issues
 
-In very early versions, Hydro used nvm to manage the Node.js environment. This setup has been deprecated. If your system has nvm, you can remove it with `rm -rf ~/.nvm`;
-Check whether nix is installed. If not, install nix first with `. <(curl https://hydro.ac/nix.sh)`;
-Reinstall the Node.js environment with nix: `nix-env -iA nixpkgs.nodejs nixpkgs.yarn nixpkgs.pm2`
+### 1. Removing nvm
+Early versions of Hydro relied on `nvm` to manage the Node.js environment. This approach is now deprecated in favor of Nix. 
+- If `nvm` is present, you can remove it: `rm -rf ~/.nvm`.
+- Ensure Nix is installed: `. <(curl https://hydro.ac/nix.sh)`.
+- Use Nix to reinstall core components: `nix-env -iA nixpkgs.nodejs nixpkgs.yarn nixpkgs.pm2`.
 
-## How to handle `NodeJS >= xx required` errors?
+### 2. "NodeJS >= xx required" Errors
+If you see a version error during upgrade:
+1. Check for `nvm` as described above.
+2. Update your Nix channels: `nix-channel --update`.
+3. Reinstall Node.js and Yarn via Nix: `nix-env -iA nixpkgs.nodejs nixpkgs.yarn nixpkgs.pm2`.
+4. Proceed with the upgrade steps.
+5. Use `pm2 restart hydrooj --update-env` to apply the environment changes.
 
-First read the nvm section above.
+### 3. Upgrading the Sandbox
+If the system displays a warning that your sandbox version is critically low or vulnerable to security issues, follow these steps:
 
 ```bash
 nix-channel --update
-nix-env -iA nixpkgs.nodejs nixpkgs.yarn nixpkgs.pm2
-# Continue the upgrade steps
-yarn global upgrade-interactive --latest
-pm2 restart hydrooj --update-env
-```
-
-## Upgrade sandbox
-
-If you encounter `Your sandbox version is tooooooo low!` or `Your sandbox version is vulnerable to symlink escape issue`, please upgrade the sandbox:
-
-```bash
-nix-channel --update
-nix-env -e hydro.sandbox && nix-env -iA nixpkgs.go-judge && ln -sf $(which go-judge) /usr/bin/hydro-sandbox
+nix-env -e hydro.sandbox 
+nix-env -iA nixpkgs.go-judge 
+ln -sf $(which go-judge) /usr/bin/hydro-sandbox
 pm2 restart hydro-sandbox --update-env
 ```
+

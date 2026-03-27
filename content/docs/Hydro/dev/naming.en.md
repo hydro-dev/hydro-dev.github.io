@@ -4,30 +4,30 @@ title: Naming Conventions
 
 ## Variable Naming Conventions
 
-Most variables in Hydro follow fixed naming conventions:
+To maintain consistency across the codebase, Hydro uses the following standard abbreviations for document types:
 
-- pdoc: Problem
-- tdoc: Contest/Homework/Training
-- rdoc: Submission record
-- ddoc: Discussion
-- drdoc: Discussion reply
-- drrdoc: Second-level discussion reply
-- mdoc: Internal message
-- psdoc: Problem submission status
-- tsdoc: Contest/Homework submission status
-...
+| Prefix | Document Type |
+| :--- | :--- |
+| **pdoc** | Problem |
+| **tdoc** | Training / Contest / Homework |
+| **rdoc** | Submission Record |
+| **ddoc** | Discussion |
+| **drdoc** | Discussion Reply |
+| **drrdoc**| Second-level Discussion Reply |
+| **mdoc** | Internal Message |
+| **psdoc** | Problem Submission Status |
+| **tsdoc** | Training/Contest Submission Status |
 
-And their variants:
+### Plurals and Collections
+- **`*docs`**: An array of documents (e.g., `pdocs` for an array of problems).
+- **`*dict`**: An object/dictionary where keys are IDs and values are document objects (e.g., `pdict`).
 
-- pdocs: Array containing multiple problems
-- pdict: Object where keys are problem IDs and values are problem details
-...
-
-More details can be found in packages/hydrooj/src/interface.ts.
+For the full list of interfaces and types, refer to `packages/hydrooj/src/interface.ts`.
 
 ## Function Naming Conventions
 
-- `get()` gets content and returns the corresponding value or null
-- `getList()` gets content and returns a dict-like object
-- `getMulti()` gets a database query cursor
-- `edit()` updates content
+- **`get(...)`**: Retrieves a single entity. Returns the object or `null` if not found.
+- **`getList(...)`**: Retrieves multiple entities as a dictionary-like object.
+- **`getMulti(...)`**: Returns a database cursor for iterating over multiple records.
+- **`edit(...)`**: Performs an update on existing content.
+
