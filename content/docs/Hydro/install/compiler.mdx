@@ -13,7 +13,7 @@ title: 编译器和语言
 以下是常用编译器的示例：
 
 ```sh
-nix-env -iA nixpkgs.coreutils nixpkgs.bash nixpkgs.gawk nixpkgs.unzip # 基础组件，已预装，不建议删除
+nix-env -iA nixpkgs.coreutils nixpkgs.bash nixpkgs.gawk nixpkgs.unzip nixpkgs.diffutils # 基础组件，已预装，请勿删除
 nix-env -iA nixpkgs.gcc nixpkgs.fpc # C/C++ 和 Pascal，已预装，不建议删除
 nix-env -iA nixpkgs.ghc # Haskell 
 nix-env -iA nixpkgs.rustc # Rust
@@ -92,7 +92,7 @@ c:
 pkgs.buildEnv {
   name = "hydrojudge-rootfs";
   paths = with pkgs; [
-    coreutils bash nix zip unzip gcc gawk
+    coreutils bash nix zip unzip gcc gawk diffutils
     # 上方包是评测所需要的，请勿删除，
     # 在下方列出你所需要的包，查找方式同上文：
     fpc python3 rustc
