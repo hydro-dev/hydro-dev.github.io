@@ -234,11 +234,11 @@ After reboot, check `/proc/cgroups` to confirm memory controller `memory` is ena
 
 ## Swap limit not applied
 
-If the go-judge startup log shows the following message, the system does not provide swap accounting, so swap limits for judged processes will not take effect:
+If Hydro displays the following warning, go-judge has not reported swap limiting as enabled. Memory limits may not restrict swap use, and memory usage measurements may be inaccurate:
 
-`memory swap accounting is not available; swap will not be restricted`
+`go-judge swap limits are unavailable. Memory limits may not restrict swap use, and memory usage measurements may be inaccurate.`
 
-When memory cgroup limits are enabled, go-judge also restricts swap use by judged processes. Enable swap accounting on the system; the rlimit/rusage fallback mode cannot enforce swap limits either. See [Inaccurate memory measurement](#内存计量不准确) for how to add `swapaccount=1` to the kernel boot parameters.
+Check that the system provides and enables swap accounting and memory cgroup limits. The rlimit/rusage fallback mode cannot enforce swap limits. See [Inaccurate memory measurement](#内存计量不准确) for how to add `swapaccount=1` to the kernel boot parameters.
 
 ## Seccomp not enabled
 
