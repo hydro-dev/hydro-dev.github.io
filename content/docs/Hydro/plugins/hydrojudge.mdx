@@ -248,4 +248,6 @@ cgroup_enable=memory cgroup_memory=1
 
 请检查 go-judge 的运行环境和启动配置，确保 seccomp 可用并已启用，然后重启 go-judge。
 
+较旧版本的 go-judge 可能不支持 seccomp。若当前版本不支持，请升级到最新版，再启用 seccomp 并重启服务。
+
 若宿主机内核存在可利用的提权漏洞，缺少 seccomp 限制可能进一步增加沙箱内程序利用该漏洞影响宿主机的风险。请确保 go-judge 已启用 seccomp，并及时更新宿主机内核。

@@ -248,4 +248,6 @@ If Hydro displays the following warning, go-judge has seccomp disabled and sandb
 
 Check the go-judge runtime environment and startup configuration to make sure seccomp is available and enabled, then restart go-judge.
 
+Older go-judge versions may not support seccomp. If your version does not support it, upgrade to the latest release, enable seccomp, and restart the service.
+
 If the host kernel has an exploitable privilege escalation vulnerability, the lack of seccomp restrictions may further increase the risk that a sandboxed program could use it to affect the host. Make sure seccomp is enabled in go-judge and keep the host kernel up to date.
