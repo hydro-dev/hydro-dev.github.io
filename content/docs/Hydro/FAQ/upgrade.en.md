@@ -33,13 +33,11 @@ If you see a version error during upgrade:
 5. Use `pm2 restart hydrooj --update-env` to apply the environment changes.
 
 ### 3. Upgrading the Sandbox
-If the system displays a warning that your sandbox version is critically low or vulnerable to security issues, follow these steps:
+If you see either `Your sandbox version is tooooooo low!` or `Your sandbox version is vulnerable to symlink escape issue`, upgrade the sandbox:
 
 ```bash
 nix-channel --update
-nix-env -e hydro.sandbox 
-nix-env -iA nixpkgs.go-judge 
-ln -sf $(which go-judge) /usr/bin/hydro-sandbox
+nix-env -e hydro.sandbox && nix-env -iA nixpkgs.go-judge && ln -sf $(which go-judge) /usr/bin/hydro-sandbox
 pm2 restart hydro-sandbox --update-env
 ```
 
