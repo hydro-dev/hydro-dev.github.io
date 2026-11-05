@@ -32,7 +32,9 @@ pm2 restart hydrooj --update-env
 
 ## 升级沙箱
 
-遇到 `Your sandbox version is tooooooo low!` 或者 `Your sandbox version is vulnerable to symlink escape issue` 提示时，请升级沙箱：
+遇到 `Failed to connect to sandbox, please check sandbox_host config and if your sandbox is running.` 提示时，请检查系统设置中的 `sandbox_host` 配置，并确认沙箱服务正在运行。
+
+遇到 `Your sandbox version is tooooooo low!` 或者 `Your sandbox version is vulnerable to symlink escape issue, please upgrade!` 提示时，请升级沙箱：
 
 ```bash
 nix-channel --update
