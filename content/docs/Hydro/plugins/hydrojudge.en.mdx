@@ -189,7 +189,7 @@ pm2 save
 
 Then the maximum number of concurrent tasks is the number of cores separated by `,` (in this example, `3`), and each concurrent judging task is assigned one core in the configuration. When enabling this option, `parallelism` is recommended to match the number of cores available to sandbox tasks. This setting should be tuned based on the judge machine's CPU specifics (such as hyper-threading, NUMA, etc.). It also requires sandbox version `v1.11.2` or above.
 
-Also, to prevent other tasks from using those cores, you can use `isolcpus` kernel parameter. For example, on an `8`-core system, to prevent other tasks from using CPU `2-7`, add `isolcpus=2-7` to kernel boot parameters. See [Inaccurate memory measurement](#内存计量不准确) for how to modify kernel boot parameters.
+Also, to prevent other tasks from using those cores, you can use `isolcpus` kernel parameter. For example, on an `8`-core system, to prevent other tasks from using CPU `2-7`, add `isolcpus=2-7` to kernel boot parameters. See [Inaccurate memory measurement](#inaccurate-memory-measurement) for how to modify kernel boot parameters.
 
 ## Inaccurate memory measurement
 
@@ -238,7 +238,7 @@ If Hydro displays the following warning, go-judge has not reported swap limiting
 
 `go-judge swap limits are unavailable. Memory limits may not restrict swap use, and memory usage measurements may be inaccurate.`
 
-Check that the system provides and enables swap accounting and memory cgroup limits. The rlimit/rusage fallback mode cannot enforce swap limits. See [Inaccurate memory measurement](#内存计量不准确) for how to add `swapaccount=1` to the kernel boot parameters.
+Check that the system provides and enables swap accounting and memory cgroup limits. The rlimit/rusage fallback mode cannot enforce swap limits. See [Inaccurate memory measurement](#inaccurate-memory-measurement) for how to add `swapaccount=1` to the kernel boot parameters.
 
 ## Seccomp not enabled
 
