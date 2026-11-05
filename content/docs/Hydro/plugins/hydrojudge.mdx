@@ -231,3 +231,21 @@ cgroup_enable=memory cgroup_memory=1
 ```
 
 重启之后检查 `/proc/cgroups` 确认内存控制器 `memory` 已开启。
+
+## Swap 限制未生效
+
+若 go-judge 启动日志出现以下内容，表示系统未提供 swap accounting，评测进程的交换空间限制不会生效：
+
+`memory swap accounting is not available; swap will not be restricted`
+
+启用内存 cgroup 限制时，go-judge 会同时限制评测进程使用交换空间。请在系统中启用 swap accounting；使用 rlimit/rusage 回退模式时也无法限制交换空间。可参照[内存计量不准确](#内存计量不准确)章节，为内核启动参数添加 `swapaccount=1`。
+
+## Seccomp 未启用
+
+若 Hydro 提示以下警告，表示 go-judge 未启用 seccomp，沙箱隔离能力会降低：
+
+`Seccomp is not enabled in go-judge. This reduces sandbox isolation.`
+
+请检查 go-judge 的运行环境和启动配置，确保 seccomp 可用并已启用，然后重启 go-judge。
+
+若宿主机内核存在可利用的提权漏洞，缺少 seccomp 限制可能进一步增加沙箱内程序利用该漏洞影响宿主机的风险。请确保 go-judge 已启用 seccomp，并及时更新宿主机内核。

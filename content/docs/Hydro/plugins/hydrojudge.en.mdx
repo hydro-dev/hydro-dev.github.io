@@ -231,3 +231,21 @@ cgroup_enable=memory cgroup_memory=1
 ```
 
 After reboot, check `/proc/cgroups` to confirm memory controller `memory` is enabled.
+
+## Swap limit not applied
+
+If the go-judge startup log shows the following message, the system does not provide swap accounting, so swap limits for judged processes will not take effect:
+
+`memory swap accounting is not available; swap will not be restricted`
+
+When memory cgroup limits are enabled, go-judge also restricts swap use by judged processes. Enable swap accounting on the system; the rlimit/rusage fallback mode cannot enforce swap limits either. See [Inaccurate memory measurement](#内存计量不准确) for how to add `swapaccount=1` to the kernel boot parameters.
+
+## Seccomp not enabled
+
+If Hydro displays the following warning, go-judge has seccomp disabled and sandbox isolation is reduced:
+
+`Seccomp is not enabled in go-judge. This reduces sandbox isolation.`
+
+Check the go-judge runtime environment and startup configuration to make sure seccomp is available and enabled, then restart go-judge.
+
+If the host kernel has an exploitable privilege escalation vulnerability, the lack of seccomp restrictions may further increase the risk that a sandboxed program could use it to affect the host. Make sure seccomp is enabled in go-judge and keep the host kernel up to date.
